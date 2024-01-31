@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import toolsforrpg_panpalianos.Fichas.FichaCriatura;
-import toolsforrpg_panpalianos.Fichas.FichaJogador;
+import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class GeradorDeFichas {
 

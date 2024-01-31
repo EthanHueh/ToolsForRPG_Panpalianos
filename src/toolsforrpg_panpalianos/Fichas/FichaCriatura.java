@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.Fichas;
+package toolsforrpg_panpalianos.fichas;
 
 import toolsforrpg_panpalianos.Regras;
 

@@ -1,7 +1,7 @@
 package toolsforrpg_panpalianos;
 
-import toolsforrpg_panpalianos.Fichas.FichaCriatura;
-import toolsforrpg_panpalianos.Fichas.FichaJogador;
+import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class Regras {
 

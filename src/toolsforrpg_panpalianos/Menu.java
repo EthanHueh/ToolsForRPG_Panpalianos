@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaCriatura;
 
 public class Menu {
 

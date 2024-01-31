@@ -5,14 +5,14 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import toolsforrpg_panpalianos.Fichas.FichaCriatura;
-import toolsforrpg_panpalianos.Fichas.FichaJogador;
+import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class LeitorDeArquivosDeFichas {
     
     static List<FichaCriatura> converteArquivoEmListaDeFichas(String pathArquivo, int tipoFicha) {
 
-        List<FichaCriatura> fichas = new ArrayList<>();
+        List<FichaCriatura> fichas = new ArrayList<FichaCriatura>();
 
         final int OPCAO_PADRAO = 1;
         final int OPCAO_JOGADOR = 2;

@@ -2,7 +2,7 @@ package toolsforrpg_panpalianos;
 
 import java.util.List;
 
-import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaCriatura;
 
 public class SimuladorDeCombate {
 
