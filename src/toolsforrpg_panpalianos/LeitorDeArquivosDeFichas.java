@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+import toolsforrpg_panpalianos.Fichas.FichaJogador;
+
 public class LeitorDeArquivosDeFichas {
     
     static List<FichaCriatura> converteArquivoEmListaDeFichas(String pathArquivo, int tipoFicha) {
@@ -17,6 +20,7 @@ public class LeitorDeArquivosDeFichas {
         switch (tipoFicha) {
 
             case OPCAO_PADRAO:
+
                 try (BufferedReader br = new BufferedReader(new FileReader(pathArquivo))) {
 
                     String line;
@@ -36,8 +40,12 @@ public class LeitorDeArquivosDeFichas {
                         int indiceSabedoria = 6;
                         int indiceCarisma = 7;
                         
-                        int indiceLvl = 8;
-                        int indicePvAdicional = 9;
+                        int indiceQuantDVs = 8;
+                        int indiceClasseArmadura = 9;
+                        int indiceJogadaDeProtecao = 10;
+                        int indiceBaseAtaque = 11;
+
+                        int indicePVAdicional = 12;
 
                         ficha.setNome(valores[indiceNome].trim());
                         ficha.setRaca(valores[indiceRaca].trim());
@@ -49,8 +57,12 @@ public class LeitorDeArquivosDeFichas {
                         ficha.setSabedoria(Integer.parseInt(valores[indiceSabedoria].trim()));
                         ficha.setCarisma(Integer.parseInt(valores[indiceCarisma].trim()));
 
-                        ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
-                        ficha.setPvAdicional(Integer.parseInt(valores[indicePvAdicional].trim()));
+                        ficha.setQuantDVs(Integer.parseInt(valores[indiceQuantDVs].trim()));
+                        ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
+                        ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
+                        ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
+
+                        ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
 
                         fichas.add(ficha);
 
@@ -71,7 +83,7 @@ public class LeitorDeArquivosDeFichas {
                     while ((line = br.readLine()) != null) {
                         String[] valores = line.split(",");
 
-                        FichaCriatura ficha = new FichaCriatura();
+                        FichaJogador ficha = new FichaJogador();
 
                         int indiceNome = 0;
                         int indiceRaca = 1;
@@ -83,9 +95,16 @@ public class LeitorDeArquivosDeFichas {
                         int indiceSabedoria = 6;
                         int indiceCarisma = 7;
                         
-                        int indiceLvl = 8;
-                        int indiceClasse = 9;
-                        int indiceExp = 10;
+                        int indiceQuantDVs = 8;
+                        int indiceClasseArmadura = 9;
+                        int indiceJogadaDeProtecao = 10;
+                        int indiceBaseAtaque = 11;
+
+                        int indicePVAdicional = 12;
+
+                        int indiceClasse = 13;
+                        int indiceLvl = 14;
+                        int indiceExp = 15;
 
                         ficha.setNome(valores[indiceNome].trim());
                         ficha.setRaca(valores[indiceRaca].trim());
@@ -97,9 +116,15 @@ public class LeitorDeArquivosDeFichas {
                         ficha.setSabedoria(Integer.parseInt(valores[indiceSabedoria].trim()));
                         ficha.setCarisma(Integer.parseInt(valores[indiceCarisma].trim()));
 
-                        ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
+                        ficha.setQuantDVs(Integer.parseInt(valores[indiceQuantDVs].trim()));
+                        ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
+                        ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
+                        ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
 
+                        ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
+                        
                         ficha.setClasse(valores[indiceClasse].trim());
+                        ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
                         ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
 
                         fichas.add(ficha);

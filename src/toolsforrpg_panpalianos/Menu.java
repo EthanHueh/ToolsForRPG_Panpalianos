@@ -6,12 +6,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+
 public class Menu {
 
     Menu() {
         
-        List<FichaCriatura> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichas("recursos\\fichasJogadores.csv", 2);
         List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichas("recursos\\fichasAvulsas.csv", 1);
+        List<FichaCriatura> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichas("recursos\\fichasJogadores.csv", 2);
+        
         
         //List<FichaCriatura> fichasAvulsas = new ArrayList<FichaCriatura>();
         List<Integer>listaIniciativas = null;

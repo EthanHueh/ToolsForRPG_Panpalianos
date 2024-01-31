@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+
 public class GeradorDeIniciativa {
     
 

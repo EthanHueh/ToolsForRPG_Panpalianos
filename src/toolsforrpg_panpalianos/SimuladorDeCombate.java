@@ -2,6 +2,8 @@ package toolsforrpg_panpalianos;
 
 import java.util.List;
 
+import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+
 public class SimuladorDeCombate {
 
     public static void executar(List<FichaCriatura> fichasJogadores, List<FichaCriatura> fichasAvulsas) {

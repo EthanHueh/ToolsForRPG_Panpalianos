@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import toolsforrpg_panpalianos.Fichas.FichaCriatura;
+import toolsforrpg_panpalianos.Fichas.FichaJogador;
+
 public class GeradorDeFichas {
 
     public static List<FichaCriatura> subMenu(List<FichaCriatura> fichasAvulsas) {
@@ -19,7 +22,6 @@ public class GeradorDeFichas {
 
         boolean opcaoInvalida = false;
 
-
         do{
 
             try {
@@ -33,7 +35,6 @@ public class GeradorDeFichas {
 
         }
         while(opcaoInvalida);
-        
 
         FichaCriatura ficha = criarNovaFicha(opcao);
 
@@ -46,74 +47,84 @@ public class GeradorDeFichas {
 
     static FichaCriatura criarNovaFicha(int opcao){
 
-        FichaCriatura ficha = new FichaCriatura();
-
-        final int OPCAO_PADRAO = 1;
-        final int OPCAO_JOGADOR = 2;
-        final int OPCAO_ATRIBUTOS_ALEATORIOS = 3;
-
         switch (opcao) {
 
-            case OPCAO_PADRAO:
-                ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-                ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
-
-                ficha.setForca(Integer.parseInt(JOptionPane.showInputDialog("Insira a forca:")));
-                ficha.setDestreza(Integer.parseInt(JOptionPane.showInputDialog("Insira a destreza:")));
-                ficha.setConstituicao(Integer.parseInt(JOptionPane.showInputDialog("Insira a constituição:")));
-                ficha.setInteligencia(Integer.parseInt(JOptionPane.showInputDialog("Insira a inteligência:")));
-                ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
-                ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
-
-                ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
-                ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o pv adicional:")));
-                
-                break;
+            case 1:
+                return criarFichaPadrao();
             
-            case OPCAO_JOGADOR:
-                ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-                ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
-                ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
+            case 2:
+                return criarFichaJogador();
 
-                ficha.setForca(Integer.parseInt(JOptionPane.showInputDialog("Insira a forca:")));
-                ficha.setDestreza(Integer.parseInt(JOptionPane.showInputDialog("Insira a destreza:")));
-                ficha.setConstituicao(Integer.parseInt(JOptionPane.showInputDialog("Insira a constituição:")));
-
-                ficha.setInteligencia(Integer.parseInt(JOptionPane.showInputDialog("Insira a inteligência:")));
-                ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
-                ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
-
-                ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
-                ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
-                
-                break;
-
-            case OPCAO_ATRIBUTOS_ALEATORIOS:
-                ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-                ficha.setRaca(JOptionPane.showInputDialog("Insira a raça:"));
-                ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
-
-                ficha.setForca(RoladorDeDados.executar(3, 6));
-                ficha.setDestreza(RoladorDeDados.executar(3, 6));
-                ficha.setConstituicao(RoladorDeDados.executar(3, 6));
-                ficha.setInteligencia(RoladorDeDados.executar(3, 6));
-                ficha.setSabedoria(RoladorDeDados.executar(3, 6));
-                ficha.setCarisma(RoladorDeDados.executar(3, 6));
-
-                ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
-                ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
-
-                break;
+            case 3:
+                return criarFichaJogadorAtributosAleatorios();
 
             default:
-                ficha = null;
-                
+                return null;                
         }
+        
+    }
+
+    private static FichaCriatura criarFichaPadrao() {
+
+        FichaCriatura ficha = new FichaCriatura();
+
+        ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
+        ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
+
+        ficha.setForca(Integer.parseInt(JOptionPane.showInputDialog("Insira a forca:")));
+        ficha.setDestreza(Integer.parseInt(JOptionPane.showInputDialog("Insira a destreza:")));
+        ficha.setConstituicao(Integer.parseInt(JOptionPane.showInputDialog("Insira a constituição:")));
+        ficha.setInteligencia(Integer.parseInt(JOptionPane.showInputDialog("Insira a inteligência:")));
+        ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
+        ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
+
+        ficha.setQuantDVs(Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de PVs:")));
+        ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o pv adicional:")));
 
         return ficha;
-        
-        
+    }
 
+    private static FichaCriatura criarFichaJogador() {
+
+        FichaJogador ficha = new FichaJogador();
+
+        ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
+        ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
+        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
+
+        ficha.setForca(Integer.parseInt(JOptionPane.showInputDialog("Insira a forca:")));
+        ficha.setDestreza(Integer.parseInt(JOptionPane.showInputDialog("Insira a destreza:")));
+        ficha.setConstituicao(Integer.parseInt(JOptionPane.showInputDialog("Insira a constituição:")));
+
+        ficha.setInteligencia(Integer.parseInt(JOptionPane.showInputDialog("Insira a inteligência:")));
+        ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
+        ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
+
+        ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
+        ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
+
+        return ficha;
+    }
+
+    private static FichaCriatura criarFichaJogadorAtributosAleatorios() {
+
+        FichaJogador ficha = new FichaJogador();
+
+        ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
+        ficha.setRaca(JOptionPane.showInputDialog("Insira a raça:"));
+        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
+
+        ficha.setForca(RoladorDeDados.executar(3, 6));
+        ficha.setDestreza(RoladorDeDados.executar(3, 6));
+        ficha.setConstituicao(RoladorDeDados.executar(3, 6));
+        ficha.setInteligencia(RoladorDeDados.executar(3, 6));
+        ficha.setSabedoria(RoladorDeDados.executar(3, 6));
+        ficha.setCarisma(RoladorDeDados.executar(3, 6));
+
+        ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
+        ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
+
+        return ficha;
     }
 
 }
