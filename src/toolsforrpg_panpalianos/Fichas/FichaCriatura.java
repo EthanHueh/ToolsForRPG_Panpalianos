@@ -21,8 +21,6 @@ public class FichaCriatura {
 
     private int pvAdicional;
 
-    //TODO fazer um inventário
-
     public FichaCriatura(){
 
     }

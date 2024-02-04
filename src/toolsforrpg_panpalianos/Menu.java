@@ -7,14 +7,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class Menu {
 
     Menu() {
         
-        List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichas("recursos\\fichasAvulsas.csv", 1);
-        List<FichaCriatura> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichas("recursos\\fichasJogadores.csv", 2);
-        
+        List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
+        List<FichaJogador> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasDeJogador("recursos\\fichasJogadores.csv");
         
         //List<FichaCriatura> fichasAvulsas = new ArrayList<FichaCriatura>();
         List<Integer>listaIniciativas = null;
@@ -27,7 +27,7 @@ public class Menu {
 
             String mensagem = "";
             mensagem += "\tRPG OLD DRAGON\n";
-            mensagem += "1 - Mostrar ficha dos jogador\n";
+            mensagem += "1 - Mostrar fichas dos jogadores\n";
             mensagem += "2 - Mostrar fichas avulsas\n";
             mensagem += "3 - Criar ficha avulsa\n";
             mensagem += "4 - Cálculo de Preço Equipamento\n";
@@ -48,7 +48,8 @@ public class Menu {
             switch(opcao){
         
                 case 1:
-                    mostrarFichas(fichasJogadores);
+                    mostrarFichasDeJogador(fichasJogadores);
+
                     break;
 
                 case 2:
@@ -94,6 +95,24 @@ public class Menu {
         } while (continua);
     }
 
+    private void mostrarFichasDeJogador(List<FichaJogador> fichas) {
+        String mensagemFichas = "";
+
+        for (FichaCriatura ficha : fichas) {
+            mensagemFichas += ficha;
+        }
+
+        JTextArea area = new JTextArea(mensagemFichas);
+        area.setRows(20);
+        area.setColumns(25);
+        area.setLineWrap(true);
+
+        JScrollPane pane = new JScrollPane(area);
+        
+        JOptionPane.showConfirmDialog(null, pane, "Fichas",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    }
+
     private void mostrarFichas(List<FichaCriatura> fichas){
         String mensagemFichas = "";
 
@@ -112,7 +131,7 @@ public class Menu {
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 
-    private void mostrarListaIniciativas(List<Integer> listaIniciativas, List<FichaCriatura> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
+    private void mostrarListaIniciativas(List<Integer> listaIniciativas, List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
         if(listaIniciativas == null){
             JOptionPane.showMessageDialog(null, "Nenhuma iniciativa inserida!", "Iniciativas", 0);
             return;

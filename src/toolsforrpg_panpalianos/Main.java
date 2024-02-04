@@ -6,9 +6,9 @@ public class Main {
 
         new Launcher();
 
-        //Inventário
-        //JP, CA, movimento
-        //Simulador de combate
+        //TODO Inventário
+        //TODO JP, CA, movimento
+        //TODO Simulador de combate
 
     }
 

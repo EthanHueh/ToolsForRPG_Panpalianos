@@ -3,12 +3,13 @@ package toolsforrpg_panpalianos;
 import java.util.List;
 
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class SimuladorDeCombate {
 
-    public static void executar(List<FichaCriatura> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
+    public static void executar(List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
         
-        FichaCriatura primCombatente = fichasJogadores.get(0);
+        FichaJogador primCombatente = fichasJogadores.get(0);
 
         int primCombatentePV = Integer.parseInt(Regras.calcularPV(primCombatente));
 

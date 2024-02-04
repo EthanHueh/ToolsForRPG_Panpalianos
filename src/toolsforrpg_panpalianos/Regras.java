@@ -8,6 +8,11 @@ public class Regras {
     public final static int DADO_VIDA_CRIATURA = 8;
     public final static int DADO_VIDA_CRIATURA_MEDIO = 5;
 
+    public final static int DADO_VIDA_HOMEM_DE_ARMAS = 10;
+    public final static int DADO_VIDA_CLERIGO = 8;
+    public final static int DADO_VIDA_LADRAO = 6;
+    public final static int DADO_VIDA_MAGO = 4;
+
     //public static int[] PVsAdicionaisPorLvlClerigo = {1,1,2,2,3,3,4,4,5,5,6};
     //public static int[] PVsAdicionaisPorLvlHdeArmas = {2,2,4,4,5,5,6,6,7,7,8};
     //public static int[] PVsAdicionaisPorLvlLadrao = {1,1,2,2,2,3,3,3,4,4,4};
@@ -58,21 +63,21 @@ public class Regras {
         switch(classe){
 
             case "h. de armas":
-                dadoVida = 10;
+                dadoVida = DADO_VIDA_HOMEM_DE_ARMAS;
                 break;
 
             case "clerigo":
             case "clérigo":
-                dadoVida = 8;
+                dadoVida = DADO_VIDA_CLERIGO;
                 break;
 
             case "ladrao":
             case "ladrão":
-                dadoVida = 6;
+                dadoVida = DADO_VIDA_LADRAO;
                 break;
 
             case "mago":
-                dadoVida = 4;
+                dadoVida = DADO_VIDA_MAGO;
                 break;
             
         }

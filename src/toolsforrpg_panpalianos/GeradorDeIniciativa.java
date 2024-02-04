@@ -6,11 +6,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class GeradorDeIniciativa {
     
 
-    public static List<Integer> executar(List<FichaCriatura> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
+    public static List<Integer> executar(List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
         
         List<Integer>listaIniciativas = new ArrayList<>();
         

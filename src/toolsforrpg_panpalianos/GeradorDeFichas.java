@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.fichas.FichaJogador;
 
+//TODO colocar programa para pedir o resto dos atributos novos 
 public class GeradorDeFichas {
 
     public static List<FichaCriatura> subMenu(List<FichaCriatura> fichasAvulsas) {
