@@ -82,6 +82,9 @@ public class GeradorDeFichas {
         ficha.setQuantDVs(Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de PVs:")));
         ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o pv adicional:")));
 
+        ficha.setQuantPVs(Regras.calcularPV(ficha));
+        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
+
         return ficha;
     }
 
@@ -104,6 +107,9 @@ public class GeradorDeFichas {
         ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
 
+        ficha.setQuantPVs(Regras.calcularPV(ficha));
+        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
+
         return ficha;
     }
 
@@ -124,6 +130,9 @@ public class GeradorDeFichas {
 
         ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
+
+        ficha.setQuantPVs(Regras.calcularPV(ficha));
+        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
         return ficha;
     }

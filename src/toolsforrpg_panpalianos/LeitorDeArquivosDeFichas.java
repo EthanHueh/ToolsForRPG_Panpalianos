@@ -54,8 +54,10 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
                 ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
                 ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
-
                 ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
+
+                ficha.setQuantPVs(Regras.calcularPV(ficha));
+                ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
                 fichas.add(ficha);
 
@@ -117,12 +119,14 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
                 ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
                 ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
-
                 ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
                 
                 ficha.setClasse(valores[indiceClasse].trim());
                 ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
                 ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
+
+                ficha.setQuantPVs(Regras.calcularPV(ficha));
+                ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
                 fichas.add(ficha);
 

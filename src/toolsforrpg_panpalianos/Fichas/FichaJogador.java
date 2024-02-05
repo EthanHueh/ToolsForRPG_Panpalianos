@@ -1,7 +1,5 @@
 package toolsforrpg_panpalianos.fichas;
 
-import toolsforrpg_panpalianos.Regras;
-
 public class FichaJogador extends FichaCriatura{
     
     private String classe;
@@ -20,7 +18,7 @@ public class FichaJogador extends FichaCriatura{
             "\t"+getNome()+" ("+getRaca()+")\n"+
             "\t"+"Classe: "+classe+"\n\n"+
 
-            "PVs: "+Regras.calcularPVJogador(this)+"\n"+
+            "PVs: "+getQuantPVs()+"\n"+
             "FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n"+
             "INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n"+
             "Total atributos: "+calcularSomaAtributos(this)+"\n\n"+
@@ -28,7 +26,7 @@ public class FichaJogador extends FichaCriatura{
             "CA: "+getClasseArmadura()+"\n"+
             "JP: "+getJogadaDeProtecao()+"\n"+
             "DVs: "+getQuantDVs()+"\n"+
-            "BA: "+getBaseAtaque()+"\n"+
+            "BA: "+getBaseAtaque()+"\n\n"+
             
             "Nível atual: "+lvl+"\n"+
             "Exp: "+exp+"\n"+

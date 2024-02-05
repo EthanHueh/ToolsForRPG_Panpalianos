@@ -11,7 +11,7 @@ public class SimuladorDeCombate {
         
         FichaJogador primCombatente = fichasJogadores.get(0);
 
-        int primCombatentePV = Integer.parseInt(Regras.calcularPV(primCombatente));
+        int primCombatentePV = Regras.calcularPV(primCombatente);
 
         FichaCriatura segCombatente = fichasJogadores.get(4);
         int segCombatentePV = 33;

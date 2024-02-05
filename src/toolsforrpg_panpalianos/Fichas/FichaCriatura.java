@@ -1,7 +1,5 @@
 package toolsforrpg_panpalianos.fichas;
 
-import toolsforrpg_panpalianos.Regras;
-
 public class FichaCriatura {
 
     private String nome;
@@ -21,6 +19,9 @@ public class FichaCriatura {
 
     private int pvAdicional;
 
+    private int quantPVs;
+    private int quantPVsMaximo;
+
     public FichaCriatura(){
 
     }
@@ -32,7 +33,7 @@ public class FichaCriatura {
             "------------------------------------------------------------"+"\n"+
             "\t"+nome+" ("+raca+")\n\n"+
 
-            "PVs: "+ Regras.calcularPV(this) +"\n"+
+            "PVs: "+quantPVs+"/"+quantPVsMaximo+"\n"+
             "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
             "INT: "+inteligencia+"\t"+"SAB: "+sabedoria+"\t"+"CAR: "+carisma+"\n"+
             "Total atributos: "+calcularSomaAtributos(this)+"\n\n"+
@@ -153,6 +154,21 @@ public class FichaCriatura {
     public void setPvAdicional(int pvAdicional) {
         this.pvAdicional = pvAdicional;
     }
-    
+
+    public int getQuantPVs() {
+        return quantPVs;
+    }
+
+    public void setQuantPVs(int quantPVs) {
+        this.quantPVs = quantPVs;
+    }
+
+    public int getQuantPVsMaximo() {
+        return quantPVsMaximo;
+    }
+
+    public void setQuantPVsMaximo(int quantPVsMaximo) {
+        this.quantPVsMaximo = quantPVsMaximo;
+    }
 
 }

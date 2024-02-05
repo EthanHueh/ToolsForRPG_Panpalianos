@@ -1,5 +1,6 @@
 package toolsforrpg_panpalianos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -25,16 +26,18 @@ public class Menu {
 
             final int OPCAO_SAIR = 999;
 
-            String mensagem = "";
-            mensagem += "\tRPG OLD DRAGON\n";
-            mensagem += "1 - Mostrar fichas dos jogadores\n";
-            mensagem += "2 - Mostrar fichas avulsas\n";
-            mensagem += "3 - Criar ficha avulsa\n";
-            mensagem += "4 - Cálculo de Preço Equipamento\n";
-            mensagem += "5 - Gerenciar Iniciativa\n";
-            mensagem += "6 - Ver iniciativa\n\n";
-            
-            mensagem += "999 - Sair\n";
+            String mensagem =
+                "\tRPG OLD DRAGON\n"+
+                "1 - Mostrar fichas dos jogadores\n"+
+                "2 - Mostrar fichas avulsas\n"+
+                "3 - Criar ficha avulsa\n"+
+                "4 - Cálculo de Preço Equipamento\n"+
+                "5 - Gerenciar Iniciativa\n"+
+                "6 - Ver iniciativa\n"+
+                "7 - Simular combate\n"+
+                "8 - Mostrar estatísticas\n\n"+
+
+                "999 - Sair\n";
 
             int opcao = 0;
 
@@ -49,7 +52,6 @@ public class Menu {
         
                 case 1:
                     mostrarFichasDeJogador(fichasJogadores);
-
                     break;
 
                 case 2:
@@ -75,6 +77,10 @@ public class Menu {
                 case 7:
                     SimuladorDeCombate.executar(fichasJogadores, fichasAvulsas);
                     break;
+
+                case 8:
+                    mostrarEstatisticas(fichasJogadores);
+                    break;
                     
                 case OPCAO_SAIR:
 
@@ -95,6 +101,18 @@ public class Menu {
         } while (continua);
     }
 
+    private void mostrarEstatisticas(List<FichaJogador> fichasJogadores) {
+
+        List<FichaCriatura> fichas = new ArrayList<FichaCriatura>();
+
+        fichas.addAll(fichasJogadores);
+
+        String msg = Estatisticas.executar(fichas);
+
+        mostrarJTextArea(msg, "Estatística");
+        
+    }
+
     private void mostrarFichasDeJogador(List<FichaJogador> fichas) {
         String mensagemFichas = "";
 
@@ -102,15 +120,8 @@ public class Menu {
             mensagemFichas += ficha;
         }
 
-        JTextArea area = new JTextArea(mensagemFichas);
-        area.setRows(20);
-        area.setColumns(25);
-        area.setLineWrap(true);
+        mostrarJTextArea(mensagemFichas, "Fichas");
 
-        JScrollPane pane = new JScrollPane(area);
-        
-        JOptionPane.showConfirmDialog(null, pane, "Fichas",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 
     private void mostrarFichas(List<FichaCriatura> fichas){
@@ -120,15 +131,7 @@ public class Menu {
             mensagemFichas += ficha;
         }
 
-        JTextArea area = new JTextArea(mensagemFichas);
-        area.setRows(20);
-        area.setColumns(25);
-        area.setLineWrap(true);
-
-        JScrollPane pane = new JScrollPane(area);
-        
-        JOptionPane.showConfirmDialog(null, pane, "Fichas",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        mostrarJTextArea(mensagemFichas, "Fichas");
     }
 
     private void mostrarListaIniciativas(List<Integer> listaIniciativas, List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
@@ -149,14 +152,20 @@ public class Menu {
             msgIniciativas += fichasAvulsas.get(i).getNome()+": "+listaIniciativas.get(i + fichasJogadores.size())+"\n";
         }
 
-        JTextArea area = new JTextArea(msgIniciativas);
+        mostrarJTextArea(msgIniciativas, "Iniciativas");
+
+    }
+
+    private void mostrarJTextArea(String msg, String titulo) {
+
+        JTextArea area = new JTextArea(msg);
         area.setRows(20);
         area.setColumns(25);
         area.setLineWrap(true);
 
         JScrollPane pane = new JScrollPane(area);
-
-        JOptionPane.showConfirmDialog(null, pane, "Iniciativas",
+        
+        JOptionPane.showConfirmDialog(null, pane, titulo,
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
     }
 

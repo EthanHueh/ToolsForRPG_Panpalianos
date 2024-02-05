@@ -5,8 +5,8 @@ import toolsforrpg_panpalianos.fichas.FichaJogador;
 
 public class Regras {
 
-    public final static int DADO_VIDA_CRIATURA = 8;
-    public final static int DADO_VIDA_CRIATURA_MEDIO = 5;
+    public final static int DADO_VIDA_CRIATURA = 5;
+    public final static int DADO_VIDA_CRIATURA_MAXIMO = 8;
 
     public final static int DADO_VIDA_HOMEM_DE_ARMAS = 10;
     public final static int DADO_VIDA_CLERIGO = 8;
@@ -32,32 +32,31 @@ public class Regras {
         
     }
     
-    public static String calcularPV(FichaCriatura ficha){
+    public static int calcularPV(FichaCriatura ficha){
 
-        int constituicao = ficha.getConstituicao();
-        int pvAdicional = ficha.getPvAdicional();
+        if(!(ficha instanceof FichaJogador)){
 
-        int quantDVs = ficha.getQuantDVs();
+            int bonusCon = calcularBonus(ficha.getConstituicao());
+            int quantDVs = ficha.getQuantDVs();
+            int dadoVida = Regras.DADO_VIDA_CRIATURA;
+            int pvAdicional = ficha.getPvAdicional();
 
-        int bonusCon = calcularBonus(constituicao);
+            int quantPVs = (quantDVs*(dadoVida+bonusCon)+pvAdicional);
+            
+            return quantPVs;
+        }
 
-        int quantPVsMedio = (quantDVs*(Regras.DADO_VIDA_CRIATURA_MEDIO+bonusCon)+pvAdicional);
-        int quantPVsMaximo = (quantDVs*(Regras.DADO_VIDA_CRIATURA+bonusCon)+pvAdicional);
-        
-        return quantPVsMedio+"/"+quantPVsMaximo;
+        FichaJogador fichaJogador = new FichaJogador();
 
-    }
+        try {
+            fichaJogador = (FichaJogador) ficha;
+        } catch (Exception e) {
+            System.out.println("Não é uma ficha de jogador");
+        }
 
-    public static int calcularPVJogador(FichaJogador ficha){
         int dadoVida = 0;
-        int dadoVidaMedio = 0;
 
-        int bonusCon = calcularBonus(ficha.getConstituicao());
-
-        int lvl = ficha.getLvl();
-
-        String classe = ficha.getClasse();
-        
+        String classe = fichaJogador.getClasse();
         classe = classe.toLowerCase();
 
         switch(classe){
@@ -81,12 +80,27 @@ public class Regras {
                 break;
             
         }
+        
+        int bonusCon = calcularBonus(ficha.getConstituicao());
 
-        dadoVidaMedio = (dadoVida / 2) + 1;
+        int lvl = fichaJogador.getLvl();
 
-        int pv = dadoVida + bonusCon + ((lvl - 1) * ((dadoVidaMedio) + bonusCon));
+        int dadoVidaMedio = (dadoVida / 2) + 1;
+
+        int pv = dadoVida + bonusCon + ((lvl - 1)*((dadoVidaMedio) + bonusCon));
 
         return pv;
+
     }
+
+    public static int calcularPVMaximo(FichaCriatura ficha){{
+
+        int bonusCon = calcularBonus(ficha.getConstituicao());
+        int quantDVs = ficha.getQuantDVs();
+        int dadoVida = Regras.DADO_VIDA_CRIATURA_MAXIMO;
+        int pvAdicional = ficha.getPvAdicional();
+
+        return (quantDVs*(dadoVida+bonusCon)+pvAdicional);
+    }}
 
 }
