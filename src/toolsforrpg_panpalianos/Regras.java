@@ -36,17 +36,15 @@ public class Regras {
 
         if(!(ficha instanceof FichaJogador)){
 
-            int bonusCon = calcularBonus(ficha.getConstituicao());
             int quantDVs = ficha.getQuantDVs();
             int dadoVida = Regras.DADO_VIDA_CRIATURA;
+            int bonusCon = calcularBonus(ficha.getConstituicao());
             int pvAdicional = ficha.getPvAdicional();
 
-            int quantPVs = (quantDVs*(dadoVida+bonusCon)+pvAdicional);
-            
-            return quantPVs;
+            return (quantDVs*(dadoVida+bonusCon)+pvAdicional);
         }
 
-        FichaJogador fichaJogador = new FichaJogador();
+        FichaJogador fichaJogador = null;
 
         try {
             fichaJogador = (FichaJogador) ficha;
@@ -54,11 +52,10 @@ public class Regras {
             System.out.println("Não é uma ficha de jogador");
         }
 
-        int dadoVida = 0;
-
         String classe = fichaJogador.getClasse();
         classe = classe.toLowerCase();
 
+        int dadoVida = 0;
         switch(classe){
 
             case "h. de armas":
@@ -82,22 +79,18 @@ public class Regras {
         }
         
         int bonusCon = calcularBonus(ficha.getConstituicao());
-
         int lvl = fichaJogador.getLvl();
+        int dadoVidaMedio = (dadoVida/2) + 1;
 
-        int dadoVidaMedio = (dadoVida / 2) + 1;
-
-        int pv = dadoVida + bonusCon + ((lvl - 1)*((dadoVidaMedio) + bonusCon));
-
-        return pv;
+        return ((dadoVida+bonusCon)  +  ((lvl-1) * ((dadoVidaMedio)+bonusCon)));
 
     }
 
     public static int calcularPVMaximo(FichaCriatura ficha){{
 
-        int bonusCon = calcularBonus(ficha.getConstituicao());
         int quantDVs = ficha.getQuantDVs();
         int dadoVida = Regras.DADO_VIDA_CRIATURA_MAXIMO;
+        int bonusCon = calcularBonus(ficha.getConstituicao());
         int pvAdicional = ficha.getPvAdicional();
 
         return (quantDVs*(dadoVida+bonusCon)+pvAdicional);

@@ -12,38 +12,37 @@ public class GeradorDeFichas {
 
     public static List<FichaCriatura> subMenu(List<FichaCriatura> fichasAvulsas) {
         
-        String  msgFicha = "";
-        msgFicha += "Escolha a opcao:\n";
-        msgFicha += "1 - Ficha padrão\n";
-        msgFicha += "2 - Ficha de jogador\n";
-        msgFicha += "3 - Ficha com atributos aleatórios\n";
-        msgFicha += "4 - Sair\n";
+        String  msgFicha =
+            "Escolha a opcao:\n\n"+
 
-        int opcao = 0;
-
-        boolean opcaoInvalida = false;
+            "1 - Ficha padrão\n"+
+            "2 - Ficha de jogador\n"+
+            "3 - Ficha com atributos aleatórios\n\n"+
+            "4 - Sair\n";
 
         do{
+
+            int opcao = 0;
 
             try {
                 opcao = Integer.parseInt(JOptionPane.showInputDialog(msgFicha));
             
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "É PRA COLOCAR UM NÚMERO DESGRAÇA", "X", 0);
+            
             }
 
-            opcaoInvalida = (opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4);
+            boolean opcaoValida = (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4); 
+
+            if(opcaoValida){
+                fichasAvulsas.add(criarNovaFicha(opcao));
+                
+                return fichasAvulsas;
+            }
 
         }
-        while(opcaoInvalida);
+        while(true);
 
-        FichaCriatura ficha = criarNovaFicha(opcao);
-
-        if(ficha != null){
-            fichasAvulsas.add(ficha);
-        }
-
-        return fichasAvulsas;
     }
 
     static FichaCriatura criarNovaFicha(int opcao){
@@ -83,7 +82,6 @@ public class GeradorDeFichas {
         ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o pv adicional:")));
 
         ficha.setQuantPVs(Regras.calcularPV(ficha));
-        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
         return ficha;
     }
@@ -108,7 +106,6 @@ public class GeradorDeFichas {
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
 
         ficha.setQuantPVs(Regras.calcularPV(ficha));
-        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
         return ficha;
     }
@@ -132,7 +129,6 @@ public class GeradorDeFichas {
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
 
         ficha.setQuantPVs(Regras.calcularPV(ficha));
-        ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
         return ficha;
     }

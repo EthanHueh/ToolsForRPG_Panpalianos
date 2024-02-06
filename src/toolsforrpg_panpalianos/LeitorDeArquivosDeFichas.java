@@ -57,7 +57,6 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
 
                 ficha.setQuantPVs(Regras.calcularPV(ficha));
-                ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
                 fichas.add(ficha);
 
@@ -126,7 +125,6 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
 
                 ficha.setQuantPVs(Regras.calcularPV(ficha));
-                ficha.setQuantPVsMaximo(Regras.calcularPVMaximo(ficha));
 
                 fichas.add(ficha);
 

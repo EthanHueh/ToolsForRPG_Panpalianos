@@ -1,5 +1,8 @@
 package toolsforrpg_panpalianos.fichas;
 
+import toolsforrpg_panpalianos.Regras;
+import toolsforrpg_panpalianos.TipoAtributo;
+
 public class FichaCriatura {
 
     private String nome;
@@ -20,7 +23,6 @@ public class FichaCriatura {
     private int pvAdicional;
 
     private int quantPVs;
-    private int quantPVsMaximo;
 
     public FichaCriatura(){
 
@@ -33,7 +35,7 @@ public class FichaCriatura {
             "------------------------------------------------------------"+"\n"+
             "\t"+nome+" ("+raca+")\n\n"+
 
-            "PVs: "+quantPVs+"/"+quantPVsMaximo+"\n"+
+            "PVs: "+quantPVs+"/"+Regras.calcularPVMaximo(this)+"\n"+
             "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
             "INT: "+inteligencia+"\t"+"SAB: "+sabedoria+"\t"+"CAR: "+carisma+"\n"+
             "Total atributos: "+calcularSomaAtributos(this)+"\n\n"+
@@ -49,6 +51,50 @@ public class FichaCriatura {
     public static int calcularSomaAtributos(FichaCriatura f) {
         return  f.getForca() + f.getDestreza() + f.getConstituicao() +
                 f.getInteligencia() + f.getSabedoria() + f.getCarisma();
+    }
+
+    public int getAtributoByTipo(TipoAtributo opcao) {
+
+        switch (opcao) {
+
+            case QUANT_PVS:
+                return getQuantPVs();
+            
+            case FORCA:
+                return getForca();
+                
+            case DESTREZA:
+                return getDestreza();
+                
+            case CONSTITUICAO:
+                return getConstituicao();
+                
+            case INTELIGENCIA:
+                return getInteligencia();
+                
+            case SABEDORIA:
+                return getSabedoria();
+                
+            case CARISMA:
+                return getCarisma();
+                
+            case DADO_VIDA:
+                return getQuantDVs();
+                
+            case CLASSE_DE_ARMADURA:
+                return getClasseArmadura();
+                
+            case JOGADA_DE_PROTECAO:
+                return getJogadaDeProtecao();
+                
+            case BASE_DE_ATAQUE:
+                return getBaseAtaque();
+
+            default:
+                return 0;
+                
+        }
+
     }
 
     public String getNome() {
@@ -161,14 +207,6 @@ public class FichaCriatura {
 
     public void setQuantPVs(int quantPVs) {
         this.quantPVs = quantPVs;
-    }
-
-    public int getQuantPVsMaximo() {
-        return quantPVsMaximo;
-    }
-
-    public void setQuantPVsMaximo(int quantPVsMaximo) {
-        this.quantPVsMaximo = quantPVsMaximo;
     }
 
 }
