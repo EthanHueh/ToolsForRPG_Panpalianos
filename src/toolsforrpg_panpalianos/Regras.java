@@ -22,10 +22,10 @@ public class Regras {
         return (atributo - 10)/2;
     }
 
-    public static int calcularDVJogador(int lvl) {
+    public static int calcularDVJogador(FichaJogador ficha) {
         
-        if(lvl <= 9){
-            return lvl;
+        if(ficha.getLvl() <= 9){
+            return ficha.getLvl();
         } else {
             return 9;
         }
@@ -41,7 +41,7 @@ public class Regras {
             int bonusCon = calcularBonus(ficha.getConstituicao());
             int pvAdicional = ficha.getPvAdicional();
 
-            return (quantDVs*(dadoVida+bonusCon)+pvAdicional);
+            return (quantDVs*(dadoVida+bonusCon) + pvAdicional);
         }
 
         FichaJogador fichaJogador = null;
@@ -52,8 +52,7 @@ public class Regras {
             System.out.println("Não é uma ficha de jogador");
         }
 
-        String classe = fichaJogador.getClasse();
-        classe = classe.toLowerCase();
+        String classe = fichaJogador.getClasse().toLowerCase();
 
         int dadoVida = 0;
         switch(classe){
@@ -82,11 +81,11 @@ public class Regras {
         int lvl = fichaJogador.getLvl();
         int dadoVidaMedio = (dadoVida/2) + 1;
 
-        return ((dadoVida+bonusCon)  +  ((lvl-1) * ((dadoVidaMedio)+bonusCon)));
+        return ((dadoVida+bonusCon) + ((lvl-1)*((dadoVidaMedio)+bonusCon)));
 
     }
 
-    public static int calcularPVMaximo(FichaCriatura ficha){{
+    public static int calcularPVMaximo(FichaCriatura ficha){
 
         int quantDVs = ficha.getQuantDVs();
         int dadoVida = Regras.DADO_VIDA_CRIATURA_MAXIMO;
@@ -94,6 +93,6 @@ public class Regras {
         int pvAdicional = ficha.getPvAdicional();
 
         return (quantDVs*(dadoVida+bonusCon)+pvAdicional);
-    }}
+    }
 
 }

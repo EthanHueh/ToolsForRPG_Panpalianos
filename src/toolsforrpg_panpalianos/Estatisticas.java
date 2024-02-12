@@ -2,27 +2,24 @@ package toolsforrpg_panpalianos;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.ToIntFunction;
+import java.util.function.Function;
 
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
-
-//TODO colocar média dos status
 
 public class Estatisticas { 
 
     public static String executar(List<FichaCriatura> fichas){
 
-        //Neste método, estou usando o comparador para ordenar as lista de fichas de forma crescente.
-        //A partir disso, consigo ver, por exemplo, qual personagem tem o maior atributo de força
-
         String mensagem = "\tEstatísticas\n\n";
         
+        //Para cada tipo de atributo, gerar uma mensagem baseado na lista de fichas
+        //Ex.: Para o tipo de atributo força, descobrir quem tem a menor força, e quem tem a maior
         TipoAtributo[] tipoAtributos = TipoAtributo.values();
         for (TipoAtributo tipoAtributo : tipoAtributos) {
 
-            ToIntFunction<FichaCriatura> keyExtractor = (ficha) -> ficha.getAtributoByTipo(tipoAtributo);
+            Function<FichaCriatura, Integer> getAtributoDaFicha = (ficha) -> ficha.getAtributoByTipo(tipoAtributo);
 
-            fichas.sort(Comparator.comparingInt(keyExtractor));
+            fichas.sort(Comparator.comparing(getAtributoDaFicha));
             mensagem += gerarMensagem(fichas, tipoAtributo);
 
         }

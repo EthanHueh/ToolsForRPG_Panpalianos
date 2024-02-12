@@ -28,8 +28,8 @@ public class GeradorDeFichas {
                 opcao = Integer.parseInt(JOptionPane.showInputDialog(msgFicha));
             
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "É PRA COLOCAR UM NÚMERO DESGRAÇA", "X", 0);
-            
+                JOptionPane.showMessageDialog(null, "Insira um número!", "X", 0);
+                
             }
 
             boolean opcaoValida = (opcao == 1 || opcao == 2 || opcao == 3 || opcao == 4); 
@@ -78,8 +78,11 @@ public class GeradorDeFichas {
         ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
         ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
 
-        ficha.setQuantDVs(Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de PVs:")));
-        ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o pv adicional:")));
+        ficha.setQuantDVs(Integer.parseInt(JOptionPane.showInputDialog("Insira a quantidade de DVs:")));
+        ficha.setClasseArmadura(Integer.parseInt(JOptionPane.showInputDialog("Insira a classe de armadura:")));
+        ficha.setJogadaDeProtecao(Integer.parseInt(JOptionPane.showInputDialog("Insira a jogada de proteção:")));
+        ficha.setBaseAtaque(Integer.parseInt(JOptionPane.showInputDialog("Insira a base de ataque:")));
+        ficha.setPvAdicional(Integer.parseInt(JOptionPane.showInputDialog("Insira o PV adicional:")));
 
         ficha.setQuantPVs(Regras.calcularPV(ficha));
 
@@ -92,19 +95,23 @@ public class GeradorDeFichas {
 
         ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
         ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
-        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
-
+        
         ficha.setForca(Integer.parseInt(JOptionPane.showInputDialog("Insira a forca:")));
         ficha.setDestreza(Integer.parseInt(JOptionPane.showInputDialog("Insira a destreza:")));
         ficha.setConstituicao(Integer.parseInt(JOptionPane.showInputDialog("Insira a constituição:")));
-
         ficha.setInteligencia(Integer.parseInt(JOptionPane.showInputDialog("Insira a inteligência:")));
         ficha.setSabedoria(Integer.parseInt(JOptionPane.showInputDialog("Insira a sabedoria:")));
         ficha.setCarisma(Integer.parseInt(JOptionPane.showInputDialog("Insira o carisma:")));
 
+        ficha.setClasseArmadura(Integer.parseInt(JOptionPane.showInputDialog("Insira a classe de armadura:")));
+        ficha.setJogadaDeProtecao(Integer.parseInt(JOptionPane.showInputDialog("Insira a jogada de proteção:")));
+        ficha.setBaseAtaque(Integer.parseInt(JOptionPane.showInputDialog("Insira a base de ataque:")));
+
+        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
         ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
 
+        ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
         ficha.setQuantPVs(Regras.calcularPV(ficha));
 
         return ficha;
@@ -116,7 +123,6 @@ public class GeradorDeFichas {
 
         ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
         ficha.setRaca(JOptionPane.showInputDialog("Insira a raça:"));
-        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
 
         ficha.setForca(RoladorDeDados.executar(3, 6));
         ficha.setDestreza(RoladorDeDados.executar(3, 6));
@@ -125,11 +131,17 @@ public class GeradorDeFichas {
         ficha.setSabedoria(RoladorDeDados.executar(3, 6));
         ficha.setCarisma(RoladorDeDados.executar(3, 6));
 
+        ficha.setClasseArmadura(10 + Regras.calcularBonus(ficha.getDestreza()));
+        ficha.setJogadaDeProtecao(15);
+        ficha.setBaseAtaque(2);
+
+        ficha.setClasse(JOptionPane.showInputDialog("Insira a classe:"));
         ficha.setLvl(Integer.parseInt(JOptionPane.showInputDialog("Insira o nível:")));
         ficha.setExp(Integer.parseInt(JOptionPane.showInputDialog("Insira a experiência:")));
 
+        ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
         ficha.setQuantPVs(Regras.calcularPV(ficha));
-
+        
         return ficha;
     }
 

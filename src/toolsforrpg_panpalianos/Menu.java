@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 
 import toolsforrpg_panpalianos.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.fichas.FichaJogador;
+import toolsforrpg_panpalianos.simuladordecombate.SimuladorDeCombate;
 
 public class Menu {
 
@@ -17,14 +18,11 @@ public class Menu {
         List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
         List<FichaJogador> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasDeJogador("recursos\\fichasJogadores.csv");
         
-        //List<FichaCriatura> fichasAvulsas = new ArrayList<FichaCriatura>();
         List<Integer>listaIniciativas = null;
 
         boolean continua = true;
 
         do{
-
-            final int OPCAO_SAIR = 999;
 
             String mensagem =
                 "\tRPG OLD DRAGON\n"+
@@ -44,9 +42,12 @@ public class Menu {
             try {
                 opcao = Integer.parseInt(JOptionPane.showInputDialog(mensagem));
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "É PRA COLOCAR UM NÚMERO DESGRAÇA", "X", 0);
+
+                JOptionPane.showMessageDialog(null, "Insira um número!", "X", 0);
                 continue;
             }
+
+            final int OPCAO_SAIR = 999;
             
             switch(opcao){
         
@@ -107,9 +108,7 @@ public class Menu {
 
         fichas.addAll(fichasJogadores);
 
-        String msg = Estatisticas.executar(fichas);
-
-        mostrarJTextArea(msg, "Estatística");
+        mostrarJTextArea(Estatisticas.executar(fichas), "Estatística");
         
     }
 
@@ -140,14 +139,12 @@ public class Menu {
             return;
         }
 
-        String msgIniciativas = "";
-
+        String msgIniciativas = "Iniciativas dos jogadores:";
         for(int i = 0; i < fichasJogadores.size(); i++){
             msgIniciativas += fichasJogadores.get(i).getNome()+": "+listaIniciativas.get(i)+"\n";
         }
 
-        msgIniciativas += "\n\n";
-
+        msgIniciativas += "\nIniciativa:\n";
         for(int i = 0; i < fichasAvulsas.size(); i++){
             msgIniciativas += fichasAvulsas.get(i).getNome()+": "+listaIniciativas.get(i + fichasJogadores.size())+"\n";
         }

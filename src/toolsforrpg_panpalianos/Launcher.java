@@ -11,21 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- * @author adest
- */
-
 public class Launcher extends JFrame{
     
     JPanel painel;
     JButton botaoMenu;
     
-
     //Construtor do Frame
     Launcher(){
         
-        
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                //Se eu fechar a janela, o programa para de rodar
         this.setResizable(true);                                 //Dá pra eu deixar ou não o usuário aumentar/diminuir a janela
         this.setSize(1280,720);

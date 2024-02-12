@@ -10,24 +10,22 @@ public class GeradorTabelaDePreco {
         try {
             preco = Integer.parseInt(JOptionPane.showInputDialog("Insira o preco do equipamento:"));
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Insira um número, sua mula!", null, 0);
-            return "";
+            JOptionPane.showMessageDialog(null, "Insira um número!", null, 0);
+            return null;
         }
 
-        String nomeEq = (JOptionPane.showInputDialog("Insira o nome do equipamento:"));
-        
-        int precoAcumulado = 0;
+        String nome = (JOptionPane.showInputDialog("Insira o nome do equipamento:"));
                     
-        String tabelaPrecos = "";
-        tabelaPrecos += "Preço dos upgrades do(a): "+nomeEq+"\n";
+        String tabelaPrecos = "Preço dos upgrades do(a): "+nome+"\n";
 
+        int precoAcumulado = 0;
         for(int i = 0; i <= 4; i++){
             precoAcumulado += (preco * Math.pow(6, i));
             tabelaPrecos += "\t"+(preco * Math.pow(6, i))+"\n";
 
         }
         
-        tabelaPrecos += "\nPreço acumulado do(a) "+nomeEq+":\n"+
+        tabelaPrecos += "\nPreço acumulado do(a) "+nome+":\n"+
                         "\t"+precoAcumulado;
 
         return tabelaPrecos;

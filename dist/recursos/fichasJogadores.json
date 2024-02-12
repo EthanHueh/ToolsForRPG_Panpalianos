@@ -1,0 +1,27 @@
+{
+    
+    "fichasJogadores": [
+        {
+            "nome": "Al Mansur",
+            "raca": "Humano",
+            "forca": 17,
+            "destreza": 12,
+            "constituicao": 14,
+            "inteligencia": 10,
+            "sabedoria": 8,
+            "carisma": 11,
+            "lvl": 3,
+            "exp": 5000
+        },
+        {
+        
+        },
+        {
+        "id": 3,
+        "name": "Emicida",
+        "genre": "Hip Hop",
+        "urlImg": "https://i.scdn.co/image/ab67616100005174908b4b4bc90e1518b68b4068"
+        }
+    ]
+      
+}

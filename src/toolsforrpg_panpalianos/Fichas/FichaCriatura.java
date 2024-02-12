@@ -19,10 +19,11 @@ public class FichaCriatura {
     private int classeArmadura;
     private int jogadaDeProtecao;
     private int baseAtaque;
-
-    private int pvAdicional;
+    private int pvAdicional = 0;
 
     private int quantPVs;
+
+    //private List<Item> inventario = new ArrayList<Item>();
 
     public FichaCriatura(){
 

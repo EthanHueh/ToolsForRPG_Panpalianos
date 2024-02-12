@@ -37,7 +37,6 @@ public class LeitorDeArquivosDeFichas {
                 int indiceClasseArmadura = 9;
                 int indiceJogadaDeProtecao = 10;
                 int indiceBaseAtaque = 11;
-
                 int indicePVAdicional = 12;
 
                 ficha.setNome(valores[indiceNome].trim());
@@ -93,16 +92,13 @@ public class LeitorDeArquivosDeFichas {
                 int indiceSabedoria = 6;
                 int indiceCarisma = 7;
                 
-                int indiceQuantDVs = 8;
-                int indiceClasseArmadura = 9;
-                int indiceJogadaDeProtecao = 10;
-                int indiceBaseAtaque = 11;
+                int indiceClasseArmadura = 8;
+                int indiceJogadaDeProtecao = 9;
+                int indiceBaseAtaque = 10;
 
-                int indicePVAdicional = 12;
-
-                int indiceClasse = 13;
-                int indiceLvl = 14;
-                int indiceExp = 15;
+                int indiceClasse = 11;
+                int indiceLvl = 12;
+                int indiceExp = 13;
 
                 ficha.setNome(valores[indiceNome].trim());
                 ficha.setRaca(valores[indiceRaca].trim());
@@ -114,18 +110,17 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setSabedoria(Integer.parseInt(valores[indiceSabedoria].trim()));
                 ficha.setCarisma(Integer.parseInt(valores[indiceCarisma].trim()));
 
-                ficha.setQuantDVs(Integer.parseInt(valores[indiceQuantDVs].trim()));
                 ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
                 ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
                 ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
-                ficha.setPvAdicional(Integer.parseInt(valores[indicePVAdicional].trim()));
                 
                 ficha.setClasse(valores[indiceClasse].trim());
                 ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
                 ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
 
+                ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
                 ficha.setQuantPVs(Regras.calcularPV(ficha));
-
+                
                 fichas.add(ficha);
 
             }

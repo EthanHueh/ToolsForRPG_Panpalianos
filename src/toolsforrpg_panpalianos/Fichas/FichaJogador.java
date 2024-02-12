@@ -2,6 +2,8 @@ package toolsforrpg_panpalianos.fichas;
 
 public class FichaJogador extends FichaCriatura{
     
+    //private Classe classe;
+    
     private String classe;
     private int lvl;
     private int exp;

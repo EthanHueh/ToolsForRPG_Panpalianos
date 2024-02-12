@@ -6,7 +6,7 @@ public class RoladorDeDados {
 
     private final static Random random = new Random();
 
-    static int executar(int quantDados, int tamanhoDado){
+    public static int executar(int quantDados, int tamanhoDado){
         
         int resultado = 0;
         for(int i = 1; i <= quantDados; i++){
