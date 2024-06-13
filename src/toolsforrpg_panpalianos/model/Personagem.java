@@ -1,17 +1,17 @@
-package toolsforrpg_panpalianos.simuladordecombate;
+package toolsforrpg_panpalianos.model;
 
 import javax.swing.JOptionPane;
 
-import toolsforrpg_panpalianos.Regras;
-import toolsforrpg_panpalianos.RoladorDeDados;
-import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.service.Regras;
+import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 public class Personagem {
     
     private FichaCriatura ficha;
     private int quantPVsAtual;
 
-    Personagem(FichaCriatura ficha){
+    public Personagem(FichaCriatura ficha){
         this.ficha = ficha;
         this.quantPVsAtual = ficha.getQuantPVs();
     }

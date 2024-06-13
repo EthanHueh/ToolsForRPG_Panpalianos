@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos;
+package toolsforrpg_panpalianos.service;
 
 import javax.swing.JOptionPane;
 

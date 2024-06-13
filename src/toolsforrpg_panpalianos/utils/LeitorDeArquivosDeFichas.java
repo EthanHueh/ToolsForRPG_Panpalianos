@@ -1,16 +1,17 @@
-package toolsforrpg_panpalianos;
+package toolsforrpg_panpalianos.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import toolsforrpg_panpalianos.fichas.FichaCriatura;
-import toolsforrpg_panpalianos.fichas.FichaJogador;
+import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.model.fichas.FichaJogador;
+import toolsforrpg_panpalianos.service.Regras;
 
 public class LeitorDeArquivosDeFichas {
     
-    static List<FichaCriatura> converteArquivoEmListaDeFichasPadrao(String pathArquivo) {
+    public static List<FichaCriatura> converteArquivoEmListaDeFichasPadrao(String pathArquivo) {
 
         List<FichaCriatura> fichas = new ArrayList<FichaCriatura>();
 
@@ -69,7 +70,7 @@ public class LeitorDeArquivosDeFichas {
 
     }
 
-    static List<FichaJogador> converteArquivoEmListaDeFichasDeJogador(String pathArquivo) {
+    public static List<FichaJogador> converteArquivoEmListaDeFichasDeJogador(String pathArquivo) {
 
         List<FichaJogador> fichas = new ArrayList<FichaJogador>();
 

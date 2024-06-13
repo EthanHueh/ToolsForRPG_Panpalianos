@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos;
+package toolsforrpg_panpalianos.model.enums;
 
 public enum TipoAtributo {
 

@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.fichas;
+package toolsforrpg_panpalianos.model.fichas;
 
 public class FichaJogador extends FichaCriatura{
     

@@ -1,7 +1,7 @@
-package toolsforrpg_panpalianos.fichas;
+package toolsforrpg_panpalianos.model.fichas;
 
-import toolsforrpg_panpalianos.Regras;
-import toolsforrpg_panpalianos.TipoAtributo;
+import toolsforrpg_panpalianos.model.enums.TipoAtributo;
+import toolsforrpg_panpalianos.service.Regras;
 
 public class FichaCriatura {
 

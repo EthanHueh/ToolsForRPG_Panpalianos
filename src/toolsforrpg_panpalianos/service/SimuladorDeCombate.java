@@ -1,16 +1,14 @@
-package toolsforrpg_panpalianos.simuladordecombate;
+package toolsforrpg_panpalianos.service;
 
-import java.util.List;
-
-import toolsforrpg_panpalianos.fichas.FichaCriatura;
-import toolsforrpg_panpalianos.fichas.FichaJogador;
+import toolsforrpg_panpalianos.model.Personagem;
+import toolsforrpg_panpalianos.repository.FichasRepository;
 
 public class SimuladorDeCombate {
 
-    public static void executar(List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
+    public static void executar() {
         
-        Personagem jogador = new Personagem(fichasJogadores.get(0));
-        Personagem inimigo = new Personagem(fichasAvulsas.get(0));
+        Personagem jogador = new Personagem(FichasRepository.getFichasJogadores().get(0));
+        Personagem inimigo = new Personagem(FichasRepository.getFichasAvulsas().get(0));
 
         while(true){
 

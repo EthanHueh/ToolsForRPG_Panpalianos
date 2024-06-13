@@ -1,24 +1,24 @@
-package toolsforrpg_panpalianos;
+package toolsforrpg_panpalianos.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import toolsforrpg_panpalianos.fichas.FichaCriatura;
-import toolsforrpg_panpalianos.fichas.FichaJogador;
+import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.repository.FichasRepository;
 
 public class GeradorDeIniciativa {
     
-    public static List<Integer> executar(List<FichaJogador> fichasJogadores, List<FichaCriatura> fichasAvulsas) {
+    public static List<Integer> executar() {
         
         List<Integer>listaIniciativas = new ArrayList<>();
 
-        for (FichaCriatura ficha : fichasJogadores) {
+        for (FichaCriatura ficha : FichasRepository.getFichasJogadores()) {
             listaIniciativas.add(inserirIniciativa(ficha));
         }
 
-        for (FichaCriatura ficha : fichasAvulsas) {
+        for (FichaCriatura ficha : FichasRepository.getFichasAvulsas()) {
             listaIniciativas.add(inserirIniciativa(ficha));
         }
         

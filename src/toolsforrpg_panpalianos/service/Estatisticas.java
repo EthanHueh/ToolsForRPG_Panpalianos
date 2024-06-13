@@ -1,14 +1,16 @@
-package toolsforrpg_panpalianos;
+package toolsforrpg_panpalianos.service;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
-import toolsforrpg_panpalianos.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.model.enums.TipoAtributo;
+import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
+import toolsforrpg_panpalianos.model.fichas.FichaJogador;
 
 public class Estatisticas { 
 
-    public static String executar(List<FichaCriatura> fichas){
+    public static String executar(List<FichaJogador> fichas){
 
         String mensagem = "\tEstatísticas\n\n";
         
@@ -28,7 +30,7 @@ public class Estatisticas {
 
     }
 
-    private static String gerarMensagem(List<FichaCriatura> fichas, TipoAtributo opcao){
+    private static String gerarMensagem(List<FichaJogador> fichas, TipoAtributo opcao){
 
         int mediaAtributos = calcularMediaAtributosDaParty(fichas, opcao);
 
@@ -42,7 +44,7 @@ public class Estatisticas {
   
     }
 
-    private static int calcularMediaAtributosDaParty(List<FichaCriatura> fichas, TipoAtributo opcao) {
+    private static int calcularMediaAtributosDaParty(List<FichaJogador> fichas, TipoAtributo opcao) {
         int somaAtributos = 0;
         
         for (FichaCriatura fichaCriatura : fichas) {
