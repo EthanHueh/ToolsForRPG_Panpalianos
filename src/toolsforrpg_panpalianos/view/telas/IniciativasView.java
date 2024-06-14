@@ -1,38 +1,54 @@
 package toolsforrpg_panpalianos.view.telas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import toolsforrpg_panpalianos.controller.ControllerFichas;
+import toolsforrpg_panpalianos.controller.ControllerIniciativas;
 import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.model.fichas.FichaJogador;
-import toolsforrpg_panpalianos.repository.FichasRepository;
-import toolsforrpg_panpalianos.repository.IniciativasRepository;
 
 public class IniciativasView {
 
     public static void mostrarListaIniciativas() {
-        List<Integer> listaIniciativas = IniciativasRepository.getListaIniciativas();
 
-        if(listaIniciativas == null){
+        if(ControllerIniciativas.getListaIniciativas().isEmpty()){
             JOptionPane.showMessageDialog(null, "Nenhuma iniciativa inserida!", "Iniciativas", 0);
             return;
         }
 
-        List<FichaCriatura> fichasAvulsas = FichasRepository.getFichasAvulsas();
-        List<FichaJogador> fichasJogadores = FichasRepository.getFichasJogadores();
-    
+        String msgJogador = "Iniciativas do jogador\n";
+        String msgCriatura = "Outras iniciativas\n";
+        
+        List<FichaCriatura> fichas = new ArrayList<FichaCriatura>();
+        fichas.addAll(ControllerFichas.getFichasJogadores());
+        fichas.addAll(ControllerFichas.getFichasAvulsas());
 
-        String msgIniciativas = "Iniciativas dos jogadores:";
-        for(int i = 0; i < fichasJogadores.size(); i++){
-            msgIniciativas += fichasJogadores.get(i).getNome()+": "+listaIniciativas.get(i)+"\n";
+        for (FichaCriatura ficha : fichas) {
+
+            String msg = gerarMensagem(ficha, fichas.indexOf(ficha));
+
+            if (ficha instanceof FichaJogador){
+                msgJogador += msg;
+            } else {
+                msgCriatura += msg;
+            }
         }
 
-        msgIniciativas += "\nIniciativa:\n";
-        for(int i = 0; i < fichasAvulsas.size(); i++){
-            msgIniciativas += fichasAvulsas.get(i).getNome()+": "+listaIniciativas.get(i + fichasJogadores.size())+"\n";
+        String msgFinal = msgJogador+"\n\n"+msgCriatura;
+
+        new TelaJTextArea(msgFinal, "Iniciativas");
+    }
+
+    private static String gerarMensagem(FichaCriatura ficha, int i) {
+
+        try {
+            return ficha.getNome()+": "+ControllerIniciativas.getListaIniciativas().get(i)+"\n";
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         }
 
-        new TelaJTextArea(msgIniciativas, "Iniciativas");
     }
 }

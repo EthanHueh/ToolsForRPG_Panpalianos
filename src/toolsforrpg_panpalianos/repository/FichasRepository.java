@@ -7,8 +7,9 @@ import toolsforrpg_panpalianos.model.fichas.FichaJogador;
 import toolsforrpg_panpalianos.utils.LeitorDeArquivosDeFichas;
 
 public class FichasRepository {
-    private static List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
     private static List<FichaJogador> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasDeJogador("recursos\\fichasJogadores.csv");
+    private static List<FichaCriatura> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
+    
     
     public static void adicionar(FichaCriatura ficha){
         fichasAvulsas.add(ficha);

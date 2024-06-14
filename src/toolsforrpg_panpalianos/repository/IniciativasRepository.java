@@ -1,11 +1,14 @@
 package toolsforrpg_panpalianos.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import toolsforrpg_panpalianos.service.GeradorDeIniciativa;
-
 public class IniciativasRepository {
-    private static List<Integer> listaIniciativas = GeradorDeIniciativa.executar();
+    private static List<Integer> listaIniciativas = new ArrayList<Integer>();
+
+    public static void adicionar(int iniciativa){
+        listaIniciativas.add(iniciativa);
+    }
 
     public static List<Integer> getListaIniciativas() {
         return listaIniciativas;

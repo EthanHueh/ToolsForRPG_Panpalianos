@@ -3,27 +3,23 @@ package toolsforrpg_panpalianos.view.telas;
 import java.util.ArrayList;
 import java.util.List;
 
+import toolsforrpg_panpalianos.controller.ControllerFichas;
 import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
-import toolsforrpg_panpalianos.repository.FichasRepository;
 
 public class FichasView {
 
     public static void mostrarFichas() {
-        new TelaJTextArea(gerarMensagemFichas(FichasRepository.getFichasAvulsas()), "Fichas");
+        new TelaJTextArea(gerarMensagemFichas(ControllerFichas.getFichasAvulsas()), "Fichas");
     }
 
     public static void mostrarFichasDeJogador() {
-        List<FichaCriatura> fichas = new ArrayList<FichaCriatura>();
-
-        fichas.addAll(FichasRepository.getFichasJogadores());
-        
-        new TelaJTextArea(gerarMensagemFichas(fichas), "Fichas");
+        new TelaJTextArea(gerarMensagemFichas(new ArrayList<FichaCriatura>(ControllerFichas.getFichasJogadores())), "Fichas");
     }
 
     private static String gerarMensagemFichas(List<FichaCriatura> fichas) {
-        String msg = null;
+        String msg = "";
         
-        for (FichaCriatura ficha : FichasRepository.getFichasJogadores()) {
+        for (FichaCriatura ficha : fichas) {
             msg += ficha;
         }
 
