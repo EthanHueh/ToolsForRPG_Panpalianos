@@ -1,0 +1,8 @@
+#Pastas a serem ignoradas
+
+#.vscode/
+#build/
+#nbproject/
+
+#build.xml
+#manifest.mf
