@@ -1,7 +1,11 @@
 package toolsforrpg_panpalianos.view.menus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
+import toolsforrpg_panpalianos.controller.ControllerFichas;
 import toolsforrpg_panpalianos.controller.ControllerIniciativas;
 import toolsforrpg_panpalianos.model.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.utils.ValidadorDeInputs;
@@ -9,18 +13,20 @@ import toolsforrpg_panpalianos.view.telas.IniciativasView;
 
 public class MenuIniciativa {
 
-    private static ValidadorDeInputs valInp = new ValidadorDeInputs();
+    private ValidadorDeInputs valInp;
 
-    public static void iniciar() {
+    MenuIniciativa(){
 
-        do{
+        valInp = new ValidadorDeInputs();
+
+        do {
 
             int opcao = valInp.consistirInteiro(stringMenuIniciativa());
 
             switch(opcao){
         
                 case 1:
-                    ControllerIniciativas.gerarIniciativas();
+                    opcaoGerarIniciativas();
                     break;
 
                 case 2:
@@ -34,14 +40,13 @@ public class MenuIniciativa {
                     JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA", "X", 0);
                     break;
             }
-    
+
         } while (true);
 
-        
 
     }
 
-    private static String stringMenuIniciativa() {
+    private String stringMenuIniciativa() {
         return
             "1 - Adicionar iniciativas\n"+
             "2 - Ver iniciativas\n\n"+
@@ -49,8 +54,16 @@ public class MenuIniciativa {
             "3 - Sair";
     }
 
-    public static int inserirIniciativa(FichaCriatura ficha) {
-        return valInp.consistirInteiro("Insira a iniciativa do(a) "+ficha.getNome());
+    private void opcaoGerarIniciativas() {
+
+        List<FichaCriatura> fichas = new ArrayList<>();
+        fichas.addAll(ControllerFichas.getFichasJogadores());
+        fichas.addAll(ControllerFichas.getFichasAvulsas());
+
+        for (FichaCriatura ficha : fichas) {
+            int iniciativa = valInp.consistirInteiro("Insira a iniciativa do(a) "+ficha.getNome());
+            ControllerIniciativas.adicionar(iniciativa);
+        }
     }
-    
+
 }

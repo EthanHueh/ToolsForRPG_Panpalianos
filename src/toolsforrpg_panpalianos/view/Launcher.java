@@ -15,12 +15,22 @@ import toolsforrpg_panpalianos.view.menus.MenuPrincipal;
 
 public class Launcher extends JFrame{
     
+    
+
     JPanel painel;
     JButton botaoMenu;
     
     //Construtor do Frame
     public Launcher(){
-        
+        initComponents();
+    }
+
+    private void eventoBotaoMenuPrincipal() {
+        this.dispose();
+        new MenuPrincipal();
+    }
+
+    private void initComponents() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                //Se eu fechar a janela, o programa para de rodar
         this.setResizable(true);                                 //Dá pra eu deixar ou não o usuário aumentar/diminuir a janela
         this.setSize(1280,720);
@@ -42,7 +52,7 @@ public class Launcher extends JFrame{
         botaoMenu.setIconTextGap(20);
         botaoMenu.setFocusable(false);
         
-        botaoMenu.addActionListener(e -> abrirMenuPrincipal());
+        botaoMenu.addActionListener(e -> eventoBotaoMenuPrincipal());
 
         String mensagem =   "Este aqui é um utilitário para Old Dragon\n"+
                             "Por favor aproveite!\n\n"+
@@ -73,12 +83,6 @@ public class Launcher extends JFrame{
         this.pack();
 
         this.setVisible(true);
-    }
-
-
-    private void abrirMenuPrincipal() {
-        this.dispose();
-        new MenuPrincipal();
     }
 
 }

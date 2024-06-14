@@ -31,7 +31,7 @@ public class MenuPrincipal {
                     break;
 
                 case 3:
-                    MenuDeFichas.subMenu();
+                    new MenuDeFichas();
                     break;
 
                 case 4:
@@ -39,7 +39,7 @@ public class MenuPrincipal {
                     break;
 
                 case 5:
-                    MenuIniciativa.iniciar();
+                    new MenuIniciativa();
                     break;
 
                 case 6:
