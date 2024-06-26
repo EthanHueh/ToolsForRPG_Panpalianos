@@ -16,10 +16,15 @@ public class Regras {
     //public static int[] PVsAdicionaisPorLvlClerigo = {1,1,2,2,3,3,4,4,5,5,6};
     //public static int[] PVsAdicionaisPorLvlHdeArmas = {2,2,4,4,5,5,6,6,7,7,8};
     //public static int[] PVsAdicionaisPorLvlLadrao = {1,1,2,2,2,3,3,3,4,4,4};
-    //public static int[] PVsAdicionaisPorLvlMago = {1,1,1,1,1,2,2,2,2,2,3};
-
+    //public static int[] PVsAdicionaisPorLvlMago = {1,1,1,1,1,2,2,2,2,2,3}
+    
     public static int calcularBonus(int atributo){
         return (atributo - 10)/2;
+    }
+
+    public static int calcularSomaAtributos(FichaCriatura f) {
+        return  f.getForca() + f.getDestreza() + f.getConstituicao() +
+                f.getInteligencia() + f.getSabedoria() + f.getCarisma();
     }
 
     public static int calcularDVJogador(FichaJogador ficha) {

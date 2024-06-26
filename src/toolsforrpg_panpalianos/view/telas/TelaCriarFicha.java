@@ -16,6 +16,7 @@ public class TelaCriarFicha {
         valInp = new ValidadorDeInputs();
     }
 
+
     public FichaCriatura criarNovaFicha(int opcao) {
 
         switch (opcao) {
@@ -115,4 +116,7 @@ public class TelaCriarFicha {
         
         return ficha;
     }
+
+    
+
 }

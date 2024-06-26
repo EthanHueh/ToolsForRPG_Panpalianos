@@ -39,7 +39,7 @@ public class FichaCriatura {
             "PVs: "+quantPVs+"/"+Regras.calcularPVMaximo(this)+"\n"+
             "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
             "INT: "+inteligencia+"\t"+"SAB: "+sabedoria+"\t"+"CAR: "+carisma+"\n"+
-            "Total atributos: "+calcularSomaAtributos(this)+"\n\n"+
+            "Total atributos: "+Regras.calcularSomaAtributos(this)+"\n\n"+
             
             "CA: "+classeArmadura+"\n"+
             "JP: "+jogadaDeProtecao+"\n"+
@@ -47,11 +47,6 @@ public class FichaCriatura {
             "BA: "+baseAtaque+"\n"+
             "------------------------------------------------------------"+"\n";
         
-    }
-
-    public static int calcularSomaAtributos(FichaCriatura f) {
-        return  f.getForca() + f.getDestreza() + f.getConstituicao() +
-                f.getInteligencia() + f.getSabedoria() + f.getCarisma();
     }
 
     public int getAtributoByTipo(TipoAtributo opcao) {

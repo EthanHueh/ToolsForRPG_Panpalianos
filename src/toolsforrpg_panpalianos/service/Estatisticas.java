@@ -34,13 +34,12 @@ public class Estatisticas {
 
         int mediaAtributos = calcularMediaAtributosDaParty(fichas, opcao);
 
-        String msg = opcao.getNome()+": ";
         String msgMenorAtributo = fichas.getFirst().getNome()+": "+fichas.getFirst().getAtributoByTipo(opcao);
         String msgMaiorAtributo = fichas.getLast().getNome()+": "+fichas.getLast().getAtributoByTipo(opcao);
         String msgMedia = "Média da party: "+mediaAtributos+"\n";
 
         return
-            msg+msgMenorAtributo+" / "+msgMaiorAtributo+"\n"+msgMedia+"\n";
+            opcao.getNome()+":"+msgMenorAtributo+" / "+msgMaiorAtributo+"\n"+msgMedia+"\n";
   
     }
 
