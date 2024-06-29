@@ -8,25 +8,25 @@ public enum Classe {
     MAGO            ("Mago", 4, 3);
 
     private final String nome;
-    private final int DADO_VIDA;
-    private final int DADO_VIDA_MEDIO;
+    private final int dadoVida;
+    private final int dadoVidaMedio;
 
     public String getNome() {
         return nome;
     }
 
     public int getDadoVida() {
-        return DADO_VIDA;
+        return dadoVida;
     }
 
     public int getDadoVidaMedio() {
-        return DADO_VIDA_MEDIO;
+        return dadoVidaMedio;
     }
 
-    Classe(String nome, int DADO_VIDA, int DADO_VIDA_MEDIO){
+    Classe(String nome, int dadoVida, int dadoVidaMedio){
         this.nome = nome;
-        this.DADO_VIDA = DADO_VIDA;
-        this.DADO_VIDA_MEDIO = DADO_VIDA_MEDIO;
+        this.dadoVida = dadoVida;
+        this.dadoVidaMedio = dadoVidaMedio;
     }
     
 }

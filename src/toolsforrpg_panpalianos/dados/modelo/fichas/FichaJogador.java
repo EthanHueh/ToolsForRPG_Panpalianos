@@ -1,11 +1,13 @@
 package toolsforrpg_panpalianos.dados.modelo.fichas;
 
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
+import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 import toolsforrpg_panpalianos.dominio.servicos.Regras;
 
 public class FichaJogador extends Ficha {
     
     private Classe classe;
+    private Especializacao especializacao;
     private int lvl;
     private int exp;
 
@@ -18,7 +20,7 @@ public class FichaJogador extends Ficha {
 
         return  
             "------------------------------------------------------------"+"\n"+
-            "\t"+getNome()+" ("+getRaca()+")\n"+
+            "\t"+getNome()+" ("+getRaca().getNome()+")\n"+
             "\t"+"Classe: "+classe.getNome()+"\n\n"+
 
             "PVs: "+Regras.calcularPVMaximo(this)+"\n"+
@@ -39,7 +41,7 @@ public class FichaJogador extends Ficha {
 
     @Override
     public int getClasseArmadura() {
-        return 1;
+        return 10 + Regras.calcularBonus(getDestreza());
     }
 
     @Override
@@ -54,7 +56,7 @@ public class FichaJogador extends Ficha {
 
     @Override
     public int getMovimento() {
-        return 1;
+        return getRaca().getMovimento();
     }
 
     public void setClassePorString(String string) {
@@ -106,5 +108,13 @@ public class FichaJogador extends Ficha {
 
     public void setExp(int exp) {
         this.exp = exp;
+    }
+
+    public Especializacao getEspecializacao() {
+        return especializacao;
+    }
+
+    public void setEspecializacao(Especializacao especializacao) {
+        this.especializacao = especializacao;
     }
 }

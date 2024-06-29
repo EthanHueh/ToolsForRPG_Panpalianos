@@ -1,30 +1,30 @@
-package toolsforrpg_panpalianos.gui.menus;
+package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
-import toolsforrpg_panpalianos.gui.Launcher;
+import toolsforrpg_panpalianos.gui.menus.Menu;
 import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoSair;
-import toolsforrpg_panpalianos.gui.telas.TelaSair;
 
-public class MenuPrincipal {
+public class TelaMenuIniciativa {
 
-    public MenuPrincipal() {
+    public TelaMenuIniciativa(){
 
-        Menu menu = Menu.criarMenuPrincipal();
+        Menu menu = Menu.criarMenuIniciativa();
 
-        do{
+        do {
 
             int opcao = ValidadorDeInputs.consistirInteiro(menu.toString());
 
-            menu.executarOpcao(opcao);
-
             if (menu.getOpcao(opcao) instanceof OpcaoSair){
                 if (new TelaSair().usuarioQuerSair()){
-                    new Launcher();
                     return;
                 }
             }
-    
+
+            menu.executarOpcao(opcao);
+
+
         } while (true);
+
     }
 
 }

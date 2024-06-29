@@ -12,7 +12,10 @@ public class Estatisticas {
 
     public static String executar(List<FichaJogador> fichas){
 
-        String mensagem = "\tEstatísticas\n\n";
+        String mensagem =
+            "\tEstatísticas\n\n"+
+
+            "Nome Atributo | Menor | Maior | Media Party\n";
         
         //Para cada tipo de atributo, gerar uma mensagem baseado na lista de fichas
         //Ex.: Para o tipo de atributo força, descobrir quem tem a menor força, e quem tem a maior
@@ -33,14 +36,16 @@ public class Estatisticas {
     private static String gerarMensagem(List<FichaJogador> fichas, TipoAtributo opcao){
 
         int mediaAtributos = calcularMediaAtributosDaParty(fichas, opcao);
+        String nomeAtributo = opcao.getNome().toUpperCase();
 
-        String msgMenorAtributo = fichas.getFirst().getNome()+": "+fichas.getFirst().getAtributoByTipo(opcao);
-        String msgMaiorAtributo = fichas.getLast().getNome()+": "+fichas.getLast().getAtributoByTipo(opcao);
-        String msgMedia = "Média da party: "+mediaAtributos+"\n";
+        Ficha fichaMenorAtributo = fichas.getFirst();
+        Ficha fichaMaiorAtributo = fichas.getFirst();
 
         return
-            opcao.getNome()+":"+msgMenorAtributo+" / "+msgMaiorAtributo+"\n"+msgMedia+"\n";
-  
+            nomeAtributo+" | "+
+            fichaMenorAtributo.getNome()+": "+fichaMenorAtributo.getAtributoByTipo(opcao)+" | "+
+            fichaMaiorAtributo.getNome()+": "+fichaMaiorAtributo.getAtributoByTipo(opcao)+" | "+
+            mediaAtributos+"\n";
     }
 
     private static int calcularMediaAtributosDaParty(List<FichaJogador> fichas, TipoAtributo opcao) {

@@ -2,15 +2,15 @@ package toolsforrpg_panpalianos.gui.menus.opcoes;
 
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 
-public class OpcaoVerIniciativa extends Opcao{
+public class OpcaoAtualizarIniciativa extends Opcao {
 
-    public OpcaoVerIniciativa(String nome) {
+    public OpcaoAtualizarIniciativa(String nome) {
         super(nome);
     }
 
     @Override
     public void executar() {
-        TelaIniciativas.mostrarListaIniciativas();
+        TelaIniciativas.atualizarIniciativa();
     }
     
 }

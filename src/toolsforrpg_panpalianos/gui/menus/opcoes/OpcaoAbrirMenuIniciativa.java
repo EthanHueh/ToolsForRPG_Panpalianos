@@ -1,6 +1,6 @@
 package toolsforrpg_panpalianos.gui.menus.opcoes;
 
-import toolsforrpg_panpalianos.gui.menus.MenuIniciativa;
+import toolsforrpg_panpalianos.gui.telas.TelaMenuIniciativa;
 
 public class OpcaoAbrirMenuIniciativa extends Opcao {
 
@@ -10,7 +10,7 @@ public class OpcaoAbrirMenuIniciativa extends Opcao {
 
     @Override
     public void executar() {
-        new MenuIniciativa();
+        new TelaMenuIniciativa();
     }
 
 }

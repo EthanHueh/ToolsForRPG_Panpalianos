@@ -44,7 +44,7 @@ public class TelaCriarFicha {
         FichaCriatura ficha = new FichaCriatura();
 
         ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-        ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
+        ficha.setRacaPorString(JOptionPane.showInputDialog("Insira a raca:"));
 
         ficha.setForca(ValidadorDeInputs.consistirInteiro("Insira a forca:"));
         ficha.setDestreza(ValidadorDeInputs.consistirInteiro("Insira a destreza:"));
@@ -67,7 +67,7 @@ public class TelaCriarFicha {
         FichaJogador ficha = new FichaJogador();
 
         ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-        ficha.setRaca(JOptionPane.showInputDialog("Insira a raca:"));
+        ficha.setRacaPorString(JOptionPane.showInputDialog("Insira a raca:"));
         
         ficha.setForca(ValidadorDeInputs.consistirInteiro("Insira a forca:"));
         ficha.setDestreza(ValidadorDeInputs.consistirInteiro("Insira a destreza:"));
@@ -90,7 +90,7 @@ public class TelaCriarFicha {
         FichaJogador ficha = new FichaJogador();
 
         ficha.setNome(JOptionPane.showInputDialog("Insira o nome:"));
-        ficha.setRaca(JOptionPane.showInputDialog("Insira a raça:"));
+        ficha.setRacaPorString(JOptionPane.showInputDialog("Insira a raça:"));
 
         ficha.setForca(RoladorDeDados.executar(3, 6));
         ficha.setDestreza(RoladorDeDados.executar(3, 6));

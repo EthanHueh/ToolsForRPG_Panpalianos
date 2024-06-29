@@ -5,18 +5,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoAbrirMenuFichas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoAbrirMenuIniciativa;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoCriarFicha;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoGerarIniciativa;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoGerarTabelaPreco;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoIniciarSimuladorCombate;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoMostrarEstatisticas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoMostrarFichas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoMostrarJogadores;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoSair;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoVerIniciativa;
+import toolsforrpg_panpalianos.gui.menus.opcoes.*;
 
 public class Menu {
     
@@ -71,8 +60,10 @@ public class Menu {
     public static Menu criarMenuIniciativa(){
         Menu menu = new Menu();
         menu.setTitulo("Menu Iniciativa");
-        menu.opcoes.add(new OpcaoGerarIniciativa("Gerar iniciativas"));
+        menu.opcoes.add(new OpcaoInserirIniciativa("Inserir iniciativa"));
         menu.opcoes.add(new OpcaoVerIniciativa("Ver iniciativas"));
+        menu.opcoes.add(new OpcaoAtualizarIniciativa("Atualizar iniciativa"));
+        menu.opcoes.add(new OpcaoExcluirIniciativa("Excluir iniciativa"));
         menu.opcoes.add(new OpcaoSair());
         return menu;
     }

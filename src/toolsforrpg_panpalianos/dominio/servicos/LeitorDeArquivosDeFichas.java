@@ -41,7 +41,7 @@ public class LeitorDeArquivosDeFichas {
                 int indicePVAdicional = 12;
 
                 ficha.setNome(valores[indiceNome].trim());
-                ficha.setRaca(valores[indiceRaca].trim());
+                ficha.setRacaPorString(valores[indiceRaca].trim());
 
                 ficha.setForca(Integer.parseInt(valores[indiceForca].trim()));
                 ficha.setDestreza(Integer.parseInt(valores[indiceDestreza].trim()));
@@ -101,7 +101,7 @@ public class LeitorDeArquivosDeFichas {
                 int indiceExp = 13;
 
                 ficha.setNome(valores[indiceNome].trim());
-                ficha.setRaca(valores[indiceRaca].trim());
+                ficha.setRacaPorString(valores[indiceRaca].trim());
 
                 ficha.setForca(Integer.parseInt(valores[indiceForca].trim()));
                 ficha.setDestreza(Integer.parseInt(valores[indiceDestreza].trim()));

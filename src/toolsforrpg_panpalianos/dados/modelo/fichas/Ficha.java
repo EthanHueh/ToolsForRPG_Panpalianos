@@ -2,14 +2,16 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 
 import java.util.List;
 
+import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
+import toolsforrpg_panpalianos.dados.modelo.itens.Inventario;
 import toolsforrpg_panpalianos.dominio.servicos.Regras;
 
 public abstract class Ficha {
 
     private String nome;
     private String descricao;
-    private String raca;
+    private Raca raca;
     private List<String> idiomas;
     private String alinhamento;
 
@@ -23,6 +25,8 @@ public abstract class Ficha {
     private int quantDVs;
     private int quantPVsAtual;
 
+    private Inventario inventario;
+
     public Ficha(){
 
     }
@@ -32,7 +36,7 @@ public abstract class Ficha {
 
         return  
             "------------------------------------------------------------"+"\n"+
-            "\t"+nome+" ("+raca+")\n\n"+
+            "\t"+nome+" ("+raca.getNome()+")\n\n"+
 
             "PVs: "+Regras.calcularPV(this)+"/"+Regras.calcularPVMaximo(this)+"\n"+
             "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
@@ -95,6 +99,37 @@ public abstract class Ficha {
         }
     }
 
+    public void setRacaPorString(String string) {
+        
+        string = string.toLowerCase();
+
+        switch (string){
+            case "humano":
+                this.raca = Raca.HUMANO;
+                break;
+
+            case "anao":
+                this.raca = Raca.ANAO;
+                break;
+
+            case "halfling":
+                this.raca = Raca.HALFLING;
+                break;
+
+            case "elfo":
+                this.raca = Raca.ELFO;
+                break;
+
+            case "goblin":
+                this.raca = Raca.GOBLIN;
+                break;
+
+            default:
+                this.raca = null;
+        }
+        
+    }
+
     public String getNome() {
         return nome;
     }
@@ -111,11 +146,11 @@ public abstract class Ficha {
         this.descricao = descricao;
     }
 
-    public String getRaca() {
+    public Raca getRaca() {
         return raca;
     }
 
-    public void setRaca(String raca) {
+    public void setRaca(Raca raca) {
         this.raca = raca;
     }
 
@@ -197,6 +232,14 @@ public abstract class Ficha {
 
     public void setQuantPVsAtual(int quantPVsAtual) {
         this.quantPVsAtual = quantPVsAtual;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
 
 }
