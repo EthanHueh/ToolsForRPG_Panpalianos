@@ -5,41 +5,13 @@ import javax.swing.JOptionPane;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
-import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.dominio.servicos.Regras;
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
 
 public class TelaCriarFicha {
-
-    public TelaCriarFicha(int opcao){
-        Ficha ficha = null;
-        switch (opcao) {
-
-            case 1:
-                ficha = criarFichaPadrao();
-                break;
-            
-            case 2:
-                ficha = criarFichaJogador();
-                break;
-
-            case 3:
-                ficha = criarFichaJogadorAtributosAleatorios();
-                break;
-
-            default:
-                JOptionPane.showMessageDialog(null, "Opcao de ficha indisponível");
-                return;
-        }
-
-        int opcaoSair = JOptionPane.showConfirmDialog(null, "Quer mesmo cadastrar essa ficha?","Confirmacao de cadastro", JOptionPane.YES_NO_OPTION);
-        if (opcaoSair == JOptionPane.YES_OPTION){
-            FichasRepository.adicionar(ficha);
-        }
-    }
-
-    private FichaCriatura criarFichaPadrao() {
+    
+    public static FichaCriatura criarFichaPadrao() {
 
         FichaCriatura ficha = new FichaCriatura();
 
@@ -62,7 +34,7 @@ public class TelaCriarFicha {
         return ficha;
     }
 
-    private Ficha criarFichaJogador() {
+    public static Ficha criarFichaJogador() {
 
         FichaJogador ficha = new FichaJogador();
 
@@ -80,12 +52,12 @@ public class TelaCriarFicha {
         ficha.setLvl(ValidadorDeInputs.consistirInteiro("Insira o nível:"));
         ficha.setExp(ValidadorDeInputs.consistirInteiro("Insira a experiência:"));
 
-        ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
+        ficha.setQuantDVs(Calculadora.calcularDVJogador(ficha));
 
         return ficha;
     }
 
-    private Ficha criarFichaJogadorAtributosAleatorios() {
+    public static Ficha criarFichaJogadorAtributosAleatorios() {
 
         FichaJogador ficha = new FichaJogador();
 
@@ -103,11 +75,9 @@ public class TelaCriarFicha {
         ficha.setLvl(ValidadorDeInputs.consistirInteiro("Insira o nível:"));
         ficha.setExp(ValidadorDeInputs.consistirInteiro("Insira a experiência:"));
 
-        ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
+        ficha.setQuantDVs(Calculadora.calcularDVJogador(ficha));
         
         return ficha;
     }
-
-    
 
 }

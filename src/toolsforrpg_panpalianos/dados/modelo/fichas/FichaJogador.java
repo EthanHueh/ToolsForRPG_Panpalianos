@@ -2,7 +2,8 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
-import toolsforrpg_panpalianos.dominio.servicos.Regras;
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
+import toolsforrpg_panpalianos.dominio.servicos.TabelaClasses;
 
 public class FichaJogador extends Ficha {
     
@@ -23,10 +24,10 @@ public class FichaJogador extends Ficha {
             "\t"+getNome()+" ("+getRaca().getNome()+")\n"+
             "\t"+"Classe: "+classe.getNome()+"\n\n"+
 
-            "PVs: "+Regras.calcularPVMaximo(this)+"\n"+
+            "PVs: "+Calculadora.calcularPV(this)+"\n"+
             "FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n"+
             "INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n"+
-            "Total atributos: "+Regras.calcularSomaAtributos(this)+"\n\n"+
+            "Total atributos: "+Calculadora.calcularSomaAtributos(this)+"\n\n"+
 
             "CA: "+getClasseArmadura()+"\n"+
             "JP: "+getJogadaProtecao()+"\n"+
@@ -41,17 +42,17 @@ public class FichaJogador extends Ficha {
 
     @Override
     public int getClasseArmadura() {
-        return 10 + Regras.calcularBonus(getDestreza());
+        return Calculadora.calcularClasseArmadura(this);
     }
 
     @Override
     public int getJogadaProtecao() {
-        return 1;
+        return TabelaClasses.getJogadaProtecao(this);
     }
 
     @Override
     public int getBaseAtaque() {
-        return 1;
+        return Calculadora.calcularBaseAtaque(this);
     }
 
     @Override
@@ -81,7 +82,7 @@ public class FichaJogador extends Ficha {
                 break;
 
             default:
-                this.classe = null;
+                this.classe = Classe.CLERIGO;
         }
         
     }

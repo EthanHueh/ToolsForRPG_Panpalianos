@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
+import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
+import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
@@ -55,7 +58,7 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
                 ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
                 ficha.setPvsAdicionais(Integer.parseInt(valores[indicePVAdicional].trim()));
-                ficha.setQuantPVsAtual(Regras.calcularPV(ficha));
+                ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
 
                 fichas.add(ficha);
 
@@ -100,6 +103,11 @@ public class LeitorDeArquivosDeFichas {
                 int indiceLvl = 12;
                 int indiceExp = 13;
 
+                int indiceArmadura = 14;
+                int indiceEscudo = 15;
+
+                int indiceArma = 16;
+
                 ficha.setNome(valores[indiceNome].trim());
                 ficha.setRacaPorString(valores[indiceRaca].trim());
 
@@ -114,8 +122,12 @@ public class LeitorDeArquivosDeFichas {
                 ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
                 ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
 
-                ficha.setQuantDVs(Regras.calcularDVJogador(ficha));
-                ficha.setQuantPVsAtual(Regras.calcularPV(ficha));
+                ficha.getEquipamento().setArmadura(Armadura.getArmaduraByCodigo(Integer.parseInt(valores[indiceArmadura].trim())));
+                ficha.getEquipamento().setEscudo(Escudo.getEscudoByCodigo(Integer.parseInt(valores[indiceEscudo].trim())));
+                ficha.getEquipamento().setArma(Arma.getArmaByCodigo(Integer.parseInt(valores[indiceArma].trim())));
+
+                ficha.setQuantDVs(Calculadora.calcularDVJogador(ficha));
+                ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
                 
                 fichas.add(ficha);
 

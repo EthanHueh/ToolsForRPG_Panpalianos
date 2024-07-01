@@ -1,10 +1,11 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.menus.opcoes.ficha;
 
 import java.util.ArrayList;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.telas.TelaMostrarFichas;
+import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
+import toolsforrpg_panpalianos.gui.telas.TelaFichas;
 
 public class OpcaoMostrarJogadores extends Opcao {
 
@@ -14,7 +15,7 @@ public class OpcaoMostrarJogadores extends Opcao {
 
     @Override
     public void executar() {
-       new TelaMostrarFichas(new ArrayList<Ficha>(FichasRepository.retornarFichasJogadores()));
+        TelaFichas.mostrarFichas(new ArrayList<Ficha>(FichasRepository.retornarFichasJogadores()));
     }
 
 }

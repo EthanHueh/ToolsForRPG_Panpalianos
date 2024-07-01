@@ -1,7 +1,7 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dominio.servicos.Regras;
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class Personagem {
@@ -11,7 +11,7 @@ public class Personagem {
 
     public Personagem(Ficha ficha){
         this.ficha = ficha;
-        this.quantPVsAtual = Regras.calcularPVMaximo(ficha);
+        this.quantPVsAtual = Calculadora.calcularPVMaximo(ficha);
     }
 
     public void atacar(Personagem inimigo){
@@ -31,7 +31,7 @@ public class Personagem {
 
     private int calcularDano(){
         int resultadoDoDado = RoladorDeDados.executar(1, 6);
-        return resultadoDoDado + Regras.calcularBonus(getFicha().getForca());
+        return resultadoDoDado + Calculadora.calcularBonus(getFicha().getForca());
     }
 
     public void falar(){

@@ -12,7 +12,6 @@ public class FichaCriatura extends Ficha {
     
     private int pvsAdicionais = 0;
     
-
     public FichaCriatura(){
  
     }

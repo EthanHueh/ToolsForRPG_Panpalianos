@@ -6,7 +6,8 @@ public enum Raca {
     ANAO        ("Anao",6),
     ELFO        ("Elfo",9),
     HALFLING    ("Halfling",6),
-    GOBLIN      ("Goblin",6);
+    GOBLIN      ("Goblin",6),
+    INDEFINIDO  ("Indefinido", 9);
 
     private final String nome;
     private final int movimento;

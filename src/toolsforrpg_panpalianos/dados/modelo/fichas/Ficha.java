@@ -2,10 +2,12 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 
 import java.util.List;
 
+import toolsforrpg_panpalianos.dados.modelo.Equipamento;
+import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
+import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
-import toolsforrpg_panpalianos.dados.modelo.itens.Inventario;
-import toolsforrpg_panpalianos.dominio.servicos.Regras;
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
 public abstract class Ficha {
 
@@ -25,10 +27,11 @@ public abstract class Ficha {
     private int quantDVs;
     private int quantPVsAtual;
 
-    private Inventario inventario;
+    private Equipamento equipamento = new Equipamento();
 
     public Ficha(){
-
+        equipamento.setArmadura(Armadura.NENHUM);
+        equipamento.setEscudo(Escudo.NENHUM);
     }
     
     @Override
@@ -38,10 +41,10 @@ public abstract class Ficha {
             "------------------------------------------------------------"+"\n"+
             "\t"+nome+" ("+raca.getNome()+")\n\n"+
 
-            "PVs: "+Regras.calcularPV(this)+"/"+Regras.calcularPVMaximo(this)+"\n"+
+            "PVs: "+Calculadora.calcularPV(this)+"/"+Calculadora.calcularPVMaximo(this)+"\n"+
             "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
             "INT: "+inteligencia+"\t"+"SAB: "+sabedoria+"\t"+"CAR: "+carisma+"\n"+
-            "Total atributos: "+Regras.calcularSomaAtributos(this)+"\n\n"+
+            "Total atributos: "+Calculadora.calcularSomaAtributos(this)+"\n\n"+
             
             "CA: "+getClasseArmadura()+"\n"+
             "JP: "+getJogadaProtecao()+"\n"+
@@ -61,7 +64,7 @@ public abstract class Ficha {
         switch (opcao) {
 
             case QUANT_PVS:
-                return Regras.calcularPV(this);
+                return Calculadora.calcularPV(this);
             
             case FORCA:
                 return getForca();
@@ -125,7 +128,7 @@ public abstract class Ficha {
                 break;
 
             default:
-                this.raca = null;
+                this.raca = Raca.INDEFINIDO;
         }
         
     }
@@ -234,12 +237,12 @@ public abstract class Ficha {
         this.quantPVsAtual = quantPVsAtual;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Equipamento getEquipamento() {
+        return equipamento;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setEquipamento(Equipamento equipamento) {
+        this.equipamento = equipamento;
     }
 
 }

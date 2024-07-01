@@ -33,5 +33,24 @@ public class FichasRepository {
         return fichas;
 
     }
+
+    public static void excluirFicha(Ficha ficha) {
+         
+        for (int i = 0; i < fichasAvulsas.size(); i++){
+            if (fichasAvulsas.get(i) == ficha){
+                fichasAvulsas.remove(i);
+            }
+        }
+
+        for (int i = 0; i < fichasJogadores.size(); i++){
+            if (fichasJogadores.get(i) == ficha){
+                fichasJogadores.remove(i);
+            }
+        }
+    }
+
+	public static boolean estaVazio() {
+		return FichasRepository.fichasAvulsas.isEmpty() && FichasRepository.fichasJogadores.isEmpty();
+	}
     
 }

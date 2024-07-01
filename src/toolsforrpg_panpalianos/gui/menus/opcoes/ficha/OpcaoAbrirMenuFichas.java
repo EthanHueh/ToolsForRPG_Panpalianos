@@ -1,6 +1,7 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.menus.opcoes.ficha;
 
 import toolsforrpg_panpalianos.gui.menus.MenuFichas;
+import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
 
 public class OpcaoAbrirMenuFichas extends Opcao {
 

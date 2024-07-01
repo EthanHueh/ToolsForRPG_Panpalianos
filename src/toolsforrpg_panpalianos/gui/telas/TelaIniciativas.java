@@ -32,7 +32,6 @@ public class TelaIniciativas {
                 return;
             }
 
-
             IniciativasRepository.inserirIniciativa(iniciativa);
         }
     }

@@ -1,6 +1,7 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa;
 
 import toolsforrpg_panpalianos.gui.menus.MenuIniciativas;
+import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
 
 public class OpcaoAbrirMenuIniciativa extends Opcao {
 

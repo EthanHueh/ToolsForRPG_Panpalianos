@@ -2,13 +2,12 @@ package toolsforrpg_panpalianos.dominio.servicos;
 
 import java.util.List;
 
-import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
-public class Regras {
-    
+public class Calculadora {
+
     public static int calcularBonus(int atributo){
         return (atributo - 10)/2;
     }
@@ -94,34 +93,60 @@ public class Regras {
              + f.getInteligencia() + f.getSabedoria() + f.getCarisma();
     }
 
-    public static boolean validarEspecializacao(FichaJogador ficha){
-        if (ficha.getEspecializacao() == null){
-            return true;
-        }
-
-        if (ficha.getClasse() == ficha.getEspecializacao().getClasse()){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public static int calcularPVsAdicionais(FichaJogador ficha){
 
-        List<Integer> PVsAdicionais = Tabelas.getColuna(Classe.CLERIGO);
-
-        if (PVsAdicionais.isEmpty()){
-            return 0;
-        }
-
-        int nivel = ficha.getLvl() - 9;
+        List<Integer> PVsAdicionais = TabelaClasses.retornarPVsAdicionais(ficha);
 
         int soma = 0;
-        for (int i = 0; i < nivel; i++){
+        for (int i = 0; i < ficha.getLvl(); i++){
             soma += PVsAdicionais.get(i);
         }
 
+        System.out.println("Soma do "+ficha.getNome()+soma);
+
         return soma;
 
+    }
+
+    public static int calcularClasseArmadura(FichaJogador f) {
+
+        int bonDestreza = calcularBonus(f.getDestreza());
+        int bonMaxDestreza = f.getEquipamento().getArmadura().getBonMaxDestreza();
+
+        if (bonDestreza > bonMaxDestreza){
+            bonDestreza = bonMaxDestreza;
+        }
+
+        return 10 + bonDestreza + f.getEquipamento().getBonusDefesa();
+    }
+
+    public static int calcularBaseAtaque(FichaJogador fichaJogador) {
+
+        int baseAtaque = 0;
+        String valorColuna = String.valueOf(TabelaClasses.getBaseAtaque(fichaJogador));
+        try {
+            baseAtaque = Integer.parseInt(valorColuna);
+        } catch (NumberFormatException e1){
+
+            String ba = "";
+            for (int i = 0; i < valorColuna.length(); i++){
+                
+                if (valorColuna.charAt(i) == '/'){
+                    break;
+                }
+                
+                ba += String.valueOf(valorColuna.charAt(i));
+
+            }
+
+            try {
+                baseAtaque = Integer.parseInt(ba);
+            } catch (NumberFormatException e2){
+                baseAtaque = 0;
+            }
+            
+        }
+
+        return baseAtaque;
     }
 }

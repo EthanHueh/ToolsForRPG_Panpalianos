@@ -1,6 +1,7 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.menus.opcoes.ficha;
 
-import toolsforrpg_panpalianos.gui.telas.TelaCriarFicha;
+import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
+import toolsforrpg_panpalianos.gui.telas.TelaFichas;
 
 public class OpcaoCriarFicha extends Opcao {
 
@@ -13,7 +14,7 @@ public class OpcaoCriarFicha extends Opcao {
 
     @Override
     public void executar() {
-        new TelaCriarFicha(opcao);
+        TelaFichas.criarFicha(opcao);
     }
 
 }
