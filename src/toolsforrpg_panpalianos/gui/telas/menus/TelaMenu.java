@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.menus;
+package toolsforrpg_panpalianos.gui.telas.menus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,15 +6,15 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
-import toolsforrpg_panpalianos.gui.menus.opcoes.*;
+import toolsforrpg_panpalianos.gui.opcoes.*;
 import toolsforrpg_panpalianos.gui.telas.TelaSair;
 
-public abstract class Menu {
+public abstract class TelaMenu {
     
     private List<Opcao> opcoes = new ArrayList<>();
     private String titulo;
 
-    Menu(){
+    TelaMenu(){
         construir();
         iniciar();
     }

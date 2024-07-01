@@ -101,9 +101,6 @@ public class Calculadora {
         for (int i = 0; i < ficha.getLvl(); i++){
             soma += PVsAdicionais.get(i);
         }
-
-        System.out.println("Soma do "+ficha.getNome()+soma);
-
         return soma;
 
     }
@@ -120,33 +117,4 @@ public class Calculadora {
         return 10 + bonDestreza + f.getEquipamento().getBonusDefesa();
     }
 
-    public static int calcularBaseAtaque(FichaJogador fichaJogador) {
-
-        int baseAtaque = 0;
-        String valorColuna = String.valueOf(TabelaClasses.getBaseAtaque(fichaJogador));
-        try {
-            baseAtaque = Integer.parseInt(valorColuna);
-        } catch (NumberFormatException e1){
-
-            String ba = "";
-            for (int i = 0; i < valorColuna.length(); i++){
-                
-                if (valorColuna.charAt(i) == '/'){
-                    break;
-                }
-                
-                ba += String.valueOf(valorColuna.charAt(i));
-
-            }
-
-            try {
-                baseAtaque = Integer.parseInt(ba);
-            } catch (NumberFormatException e2){
-                baseAtaque = 0;
-            }
-            
-        }
-
-        return baseAtaque;
-    }
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import toolsforrpg_panpalianos.dados.modelo.NivelClasse;
-import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
 public class TabelaClasses {
@@ -45,26 +44,26 @@ public class TabelaClasses {
 
     private static NivelClasse[] retornarNiveisClerigo(){
         NivelClasse[] niveisClerigo = {
-            new NivelClasse(1, 0, 0, +1, 15),
-            new NivelClasse(2, 1500, 0, +1, 15),
-            new NivelClasse(3, 3000, 0, +2, 15),
-            new NivelClasse(4, 6000, 0, +2, 14),
-            new NivelClasse(5, 12000, 0, +2, 14),
-            new NivelClasse(6, 24000, 0, +3, 14),
-            new NivelClasse(7, 48000, 0, +3, 13),
-            new NivelClasse(8, 100000, 0, +3, 13),
-            new NivelClasse(9, 200000, 0, +4, 13),
-            new NivelClasse(10, 300000, 1, +4, 12),
-            new NivelClasse(11, 400000, 1, +4, 12),
-            new NivelClasse(12, 500000, 2, +5, 12),
-            new NivelClasse(13, 600000, 2, +5, 11),
-            new NivelClasse(14, 700000, 3, +5, 11),
-            new NivelClasse(15, 800000, 3, +6, 11),
-            new NivelClasse(16, 900000, 4, +6, 10),
-            new NivelClasse(17, 1000000, 4, +6, 10),
-            new NivelClasse(18, 1100000, 5, +7, 10),
-            new NivelClasse(19, 1200000, 5, +7, 9),
-            new NivelClasse(20, 1300000, 6, +7, 9)
+            new NivelClasse(1, 0, 0, "+1", 15),
+            new NivelClasse(2, 1500, 0, "+1", 15),
+            new NivelClasse(3, 3000, 0, "+2", 15),
+            new NivelClasse(4, 6000, 0, "+2", 14),
+            new NivelClasse(5, 12000, 0, "+2", 14),
+            new NivelClasse(6, 24000, 0, "+3", 14),
+            new NivelClasse(7, 48000, 0, "+3", 13),
+            new NivelClasse(8, 100000, 0, "+3", 13),
+            new NivelClasse(9, 200000, 0, "+4", 13),
+            new NivelClasse(10, 300000, 1, "+4", 12),
+            new NivelClasse(11, 400000, 1, "+4", 12),
+            new NivelClasse(12, 500000, 2, "+5", 12),
+            new NivelClasse(13, 600000, 2, "+5", 11),
+            new NivelClasse(14, 700000, 3, "+5", 11),
+            new NivelClasse(15, 800000, 3, "+6", 11),
+            new NivelClasse(16, 900000, 4, "+6", 10),
+            new NivelClasse(17, 1000000, 4, "+6", 10),
+            new NivelClasse(18, 1100000, 5, "+7", 10),
+            new NivelClasse(19, 1200000, 5, "+7", 9),
+            new NivelClasse(20, 1300000, 6, "+7", 9)
         };
 
         return niveisClerigo;
@@ -155,8 +154,37 @@ public class TabelaClasses {
         return retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getJogadaProtecao();
     }
 
-    public static Object getBaseAtaque(FichaJogador fichaJogador) {
-        return retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getBaseAtaque();
+    public static int getBaseAtaque(FichaJogador fichaJogador) {
+        
+        String valorColuna = retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getBaseAtaque();
+        
+        int baseAtaque = 0;
+
+        try {
+            baseAtaque = Integer.parseInt(valorColuna);
+        } catch (NumberFormatException e1){
+
+            String ba = "";
+            for (int i = 0; i < valorColuna.length(); i++){
+                
+                if (valorColuna.charAt(i) == '/'){
+                    break;
+                }
+                
+                ba += String.valueOf(valorColuna.charAt(i));
+
+            }
+
+            try {
+                baseAtaque = Integer.parseInt(ba);
+            } catch (NumberFormatException e2){
+                baseAtaque = 0;
+            }
+            
+        }
+
+
+        return baseAtaque;
     }
     
 }

@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.opcoes;
 
 import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 

@@ -1,6 +1,8 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
 public enum Especializacao {
+    NENHUMA("Nenhuma", null),
+    
     CACADOR("Caçador", Classe.CLERIGO),
     CULTISTA("Cultista", Classe.CLERIGO),
     DRUIDA("Druida", Classe.CLERIGO),

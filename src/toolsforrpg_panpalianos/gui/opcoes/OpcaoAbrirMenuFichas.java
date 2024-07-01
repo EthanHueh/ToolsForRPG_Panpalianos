@@ -1,6 +1,6 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.opcoes;
 
-import toolsforrpg_panpalianos.gui.menus.MenuFichas;
+import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
 
 public class OpcaoAbrirMenuFichas extends Opcao {
 
@@ -10,7 +10,7 @@ public class OpcaoAbrirMenuFichas extends Opcao {
 
     @Override
     public void executar() {
-        new MenuFichas();
+        new TelaMenuFichas();
     }
 
 }

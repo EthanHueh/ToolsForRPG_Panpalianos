@@ -1,14 +1,14 @@
-package toolsforrpg_panpalianos.gui.menus;
+package toolsforrpg_panpalianos.gui.telas.menus;
 
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoSair;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoAtualizarFicha;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoCriarFicha;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoExcluirFicha;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoMostrarFichas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoMostrarJogadores;
-public class MenuFichas extends Menu {
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoSair;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoAtualizarFicha;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoCriarFicha;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoExcluirFicha;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoMostrarFichas;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoMostrarJogadores;
+public class TelaMenuFichas extends TelaMenu {
 
-    public MenuFichas(){
+    public TelaMenuFichas(){
         super();
     }
 

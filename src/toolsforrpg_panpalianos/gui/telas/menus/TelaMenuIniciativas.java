@@ -1,15 +1,15 @@
-package toolsforrpg_panpalianos.gui.menus;
+package toolsforrpg_panpalianos.gui.telas.menus;
 
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoSair;
-import toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa.OpcaoAtualizarIniciativa;
-import toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa.OpcaoExcluirIniciativa;
-import toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa.OpcaoInserirIniciativa;
-import toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa.OpcaoVerIniciativa;
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoSair;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoAtualizarIniciativa;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoExcluirIniciativa;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoInserirIniciativa;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoVerIniciativa;
 import toolsforrpg_panpalianos.gui.telas.TelaSair;
 
-public class MenuIniciativas extends Menu {
-    public MenuIniciativas(){
+public class TelaMenuIniciativas extends TelaMenu {
+    public TelaMenuIniciativas(){
         
         do {
 

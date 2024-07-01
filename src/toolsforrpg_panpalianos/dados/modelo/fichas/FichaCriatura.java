@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.dados.modelo.fichas;
 
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
+
 public class FichaCriatura extends Ficha {
 
     public final static int DADO_VIDA = 8;
@@ -14,6 +16,29 @@ public class FichaCriatura extends Ficha {
     
     public FichaCriatura(){
  
+    }
+
+    @Override
+    public String toString() {
+
+        return new StringBuilder()
+            .append("------------------------------------------------------------"+"\n")
+            .append("\t"+getNome()+" ("+getRaca().getNome()+")\n\n")
+
+            .append("PVs: "+Calculadora.calcularPV(this)+"/"+Calculadora.calcularPVMaximo(this)+"\n")
+            .append("PVs Adicionais: "+pvsAdicionais+"\n\n")
+            .append("FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n")
+            .append("INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n")
+            .append("Total atributos: "+Calculadora.calcularSomaAtributos(this)+"\n\n")
+            
+            .append("CA: "+getClasseArmadura()+"\n")
+            .append("JP: "+getJogadaProtecao()+"\n")
+            .append("DVs: "+getQuantDVs()+"\n")
+            .append("BA: "+getBaseAtaque()+"\n")
+            .append("------------------------------------------------------------"+"\n")
+            .append(getEquipamento().toString())
+            .toString();
+        
     }
 
     @Override

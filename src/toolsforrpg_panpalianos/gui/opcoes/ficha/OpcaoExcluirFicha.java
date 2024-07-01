@@ -1,6 +1,6 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes.ficha;
+package toolsforrpg_panpalianos.gui.opcoes.ficha;
 
-import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
+import toolsforrpg_panpalianos.gui.opcoes.Opcao;
 import toolsforrpg_panpalianos.gui.telas.TelaFichas;
 
 public class OpcaoExcluirFicha extends Opcao {

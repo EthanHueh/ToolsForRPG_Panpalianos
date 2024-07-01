@@ -8,8 +8,4 @@ public class Main {
         new Launcher();
     }
 
-    //TODO fazer inventario
-    //TODO fazer Tabelas de regras e calculadora
-    //TODO fazer 
-
 }

@@ -1,7 +1,7 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes.ficha;
+package toolsforrpg_panpalianos.gui.opcoes.ficha;
 
-import toolsforrpg_panpalianos.gui.menus.opcoes.Opcao;
 import toolsforrpg_panpalianos.gui.telas.TelaFichas;
+import toolsforrpg_panpalianos.gui.opcoes.Opcao;
 
 public class OpcaoAtualizarFicha extends Opcao {
 

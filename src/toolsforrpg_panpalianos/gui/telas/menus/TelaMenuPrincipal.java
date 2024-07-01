@@ -1,18 +1,18 @@
-package toolsforrpg_panpalianos.gui.menus;
+package toolsforrpg_panpalianos.gui.telas.menus;
 
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
 import toolsforrpg_panpalianos.gui.Launcher;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoGerarTabelaPreco;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoIniciarSimuladorCombate;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoMostrarEstatisticas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.OpcaoSair;
-import toolsforrpg_panpalianos.gui.menus.opcoes.ficha.OpcaoAbrirMenuFichas;
-import toolsforrpg_panpalianos.gui.menus.opcoes.iniciativa.OpcaoAbrirMenuIniciativa;
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoGerarTabelaPreco;
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoIniciarSimuladorCombate;
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoMostrarEstatisticas;
+import toolsforrpg_panpalianos.gui.opcoes.OpcaoSair;
+import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoAbrirMenuFichas;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoAbrirMenuIniciativa;
 import toolsforrpg_panpalianos.gui.telas.TelaSair;
 
-public class MenuPrincipal extends Menu {
+public class TelaMenuPrincipal extends TelaMenu {
 
-    public MenuPrincipal(){
+    public TelaMenuPrincipal(){
         super();
     }
 

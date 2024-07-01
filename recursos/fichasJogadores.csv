@@ -1,7 +1,7 @@
-Al Mansur,  humano,     17,12,14,10,8,11,             16, 16, 3,    homem_de_armas, 3, 5000,6,2,4
-Durnak,	    goblin,	    14,17,10,9,12,10,	    	  15, 15, 2,    ladrao,         4, 5000,2,0,5
-Elimac,     humano,     8,14,12,18,13,10,             12, 14, 1,    mago,           3, 5000,0,0,3
-Knill,      elfo,       14,16,12,10,12,11,            15, 16, 3,    homem_de_armas, 3, 5000,2,0,2
-Odra,       humano,     12,10,13,11,16,14,            15, 15, 2,    clerigo,        3, 5000,6,2,6
-Ramón,      halfling,   9,18,12,11,13,11,             16, 15, 2,    ladrao,         4, 5000,2,0,1
-Taroba,     anao,       16,9,18,10,11,8,              16, 16, 3,    homem_de_armas, 3, 5000,6,3,5
+Al Mansur,  humano,     17,12,14,10,8,11,             homem_de_armas, 3, 5000,6,2,4
+Durnak,	    goblin,	    14,17,10,9,12,10,	    	  ladrao,         4, 5000,2,0,5
+Elimac,     humano,     8,14,12,18,13,10,             mago,           3, 5000,0,0,3
+Knill,      elfo,       14,16,12,10,12,11,            homem_de_armas, 3, 5000,2,0,2
+Odra,       humano,     12,10,13,11,16,14,            clerigo,        3, 5000,6,2,6
+Ramón,      halfling,   9,18,12,11,13,11,             ladrao,         4, 5000,2,0,1
+Taroba,     anao,       16,9,18,10,11,8,              homem_de_armas, 3, 5000,6,3,5

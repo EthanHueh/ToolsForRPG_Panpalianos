@@ -11,21 +11,20 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import toolsforrpg_panpalianos.gui.menus.MenuPrincipal;
+import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuPrincipal;
 
-public class Launcher extends JFrame{
+public class Launcher extends JFrame {
     
     JPanel painel;
     JButton botaoMenu;
     
-    //Construtor do Frame
-    public Launcher(){
-        initComponents();
-    }
-
     private void eventoBotaoMenuPrincipal() {
         this.dispose();
-        new MenuPrincipal();
+        new TelaMenuPrincipal();
+    }
+
+    public Launcher(){
+        initComponents();
     }
 
     private void initComponents() {

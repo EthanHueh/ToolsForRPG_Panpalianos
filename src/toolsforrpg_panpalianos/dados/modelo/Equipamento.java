@@ -5,9 +5,19 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 
 public class Equipamento {
-    private Armadura armadura;
-    private Escudo escudo;
-    private Arma arma;
+    private Arma arma =         Arma.DESARMADO;
+    private Armadura armadura = Armadura.NENHUM;
+    private Escudo escudo =     Escudo.NENHUM;
+
+    @Override
+    public String toString(){
+        return new StringBuilder()
+            .append("Equipamento:\n")
+            .append("Arma: "+arma.getNome()+"\n")
+            .append("Armadura: "+armadura.getNome()+"\n")
+            .append("Escudo: "+escudo.getNome()+"\n")
+            .toString();
+    }
 
     public int getBonusDefesa() {
         return armadura.getBonusDefesa() + escudo.getBonusDefesa();

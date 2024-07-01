@@ -3,8 +3,6 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 import java.util.List;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
-import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
-import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
@@ -30,27 +28,6 @@ public abstract class Ficha {
     private Equipamento equipamento = new Equipamento();
 
     public Ficha(){
-        equipamento.setArmadura(Armadura.NENHUM);
-        equipamento.setEscudo(Escudo.NENHUM);
-    }
-    
-    @Override
-    public String toString() {
-
-        return  
-            "------------------------------------------------------------"+"\n"+
-            "\t"+nome+" ("+raca.getNome()+")\n\n"+
-
-            "PVs: "+Calculadora.calcularPV(this)+"/"+Calculadora.calcularPVMaximo(this)+"\n"+
-            "FOR: "+forca+"\t"+"DES: "+destreza+"\t"+"CON: "+constituicao+"\n"+
-            "INT: "+inteligencia+"\t"+"SAB: "+sabedoria+"\t"+"CAR: "+carisma+"\n"+
-            "Total atributos: "+Calculadora.calcularSomaAtributos(this)+"\n\n"+
-            
-            "CA: "+getClasseArmadura()+"\n"+
-            "JP: "+getJogadaProtecao()+"\n"+
-            "DVs: "+quantDVs+"\n"+
-            "BA: "+getBaseAtaque()+"\n"+
-            "------------------------------------------------------------"+"\n";
         
     }
 

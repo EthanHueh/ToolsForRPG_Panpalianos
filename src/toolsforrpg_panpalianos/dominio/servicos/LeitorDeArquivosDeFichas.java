@@ -94,19 +94,15 @@ public class LeitorDeArquivosDeFichas {
                 int indiceInteligencia = 5;
                 int indiceSabedoria = 6;
                 int indiceCarisma = 7;
-                
-                int indiceClasseArmadura = 8;
-                int indiceJogadaDeProtecao = 9;
-                int indiceBaseAtaque = 10;
 
-                int indiceClasse = 11;
-                int indiceLvl = 12;
-                int indiceExp = 13;
+                int indiceClasse = 8;
+                int indiceLvl = 9;
+                int indiceExp = 10;
 
-                int indiceArmadura = 14;
-                int indiceEscudo = 15;
+                int indiceArmadura = 11;
+                int indiceEscudo = 12;
 
-                int indiceArma = 16;
+                int indiceArma = 13;
 
                 ficha.setNome(valores[indiceNome].trim());
                 ficha.setRacaPorString(valores[indiceRaca].trim());

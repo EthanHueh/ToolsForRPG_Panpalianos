@@ -1,35 +1,26 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
 public enum Arma {
-    DESARMADO   (0,1, false),
-    ADAGA       (1,4,false),
-    ARCO_LONGO  (2,8,true),
-    CAJADO      (3,6,false),
-    LANCA_CURTA (4,6,false),
-    MACHADO     (5,6,false),
-    MANGUAL     (6,8,false);
+    DESARMADO   (0,"Desarmado",1, false),
+    ADAGA       (1,"Adaga",4,false),
+    ARCO_LONGO  (2,"Arco longo",8,true),
+    CAJADO      (3,"Cajado",6,false),
+    LANCA_CURTA (4,"Lanca curta",6,false),
+    MACHADO     (5,"Machado",6,false),
+    MANGUAL     (6,"Mangual",8,false);
     
 
     private int codigo;
+    private String nome;
+
     private int dadoDano;
     private boolean isDistancia;
 
-    private Arma(int codigo, int dadoDano, boolean isDistancia) {
+    private Arma(int codigo, String nome, int dadoDano, boolean isDistancia) {
         this.codigo = codigo;
+        this.nome = nome;
         this.dadoDano = dadoDano;
         this.isDistancia = isDistancia;
-    }
-    
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public int getDadoDano() {
-        return dadoDano;
-    }
-
-    public boolean isDistancia() {
-        return isDistancia;
     }
 
     public static Arma getArmaByCodigo(int codigo) {
@@ -42,5 +33,21 @@ public enum Arma {
         }
         return DESARMADO;
 	}
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getDadoDano() {
+        return dadoDano;
+    }
+
+    public boolean isDistancia() {
+        return isDistancia;
+    }
 
 }

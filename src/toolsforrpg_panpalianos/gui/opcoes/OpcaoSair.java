@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.menus.opcoes;
+package toolsforrpg_panpalianos.gui.opcoes;
 
 public class OpcaoSair extends Opcao{
 
