@@ -6,9 +6,9 @@ import javax.swing.JTextArea;
 
 public class TelaTexto {
 
-    public TelaTexto(String msg, String titulo) {
+    public static void iniciar(String msg, String titulo) {
         JTextArea area = new JTextArea(msg);
-        area.setRows(20);
+        area.setRows(25);
         area.setColumns(25);
         area.setLineWrap(true);
 

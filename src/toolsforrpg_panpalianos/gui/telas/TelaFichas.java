@@ -40,7 +40,7 @@ public class TelaFichas {
 
     public static void mostrarFichas(List<Ficha> fichas){
         if (existirFichas()){
-            new TelaTexto(gerarMensagemFichas(fichas), "Fichas");
+            TelaTexto.iniciar(gerarMensagemFichas(fichas), "Fichas");
         }
     }
 

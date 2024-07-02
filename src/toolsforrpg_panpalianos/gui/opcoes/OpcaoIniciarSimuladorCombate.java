@@ -10,7 +10,7 @@ public class OpcaoIniciarSimuladorCombate extends Opcao{
 
     @Override
     public void executar() {
-        new TelaSimuladorDeCombate();
+        TelaSimuladorDeCombate.iniciar();
     }
     
 }

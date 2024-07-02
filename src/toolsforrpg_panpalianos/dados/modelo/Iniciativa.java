@@ -17,7 +17,7 @@ public class Iniciativa {
         if (ficha instanceof FichaJogador){
             return ficha.getNome()+" (Jogador): "+iniciativa;
         } else {
-            return ficha.getNome()+": "+iniciativa;
+            return ficha.getNome()+" (PDM): "+iniciativa;
         }
     }
     

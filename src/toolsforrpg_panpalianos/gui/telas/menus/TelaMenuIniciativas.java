@@ -6,7 +6,7 @@ import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoAtualizarIniciativa;
 import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoExcluirIniciativa;
 import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoInserirIniciativa;
 import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoVerIniciativa;
-import toolsforrpg_panpalianos.gui.telas.TelaSair;
+import toolsforrpg_panpalianos.gui.telas.TelaInput;
 
 public class TelaMenuIniciativas extends TelaMenu {
     public TelaMenuIniciativas(){
@@ -16,7 +16,7 @@ public class TelaMenuIniciativas extends TelaMenu {
             int opcao = ValidadorDeInputs.consistirInteiro(toString());
 
             if (getOpcao(opcao) instanceof OpcaoSair){
-                if (new TelaSair().usuarioQuerSair()){
+                if (TelaInput.desejaSair()){
                     return;
                 }
             }

@@ -19,7 +19,7 @@ public class FichaJogador extends Ficha {
     @Override
     public String toString() {
         return new StringBuilder()
-            .append("------------------------------------------------------------"+"\n")
+            .append("------------------------------------------------------------\n")
             .append("\t"+getNome()+" ("+getRaca().getNome()+")\n")
             .append("\t"+"Classe: "+classe.getNome()+"\n")
             .append("\t"+"Especializacao: "+especializacao.getNome()+"\n\n")
@@ -27,17 +27,19 @@ public class FichaJogador extends Ficha {
             .append("PVs: "+Calculadora.calcularPV(this)+"\n")
             .append("FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n")
             .append("INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n")
-            .append("Total atributos: "+Calculadora.calcularSomaAtributos(this)+"\n\n")
+            .append("Total atributos: "+getSomaAtributos()+"\n\n")
         
             .append("CA: "+getClasseArmadura()+"\n")
             .append("JP: "+getJogadaProtecao()+"\n")
             .append("DVs: "+getQuantDVs()+"\n")
-            .append("BA: "+getBaseAtaque()+"\n\n")
+            .append("BA: "+getBaseAtaque()+"\n")
+            .append("Movimento: "+getMovimento()+"\n\n")
 
             .append("Nível atual: "+lvl+"\n")
             .append("Exp: "+exp+"\n\n")
+            .append("------------------------------------------------------------\n")
             .append(getEquipamento().toString())
-            .append("------------------------------------------------------------"+"\n")
+            .append("------------------------------------------------------------\n")
             .toString();
 
     }
@@ -59,7 +61,7 @@ public class FichaJogador extends Ficha {
 
     @Override
     public int getMovimento() {
-        return getRaca().getMovimento();
+        return getRaca().getMovimento() + getEquipamento().getArmadura().getReducaoMov();
     }
 
     public void setClassePorString(String string) {

@@ -39,7 +39,7 @@ public class TelaIniciativas {
     public static void mostrarListaIniciativas() {
 
         if (existirIniciativas()){
-            new TelaTexto(gerarMensagemIniciativa(), "Iniciativas");
+            TelaTexto.iniciar(gerarMensagemIniciativa(), "Iniciativas");
         }
         
     }
@@ -54,9 +54,8 @@ public class TelaIniciativas {
             if (opcao > 0 && opcao <= iniciativas.size()){
                 Ficha ficha = iniciativas.get(opcao - 1).getFicha();
                 int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
-                Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
                 
-                IniciativasRepository.atualizarIniciativa(iniciativa);
+                IniciativasRepository.atualizarIniciativa(new Iniciativa(valorIniciativa, ficha));
             }
         }
         

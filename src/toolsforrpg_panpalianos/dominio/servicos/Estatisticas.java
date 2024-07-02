@@ -10,22 +10,20 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
 public class Estatisticas { 
 
-    public static String executar(List<FichaJogador> fichas){
+    public static String[][] executar(List<FichaJogador> fichas){
 
-        String mensagem =
-            "\tEstatísticas\n\n"+
-
-            "Nome Atributo | Menor | Maior | Media Party\n";
-        
-        //Para cada tipo de atributo, gerar uma mensagem baseado na lista de fichas
-        //Ex.: Para o tipo de atributo força, descobrir quem tem a menor força, e quem tem a maior
         TipoAtributo[] tipoAtributos = TipoAtributo.values();
-        for (TipoAtributo tipoAtributo : tipoAtributos) {
+        int nLinhas =  tipoAtributos.length;
+        int nColunas = fichas.size();
 
+        String[][] mensagem = new String[nLinhas][nColunas];
+
+        for (int i = 0; i < tipoAtributos.length; i++){
+            TipoAtributo tipoAtributo = tipoAtributos[i];
             Function<Ficha, Integer> getAtributoDaFicha = (ficha) -> ficha.getAtributoByTipo(tipoAtributo);
 
             fichas.sort(Comparator.comparing(getAtributoDaFicha));
-            mensagem += gerarMensagem(fichas, tipoAtributo);
+            mensagem[i] = gerarMensagem(fichas, tipoAtributos[i]);
 
         }
 
@@ -33,19 +31,23 @@ public class Estatisticas {
 
     }
 
-    private static String gerarMensagem(List<FichaJogador> fichas, TipoAtributo opcao){
+    private static String[] gerarMensagem(List<FichaJogador> fichas, TipoAtributo opcao){
 
         int mediaAtributos = calcularMediaAtributosDaParty(fichas, opcao);
-        String nomeAtributo = opcao.getNome().toUpperCase();
+        String nomeAtributo = opcao.getNome();
 
         Ficha fichaMenorAtributo = fichas.getFirst();
-        Ficha fichaMaiorAtributo = fichas.getFirst();
+        Ficha fichaMaiorAtributo = fichas.getLast();
 
-        return
-            nomeAtributo+" | "+
-            fichaMenorAtributo.getNome()+": "+fichaMenorAtributo.getAtributoByTipo(opcao)+" | "+
-            fichaMaiorAtributo.getNome()+": "+fichaMaiorAtributo.getAtributoByTipo(opcao)+" | "+
-            mediaAtributos+"\n";
+        String[] msg = {
+            nomeAtributo,
+            fichaMenorAtributo.getNome()+": "+fichaMenorAtributo.getAtributoByTipo(opcao),
+            fichaMaiorAtributo.getNome()+": "+fichaMaiorAtributo.getAtributoByTipo(opcao),
+            mediaAtributos+"",
+        };
+
+        return msg;
+            
     }
 
     private static int calcularMediaAtributosDaParty(List<FichaJogador> fichas, TipoAtributo opcao) {

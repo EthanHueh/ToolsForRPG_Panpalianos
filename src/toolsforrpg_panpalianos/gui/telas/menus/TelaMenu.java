@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
 import toolsforrpg_panpalianos.gui.opcoes.*;
-import toolsforrpg_panpalianos.gui.telas.TelaSair;
+import toolsforrpg_panpalianos.gui.telas.TelaInput;
 
 public abstract class TelaMenu {
     
@@ -27,7 +27,7 @@ public abstract class TelaMenu {
             int opcao = ValidadorDeInputs.consistirInteiro(toString());
 
             if (getOpcao(opcao) instanceof OpcaoSair){
-                if (new TelaSair().usuarioQuerSair()){
+                if (TelaInput.desejaSair()){
                     return;
                 }
             }

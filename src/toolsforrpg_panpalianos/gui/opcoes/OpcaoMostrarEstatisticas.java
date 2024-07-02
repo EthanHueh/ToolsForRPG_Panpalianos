@@ -1,8 +1,6 @@
 package toolsforrpg_panpalianos.gui.opcoes;
 
-import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;
-import toolsforrpg_panpalianos.gui.telas.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 
 public class OpcaoMostrarEstatisticas extends Opcao{
 
@@ -12,7 +10,7 @@ public class OpcaoMostrarEstatisticas extends Opcao{
 
     @Override
     public void executar() {
-        new TelaTexto(Estatisticas.executar(FichasRepository.retornarFichasJogadores()), "Estatística");
+        TelaEstatisticas.iniciar();;
     }
 
 }

@@ -8,7 +8,7 @@ import toolsforrpg_panpalianos.gui.opcoes.OpcaoMostrarEstatisticas;
 import toolsforrpg_panpalianos.gui.opcoes.OpcaoSair;
 import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoAbrirMenuFichas;
 import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoAbrirMenuIniciativa;
-import toolsforrpg_panpalianos.gui.telas.TelaSair;
+import toolsforrpg_panpalianos.gui.telas.TelaInput;
 
 public class TelaMenuPrincipal extends TelaMenu {
 
@@ -36,7 +36,7 @@ public class TelaMenuPrincipal extends TelaMenu {
             executarOpcao(opcao);
 
             if (getOpcao(opcao) instanceof OpcaoSair){
-                if (new TelaSair().usuarioQuerSair()){
+                if (TelaInput.desejaSair()){
                     new Launcher();
                     return;
                 }

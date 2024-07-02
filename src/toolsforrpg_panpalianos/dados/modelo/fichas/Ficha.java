@@ -31,6 +31,11 @@ public abstract class Ficha {
         
     }
 
+    public int getSomaAtributos(){
+        return forca + destreza + constituicao
+             + inteligencia + sabedoria + carisma;
+    }
+
     public abstract int getClasseArmadura();
     public abstract int getJogadaProtecao();
     public abstract int getBaseAtaque();
