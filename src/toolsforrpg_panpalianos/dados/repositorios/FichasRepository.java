@@ -9,8 +9,8 @@ import toolsforrpg_panpalianos.dominio.servicos.LeitorDeArquivosDeFichas;
 
 public class FichasRepository {
     
-    private static List<FichaJogador> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasDeJogador("recursos\\fichasJogadores.csv");
-    private static List<Ficha> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
+    private final static List<FichaJogador> fichasJogadores = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasDeJogador("recursos\\fichasJogadores.csv");
+    private final static List<Ficha> fichasAvulsas = LeitorDeArquivosDeFichas.converteArquivoEmListaDeFichasPadrao("recursos\\fichasAvulsas.csv");
     
     public static void adicionar(Ficha ficha){
         fichasAvulsas.add(ficha);
@@ -27,14 +27,14 @@ public class FichasRepository {
     public static List<Ficha> retornarTodasAsFichas() {
         
         List<Ficha> fichas = new ArrayList<>();
-        fichas.addAll(FichasRepository.retornarFichasJogadores());
-        fichas.addAll(FichasRepository.retornarFichasAvulsas());
+        fichas.addAll(fichasJogadores);
+        fichas.addAll(fichasAvulsas);
 
         return fichas;
 
     }
-
-    public static void excluirFicha(Ficha ficha) {
+    
+    public static void excluir(Ficha ficha) {
          
         for (int i = 0; i < fichasAvulsas.size(); i++){
             if (fichasAvulsas.get(i) == ficha){
@@ -49,8 +49,8 @@ public class FichasRepository {
         }
     }
 
-	public static boolean estaVazio() {
-		return FichasRepository.fichasAvulsas.isEmpty() && FichasRepository.fichasJogadores.isEmpty();
-	}
+    public static boolean isVazio() {
+        return FichasRepository.fichasAvulsas.isEmpty() && FichasRepository.fichasJogadores.isEmpty();
+    }
     
 }

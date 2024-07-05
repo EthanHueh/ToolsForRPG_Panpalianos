@@ -8,9 +8,9 @@ public enum Escudo {
     ESCUDO_ACO(2,"Escudo de aco", 3),
     ESCUDO_TORRE(0, "Escudo torre",4);
     
-    private int bonusDefesa;
-    private String nome;
-    private int codigo;
+    private final int bonusDefesa;
+    private final String nome;
+    private final int codigo;
 
     Escudo(int bonusDefesa, String nome, int codigo){
         this.bonusDefesa = bonusDefesa;
@@ -19,7 +19,7 @@ public enum Escudo {
     }
 
     public static Escudo getEscudoByCodigo(int codigo) {
-		Escudo[] escudos = values();
+	Escudo[] escudos = values();
 
         for (Escudo escudo : escudos) {
             if (escudo.getCodigo() == codigo){
@@ -27,7 +27,7 @@ public enum Escudo {
             }
         }
         return NENHUM;
-	}
+    }
 
     public int getBonusDefesa() {
         return bonusDefesa;

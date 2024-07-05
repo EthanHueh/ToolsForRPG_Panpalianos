@@ -14,5 +14,10 @@ public class TelaInput {
         int opcaoSair = JOptionPane.showConfirmDialog(null, "Desejas Sair","Desejas Sair", JOptionPane.YES_NO_OPTION);
         return opcaoSair == JOptionPane.YES_OPTION;
     }
+    
+    public static boolean desejaRealizarOperacao(String msg, String titulo){
+        int opcaoSair = JOptionPane.showConfirmDialog(null, msg, titulo, JOptionPane.YES_NO_OPTION);
+        return opcaoSair == JOptionPane.YES_OPTION;
+    }
 
 }

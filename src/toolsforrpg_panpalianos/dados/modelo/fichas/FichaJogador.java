@@ -9,8 +9,8 @@ public class FichaJogador extends Ficha {
     
     private Classe classe;
     private Especializacao especializacao = Especializacao.NENHUMA;
-    private int lvl;
-    private int exp;
+    private int lvl = 0;
+    private int exp = 0;
 
     public FichaJogador(){
 
@@ -61,7 +61,7 @@ public class FichaJogador extends Ficha {
 
     @Override
     public int getMovimento() {
-        return getRaca().getMovimento() + getEquipamento().getArmadura().getReducaoMov();
+        return Calculadora.calcularMovimento(this);
     }
 
     public void setClassePorString(String string) {

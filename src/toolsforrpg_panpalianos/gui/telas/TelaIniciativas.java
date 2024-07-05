@@ -27,12 +27,12 @@ public class TelaIniciativas {
             int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
             Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
 
-            if (IniciativasRepository.houverFichasRepetidas(iniciativa)){
+            if (IniciativasRepository.hasIniciativasRepetidas(iniciativa)){
                 JOptionPane.showMessageDialog(null, "Ficha repetida!", "Iniciativa", 0);
                 return;
             }
 
-            IniciativasRepository.inserirIniciativa(iniciativa);
+            IniciativasRepository.adicionar(iniciativa);
         }
     }
 
@@ -53,9 +53,12 @@ public class TelaIniciativas {
 
             if (opcao > 0 && opcao <= iniciativas.size()){
                 Ficha ficha = iniciativas.get(opcao - 1).getFicha();
-                int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
                 
-                IniciativasRepository.atualizarIniciativa(new Iniciativa(valorIniciativa, ficha));
+                if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de"+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
+                    int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
+                    IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
+                }         
+                
             }
         }
         
@@ -71,7 +74,9 @@ public class TelaIniciativas {
             if (opcao > 0 && opcao <= iniciativas.size()){
                 Iniciativa iniciativa = IniciativasRepository.retornarIniciativas().get(opcao - 1);
                 
-                IniciativasRepository.excluirIniciativa(iniciativa);
+                if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de"+iniciativa.getFicha().getNome()+"?", "Confirmacao de delecao de iniciativa")){
+                    IniciativasRepository.excluir(iniciativa);
+                }
             }
         }
 

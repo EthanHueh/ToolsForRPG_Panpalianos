@@ -11,11 +11,11 @@ public enum Armadura {
     COTA_MALHA  (4,"Cota de Malha",-1,2, 6);
     
 
-    private int bonusDefesa;
-    private String nome;
-    private int reducaoMov;
-    private int bonMaxDestreza;
-    private int codigo;
+    private final int bonusDefesa;
+    private final String nome;
+    private final int reducaoMov;
+    private final int bonMaxDestreza;
+    private final int codigo;
 
     Armadura(int bonusDefesa, String nome, int reducaoMov, int bonMaxDestreza, int codigo){
         this.bonusDefesa = bonusDefesa;

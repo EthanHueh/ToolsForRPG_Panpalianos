@@ -6,24 +6,25 @@ import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
+import toolsforrpg_panpalianos.dominio.servicos.Validador;
 
 public abstract class Ficha {
 
-    private String nome;
-    private String descricao;
-    private Raca raca;
+    private String nome      = "Sem nome";
+    private String descricao = "Sem descricao";
+    private Raca raca        = Raca.INDEFINIDO;
     private List<String> idiomas;
     private String alinhamento;
 
-    private int forca;
-    private int destreza;
-    private int constituicao;
-    private int inteligencia;
-    private int sabedoria;
-    private int carisma;
+    private int forca        = 0;
+    private int destreza     = 0;
+    private int constituicao = 0;
+    private int inteligencia = 0;
+    private int sabedoria    = 0;
+    private int carisma      = 0;
 
-    private int quantDVs;
-    private int quantPVsAtual;
+    private int quantDVs     = 0;
+    private int quantPVsAtual= 0;
 
     private Equipamento equipamento = new Equipamento();
 
@@ -32,8 +33,7 @@ public abstract class Ficha {
     }
 
     public int getSomaAtributos(){
-        return forca + destreza + constituicao
-             + inteligencia + sabedoria + carisma;
+        return Calculadora.calcularSomaAtributos(this);
     }
 
     public abstract int getClasseArmadura();

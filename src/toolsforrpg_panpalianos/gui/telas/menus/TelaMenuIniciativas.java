@@ -9,24 +9,9 @@ import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoVerIniciativa;
 import toolsforrpg_panpalianos.gui.telas.TelaInput;
 
 public class TelaMenuIniciativas extends TelaMenu {
+    
     public TelaMenuIniciativas(){
-        
-        do {
-
-            int opcao = ValidadorDeInputs.consistirInteiro(toString());
-
-            if (getOpcao(opcao) instanceof OpcaoSair){
-                if (TelaInput.desejaSair()){
-                    return;
-                }
-            }
-
-            executarOpcao(opcao);
-
-
-        } while (true);
-
-
+        super();
     }
 
     @Override

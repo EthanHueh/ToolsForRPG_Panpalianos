@@ -10,11 +10,11 @@ public enum Arma {
     MANGUAL     (6,"Mangual",8,false);
     
 
-    private int codigo;
-    private String nome;
+    private final int codigo;
+    private final String nome;
 
-    private int dadoDano;
-    private boolean isDistancia;
+    private final int dadoDano;
+    private final boolean isDistancia;
 
     private Arma(int codigo, String nome, int dadoDano, boolean isDistancia) {
         this.codigo = codigo;

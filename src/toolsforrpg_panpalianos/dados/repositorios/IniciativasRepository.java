@@ -6,46 +6,49 @@ import java.util.List;
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 
 public class IniciativasRepository {
-    private static List<Iniciativa> listaIniciativas = new ArrayList<>();
+    private final static List<Iniciativa> iniciativas = new ArrayList<>();
+    
+    public static List<Iniciativa> retornarIniciativas() {
+        return iniciativas;
+    }
 
-    public static void inserirIniciativa(Iniciativa iniciativa){
+    public static void adicionar(Iniciativa iniciativa){
 
-        if (houverFichasRepetidas(iniciativa)){
+        if (hasIniciativasRepetidas(iniciativa)){
             return;
         }
 
-        listaIniciativas.add(iniciativa);
+        iniciativas.add(iniciativa);
     }
 
-    public static void atualizarIniciativa(Iniciativa iniciativa){
+    public static void atualizar(Iniciativa iniciativa){
 
-        for (Iniciativa i : listaIniciativas) {
+        for (Iniciativa i : iniciativas) {
             if (i.getFicha() == iniciativa.getFicha()){
                 i.setIniciativa(iniciativa.getIniciativa());
             }
         }
     }
+    
+    public static void excluir(Iniciativa iniciativa) {
+        for (int i = 0; i < iniciativas.size(); i++){
+            if (iniciativas.get(i).getFicha() == iniciativa.getFicha()){
+                iniciativas.remove(i);
+            }
+        }
+    }
+    
+    public static boolean isVazio(){
+        return iniciativas.isEmpty();
+    }
 
-    public static boolean houverFichasRepetidas(Iniciativa iniciativa) {
-        for (Iniciativa i : listaIniciativas) {
+    public static boolean hasIniciativasRepetidas(Iniciativa iniciativa) {
+        for (Iniciativa i : iniciativas) {
             if (i.getFicha() == iniciativa.getFicha()){
                 return true;
             }
         }
         return false;
     }
-
-    public static List<Iniciativa> retornarIniciativas() {
-        return listaIniciativas;
-    }
-
-    public static void excluirIniciativa(Iniciativa iniciativa) {
-        for (int i = 0; i < listaIniciativas.size(); i++){
-            if (listaIniciativas.get(i).getFicha() == iniciativa.getFicha()){
-                listaIniciativas.remove(i);
-            }
-        }
-    }
-
 
 }

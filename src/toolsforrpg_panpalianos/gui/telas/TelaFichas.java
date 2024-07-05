@@ -32,8 +32,7 @@ public class TelaFichas {
                 return;
         }
 
-        int opcaoSair = JOptionPane.showConfirmDialog(null, "Quer mesmo cadastrar essa ficha?","Confirmacao de cadastro", JOptionPane.YES_NO_OPTION);
-        if (opcaoSair == JOptionPane.YES_OPTION){
+        if (TelaInput.desejaRealizarOperacao("Quer mesmo cadastrar essa ficha?", "Confirmacao de cadastro de ficha")){
             FichasRepository.adicionar(ficha);
         }
     }
@@ -43,7 +42,28 @@ public class TelaFichas {
             TelaTexto.iniciar(gerarMensagemFichas(fichas), "Fichas");
         }
     }
+    
+    public static void atualizarFicha() {
+        JOptionPane.showMessageDialog(null, "Tem nada aqui ainda", "Nada", 0);
+    }
 
+    public static void excluirFicha(){
+        
+        if (existirFichas()){
+            List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
+
+            int opcao = ValidadorDeInputs.consistirInteiro(gerarMensagemFichasMenu(fichas)+"\nDe quem voce quer excluir a ficha?");
+
+            if (opcao > 0 && opcao <= fichas.size()){
+                Ficha ficha = FichasRepository.retornarTodasAsFichas().get(opcao - 1);
+                
+                if (TelaInput.desejaRealizarOperacao("Deseja deletar a ficha de "+ficha.getNome()+"?", "Confirmação de delecao")){
+                    FichasRepository.excluir(ficha);
+                }
+            }
+        }
+    }
+    
     private static String gerarMensagemFichas(List<Ficha> fichas) {
         String msg = "";
         
@@ -70,36 +90,11 @@ public class TelaFichas {
         return msg;
     }
 
-    public static void atualizarFicha() {
-        JOptionPane.showMessageDialog(null, "Tem nada aqui ainda", "Nada", 0);
-    }
-
-    public static void excluirFicha(){
-        
-        if (existirFichas()){
-            List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
-
-            int opcao = ValidadorDeInputs.consistirInteiro(gerarMensagemFichasMenu(fichas)+"\nDe quem voce quer excluir a ficha?");
-
-            if (opcao > 0 && opcao <= fichas.size()){
-                Ficha Ficha = FichasRepository.retornarTodasAsFichas().get(opcao - 1);
-                
-                FichasRepository.excluirFicha(Ficha);
-            }
-        }
-
-    }
-
     private static boolean existirFichas(){
-        if(FichasRepository.estaVazio()){
-            JOptionPane.showMessageDialog(null, "Nenhuma iniciativa inserida!", "Iniciativas", 0);
+        if(FichasRepository.isVazio()){
+            JOptionPane.showMessageDialog(null, "Nenhuma ficha inserida!", "Fichas", 0);
             return false;
         }
         return true;
     }
-
-    
-
-
-    
 }

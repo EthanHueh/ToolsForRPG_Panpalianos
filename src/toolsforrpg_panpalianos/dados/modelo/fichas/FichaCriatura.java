@@ -7,12 +7,12 @@ public class FichaCriatura extends Ficha {
     public final static int DADO_VIDA = 8;
     public final static int DADO_VIDA_MEDIO = 5;
     
-    private int classeArmadura;
-    private int jogadaDeProtecao;
-    private int baseAtaque;
-    private int movimento;
+    private int classeArmadura  = 10;
+    private int jogadaDeProtecao= 20;
+    private int baseAtaque      = 0;
+    private int movimento       = 9;
     
-    private int pvsAdicionais = 0;
+    private int pvsAdicionais   = 0;
     
     public FichaCriatura(){
  

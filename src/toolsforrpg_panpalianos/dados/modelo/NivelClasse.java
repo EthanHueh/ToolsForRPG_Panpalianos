@@ -1,11 +1,11 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
 public class NivelClasse {
-    private int nivel;
-    private int xp;
-    private int pvsAdicionais;
-    private String baseAtaque;
-    private int jogadaProtecao;
+    private final int nivel;
+    private final int xp;
+    private final int pvsAdicionais;
+    private final String baseAtaque;
+    private final int jogadaProtecao;
 
     public NivelClasse(int nivel, int xp, int pvsAdicionais, String baseAtaque, int jogadaProtecao) {
         this.nivel = nivel;

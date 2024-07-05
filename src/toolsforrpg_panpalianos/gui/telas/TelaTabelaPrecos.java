@@ -7,9 +7,12 @@ import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
 
 public class TelaTabelaPrecos {
     public static void iniciar(){
+        
         int preco = ValidadorDeInputs.consistirInteiro("Insira o preco do equipamento:");
         String nome = JOptionPane.showInputDialog("Insira o nome do equipamento:");
-
-        TelaTexto.iniciar(RegrasHomebrew.gerarTabelaDePreco(preco, nome), "Tabela de precos");  
+        
+        String[][] valoresTabela = RegrasHomebrew.gerarTabelaDePreco(preco, nome);
+        String[] colunas = {"","Preco upgrade "+nome, "Preco acumulado dos upgrades"};
+        TelaTabela.iniciar("Tabela de precos", valoresTabela, colunas);  
     }
 }

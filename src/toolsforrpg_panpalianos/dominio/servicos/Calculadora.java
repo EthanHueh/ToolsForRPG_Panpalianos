@@ -105,4 +105,13 @@ public class Calculadora {
         return (dadoVida+bonusCon) + (lvl-1)*(dadoVida+bonusCon) + calcularPVsAdicionais(ficha);
     }
 
+    public static int calcularSomaAtributos(Ficha f) {
+        return f.getForca() + f.getDestreza() + f.getConstituicao() +
+               f.getInteligencia() + f.getInteligencia() + f.getCarisma();
+    }
+
+    public static int calcularMovimento(FichaJogador f) {
+        return f.getRaca().getMovimento() + f.getEquipamento().getArmadura().getReducaoMov();
+    }
+
 }

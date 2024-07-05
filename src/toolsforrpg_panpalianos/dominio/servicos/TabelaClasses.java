@@ -17,9 +17,7 @@ public class TabelaClasses {
             pvsAdicionais.add(nivelClasse.getPvsAdicionais());
         }
 
-
         return pvsAdicionais;
-
 
     }
 

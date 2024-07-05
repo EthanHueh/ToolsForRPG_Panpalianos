@@ -6,55 +6,48 @@ import java.util.function.Function;
 
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 
 public class Estatisticas { 
 
-    public static String[][] executar(List<FichaJogador> fichas){
-
+    public static String[][] executar(){
+        
+        if (FichasRepository.isVazio()){
+            return null;
+        }
+        
+        List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
         TipoAtributo[] tipoAtributos = TipoAtributo.values();
-        int nLinhas =  tipoAtributos.length;
-        int nColunas = fichas.size();
-
-        String[][] mensagem = new String[nLinhas][nColunas];
+        String[][] mensagem = new String[tipoAtributos.length][4];
 
         for (int i = 0; i < tipoAtributos.length; i++){
-            TipoAtributo tipoAtributo = tipoAtributos[i];
-            Function<Ficha, Integer> getAtributoDaFicha = (ficha) -> ficha.getAtributoByTipo(tipoAtributo);
-
+            TipoAtributo atributoAtual = tipoAtributos[i];
+            Function<Ficha, Integer> getAtributoDaFicha = (ficha) -> ficha.getAtributoByTipo(atributoAtual);
+            
             fichas.sort(Comparator.comparing(getAtributoDaFicha));
             mensagem[i] = gerarMensagem(fichas, tipoAtributos[i]);
-
         }
 
         return mensagem;
 
     }
 
-    private static String[] gerarMensagem(List<FichaJogador> fichas, TipoAtributo opcao){
+    private static String[] gerarMensagem(List<Ficha> fichas, TipoAtributo opcao){
 
-        int mediaAtributos = calcularMediaAtributosDaParty(fichas, opcao);
-        String nomeAtributo = opcao.getNome();
-
-        Ficha fichaMenorAtributo = fichas.getFirst();
-        Ficha fichaMaiorAtributo = fichas.getLast();
-
-        String[] msg = {
-            nomeAtributo,
-            fichaMenorAtributo.getNome()+": "+fichaMenorAtributo.getAtributoByTipo(opcao),
-            fichaMaiorAtributo.getNome()+": "+fichaMaiorAtributo.getAtributoByTipo(opcao),
-            mediaAtributos+"",
+        return new String[] {
+            opcao.getNome(),
+            fichas.getFirst().getNome()+": "+fichas.getFirst().getAtributoByTipo(opcao),
+            fichas.getLast().getNome()+": "+fichas.getLast().getAtributoByTipo(opcao),
+            calcularMediaAtributos(fichas, opcao)+"",
         };
-
-        return msg;
             
     }
 
-    private static int calcularMediaAtributosDaParty(List<FichaJogador> fichas, TipoAtributo opcao) {
+    private static int calcularMediaAtributos(List<Ficha> fichas, TipoAtributo opcao) {
         int somaAtributos = 0;
         
-        for (Ficha fichaCriatura : fichas) {
-            somaAtributos += fichaCriatura.getAtributoByTipo(opcao);
+        for (Ficha f : fichas) {
+            somaAtributos += f.getAtributoByTipo(opcao);
         }
 
         return (somaAtributos/fichas.size());
