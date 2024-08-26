@@ -4,8 +4,9 @@ import toolsforrpg_panpalianos.gui.opcoes.Opcao;
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 
 public class OpcaoExcluirIniciativa extends Opcao {
-    public OpcaoExcluirIniciativa(String nome) {
-        super(nome);
+    
+    public OpcaoExcluirIniciativa() {
+        super("Excluir iniciativa");
     }
 
     @Override

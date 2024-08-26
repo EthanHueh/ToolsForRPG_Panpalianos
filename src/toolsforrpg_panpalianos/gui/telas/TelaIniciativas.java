@@ -1,17 +1,19 @@
 package toolsforrpg_panpalianos.gui.telas;
 
-import java.util.Collections;
-import java.util.Comparator;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
-import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
+import toolsforrpg_panpalianos.dominio.servicos.EscritorDeArquivos;
+import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
+import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoSalvarIniciativas;
 
 public class TelaIniciativas {
 
@@ -19,12 +21,12 @@ public class TelaIniciativas {
 
         List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
 
-        int opcao = ValidadorDeInputs.consistirInteiro(gerarMensagemFichas(fichas)+"\nQuem voce deseja inserir iniciativa?");
+        int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemFichasMenu(fichas)+"\nQuem voce deseja inserir iniciativa?","Escolha uma ficha");
 
         if (opcao > 0 && opcao <= fichas.size()){
             Ficha ficha = fichas.get(opcao - 1);
 
-            int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
+            int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Insira iniciativa");
             Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
 
             if (IniciativasRepository.hasIniciativasRepetidas(iniciativa)){
@@ -39,7 +41,7 @@ public class TelaIniciativas {
     public static void mostrarListaIniciativas() {
 
         if (existirIniciativas()){
-            TelaTexto.iniciar(gerarMensagemIniciativa(), "Iniciativas");
+            TelaTexto.iniciar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
         }
         
     }
@@ -49,13 +51,13 @@ public class TelaIniciativas {
         if (existirIniciativas()){
             List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
 
-            int opcao = ValidadorDeInputs.consistirInteiro(gerarMensagemIniciativaEnumerada()+"\nQuem voce deseja atualizar a iniciativa?");
+            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nQuem voce deseja atualizar a iniciativa?","Atualizar iniciativa");
 
             if (opcao > 0 && opcao <= iniciativas.size()){
                 Ficha ficha = iniciativas.get(opcao - 1).getFicha();
                 
                 if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de"+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
-                    int valorIniciativa = ValidadorDeInputs.consistirInteiro("Insira a iniciativa de "+ficha.getNome());
+                    int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Inserir iniciativa");
                     IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
                 }         
                 
@@ -69,7 +71,7 @@ public class TelaIniciativas {
         if (existirIniciativas()){
             List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
 
-            int opcao = ValidadorDeInputs.consistirInteiro(gerarMensagemIniciativaEnumerada()+"\nDe quem voce quer excluir a iniciativa?");
+            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nDe quem voce quer excluir a iniciativa?","Excluir iniciativa");
 
             if (opcao > 0 && opcao <= iniciativas.size()){
                 Iniciativa iniciativa = IniciativasRepository.retornarIniciativas().get(opcao - 1);
@@ -90,47 +92,19 @@ public class TelaIniciativas {
         return true;
     }
 
-    private static String gerarMensagemFichas(List<Ficha> fichas) {
-        String msg = "";
-
-        for (int i = 0; i < fichas.size(); i++){
-
-            if (fichas.get(i) instanceof FichaJogador){
-                msg += i+1 +" - "+ fichas.get(i).getNome()+" (Jogador)\n";
-            } else {
-                msg += i+1 +" - "+ fichas.get(i).getNome()+" (PDM)\n";
-            }
-            
+    public static void salvarArquivo() {
+        
+        if (!existirIniciativas()){
+            return;
         }
-
-        return msg;
-    }
-
-    private static String gerarMensagemIniciativa() {
-
-        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-        iniciativas.sort(Comparator.comparing(Iniciativa::getIniciativa));
-        Collections.reverse(iniciativas);
-
-        String msg = "";
-        for (Iniciativa iniciativa: IniciativasRepository.retornarIniciativas()){
-            msg += iniciativa.toString()+"\n";
+        
+        try {
+            EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas.txt");
+            JOptionPane.showMessageDialog(null, "Arquivo escrito com sucesso!");
+        } catch (IOException ex) {
+            Logger.getLogger(OpcaoSalvarIniciativas.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
         }
-        return msg;
-
-    }
-
-    private static String gerarMensagemIniciativaEnumerada() {
-
-        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-        String msg = "";
-        for (int i = 0; i < iniciativas.size(); i++){
-            msg += i + 1 + " - "+ iniciativas.get(i).toString()+"\n";
-        }
-        return msg;
-
     }
 
 }

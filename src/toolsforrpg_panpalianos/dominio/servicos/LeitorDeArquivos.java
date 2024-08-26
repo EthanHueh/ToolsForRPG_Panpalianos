@@ -8,15 +8,14 @@ import java.util.List;
 import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
-import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
-public class LeitorDeArquivosDeFichas {
+public class LeitorDeArquivos {
     
-    public static List<Ficha> converteArquivoEmListaDeFichasPadrao(String pathArquivo) {
+    public static List<FichaCriatura> lerArquivoFichasCriatura(String pathArquivo) {
 
-        List<Ficha> fichas = new ArrayList<>();
+        List<FichaCriatura> fichas = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(pathArquivo))) {
 
@@ -72,7 +71,7 @@ public class LeitorDeArquivosDeFichas {
 
     }
 
-    public static List<FichaJogador> converteArquivoEmListaDeFichasDeJogador(String pathArquivo) {
+    public static List<FichaJogador> lerArquivoFichasJogador(String pathArquivo) {
 
         List<FichaJogador> fichas = new ArrayList<>();
 

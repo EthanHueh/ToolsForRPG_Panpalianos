@@ -26,14 +26,17 @@ public class IniciativasRepository {
         for (Iniciativa i : iniciativas) {
             if (i.getFicha() == iniciativa.getFicha()){
                 i.setIniciativa(iniciativa.getIniciativa());
+                break;
             }
         }
+        
     }
     
     public static void excluir(Iniciativa iniciativa) {
         for (int i = 0; i < iniciativas.size(); i++){
             if (iniciativas.get(i).getFicha() == iniciativa.getFicha()){
                 iniciativas.remove(i);
+                break;
             }
         }
     }

@@ -1,16 +1,16 @@
 package toolsforrpg_panpalianos.gui.opcoes;
 
-import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuIniciativas;
+import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
 public class OpcaoAbrirMenuIniciativa extends Opcao {
 
-    public OpcaoAbrirMenuIniciativa(String nome) {
-        super(nome);
+    public OpcaoAbrirMenuIniciativa() {
+        super("Abrir menu de iniciativas");
     }
 
     @Override
     public void executar() {
-        new TelaMenuIniciativas();
+        GerenciadorTelas.telaMenuIniciativas.iniciar();
     }
 
 }

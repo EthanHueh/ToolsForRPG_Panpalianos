@@ -11,6 +11,7 @@ public class TelaEstatisticas {
         
         if (valoresTabela == null){
             JOptionPane.showMessageDialog(null, "Nenhuma ficha cadastrada!", "Erro", 0);
+            return;
         }
         
         String[] colunas = {"Nome Atributo", "Per. Menor atributo", "Per. maior atributo", "Media da party"};
@@ -18,5 +19,3 @@ public class TelaEstatisticas {
         TelaTabela.iniciar("Estatisticas", valoresTabela, colunas);
     }
 }
-
-

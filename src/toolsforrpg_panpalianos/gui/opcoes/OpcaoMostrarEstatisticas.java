@@ -4,8 +4,8 @@ import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 
 public class OpcaoMostrarEstatisticas extends Opcao{
 
-    public OpcaoMostrarEstatisticas(String nome) {
-        super(nome);
+    public OpcaoMostrarEstatisticas() {
+        super("Mostrar estatisticas");
     }
 
     @Override

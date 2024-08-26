@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
-import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
 import toolsforrpg_panpalianos.gui.opcoes.*;
 import toolsforrpg_panpalianos.gui.telas.TelaInput;
 
@@ -16,35 +16,33 @@ public abstract class TelaMenu {
 
     TelaMenu(){
         construir();
-        iniciar();
     }
 
     protected abstract void construir();
 
-    protected void iniciar() {
-        do{
+    public void iniciar() {
+        
+        do {
+            int opcao = TelaInput.obterInteiro(toString(), titulo);
 
-            int opcao = ValidadorDeInputs.consistirInteiro(toString());
+            if (opcao > opcoes.size()){
+                JOptionPane.showMessageDialog(null, "Opcao Inexistente!");
+                iniciar();
+                return;
+            }
 
             if (getOpcao(opcao) instanceof OpcaoSair){
                 if (TelaInput.desejaSair()){
+                    GerenciadorTelas.telaMenuPrincipal.iniciar();
                     return;
                 }
             }
 
             executarOpcao(opcao);
-
         }
         while(true);
-    }
+        
 
-    @Override
-    public String toString() {
-        String msg = getTitulo()+"\n";
-        for (int i = 0; i < opcoes.size(); i++) {
-            msg += (i+1)+" - "+opcoes.get(i).getNome()+"\n";
-        }
-        return msg;
     }
 
     public void addOpcao(Opcao opcao){
@@ -69,20 +67,25 @@ public abstract class TelaMenu {
         opcoes.get(opcao - 1).executar();
     }
 
+    @Override
+    public String toString() {
+        String msg = "";
+        for (int i = 0; i < opcoes.size(); i++) {
+            msg += (i+1)+" - "+opcoes.get(i).getNome()+"\n";
+        }
+        return msg;
+    }
+    
+    public List<Opcao> getOpcoes(){
+        return opcoes;
+    }
+
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public List<Opcao> getOpcoes() {
-        return opcoes;
-    }
-
-    public void setOpcoes(List<Opcao> opcoes) {
-        this.opcoes = opcoes;
     }
 
 }

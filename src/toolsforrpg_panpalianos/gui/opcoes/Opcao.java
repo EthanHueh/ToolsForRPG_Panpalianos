@@ -5,7 +5,7 @@ public abstract class Opcao {
     private String nome;
 
     public Opcao(String nome){
-        this.nome = nome;
+        setNome(nome);
     }
 
     public abstract void executar();

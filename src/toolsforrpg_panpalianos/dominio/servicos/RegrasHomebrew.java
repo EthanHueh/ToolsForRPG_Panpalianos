@@ -1,5 +1,4 @@
 package toolsforrpg_panpalianos.dominio.servicos;
-
 public class RegrasHomebrew {
 
     public static String[][] gerarTabelaDePreco(int preco, String nome) {

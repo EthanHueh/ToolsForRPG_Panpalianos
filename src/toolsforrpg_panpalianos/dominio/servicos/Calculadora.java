@@ -23,11 +23,23 @@ public class Calculadora {
     public static int calcularPV(Ficha ficha){
 
         if(ficha instanceof FichaCriatura){
-            return calcularPVCriatura((FichaCriatura) ficha);
+            FichaCriatura fichaCriatura = (FichaCriatura) ficha;
+            int dadoVida = FichaCriatura.DADO_VIDA_MEDIO;
+            int quantDVs = fichaCriatura.getQuantDVs();
+            int bonusCon = calcularBonus(fichaCriatura.getConstituicao());
+            int pvAdicional = fichaCriatura.getPvsAdicionais();
+
+            return (quantDVs*(dadoVida+bonusCon) + pvAdicional);
         }
 
         if (ficha instanceof FichaJogador){
-            return calcularPVJogador((FichaJogador) ficha);      
+            FichaJogador fichaJogador = (FichaJogador) ficha;
+            int dadoVida = fichaJogador.getClasse().getDadoVida();
+            int dadoVidaMedio = fichaJogador.getClasse().getDadoVidaMedio();
+            int lvl = fichaJogador.getLvl();
+            int bonusCon = calcularBonus(fichaJogador.getConstituicao());
+
+            return (dadoVida+bonusCon) + (lvl-1)*(dadoVidaMedio+bonusCon) + calcularPVsAdicionais(fichaJogador);
         }
 
         return 0;
@@ -36,14 +48,26 @@ public class Calculadora {
     public static int calcularPVMaximo(Ficha ficha){
 
         if(ficha instanceof FichaCriatura){
-            return calcularPVMaximoCriatura((FichaCriatura) ficha);
+            FichaCriatura fichaCriatura = (FichaCriatura) ficha;
+            int dadoVida = FichaCriatura.DADO_VIDA;
+            int quantDVs = fichaCriatura.getQuantDVs();
+            int bonusCon = calcularBonus(ficha.getConstituicao());
+            int pvAdicional = fichaCriatura.getPvsAdicionais();
+
+            return (quantDVs*(dadoVida+bonusCon) + pvAdicional);
         }
 
         if (ficha instanceof FichaJogador){
-            return calcularPVMaximoJogador((FichaJogador) ficha);
+            FichaJogador fichaJogador = (FichaJogador) ficha;
+            int dadoVida = fichaJogador.getClasse().getDadoVida();
+            int lvl = fichaJogador.getLvl();
+            int bonusCon = calcularBonus(fichaJogador.getConstituicao());
+
+            return (dadoVida+bonusCon) + (lvl-1)*(dadoVida+bonusCon) + calcularPVsAdicionais(fichaJogador);
         }
 
         return 0;
+
     }
 
     public static int calcularPVsAdicionais(FichaJogador ficha){
@@ -68,41 +92,6 @@ public class Calculadora {
         }
 
         return 10 + bonDestreza + f.getEquipamento().getBonusDefesa();
-    }
-
-    private static int calcularPVJogador(FichaJogador ficha) {
-        int dadoVida = ficha.getClasse().getDadoVida();
-        int bonusCon = calcularBonus(ficha.getConstituicao());
-        int lvl = ficha.getLvl();
-        int dadoVidaMedio = ficha.getClasse().getDadoVidaMedio();
-
-        return (dadoVida+bonusCon) + (lvl-1)*(dadoVidaMedio+bonusCon) + calcularPVsAdicionais(ficha);
-    }
-
-    private static int calcularPVCriatura(FichaCriatura ficha) {
-        int dadoVida = FichaCriatura.DADO_VIDA_MEDIO;
-        int quantDVs = ficha.getQuantDVs();
-        int bonusCon = calcularBonus(ficha.getConstituicao());
-        int pvAdicional = ficha.getPvsAdicionais();
-
-        return (quantDVs*(dadoVida+bonusCon) + pvAdicional);
-    }
-
-    private static int calcularPVMaximoCriatura(FichaCriatura ficha) {
-        int quantDVs = ficha.getQuantDVs();
-        int dadoVida = FichaCriatura.DADO_VIDA;
-        int bonusCon = calcularBonus(ficha.getConstituicao());
-        int pvAdicional = ficha.getPvsAdicionais();
-
-        return (quantDVs*(dadoVida+bonusCon) + pvAdicional);
-    }
-
-    private static int calcularPVMaximoJogador(FichaJogador ficha) {
-        int dadoVida = ficha.getClasse().getDadoVida();
-        int bonusCon = calcularBonus(ficha.getConstituicao());
-        int lvl = ficha.getLvl();
-
-        return (dadoVida+bonusCon) + (lvl-1)*(dadoVida+bonusCon) + calcularPVsAdicionais(ficha);
     }
 
     public static int calcularSomaAtributos(Ficha f) {

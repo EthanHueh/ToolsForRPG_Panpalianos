@@ -5,8 +5,8 @@ import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 
 public class OpcaoVerIniciativa extends Opcao{
 
-    public OpcaoVerIniciativa(String nome) {
-        super(nome);
+    public OpcaoVerIniciativa() {
+        super("Ver iniciativa");
     }
 
     @Override

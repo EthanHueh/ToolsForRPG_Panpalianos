@@ -5,8 +5,8 @@ import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 
 public class OpcaoAtualizarIniciativa extends Opcao {
 
-    public OpcaoAtualizarIniciativa(String nome) {
-        super(nome);
+    public OpcaoAtualizarIniciativa() {
+        super("Atualizar iniciativa");
     }
 
     @Override

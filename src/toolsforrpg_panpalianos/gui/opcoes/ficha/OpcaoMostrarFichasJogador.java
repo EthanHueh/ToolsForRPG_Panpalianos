@@ -3,15 +3,15 @@ package toolsforrpg_panpalianos.gui.opcoes.ficha;
 import toolsforrpg_panpalianos.gui.opcoes.Opcao;
 import toolsforrpg_panpalianos.gui.telas.TelaFichas;
 
-public class OpcaoExcluirFicha extends Opcao {
+public class OpcaoMostrarFichasJogador extends Opcao {
 
-    public OpcaoExcluirFicha() {
-        super("Excluir ficha");
+    public OpcaoMostrarFichasJogador() {
+        super("Mostrar fichas de jogador");
     }
 
     @Override
     public void executar() {
-        TelaFichas.excluirFicha();
+        TelaFichas.mostrarFichasJogador();
     }
-    
+
 }

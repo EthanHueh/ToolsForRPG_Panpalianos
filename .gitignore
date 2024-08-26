@@ -2,6 +2,7 @@
 .vscode/
 build/
 nbproject/
+dist/
 
 #Arquivos a serem ignorados
 build.xml

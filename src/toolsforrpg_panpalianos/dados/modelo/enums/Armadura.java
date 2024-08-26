@@ -26,7 +26,7 @@ public enum Armadura {
     }
 
     public static Armadura getArmaduraByCodigo(int codigo) {
-		Armadura[] armaduras = values();
+	Armadura[] armaduras = values();
 
         for (Armadura armadura : armaduras) {
             if (armadura.getCodigo() == codigo){

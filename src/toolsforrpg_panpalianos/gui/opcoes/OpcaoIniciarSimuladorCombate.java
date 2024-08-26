@@ -4,8 +4,8 @@ import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 
 public class OpcaoIniciarSimuladorCombate extends Opcao{
 
-    public OpcaoIniciarSimuladorCombate(String nome) {
-        super(nome);
+    public OpcaoIniciarSimuladorCombate() {
+        super("Iniciar simulador de combate");
     }
 
     @Override

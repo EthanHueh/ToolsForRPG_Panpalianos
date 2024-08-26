@@ -18,15 +18,15 @@ public class Launcher extends JFrame {
     JPanel painel;
     JButton botaoMenu;
     
-    private void eventoBotaoMenuPrincipal() {
-        this.dispose();
-        new TelaMenuPrincipal();
-    }
-
     public Launcher(){
         initComponents();
     }
-
+    
+    private void eventoBotaoMenuPrincipal() {
+        this.dispose();
+        GerenciadorTelas.iniciarMenuPrincipal();
+    }
+    
     private void initComponents() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                //Se eu fechar a janela, o programa para de rodar
         this.setResizable(true);                                 //Dá pra eu deixar ou não o usuário aumentar/diminuir a janela
@@ -78,8 +78,6 @@ public class Launcher extends JFrame {
         this.add(painel, BorderLayout.CENTER);
 
         this.pack();
-
-        this.setVisible(true);
     }
 
 }

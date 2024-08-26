@@ -5,8 +5,8 @@ import toolsforrpg_panpalianos.gui.opcoes.Opcao;
 
 public class OpcaoAtualizarFicha extends Opcao {
 
-    public OpcaoAtualizarFicha(String nome) {
-        super(nome);
+    public OpcaoAtualizarFicha() {
+        super("Atualizar ficha");
     }
 
     @Override

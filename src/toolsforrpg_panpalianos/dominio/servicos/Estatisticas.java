@@ -23,8 +23,8 @@ public class Estatisticas {
         for (int i = 0; i < tipoAtributos.length; i++){
             TipoAtributo atributoAtual = tipoAtributos[i];
             Function<Ficha, Integer> getAtributoDaFicha = (ficha) -> ficha.getAtributoByTipo(atributoAtual);
-            
             fichas.sort(Comparator.comparing(getAtributoDaFicha));
+            
             mensagem[i] = gerarMensagem(fichas, tipoAtributos[i]);
         }
 
@@ -52,5 +52,5 @@ public class Estatisticas {
 
         return (somaAtributos/fichas.size());
     }
-
+    
 }

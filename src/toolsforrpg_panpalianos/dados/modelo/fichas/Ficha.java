@@ -6,7 +6,6 @@ import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
-import toolsforrpg_panpalianos.dominio.servicos.Validador;
 
 public abstract class Ficha {
 

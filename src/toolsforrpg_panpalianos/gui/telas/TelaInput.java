@@ -2,12 +2,38 @@ package toolsforrpg_panpalianos.gui.telas;
 
 import javax.swing.JOptionPane;
 
-import toolsforrpg_panpalianos.dominio.utils.ValidadorDeInputs;
-
 public class TelaInput {
-
+    
     public static int obterInteiro(String msg) {
-        return ValidadorDeInputs.consistirInteiro(msg);
+
+        int numero = 0;
+
+        do {
+            try {
+                numero = Integer.parseInt(JOptionPane.showInputDialog(msg));
+                return numero;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Insira novamente!", "Input errado", 0);
+            }
+        }
+        while(true);
+
+    }
+
+    public static int obterInteiro(String msg, String titulo) {
+
+        int numero = 0;
+
+        do {
+            try {
+                numero = Integer.parseInt(JOptionPane.showInputDialog(null, msg, titulo,1));
+                return numero;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Insira novamente!", "Input errado", 0);
+            }
+        }
+        while(true);
+
     }
 
     public static boolean desejaSair(){

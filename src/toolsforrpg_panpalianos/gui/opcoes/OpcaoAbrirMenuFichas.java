@@ -1,16 +1,16 @@
 package toolsforrpg_panpalianos.gui.opcoes;
 
-import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
+import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
 public class OpcaoAbrirMenuFichas extends Opcao {
 
-    public OpcaoAbrirMenuFichas(String nome) {
-        super(nome);
+    public OpcaoAbrirMenuFichas() {
+        super("Abrir menu de fichas");
     }
 
     @Override
     public void executar() {
-        new TelaMenuFichas();
+        GerenciadorTelas.telaMenuFichas.iniciar();
     }
 
 }
