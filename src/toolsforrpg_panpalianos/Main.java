@@ -11,13 +11,6 @@ public class Main {
     public static void main(String[] args) {
         GerenciadorTelas.iniciarLauncher();
    }
-    
-    public static int realizarTeste(Ficha f, TipoAtributo t){
-        int resultadoDado = RoladorDeDados.executar(1, 20);
-        int bonus = Calculadora.calcularBonus(f.getAtributoByTipo(t));
-
-        return resultadoDado + bonus;
-    }
 
 }
 
@@ -26,4 +19,6 @@ TODO
 fazer o programa gerar txts
 
 fazer a iniciativa ser rolada automaticamente
+
+fazer o atualizar ficha
 */

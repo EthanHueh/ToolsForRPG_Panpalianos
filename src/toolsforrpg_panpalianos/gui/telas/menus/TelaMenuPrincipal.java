@@ -8,16 +8,11 @@ import toolsforrpg_panpalianos.gui.opcoes.OpcaoMostrarEstatisticas;
 import toolsforrpg_panpalianos.gui.opcoes.OpcaoSair;
 import toolsforrpg_panpalianos.gui.opcoes.OpcaoAbrirMenuFichas;
 import toolsforrpg_panpalianos.gui.opcoes.OpcaoAbrirMenuIniciativa;
-import toolsforrpg_panpalianos.gui.telas.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaMenuPrincipal extends TelaMenu {
 
     public TelaMenuPrincipal(){
-        super();
-    }
-
-    @Override
-    protected void construir() {
         setTitulo("RPG OLD DRAGON");
         addOpcao(new OpcaoAbrirMenuFichas());
         addOpcao(new OpcaoAbrirMenuIniciativa());

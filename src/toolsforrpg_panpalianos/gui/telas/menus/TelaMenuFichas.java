@@ -12,11 +12,6 @@ import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoMostrarFichasJogador;
 public class TelaMenuFichas extends TelaMenu {
 
     public TelaMenuFichas(){
-        super();
-    }
-
-    @Override
-    protected void construir() {
         setTitulo("Menu de fichas");
         addOpcao(new OpcaoMostrarFichasJogador());
         addOpcao(new OpcaoMostrarFichasCriatura());

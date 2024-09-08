@@ -1,5 +1,6 @@
 package toolsforrpg_panpalianos.gui.telas;
 
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTabela;
 import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;

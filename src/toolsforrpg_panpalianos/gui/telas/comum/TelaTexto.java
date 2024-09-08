@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas;
+package toolsforrpg_panpalianos.gui.telas.comum;
 
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;

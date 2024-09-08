@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.gui.telas;
 
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTabela;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dominio.servicos.RegrasHomebrew;

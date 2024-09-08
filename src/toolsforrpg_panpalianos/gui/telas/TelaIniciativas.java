@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.gui.telas;
 
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;

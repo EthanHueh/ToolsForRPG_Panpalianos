@@ -10,11 +10,6 @@ import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoVerIniciativa;
 public class TelaMenuIniciativas extends TelaMenu {
     
     public TelaMenuIniciativas(){
-        super();
-    }
-
-    @Override
-    protected void construir() {
         setTitulo("Menu Iniciativa");
         addOpcao(new OpcaoAdicionarIniciativa());
         addOpcao(new OpcaoVerIniciativa());
@@ -22,6 +17,6 @@ public class TelaMenuIniciativas extends TelaMenu {
         addOpcao(new OpcaoExcluirIniciativa());
         addOpcao(new OpcaoSalvarIniciativas());
         addOpcao(new OpcaoSair());
-        
     }
+
 }

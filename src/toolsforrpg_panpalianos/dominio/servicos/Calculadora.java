@@ -1,10 +1,12 @@
 package toolsforrpg_panpalianos.dominio.servicos;
 
 import java.util.List;
+import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class Calculadora {
 
@@ -101,6 +103,17 @@ public class Calculadora {
 
     public static int calcularMovimento(FichaJogador f) {
         return f.getRaca().getMovimento() + f.getEquipamento().getArmadura().getReducaoMov();
+    }
+    
+    public static int calcularResultadoTeste(Ficha f, TipoAtributo t){
+        int resultadoDado = RoladorDeDados.executar(1, 20);
+        int bonus = Calculadora.calcularBonus(f.getAtributoByTipo(t));
+        
+        return resultadoDado + bonus;
+    }
+    
+    public static int calcularDano(Ficha f){
+        return RoladorDeDados.executar(1, f.getEquipamento().getArma().getDadoDano()) + Calculadora.calcularBonus(f.getForca());
     }
 
 }

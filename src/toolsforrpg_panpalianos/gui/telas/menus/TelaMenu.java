@@ -7,18 +7,16 @@ import javax.swing.JOptionPane;
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
 import toolsforrpg_panpalianos.gui.opcoes.*;
-import toolsforrpg_panpalianos.gui.telas.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
-public abstract class TelaMenu {
+public class TelaMenu {
     
     private List<Opcao> opcoes = new ArrayList<>();
     private String titulo;
 
     TelaMenu(){
-        construir();
+        
     }
-
-    protected abstract void construir();
 
     public void iniciar() {
         

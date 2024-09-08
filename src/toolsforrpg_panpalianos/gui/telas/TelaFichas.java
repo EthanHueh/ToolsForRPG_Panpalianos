@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.gui.telas;
 
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import java.util.ArrayList;
 import java.util.List;
 
