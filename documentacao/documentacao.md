@@ -33,7 +33,7 @@ Esse tópico tem como fim reunir os requisitos funcionais, não funcionais e reg
 
 # Anexos
 ## Ficha de Old Dragon, Frente e Verso
-<img src="documentacao/ficha.png" alt="ficha.png" width="400">         <img src="documentacao/ficha.png" alt="fichaVerso.png" width="400">
+<img src="ficha.png" alt="ficha.png" width="400">         <img src="ficha.png" alt="fichaVerso.png" width="400">
 
 ## Diagrama de classe
-![image](documentacao/diagramaClasse.png)
+![image](diagramaClasse.png)
