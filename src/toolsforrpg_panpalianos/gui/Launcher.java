@@ -11,8 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuPrincipal;
-
 public class Launcher extends JFrame {
     
     JPanel painel;

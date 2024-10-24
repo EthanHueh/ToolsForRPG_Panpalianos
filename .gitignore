@@ -3,7 +3,10 @@
 build/
 nbproject/
 dist/
+out/
+.idea/
 
 #Arquivos a serem ignorados
 build.xml
 manifest.mf
+ToolsForRPG_Panpalianos.iml

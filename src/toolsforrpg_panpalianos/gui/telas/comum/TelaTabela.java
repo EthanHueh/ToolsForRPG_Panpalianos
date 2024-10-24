@@ -1,6 +1,5 @@
 package toolsforrpg_panpalianos.gui.telas.comum;
 
-import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;

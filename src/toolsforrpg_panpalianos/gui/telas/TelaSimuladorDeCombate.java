@@ -9,7 +9,6 @@ import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 
 public class TelaSimuladorDeCombate {
     

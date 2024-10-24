@@ -1,6 +1,5 @@
 package toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate;
 
-import static toolsforrpg_panpalianos.dados.modelo.enums.Classe.CLERIGO;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
