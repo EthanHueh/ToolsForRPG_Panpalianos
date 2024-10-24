@@ -1,9 +1,9 @@
 package toolsforrpg_panpalianos.dados.modelo.fichas;
 
+import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
-import toolsforrpg_panpalianos.dominio.servicos.TabelaClasses;
 
 public class FichaJogador extends Ficha {
     

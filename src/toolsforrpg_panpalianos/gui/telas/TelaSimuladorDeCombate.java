@@ -7,17 +7,14 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaSimuladorDeCombate {
-    
-    private static Personagem jogador = new Personagem();
-    private static Personagem inimigo = new Personagem();
-    private static int numeroTurnos = 0;
-    
-    private static String msg = "1 - Atacar\n2 - Defender\n3 - Desviar\n4 - Usar pocao\n5 - Habilidade Classe";
-    
+
+    private static SimuladorDeCombate simCom = new SimuladorDeCombate();
+
     public static void iniciar(){
         JOptionPane.showMessageDialog(null, "Bem vindo ao simulador de combate!", "SIMULADOR DE COMBATE", 0);
 
@@ -26,6 +23,9 @@ public class TelaSimuladorDeCombate {
         String msg = GeradorMensagens.gerarMensagemFichasMenu(fichas);
 
         int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o jogador?","Jogador");
+
+        Personagem jogador = simCom.getJogador();
+        Personagem inimigo = simCom.getInimigo();
 
         if (opcao > 0 && opcao <= fichas.size()){
             Ficha ficha = fichas.get(opcao - 1);  
@@ -53,9 +53,15 @@ public class TelaSimuladorDeCombate {
     }
     
     public static void executar() {
+
+        Personagem jogador = simCom.getJogador();
+        Personagem inimigo = simCom.getInimigo();
         
-        numeroTurnos++;
-        int opcao = TelaInput.obterInteiro("O que fazes, "+jogador.getFicha().getNome()+"?\n"+msg+" ("+jogador.getHabilidadeClasse()+")\n6 - Sair", "Turno "+numeroTurnos);
+        simCom.avancarTurno();
+
+        String msg = "1 - Atacar\n2 - Defender\n3 - Desviar\n4 - Usar pocao\n5 - Habilidade Classe";
+
+        int opcao = TelaInput.obterInteiro("O que fazes, "+jogador.getFicha().getNome()+"?\n"+msg+" ("+jogador.getHabilidadeClasse()+")\n6 - Sair", "Turno "+simCom.getNumeroTurnos());
         
         if (opcao == 6){
             if(TelaInput.desejaSair()){
@@ -83,11 +89,11 @@ public class TelaSimuladorDeCombate {
     }
 
     private static boolean isGameOver() {   
-        boolean isGameOver = !(jogador.isAlive() && inimigo.isAlive());
-
+        boolean isGameOver = simCom.isGameOver();
+        
         if (isGameOver){
             anunciarVencendor();
-            resetarSimulador();
+            simCom.resetar();
         }
 
         return isGameOver;
@@ -95,15 +101,11 @@ public class TelaSimuladorDeCombate {
     }
 
     private static void anunciarVencendor() {
-      
-        String nomeVencedor = jogador.isAlive() ? jogador.getFicha().getNome() : inimigo.getFicha().getNome();
-        JOptionPane.showMessageDialog(null,nomeVencedor+" venceu!", "Vitoria!",2);
-    }
-    
-    private static void resetarSimulador(){
-        numeroTurnos = 0;
-        jogador.resetar();
-        inimigo.resetar();
+        Personagem jogador = simCom.getJogador();
+        Personagem inimigo = simCom.getInimigo();
+
+        String nome = jogador.isAlive() ? jogador.getFicha().getNome() : inimigo.getFicha().getNome();
+        JOptionPane.showMessageDialog(null,nome+" venceu!", "Vitoria!",2);
     }
 
 }

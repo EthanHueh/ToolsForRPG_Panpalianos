@@ -1,6 +1,8 @@
 package toolsforrpg_panpalianos.dominio.servicos;
 
 import java.util.List;
+
+import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;

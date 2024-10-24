@@ -1,9 +1,8 @@
-package toolsforrpg_panpalianos.dominio.servicos;
+package toolsforrpg_panpalianos.dados.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import toolsforrpg_panpalianos.dados.modelo.NivelClasse;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
 public class TabelaClasses {

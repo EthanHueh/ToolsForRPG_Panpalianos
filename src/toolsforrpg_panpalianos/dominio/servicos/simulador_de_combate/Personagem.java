@@ -4,6 +4,11 @@ import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoClasse;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoClerigo;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoHomemDeArmas;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoLadrao;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoMago;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class Personagem {
@@ -12,6 +17,7 @@ public class Personagem {
     
     private int quantPocoes = 2;
     private int habilidadeClasse = 2;
+    private AcaoClasse acaoClasse;
  
     private boolean bloqueando = false;
     private boolean desviando = false;
@@ -19,26 +25,7 @@ public class Personagem {
     public Personagem(){
 
     }
-    
-    public void bloquear(){
-        bloqueando = true;
-    }
-    
-    public void desviar(){
-        desviando = true;
-    }
 
-    private int tomarDano(int dano) {
-
-        if (bloqueando){
-            dano /= 2;
-        }
-        
-        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() - dano);
-        
-        return dano;
-    }
-    
     public String realizarAcao(Personagem inimigo) {
         return realizarAcao(1, inimigo);
     }
@@ -48,116 +35,30 @@ public class Personagem {
         bloqueando = false;
         desviando = false;
         
-        FichaJogador fichaJogador = null;
-        if (ficha instanceof FichaJogador){
-            fichaJogador = (FichaJogador) ficha;
-        }
-        
         switch (opcao) {
             case 1:
                 return atacar(inimigo);
      
             case 2:
-                bloquear();
-                return ficha.getNome()+" prepara-se para defender-se! Dano reduzido pela metade!!!";
+                return bloquear();
                 
             case 3:
-                desviar();
-                return ficha.getNome()+" prepara-se para desviar! CA +5!!!";
+                return desviar();
                 
             case 4:
-                
-                if (quantPocoes <= 0){
-                    return ficha.getNome()+" esta sem pocoes!!";
-                }
-                
-                int hpCurado = usarPocao();
-                return ficha.getNome()+" curou "+hpCurado+"!!!";
+                return usarPocao();
                 
             case 5:
-                
-                if (fichaJogador == null){
-                    return ficha.getNome()+" fez nada!";
-                }
-                
-                switch(fichaJogador.getClasse()){
-                    
-                    case CLERIGO:
-                        if (habilidadeClasse <= 0){
-                            return ficha.getNome()+" fez nada!";
-                        }
-                        
-                        habilidadeClasse--;
-                        
-                        int bonusLvl = fichaJogador.getLvl();
-                        
-                        if (bonusLvl > 4){
-                            bonusLvl = 4;
-                        }
-                        
-                        hpCurado = RoladorDeDados.executar(1,8) + bonusLvl;
-
-                        return ficha.getNome()+" usou Curar Ferimentos!! Curou "+hpCurado+"!!";
-                        
-                    case HOMEM_DE_ARMAS:
-                        if (habilidadeClasse <= 0){
-                            return ficha.getNome()+" fez nada!";
-                        }
-                        
-                        habilidadeClasse--;
-                        
-                        return
-                            ficha.getNome()+" ataca duas vezes!!\n"+
-                            atacar(inimigo)+
-                            atacar(inimigo);
-                        
-                    case LADRAO:
-                        int pocoesEncontradas = RoladorDeDados.executar(1,2);
-                        
-                        quantPocoes += pocoesEncontradas;
-                        return ficha.getNome()+" obteve "+pocoesEncontradas+"!!!";
-                        
-                    case MAGO:
-                        if (habilidadeClasse <= 0){
-                            return ficha.getNome()+" fez nada!";
-                        }
-                        
-                        habilidadeClasse--;
-                        
-                        bonusLvl = fichaJogador.getLvl();
-                        
-                        if (bonusLvl > 4){
-                            bonusLvl = 4;
-                        }
-                        
-                        int quantMissil = Math.round(fichaJogador.getLvl() / 3);
-                        
-                        int dano = quantMissil + bonusLvl;
-                        int danoRecebido = inimigo.tomarDano(dano);
-
-                        return ficha.getNome()+" usou missil, "+inimigo.getFicha().getNome()+" recebeu "+danoRecebido+" de dano!";
-                        
-                    default:
-                        return ficha.getNome()+" fez nada!";
- 
-                }
-
+                return usarHabilidadeClasse(inimigo);
+                      
             default:
                 return ficha.getNome()+" fez nada!";
+ 
         }
         
     }
 
-    private int usarPocao() {
-        int hpCurado = RoladorDeDados.executar(1, 8);
-        quantPocoes--;
-        
-        curar(hpCurado);
-        
-        return hpCurado;
-    }
-    
-    private String atacar(Personagem inimigo) {
+    public String atacar(Personagem inimigo) {
         int testeAtaque = 0;
         
         if (ficha.getEquipamento().getArma().isDistancia()){
@@ -188,7 +89,96 @@ public class Personagem {
             nomeInimigo+" esta com "+inimigo.getFicha().getQuantPVsAtual()+"PV!!\n";
     }
 
-    private void curar(int hpCurado) {
+    public int tomarDano(int dano) {
+
+        if (bloqueando){
+            dano /= 2;
+        }
+        
+        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() - dano);
+        
+        return dano;
+    }
+    
+    public String bloquear(){
+        bloqueando = true;
+        return ficha.getNome()+" prepara-se para defender-se! Dano reduzido pela metade!!!";
+    }
+    
+    public String desviar(){
+        desviando = true;
+        return ficha.getNome()+" prepara-se para desviar! CA +5!!!";
+    }
+
+    public void resetar() {
+        quantPocoes = 2;
+        habilidadeClasse = 2;
+ 
+        bloqueando = false;
+        desviando = false;
+        acaoClasse = null;
+
+        ficha.setQuantPVsAtual(Calculadora.calcularPVMaximo(ficha));
+       
+    }
+
+    public void adicionarPocoes(int pocoesEncontradas) {
+        quantPocoes += pocoesEncontradas;
+    }
+
+    private String usarHabilidadeClasse(Personagem inimigo) {
+        if (habilidadeClasse <= 0){
+            return ficha.getNome()+" fez nada!";
+        }
+
+        if (acaoClasse == null && ficha instanceof FichaJogador){
+            FichaJogador fichaJogador = (FichaJogador) ficha;
+            switch (fichaJogador.getClasse()) {
+                case CLERIGO:
+                    acaoClasse = new AcaoClerigo();
+                    break;
+
+                case HOMEM_DE_ARMAS:
+                    acaoClasse = new AcaoHomemDeArmas();
+                    break;
+
+                case LADRAO:
+                    acaoClasse = new AcaoLadrao();
+                    break;
+
+                case MAGO:
+                    acaoClasse = new AcaoMago();
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+
+        return acaoClasse.acionar(this, inimigo);
+    }
+
+    public void gastarPontoHabilidade(int n) {
+        if (habilidadeClasse > 0){
+            habilidadeClasse -= n;
+        }
+    }
+
+    private String usarPocao() {
+        if (quantPocoes <= 0){
+            return ficha.getNome()+" esta sem pocoes!!";
+        }
+
+        quantPocoes--;
+        
+        int hpCurado = RoladorDeDados.executar(1, 8);
+    
+        curar(hpCurado);
+        
+        return ficha.getNome()+" curou "+hpCurado+"!!!";
+    }
+
+    public void curar(int hpCurado) {
         ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() + hpCurado);
         
         if (ficha.getQuantPVsAtual() > Calculadora.calcularPV(ficha)){
@@ -196,7 +186,6 @@ public class Personagem {
         }
         
     }
-    
 
     public boolean isAlive() {
         return (ficha.getQuantPVsAtual() > 0);
@@ -220,15 +209,6 @@ public class Personagem {
     
     public boolean isBloqueando(){
         return bloqueando;
-    }
-
-    public void resetar() {
-        quantPocoes = 2;
-        habilidadeClasse = 2;
- 
-        bloqueando = false;
-        desviando = false;
-       
     }
 
 }
