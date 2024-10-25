@@ -27,7 +27,7 @@ public abstract class Ficha {
 
     private Equipamento equipamento = new Equipamento();
 
-    public Ficha(){
+    protected Ficha(){
         
     }
 
@@ -83,7 +83,7 @@ public abstract class Ficha {
         }
     }
 
-    public void setRacaPorString(String string) {
+    public void setRaca(String string) {
         
         string = string.toLowerCase();
 

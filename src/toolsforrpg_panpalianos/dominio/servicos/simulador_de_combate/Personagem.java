@@ -108,7 +108,7 @@ public class Personagem {
         bloqueando = false;
         desviando = false;
 
-        ficha.setQuantPVsAtual(Calculadora.calcularPVMaximo(ficha));
+        ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
        
     }
 

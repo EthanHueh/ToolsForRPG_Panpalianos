@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
@@ -24,7 +25,9 @@ public class LeitorDeArquivos {
             while ((line = br.readLine()) != null) {
                 String[] valores = line.split(",");
 
-                FichaCriatura ficha = new FichaCriatura();
+                for (int i = 0; i < valores.length; i++){
+                    valores[i] = valores[i].trim();
+                }
 
                 int indiceNome = 0;
                 int indiceRaca = 1;
@@ -42,22 +45,21 @@ public class LeitorDeArquivos {
                 int indiceBaseAtaque = 11;
                 int indicePVAdicional = 12;
 
-                ficha.setNome(valores[indiceNome].trim());
-                ficha.setRacaPorString(valores[indiceRaca].trim());
-
-                ficha.setForca(Integer.parseInt(valores[indiceForca].trim()));
-                ficha.setDestreza(Integer.parseInt(valores[indiceDestreza].trim()));
-                ficha.setConstituicao(Integer.parseInt(valores[indiceConstituicao].trim()));
-                ficha.setInteligencia(Integer.parseInt(valores[indiceInteligencia].trim()));
-                ficha.setSabedoria(Integer.parseInt(valores[indiceSabedoria].trim()));
-                ficha.setCarisma(Integer.parseInt(valores[indiceCarisma].trim()));
-
-                ficha.setQuantDVs(Integer.parseInt(valores[indiceQuantDVs].trim()));
-                ficha.setClasseArmadura(Integer.parseInt(valores[indiceClasseArmadura].trim()));
-                ficha.setJogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao].trim()));
-                ficha.setBaseAtaque(Integer.parseInt(valores[indiceBaseAtaque].trim()));
-                ficha.setPvsAdicionais(Integer.parseInt(valores[indicePVAdicional].trim()));
-                ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
+                FichaCriatura ficha = FichaCriatura.Builder.novaCriatura()
+                    .nome(valores[indiceNome])
+                    .raca(valores[indiceRaca])
+                    .forca(Integer.parseInt(valores[indiceForca]))
+                    .destreza(Integer.parseInt(valores[indiceDestreza]))
+                    .constituicao(Integer.parseInt(valores[indiceConstituicao]))
+                    .inteligencia(Integer.parseInt(valores[indiceInteligencia]))
+                    .sabedoria(Integer.parseInt(valores[indiceSabedoria]))
+                    .carisma(Integer.parseInt(valores[indiceCarisma]))
+                    .quantDVs(Integer.parseInt(valores[indiceQuantDVs]))
+                    .classeArmadura(Integer.parseInt(valores[indiceClasseArmadura]))
+                    .jogadaDeProtecao(Integer.parseInt(valores[indiceJogadaDeProtecao]))
+                    .baseDeAtaque(Integer.parseInt(valores[indiceBaseAtaque]))
+                    .pvsAdicionais(Integer.parseInt(valores[indicePVAdicional]))
+                .build();
 
                 fichas.add(ficha);
 
@@ -82,7 +84,9 @@ public class LeitorDeArquivos {
             while ((line = br.readLine()) != null) {
                 String[] valores = line.split(",");
 
-                FichaJogador ficha = new FichaJogador();
+                for (int i = 0; i < valores.length; i++){
+                    valores[i] = valores[i].trim();
+                }
 
                 int indiceNome = 0;
                 int indiceRaca = 1;
@@ -103,27 +107,25 @@ public class LeitorDeArquivos {
 
                 int indiceArma = 13;
 
-                ficha.setNome(valores[indiceNome].trim());
-                ficha.setRacaPorString(valores[indiceRaca].trim());
+                Equipamento eq = new Equipamento();
+                eq.setArmadura(Armadura.getArmaduraByCodigo(Integer.parseInt(valores[indiceArmadura].trim())));
+                eq.setEscudo(Escudo.getEscudoByCodigo(Integer.parseInt(valores[indiceEscudo].trim())));
+                eq.setArma(Arma.getArmaByCodigo(Integer.parseInt(valores[indiceArma].trim())));
 
-                ficha.setForca(Integer.parseInt(valores[indiceForca].trim()));
-                ficha.setDestreza(Integer.parseInt(valores[indiceDestreza].trim()));
-                ficha.setConstituicao(Integer.parseInt(valores[indiceConstituicao].trim()));
-                ficha.setInteligencia(Integer.parseInt(valores[indiceInteligencia].trim()));
-                ficha.setSabedoria(Integer.parseInt(valores[indiceSabedoria].trim()));
-                ficha.setCarisma(Integer.parseInt(valores[indiceCarisma].trim()));
-                
-                ficha.setClassePorString(valores[indiceClasse].trim());
-                ficha.setLvl(Integer.parseInt(valores[indiceLvl].trim()));
-                ficha.setExp(Integer.parseInt(valores[indiceExp].trim()));
+                FichaJogador ficha = FichaJogador.Builder.novoJogador()
+                    .nome(valores[indiceNome])
+                    .raca(valores[indiceRaca])
+                    .forca(Integer.parseInt(valores[indiceForca]))
+                    .destreza(Integer.parseInt(valores[indiceDestreza]))
+                    .constituicao(Integer.parseInt(valores[indiceConstituicao]))
+                    .inteligencia(Integer.parseInt(valores[indiceInteligencia]))
+                    .sabedoria(Integer.parseInt(valores[indiceSabedoria]))
+                    .carisma(Integer.parseInt(valores[indiceCarisma]))
+                    .classe(valores[indiceClasse])
+                    .lvl(Integer.parseInt(valores[indiceLvl]))
+                    .exp(Integer.parseInt(valores[indiceExp]))             
+                .build();
 
-                ficha.getEquipamento().setArmadura(Armadura.getArmaduraByCodigo(Integer.parseInt(valores[indiceArmadura].trim())));
-                ficha.getEquipamento().setEscudo(Escudo.getEscudoByCodigo(Integer.parseInt(valores[indiceEscudo].trim())));
-                ficha.getEquipamento().setArma(Arma.getArmaByCodigo(Integer.parseInt(valores[indiceArma].trim())));
-
-                ficha.setQuantDVs(Calculadora.calcularDVJogador(ficha));
-                ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
-                
                 fichas.add(ficha);
 
             }
