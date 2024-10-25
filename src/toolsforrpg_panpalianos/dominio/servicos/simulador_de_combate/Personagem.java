@@ -9,6 +9,7 @@ import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoC
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoHomemDeArmas;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoLadrao;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoMago;
+import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoNula;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class Personagem {
@@ -88,17 +89,6 @@ public class Personagem {
             nomeInimigo+" toma "+danoRecebido+" de dano!\n"+
             nomeInimigo+" esta com "+inimigo.getFicha().getQuantPVsAtual()+"PV!!\n";
     }
-
-    public int tomarDano(int dano) {
-
-        if (bloqueando){
-            dano /= 2;
-        }
-        
-        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() - dano);
-        
-        return dano;
-    }
     
     public String bloquear(){
         bloqueando = true;
@@ -114,48 +104,69 @@ public class Personagem {
         quantPocoes = 2;
         habilidadeClasse = 2;
  
+        acaoClasse = null;
         bloqueando = false;
         desviando = false;
-        acaoClasse = null;
 
         ficha.setQuantPVsAtual(Calculadora.calcularPVMaximo(ficha));
        
+    }
+
+    private String usarHabilidadeClasse(Personagem inimigo) {
+
+        if (!(ficha instanceof FichaJogador)){
+            return ficha.getNome()+" fez nada!";
+        }
+
+        if (acaoClasse == null){
+            atualizarAcaoClasse();
+        }
+
+        if (habilidadeClasse > 0){
+            return acaoClasse.acionar(this, inimigo);
+        }
+
+        return ficha.getNome()+" fez nada!";
+        
+    }
+
+    private void atualizarAcaoClasse() {
+        FichaJogador fichaJogador = (FichaJogador) ficha;
+
+        switch (fichaJogador.getClasse()) {
+            case CLERIGO:
+                acaoClasse = new AcaoClerigo();
+                break;
+
+            case HOMEM_DE_ARMAS:
+                acaoClasse = new AcaoHomemDeArmas();
+                break;
+
+            case LADRAO:
+                acaoClasse = new AcaoLadrao();
+                break;
+
+            case MAGO:
+                acaoClasse = new AcaoMago();
+                break;
+
+            default:
+                acaoClasse = new AcaoNula();
+                break;
+        }
     }
 
     public void adicionarPocoes(int pocoesEncontradas) {
         quantPocoes += pocoesEncontradas;
     }
 
-    private String usarHabilidadeClasse(Personagem inimigo) {
-        if (habilidadeClasse <= 0){
-            return ficha.getNome()+" fez nada!";
+    public void curar(int hpCurado) {
+        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() + hpCurado);
+        
+        if (ficha.getQuantPVsAtual() > Calculadora.calcularPV(ficha)){
+            ficha.setQuantPVsAtual(quantPocoes);
         }
-
-        if (acaoClasse == null && ficha instanceof FichaJogador){
-            FichaJogador fichaJogador = (FichaJogador) ficha;
-            switch (fichaJogador.getClasse()) {
-                case CLERIGO:
-                    acaoClasse = new AcaoClerigo();
-                    break;
-
-                case HOMEM_DE_ARMAS:
-                    acaoClasse = new AcaoHomemDeArmas();
-                    break;
-
-                case LADRAO:
-                    acaoClasse = new AcaoLadrao();
-                    break;
-
-                case MAGO:
-                    acaoClasse = new AcaoMago();
-                    break;
-            
-                default:
-                    break;
-            }
-        }
-
-        return acaoClasse.acionar(this, inimigo);
+        
     }
 
     public void gastarPontoHabilidade(int n) {
@@ -164,6 +175,17 @@ public class Personagem {
         }
     }
 
+    public int tomarDano(int dano) {
+
+        if (bloqueando){
+            dano /= 2;
+        }
+        
+        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() - dano);
+        
+        return dano;
+    }
+    
     private String usarPocao() {
         if (quantPocoes <= 0){
             return ficha.getNome()+" esta sem pocoes!!";
@@ -178,14 +200,7 @@ public class Personagem {
         return ficha.getNome()+" curou "+hpCurado+"!!!";
     }
 
-    public void curar(int hpCurado) {
-        ficha.setQuantPVsAtual(ficha.getQuantPVsAtual() + hpCurado);
-        
-        if (ficha.getQuantPVsAtual() > Calculadora.calcularPV(ficha)){
-            ficha.setQuantPVsAtual(quantPocoes);
-        }
-        
-    }
+
 
     public boolean isAlive() {
         return (ficha.getQuantPVsAtual() > 0);
