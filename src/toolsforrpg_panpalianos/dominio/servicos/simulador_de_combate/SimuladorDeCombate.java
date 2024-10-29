@@ -4,16 +4,40 @@ public class SimuladorDeCombate {
         
     private Personagem jogador = new Personagem();
     private Personagem inimigo = new Personagem();
-    private int numeroTurnos = 0;
-
+    private Personagem personagemAtual = jogador;
+    private int numeroTurnos = 1;
+    
     public void avancarTurno(){
         numeroTurnos++;
+        
+        if (personagemAtual == jogador){
+            personagemAtual = inimigo;
+        } else {
+            personagemAtual = jogador;
+        }
+
+    }
+
+    public boolean isGameOver() {
+        return !(jogador.isAlive() && inimigo.isAlive());
+    }
+
+    public boolean isTurnoJogador() {
+        return personagemAtual == jogador;
+    }
+
+    public Personagem personagemAtual(){
+        return personagemAtual;
     }
 
     public void resetar(){
-        numeroTurnos = 0;
+        numeroTurnos = 1;
         jogador.resetar();
         inimigo.resetar();
+    }
+
+    public int turnoAtual() {
+        return numeroTurnos;
     }
 
     public Personagem getJogador() {
@@ -30,14 +54,6 @@ public class SimuladorDeCombate {
 
     public void setInimigo(Personagem inimigo) {
         this.inimigo = inimigo;
-    }
-
-    public int getNumeroTurnos() {
-        return numeroTurnos;
-    }
-
-    public boolean isGameOver() {
-        return !(jogador.isAlive() && inimigo.isAlive());
     }
 
 }
