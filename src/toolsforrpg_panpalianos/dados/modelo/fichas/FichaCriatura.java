@@ -18,6 +18,10 @@ public class FichaCriatura extends Ficha {
     private int movimento;
     
     private int pvsAdicionais;
+
+    private FichaCriatura() {
+
+    }
     
     @Override
     public String toString() {

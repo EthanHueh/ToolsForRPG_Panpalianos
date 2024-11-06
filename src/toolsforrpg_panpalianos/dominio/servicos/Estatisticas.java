@@ -44,13 +44,9 @@ public class Estatisticas {
     }
 
     private static int calcularMediaAtributos(List<Ficha> fichas, TipoAtributo opcao) {
-        int somaAtributos = 0;
-        
-        for (Ficha f : fichas) {
-            somaAtributos += f.getAtributoByTipo(opcao);
-        }
-
-        return (somaAtributos/fichas.size());
+        return (int) fichas.stream().
+            mapToDouble(f -> f.getAtributoByTipo(opcao)).
+            average().orElse(0.0);
     }
     
 }

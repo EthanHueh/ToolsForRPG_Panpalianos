@@ -148,7 +148,7 @@ public class FichaJogador extends Ficha {
 
         private Equipamento equipamento = new Equipamento();
         
-        private Classe classe;
+        private Classe classe = Classe.NENHUMA;
         private Especializacao especializacao = Especializacao.NENHUMA;
         private int lvl = 0;
         private int exp = 0;
