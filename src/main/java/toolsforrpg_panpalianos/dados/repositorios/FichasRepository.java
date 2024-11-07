@@ -15,8 +15,8 @@ public class FichasRepository {
     private final static int LIMITE_FICHAS = 1000;
     
     static {
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasCriatura("recursos\\fichasCriaturas.csv"));
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasJogador("recursos\\fichasJogadores.csv"));
+        fichas.addAll(LeitorDeArquivos.lerArquivoFichasCriatura("src\\main\\resources\\fichasCriaturas.csv"));
+        fichas.addAll(LeitorDeArquivos.lerArquivoFichasJogador("src\\main\\resources\\fichasJogadores.csv"));
     }
     
     public static void adicionar(Ficha ficha){

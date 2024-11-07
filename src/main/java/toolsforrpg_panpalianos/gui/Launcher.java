@@ -33,7 +33,7 @@ public class Launcher extends JFrame {
         this.setTitle("Tools for RPG - Panpalianos");
         this.setLayout(new BorderLayout(0, 0));
         
-        ImageIcon logo = new ImageIcon("recursos\\capa_old_dragon.jpg");
+        ImageIcon logo = new ImageIcon("src\\main\\resources\\capa_old_dragon.jpg");
         this.setIconImage(logo.getImage());                               //Ícone do programa
 
         botaoMenu = new JButton();
