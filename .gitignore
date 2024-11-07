@@ -5,6 +5,7 @@ nbproject/
 dist/
 out/
 .idea/
+target/
 
 #Arquivos a serem ignorados
 build.xml
