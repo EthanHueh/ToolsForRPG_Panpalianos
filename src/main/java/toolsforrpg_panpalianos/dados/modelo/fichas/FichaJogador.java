@@ -254,6 +254,11 @@ public class FichaJogador extends Ficha {
             return this;
         }
 
+        public Builder equipamento(Equipamento equipamento){
+            this.equipamento = equipamento;
+            return this;
+        }
+
         public Builder classe(Classe classe){
             this.classe = classe;
             return this;

@@ -108,9 +108,9 @@ public class LeitorDeArquivos {
                 int indiceArma = 13;
 
                 Equipamento eq = new Equipamento();
-                eq.setArmadura(Armadura.getArmaduraByCodigo(Integer.parseInt(valores[indiceArmadura].trim())));
-                eq.setEscudo(Escudo.getEscudoByCodigo(Integer.parseInt(valores[indiceEscudo].trim())));
-                eq.setArma(Arma.getArmaByCodigo(Integer.parseInt(valores[indiceArma].trim())));
+                eq.setArmadura(Armadura.getArmaduraByCodigo(Integer.parseInt(valores[indiceArmadura])));
+                eq.setEscudo(Escudo.getEscudoByCodigo(Integer.parseInt(valores[indiceEscudo])));
+                eq.setArma(Arma.getArmaByCodigo(Integer.parseInt(valores[indiceArma])));
 
                 FichaJogador ficha = FichaJogador.Builder.novoJogador()
                     .nome(valores[indiceNome])
@@ -121,9 +121,10 @@ public class LeitorDeArquivos {
                     .inteligencia(Integer.parseInt(valores[indiceInteligencia]))
                     .sabedoria(Integer.parseInt(valores[indiceSabedoria]))
                     .carisma(Integer.parseInt(valores[indiceCarisma]))
+                    .equipamento(eq)
                     .classe(valores[indiceClasse])
                     .lvl(Integer.parseInt(valores[indiceLvl]))
-                    .exp(Integer.parseInt(valores[indiceExp]))             
+                    .exp(Integer.parseInt(valores[indiceExp]))           
                 .build();
 
                 fichas.add(ficha);
