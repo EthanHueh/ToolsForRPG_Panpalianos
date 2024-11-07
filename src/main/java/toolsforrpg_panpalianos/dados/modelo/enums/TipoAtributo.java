@@ -1,5 +1,10 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum TipoAtributo {
 
     QUANT_PVS           (1, "PVs"),
@@ -17,18 +22,4 @@ public enum TipoAtributo {
     private final int codigo;
     private final String nome;
 
-    private TipoAtributo(int codigo, String nome){
-        this.codigo = codigo;
-        this.nome = nome;
-    }
-
-    public int getCodigo(){
-        return codigo;
-    }
-
-    public String getNome(){
-        return nome;
-    }
-
-    
 }

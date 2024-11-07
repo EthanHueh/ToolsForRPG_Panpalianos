@@ -1,5 +1,8 @@
 package toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate;
 
+import lombok.Getter;
+
+@Getter
 public class SimuladorDeCombate {
         
     private Personagem jogador = new Personagem();
@@ -9,7 +12,6 @@ public class SimuladorDeCombate {
     
     public void avancarTurno(){
         numeroTurnos++;
-        
         if (personagemAtual == jogador){
             personagemAtual = inimigo;
         } else {
@@ -26,34 +28,10 @@ public class SimuladorDeCombate {
         return personagemAtual == jogador;
     }
 
-    public Personagem personagemAtual(){
-        return personagemAtual;
-    }
-
     public void resetar(){
         numeroTurnos = 1;
         jogador.resetar();
         inimigo.resetar();
-    }
-
-    public int turnoAtual() {
-        return numeroTurnos;
-    }
-
-    public Personagem getJogador() {
-        return jogador;
-    }
-
-    public void setJogador(Personagem jogador) {
-        this.jogador = jogador;
-    }
-
-    public Personagem getInimigo() {
-        return inimigo;
-    }
-
-    public void setInimigo(Personagem inimigo) {
-        this.inimigo = inimigo;
     }
 
 }

@@ -3,10 +3,14 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
+@Getter
+@Setter
 public class FichaCriatura extends Ficha {
 
     public final static int DADO_VIDA = 8;
@@ -20,7 +24,7 @@ public class FichaCriatura extends Ficha {
     private int pvsAdicionais;
 
     private FichaCriatura() {
-
+        
     }
     
     @Override
@@ -48,53 +52,9 @@ public class FichaCriatura extends Ficha {
     }
 
     @Override
-    public int getClasseArmadura() {
-        return classeArmadura;
-    }
-
-    public void setClasseArmadura(int classeArmadura) {
-        this.classeArmadura = classeArmadura;
-    }
-
-    @Override
     public int getJogadaProtecao() {
         return jogadaDeProtecao;
     }
-
-    public void setJogadaDeProtecao(int jogadaDeProtecao) {
-        this.jogadaDeProtecao = jogadaDeProtecao;
-    }
-
-    @Override
-    public int getBaseAtaque() {
-        return baseAtaque;
-    }
-
-    public void setBaseAtaque(int baseAtaque) {
-        this.baseAtaque = baseAtaque;
-    }
-
-    @Override
-    public int getMovimento() {
-        return movimento;
-    }
-
-    public void setMovimento(int movimento) {
-        this.movimento = movimento;
-    }
-
-    public int getJogadaDeProtecao() {
-        return jogadaDeProtecao;
-    }
-
-    public int getPvsAdicionais() {
-        return pvsAdicionais;
-    }
-
-    public void setPvsAdicionais(int pvsAdicionais) {
-        this.pvsAdicionais = pvsAdicionais;
-    }
-
 
     public static class Builder {
 

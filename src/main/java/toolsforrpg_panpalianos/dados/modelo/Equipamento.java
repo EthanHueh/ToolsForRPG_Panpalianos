@@ -1,9 +1,13 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 
+@Getter
+@Setter
 public class Equipamento {
     private Arma arma =         Arma.DESARMADO;
     private Armadura armadura = Armadura.NENHUM;
@@ -23,10 +27,6 @@ public class Equipamento {
         return armadura.getBonusDefesa() + escudo.getBonusDefesa();
     }
 
-    public Armadura getArmadura() {
-        return armadura;
-    }
-
     public void setArmadura(Armadura armadura) {
         this.armadura = armadura;
     }
@@ -35,20 +35,12 @@ public class Equipamento {
         this.armadura = Armadura.getArmaduraByCodigo(codigo);
     }
 
-    public Escudo getEscudo() {
-        return escudo;
-    }
-
     public void setEscudo(Escudo escudo) {
         this.escudo = escudo;
     }
 
     public void setEscudo(int codigo) {
         this.escudo = Escudo.getEscudoByCodigo(codigo);
-    }
-
-    public Arma getArma() {
-        return arma;
     }
 
     public void setArma(Arma arma) {

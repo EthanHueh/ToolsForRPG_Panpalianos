@@ -81,7 +81,7 @@ public class TelaSimuladorDeCombate {
 
         do {
             if (simCom.isTurnoJogador()){
-                int opcao = TelaInput.obterInteiro(msgJogador(jogador), "Turno "+simCom.turnoAtual());
+                int opcao = TelaInput.obterInteiro(msgJogador(jogador), "Turno "+simCom.getNumeroTurnos());
             
                 if (opcao == 6){
                     if(TelaInput.desejaSair()){

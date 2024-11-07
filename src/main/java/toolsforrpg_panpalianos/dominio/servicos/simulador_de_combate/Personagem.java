@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate;
 
+import lombok.AccessLevel;
+import lombok.Getter;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
@@ -12,20 +14,19 @@ import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoM
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoNula;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
+@Getter
 public class Personagem {
     
     private Ficha ficha;
-    
+
+    @Getter(value = AccessLevel.NONE)
+    private AcaoClasse acaoClasse;
+
     private int quantPocoes = 2;
     private int habilidadeClasse = 2;
-    private AcaoClasse acaoClasse;
  
     private boolean bloqueando = false;
     private boolean desviando = false;
-
-    public Personagem(){
-
-    }
 
     public String realizarAcao(Personagem inimigo) {
         return realizarAcao(1, inimigo);
@@ -200,30 +201,12 @@ public class Personagem {
         return ficha.getNome()+" curou "+hpCurado+"!!!";
     }
 
-
-
     public boolean isAlive() {
         return (ficha.getQuantPVsAtual() > 0);
     }
 
-    public Ficha getFicha() {
-        return ficha;
-    }
-
     public void setFicha(Ficha ficha) {
         this.ficha = ficha;
-    }
-
-    public int getHabilidadeClasse() {
-        return habilidadeClasse;
-    }
-    
-    public boolean isDesviando(){
-        return desviando;
-    }
-    
-    public boolean isBloqueando(){
-        return bloqueando;
     }
 
 }

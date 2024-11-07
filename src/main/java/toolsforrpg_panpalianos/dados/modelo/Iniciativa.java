@@ -1,16 +1,17 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class Iniciativa {
     private int iniciativa;
     private Ficha ficha;
-
-    public Iniciativa(int iniciativa, Ficha ficha) {
-        this.iniciativa = iniciativa;
-        this.ficha = ficha;
-    }
 
     @Override
     public String toString(){
@@ -19,18 +20,5 @@ public class Iniciativa {
         } else {
             return ficha.getNome()+" (PDM): "+iniciativa;
         }
-    }
-    
-    public int getIniciativa() {
-        return iniciativa;
-    }
-    public void setIniciativa(int iniciativa) {
-        this.iniciativa = iniciativa;
-    }
-    public Ficha getFicha() {
-        return ficha;
-    }
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
     }
 }

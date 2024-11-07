@@ -1,5 +1,10 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Escudo {
 
     NENHUM(0,"Nenhum", 0),
@@ -12,12 +17,6 @@ public enum Escudo {
     private final String nome;
     private final int codigo;
 
-    Escudo(int bonusDefesa, String nome, int codigo){
-        this.bonusDefesa = bonusDefesa;
-        this.nome = nome;
-        this.codigo = codigo;
-    }
-
     public static Escudo getEscudoByCodigo(int codigo) {
 	Escudo[] escudos = values();
 
@@ -27,18 +26,6 @@ public enum Escudo {
             }
         }
         return NENHUM;
-    }
-
-    public int getBonusDefesa() {
-        return bonusDefesa;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
 }

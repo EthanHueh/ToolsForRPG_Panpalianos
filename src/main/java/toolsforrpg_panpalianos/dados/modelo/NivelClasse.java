@@ -1,5 +1,8 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
+import lombok.Getter;
+
+@Getter
 public class NivelClasse {
     private final int nivel;
     private final int xp;
@@ -14,26 +17,5 @@ public class NivelClasse {
         this.baseAtaque = baseAtaque;
         this.jogadaProtecao = jogadaProtecao;
     }
-
-    public int getNivel() {
-        return nivel;
-    }
-
-    public int getXp() {
-        return xp;
-    }
-
-    public int getPvsAdicionais() {
-        return pvsAdicionais;
-    }
-
-    public String getBaseAtaque() {
-        return baseAtaque;
-    }
-
-    public int getJogadaProtecao() {
-        return jogadaProtecao;
-    }
-
 
 }

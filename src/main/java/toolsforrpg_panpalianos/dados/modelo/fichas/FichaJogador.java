@@ -3,6 +3,8 @@ package toolsforrpg_panpalianos.dados.modelo.fichas;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
@@ -10,6 +12,8 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
+@Getter
+@Setter
 public class FichaJogador extends Ficha {
     
     private Classe classe;
@@ -69,6 +73,10 @@ public class FichaJogador extends Ficha {
         return Calculadora.calcularMovimento(this);
     }
 
+    public void setClasse(Classe classe) {
+        this.classe = classe;
+    }
+
     public void setClasse(String string) {
         
         string = string.toLowerCase();
@@ -94,38 +102,6 @@ public class FichaJogador extends Ficha {
                 this.classe = Classe.CLERIGO;
         }
         
-    }
-
-    public Classe getClasse() {
-        return classe;
-    }
-
-    public void setClasse(Classe classe) {
-        this.classe = classe;
-    }
-
-    public int getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
-    }
-
-    public int getExp() {
-        return exp;
-    }
-
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
-
-    public Especializacao getEspecializacao() {
-        return especializacao;
-    }
-
-    public void setEspecializacao(Especializacao especializacao) {
-        this.especializacao = especializacao;
     }
 
     public static class Builder {

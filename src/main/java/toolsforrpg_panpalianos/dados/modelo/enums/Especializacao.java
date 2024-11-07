@@ -1,5 +1,10 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Especializacao {
     NENHUMA("Nenhuma", Classe.NENHUMA),
     
@@ -22,16 +27,4 @@ public enum Especializacao {
     private final String nome;
     private final Classe classe;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public Classe getClasse() {
-        return classe;
-    }
-    
-    Especializacao(String nome, Classe classe){
-        this.nome = nome;
-        this.classe = classe;
-    }
 }

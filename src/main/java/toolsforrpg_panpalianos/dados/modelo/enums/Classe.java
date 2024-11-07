@@ -1,5 +1,10 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Classe {
     
     CLERIGO         ("Clerigo", 8, 5),
@@ -12,22 +17,4 @@ public enum Classe {
     private final int dadoVida;
     private final int dadoVidaMedio;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public int getDadoVida() {
-        return dadoVida;
-    }
-
-    public int getDadoVidaMedio() {
-        return dadoVidaMedio;
-    }
-
-    Classe(String nome, int dadoVida, int dadoVidaMedio){
-        this.nome = nome;
-        this.dadoVida = dadoVida;
-        this.dadoVidaMedio = dadoVidaMedio;
-    }
-    
 }

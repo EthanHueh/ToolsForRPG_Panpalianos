@@ -1,5 +1,10 @@
 package toolsforrpg_panpalianos.dados.modelo.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum Raca {
     
     HUMANO      ("Humano",9),
@@ -12,17 +17,4 @@ public enum Raca {
     private final String nome;
     private final int movimento;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public int getMovimento() {
-        return movimento;
-    }
-
-    Raca(String nome, int movimento){
-        this.nome = nome;
-        this.movimento = movimento;
-    }
-    
 }
