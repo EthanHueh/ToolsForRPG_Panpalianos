@@ -54,17 +54,15 @@ public class CalculadoraIT {
     @Test
     public void testCalcularDVJogador() {
         System.out.println("calcularDVJogador");
-        FichaJogador ficha = new FichaJogador();
+        FichaJogador ficha = FichaJogador.Builder.novoJogador().classe("clerigo").build();
         
         ficha.setLvl(9);
-        int expResult = 9;
         int result = Calculadora.calcularDVJogador(ficha);
-        assertEquals(expResult, result);
+        assertEquals(9, result);
         
         ficha.setLvl(14);
-        expResult = 9;
         result = Calculadora.calcularDVJogador(ficha);
-        assertEquals(expResult, result);
+        assertEquals(9, result);
     }
 
     /**
@@ -73,7 +71,7 @@ public class CalculadoraIT {
     @Test
     public void testCalcularPV() {
         System.out.println("calcularPV");
-        Ficha ficha = new FichaCriatura();
+        Ficha ficha = FichaCriatura.Builder.novaCriatura().build();
         ficha.setConstituicao(10);
         
         ficha.setQuantDVs(1);
@@ -101,24 +99,21 @@ public class CalculadoraIT {
     public void testCalcularPVMaximo() {
         System.out.println("calcularPVMaximo");
         
-        Ficha ficha = new FichaCriatura();
+        Ficha ficha = FichaCriatura.Builder.novaCriatura().build();
+
         ficha.setConstituicao(10);
         ficha.setQuantDVs(1);
-        
-        int expResult = 8;
         int result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(expResult, result);
+        assertEquals(8, result);
         
         ficha.setConstituicao(15);
-        expResult = 10;
         result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(expResult, result);
+        assertEquals(10, result);
         
         ficha.setConstituicao(10);
         ficha.setQuantDVs(5);
-        expResult = 40;
         result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(expResult, result);
+        assertEquals(40, result);
     }
 
     /**
@@ -127,7 +122,7 @@ public class CalculadoraIT {
     @Test
     public void testCalcularPVsAdicionais() {
         System.out.println("calcularPVsAdicionais");
-        FichaJogador ficha = null;
+        FichaJogador ficha = FichaJogador.Builder.novoJogador().build();
         int expResult = 0;
         int result = Calculadora.calcularPVsAdicionais(ficha);
         assertEquals(expResult, result);
