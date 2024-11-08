@@ -1,27 +1,170 @@
-{
-    
-    "fichasJogadores": [
-        {
-            "nome": "Al Mansur",
-            "raca": "Humano",
-            "forca": 17,
-            "destreza": 12,
-            "constituicao": 14,
-            "inteligencia": 10,
-            "sabedoria": 8,
-            "carisma": 11,
-            "lvl": 3,
-            "exp": 5000
-        },
-        {
-        
-        },
-        {
-        "id": 3,
-        "name": "Emicida",
-        "genre": "Hip Hop",
-        "urlImg": "https://i.scdn.co/image/ab67616100005174908b4b4bc90e1518b68b4068"
-        }
-    ]
-      
-}
+[
+  {
+    "classe": "HOMEM_DE_ARMAS",
+    "especializacao": "NENHUMA",
+    "lvl": 3,
+    "exp": 5000,
+    "nome": "Al Mansur",
+    "descricao": "Sem descricao",
+    "raca": "HUMANO",
+    "idiomas": ["abrobra", "abreb"],
+    "alinhamento": "Neutro",
+    "forca": 17,
+    "destreza": 12,
+    "constituicao": 14,
+    "inteligencia": 10,
+    "sabedoria": 10,
+    "carisma": 11,
+    "quantDVs": 3,
+    "quantPVsAtual": 28,
+    "equipamento": {
+      "arma": "LANCA_CURTA",
+      "armadura": "COTA_MALHA",
+      "escudo": "ESCUDO_MADEIRA"
+    }
+  },
+  {
+    "classe": "LADRAO",
+    "especializacao": "NENHUMA",
+    "lvl": 4,
+    "exp": 5000,
+    "nome": "Durnak",
+    "descricao": "Sem descricao",
+    "raca": "GOBLIN",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 14,
+    "destreza": 17,
+    "constituicao": 10,
+    "inteligencia": 9,
+    "sabedoria": 9,
+    "carisma": 10,
+    "quantDVs": 4,
+    "quantPVsAtual": 18,
+    "equipamento": {
+      "arma": "MACHADO",
+      "armadura": "COURO",
+      "escudo": "NENHUM"
+    }
+  },
+  {
+    "classe": "MAGO",
+    "especializacao": "NENHUMA",
+    "lvl": 3,
+    "exp": 5000,
+    "nome": "Elimac",
+    "descricao": "Sem descricao",
+    "raca": "HUMANO",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 8,
+    "destreza": 14,
+    "constituicao": 12,
+    "inteligencia": 18,
+    "sabedoria": 18,
+    "carisma": 10,
+    "quantDVs": 3,
+    "quantPVsAtual": 13,
+    "equipamento": {
+      "arma": "CAJADO",
+      "armadura": "NENHUM",
+      "escudo": "NENHUM"
+    }
+  },
+  {
+    "classe": "HOMEM_DE_ARMAS",
+    "especializacao": "NENHUMA",
+    "lvl": 3,
+    "exp": 5000,
+    "nome": "Knill",
+    "descricao": "Sem descricao",
+    "raca": "ELFO",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 14,
+    "destreza": 16,
+    "constituicao": 12,
+    "inteligencia": 10,
+    "sabedoria": 10,
+    "carisma": 11,
+    "quantDVs": 3,
+    "quantPVsAtual": 25,
+    "equipamento": {
+      "arma": "ARCO_LONGO",
+      "armadura": "COURO",
+      "escudo": "NENHUM"
+    }
+  },
+  {
+    "classe": "CLERIGO",
+    "especializacao": "NENHUMA",
+    "lvl": 3,
+    "exp": 5000,
+    "nome": "Odra",
+    "descricao": "Sem descricao",
+    "raca": "HUMANO",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 12,
+    "destreza": 10,
+    "constituicao": 13,
+    "inteligencia": 11,
+    "sabedoria": 11,
+    "carisma": 14,
+    "quantDVs": 3,
+    "quantPVsAtual": 21,
+    "equipamento": {
+      "arma": "MANGUAL",
+      "armadura": "COTA_MALHA",
+      "escudo": "ESCUDO_MADEIRA"
+    }
+  },
+  {
+    "classe": "LADRAO",
+    "especializacao": "NENHUMA",
+    "lvl": 4,
+    "exp": 5000,
+    "nome": "Ramón",
+    "descricao": "Sem descricao",
+    "raca": "HALFLING",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 9,
+    "destreza": 18,
+    "constituicao": 12,
+    "inteligencia": 11,
+    "sabedoria": 11,
+    "carisma": 11,
+    "quantDVs": 4,
+    "quantPVsAtual": 22,
+    "equipamento": {
+      "arma": "ADAGA",
+      "armadura": "COURO",
+      "escudo": "NENHUM"
+    }
+  },
+  {
+    "classe": "HOMEM_DE_ARMAS",
+    "especializacao": "NENHUMA",
+    "lvl": 3,
+    "exp": 5000,
+    "nome": "Taroba",
+    "descricao": "Sem descricao",
+    "raca": "ANAO",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 16,
+    "destreza": 9,
+    "constituicao": 18,
+    "inteligencia": 10,
+    "sabedoria": 10,
+    "carisma": 8,
+    "quantDVs": 3,
+    "quantPVsAtual": 34,
+    "equipamento": {
+      "arma": "MACHADO",
+      "armadura": "COTA_MALHA",
+      "escudo": "ESCUDO_ACO"
+    }
+  }
+]

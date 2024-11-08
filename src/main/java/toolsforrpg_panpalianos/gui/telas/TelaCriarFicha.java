@@ -6,13 +6,14 @@ import javax.swing.JOptionPane;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class TelaCriarFicha {
     
-    public static FichaCriatura criarFichaCriatura() {
+    public static Ficha criarFichaCriatura() {
 
-        FichaCriatura ficha = FichaCriatura.Builder.novaCriatura()
+        Ficha ficha = FichaCriatura.Builder.novaCriatura()
             .nome(JOptionPane.showInputDialog("Insira o nome:"))
             .raca(JOptionPane.showInputDialog("Insira a raca:"))
             .forca(TelaInput.obterInteiro("Insira a forca:"))
@@ -28,12 +29,12 @@ public class TelaCriarFicha {
             .pvsAdicionais(TelaInput.obterInteiro("Insira o PV adicional:"))
         .build();
 
-        return ficha;
+        return InicializadorFicha.inicializar(ficha);
     }
 
     public static Ficha criarFichaJogador() {
 
-        return FichaJogador.Builder.novoJogador()
+        Ficha ficha = FichaJogador.Builder.novoJogador()
             .nome(JOptionPane.showInputDialog("Insira o nome:"))
             .raca(JOptionPane.showInputDialog("Insira a raca:"))
             .forca(TelaInput.obterInteiro("Insira a forca:"))
@@ -47,11 +48,13 @@ public class TelaCriarFicha {
             .exp(TelaInput.obterInteiro("Insira a experiência:"))
         .build();
 
+        return InicializadorFicha.inicializar(ficha);
+
     }
 
     public static Ficha criarFichaAtributosAleatorios() {
 
-        return FichaJogador.Builder.novoJogador()
+        Ficha ficha = FichaJogador.Builder.novoJogador()
             .nome(JOptionPane.showInputDialog("Insira o nome:"))
             .raca(JOptionPane.showInputDialog("Insira a raca:"))
             .forca(RoladorDeDados.executar(3, 6))
@@ -64,6 +67,8 @@ public class TelaCriarFicha {
             .lvl(TelaInput.obterInteiro("Insira o nível:"))
             .exp(TelaInput.obterInteiro("Insira a experiência:"))
         .build();
+
+        return InicializadorFicha.inicializar(ficha);
     }
 
 }

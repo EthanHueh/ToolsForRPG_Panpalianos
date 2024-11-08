@@ -1,0 +1,27 @@
+[
+  {
+    "classeArmadura": 12,
+    "jogadaDeProtecao": 17,
+    "baseAtaque": 2,
+    "movimento": 9,
+    "pvsAdicionais": 0,
+    "nome": "Robson",
+    "descricao": "Sem descricao",
+    "raca": "HUMANO",
+    "idiomas": [],
+    "alinhamento": "Neutro",
+    "forca": 10,
+    "destreza": 10,
+    "constituicao": 10,
+    "inteligencia": 10,
+    "sabedoria": 10,
+    "carisma": 10,
+    "quantDVs": 3,
+    "quantPVsAtual": 15,
+    "equipamento": {
+      "arma": "DESARMADO",
+      "armadura": "NENHUM",
+      "escudo": "NENHUM"
+    }
+  }
+]
