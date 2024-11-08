@@ -71,7 +71,7 @@ public class FichaCriatura extends Ficha {
         private int sabedoria    = 0;
         private int carisma      = 0;
 
-        private int quantDVs     = 0;
+        private int quantDVs     = 1;
         private int quantPVsAtual= 0;
 
         private Equipamento equipamento = new Equipamento();
@@ -98,7 +98,9 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder raca(Raca raca){
-            this.raca = raca;
+            if (raca != null){
+                this.raca = raca;
+            }   
             return this;
         }
 
@@ -135,7 +137,9 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder idiomas(List<String> idiomas){
-            this.idiomas = idiomas;
+            if (idiomas != null){
+                this.idiomas = idiomas;    
+            }
             return this;
         }
 
@@ -185,7 +189,9 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder equipamento(Equipamento equipamento){
-            this.equipamento = equipamento;
+            if (equipamento != null){
+                this.equipamento = equipamento;
+            }
             return this;
         }
 
@@ -242,7 +248,6 @@ public class FichaCriatura extends Ficha {
             ficha.setMovimento(movimento);
 
             ficha.setPvsAdicionais(pvsAdicionais);
-            ficha.setQuantPVsAtual(Calculadora.calcularPV(ficha));
 
             return ficha;
         }

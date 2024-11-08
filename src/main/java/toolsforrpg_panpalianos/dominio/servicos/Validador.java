@@ -8,7 +8,11 @@ public class Validador {
     public static boolean validarEspecializacao(FichaJogador ficha){
         
         Especializacao especializacao = ficha.getEspecializacao();
-        if (especializacao == null || especializacao == Especializacao.NENHUMA){
+        if (especializacao == null){
+            return false;
+        }
+
+        if (especializacao == Especializacao.NENHUMA){
             return true;
         }
         
