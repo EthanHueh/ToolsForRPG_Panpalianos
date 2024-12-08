@@ -1,7 +1,6 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
-import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
@@ -14,8 +13,8 @@ public class TelaCriarFicha {
     public static Ficha criarFichaCriatura() {
 
         Ficha ficha = FichaCriatura.Builder.novaCriatura()
-            .nome(JOptionPane.showInputDialog("Insira o nome:"))
-            .raca(JOptionPane.showInputDialog("Insira a raca:"))
+            .nome(TelaInput.obterString("Insira o nome:"))
+            .raca(TelaInput.obterString("Insira a raca:"))
             .forca(TelaInput.obterInteiro("Insira a forca:"))
             .destreza(TelaInput.obterInteiro("Insira a destreza:"))
             .constituicao(TelaInput.obterInteiro("Insira a constituição:"))
@@ -35,15 +34,15 @@ public class TelaCriarFicha {
     public static Ficha criarFichaJogador() {
 
         Ficha ficha = FichaJogador.Builder.novoJogador()
-            .nome(JOptionPane.showInputDialog("Insira o nome:"))
-            .raca(JOptionPane.showInputDialog("Insira a raca:"))
+            .nome(TelaInput.obterString("Insira o nome:"))
+            .raca(TelaInput.obterString("Insira a raca:"))
             .forca(TelaInput.obterInteiro("Insira a forca:"))
             .destreza(TelaInput.obterInteiro("Insira a destreza:"))
             .constituicao(TelaInput.obterInteiro("Insira a constituição:"))
             .inteligencia(TelaInput.obterInteiro("Insira a inteligência:"))
             .sabedoria(TelaInput.obterInteiro("Insira a sabedoria:"))
             .carisma(TelaInput.obterInteiro("Insira o carisma:"))
-            .classe(JOptionPane.showInputDialog("Insira a classe:"))
+            .classe(TelaInput.obterString("Insira a classe:"))
             .lvl(TelaInput.obterInteiro("Insira o nível:"))
             .exp(TelaInput.obterInteiro("Insira a experiência:"))
         .build();
@@ -55,15 +54,15 @@ public class TelaCriarFicha {
     public static Ficha criarFichaAtributosAleatorios() {
 
         Ficha ficha = FichaJogador.Builder.novoJogador()
-            .nome(JOptionPane.showInputDialog("Insira o nome:"))
-            .raca(JOptionPane.showInputDialog("Insira a raca:"))
+            .nome(TelaInput.obterString("Insira o nome:"))
+            .raca(TelaInput.obterString("Insira a raca:"))
             .forca(RoladorDeDados.executar(3, 6))
             .destreza(RoladorDeDados.executar(3, 6))
             .constituicao(RoladorDeDados.executar(3, 6))
             .inteligencia(RoladorDeDados.executar(3, 6))
             .sabedoria(RoladorDeDados.executar(3, 6))
             .carisma(RoladorDeDados.executar(3, 6))
-            .classe(JOptionPane.showInputDialog("Insira a classe:"))
+            .classe(TelaInput.obterString("Insira a classe:"))
             .lvl(TelaInput.obterInteiro("Insira o nível:"))
             .exp(TelaInput.obterInteiro("Insira a experiência:"))
         .build();

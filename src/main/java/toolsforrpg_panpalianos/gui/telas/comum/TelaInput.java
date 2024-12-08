@@ -3,6 +3,10 @@ package toolsforrpg_panpalianos.gui.telas.comum;
 import javax.swing.JOptionPane;
 
 public class TelaInput {
+
+    public static String obterString(String msg){
+        return JOptionPane.showInputDialog(msg);
+    }
     
     public static int obterInteiro(String msg) {
 
@@ -13,7 +17,7 @@ public class TelaInput {
                 numero = Integer.parseInt(JOptionPane.showInputDialog(msg));
                 return numero;
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Insira novamente!", "Input errado", 0);
+                TelaErro.mostrar("Insira novamente!", "Input errado");
             }
         }
         while(true);
@@ -29,7 +33,7 @@ public class TelaInput {
                 numero = Integer.parseInt(JOptionPane.showInputDialog(null, msg, titulo,1));
                 return numero;
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Insira novamente!", "Input errado", 0);
+                TelaErro.mostrar("Insira novamente!", "Input errado");
             }
         }
         while(true);

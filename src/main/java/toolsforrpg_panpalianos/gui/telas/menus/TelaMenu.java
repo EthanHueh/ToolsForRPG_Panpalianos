@@ -3,10 +3,10 @@ package toolsforrpg_panpalianos.gui.telas.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
 import toolsforrpg_panpalianos.gui.opcoes.*;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaMenu {
@@ -24,7 +24,7 @@ public class TelaMenu {
             int opcao = TelaInput.obterInteiro(toString(), titulo);
 
             if (opcao > opcoes.size()){
-                JOptionPane.showMessageDialog(null, "Opcao Inexistente!");
+                TelaErro.mostrar("OPÇÃO INEXISTENTE!");
                 iniciar();
                 return;
             }
@@ -58,7 +58,7 @@ public class TelaMenu {
     public void executarOpcao(int opcao) {
         
         if (opcao > opcoes.size()){
-            JOptionPane.showMessageDialog(null, "OPÇÃO INEXISTENTE", "X", 0);
+            TelaErro.mostrar("OPÇÃO INEXISTENTE");
             return;
         }
         

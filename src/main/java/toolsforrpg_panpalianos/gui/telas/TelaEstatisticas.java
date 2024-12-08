@@ -1,8 +1,8 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaTabela;
-import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;
 
@@ -12,7 +12,7 @@ public class TelaEstatisticas {
         String[][] valoresTabela = Estatisticas.executar();
         
         if (valoresTabela == null){
-            JOptionPane.showMessageDialog(null, "Nenhuma ficha cadastrada!", "Erro", 0);
+            TelaAviso.avisar("Nenhuma ficha cadastrada!", "Erro");
             GerenciadorTelas.telaMenuPrincipal.iniciar();
             return;
         }

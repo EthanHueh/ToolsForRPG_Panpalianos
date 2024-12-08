@@ -1,13 +1,11 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
@@ -15,7 +13,6 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.EscritorDeArquivos;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
-import toolsforrpg_panpalianos.gui.opcoes.iniciativa.OpcaoSalvarIniciativas;
 
 public class TelaIniciativas {
 
@@ -32,7 +29,7 @@ public class TelaIniciativas {
             Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
 
             if (IniciativasRepository.hasIniciativasRepetidas(iniciativa)){
-                JOptionPane.showMessageDialog(null, "Ficha repetida!", "Iniciativa", 0);
+                TelaErro.mostrar("Ficha repetida!", "Iniciativa");
                 return;
             }
 
@@ -88,7 +85,7 @@ public class TelaIniciativas {
 
     private static boolean existirIniciativas(){
         if(IniciativasRepository.retornarIniciativas().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nenhuma iniciativa inserida!", "Iniciativas", 0);
+            TelaErro.mostrar("Nenhuma iniciativa inserida!", "Iniciativas");
             return false;
         }
         return true;
@@ -102,10 +99,9 @@ public class TelaIniciativas {
         
         try {
             EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas.txt");
-            JOptionPane.showMessageDialog(null, "Arquivo escrito com sucesso!");
+            TelaAviso.avisar("Arquivo escrito com sucesso!");
         } catch (IOException ex) {
-            Logger.getLogger(OpcaoSalvarIniciativas.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro!");
+            TelaErro.mostrar("Ocorreu um erro!");
         }
     }
 

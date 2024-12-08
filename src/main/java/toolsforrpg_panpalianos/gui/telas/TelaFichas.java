@@ -1,11 +1,11 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
@@ -46,7 +46,7 @@ public class TelaFichas {
     }
     
     public static void atualizarFicha() {
-        JOptionPane.showMessageDialog(null, "Tem nada aqui ainda", "Nada", 0);
+        TelaAviso.avisar("Tem nada aqui ainda", "Nada");
     }
 
     public static void excluirFicha(){
@@ -68,7 +68,7 @@ public class TelaFichas {
 
     private static boolean existirFichas(){
         if(FichasRepository.isVazio()){
-            JOptionPane.showMessageDialog(null, "Nenhuma ficha inserida!", "Fichas", 0);
+            TelaErro.mostrar("Nenhuma ficha inserida!", "Fichas");
             return false;
         }
         return true;

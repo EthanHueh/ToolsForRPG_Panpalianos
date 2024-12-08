@@ -1,14 +1,15 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import java.util.List;
-import javax.swing.JOptionPane;
+
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
-
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.GerenciadorTelas;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaSimuladorDeCombate {
@@ -23,7 +24,7 @@ public class TelaSimuladorDeCombate {
         
         String msg = GeradorMensagens.gerarMensagemFichasMenu(fichas);
 
-        JOptionPane.showMessageDialog(null, "Bem vindo ao simulador de combate!", "SIMULADOR DE COMBATE", 0);
+        TelaAviso.avisar("Bem vindo ao simulador de combate!", "SIMULADOR DE COMBATE");
         
         do {
             int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o jogador?","Jogador");
@@ -49,7 +50,7 @@ public class TelaSimuladorDeCombate {
                 inimigo.setFicha(fichas.get(opcao - 1));
                 
                 if (inimigo.getFicha() == jogador.getFicha()){
-                    JOptionPane.showMessageDialog(null, "As fichas precisam ser diferentes!", "Fichas iguais", 0);
+                    TelaErro.mostrar("As fichas precisam ser diferentes!", "Fichas iguais");
                     continue;
                 }
                 break;
@@ -64,8 +65,8 @@ public class TelaSimuladorDeCombate {
        
         }
         while (true);
-        
-        JOptionPane.showMessageDialog(null, jogador.getFicha().getNome()+" X "+inimigo.getFicha().getNome(),"Combate!",2);
+
+        TelaAviso.avisar(jogador.getFicha().getNome()+" X "+inimigo.getFicha().getNome(),"Combate!");
         
         executar();
 
@@ -89,16 +90,16 @@ public class TelaSimuladorDeCombate {
                     }
                     continue;
                 }
-    
-                JOptionPane.showMessageDialog(null, jogador.realizarAcao(opcao, inimigo), "Turno de "+nomeJogador, 1);
+
+                TelaAviso.avisar(jogador.realizarAcao(opcao, inimigo), "Turno de "+nomeJogador);
     
             } else {
-                JOptionPane.showMessageDialog(null, inimigo.realizarAcao(jogador), "Turno de "+nomeInimigo, 1);
+                TelaAviso.avisar(inimigo.realizarAcao(jogador), "Turno de "+nomeInimigo);
             }
     
             if (simCom.isGameOver()){
                 String nomeVencedor = jogador.isAlive() ? nomeJogador : nomeInimigo;
-                JOptionPane.showMessageDialog(null,nomeVencedor+" venceu!", "Vitoria!",2);
+                TelaAviso.avisar(nomeVencedor+" venceu!", "Vitoria!");
 
                 simCom.resetar();
                 return;
