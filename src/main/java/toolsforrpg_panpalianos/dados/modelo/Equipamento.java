@@ -1,6 +1,8 @@
 package toolsforrpg_panpalianos.dados.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
@@ -8,6 +10,8 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Equipamento {
     private Arma arma =         Arma.DESARMADO;
     private Armadura armadura = Armadura.NENHUM;
