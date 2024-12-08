@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.dados.modelo.enums;
+package toolsforrpg_panpalianos.dados.modelo.enums.equipamentos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

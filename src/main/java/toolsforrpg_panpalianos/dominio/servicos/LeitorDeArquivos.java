@@ -11,10 +11,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
-import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
-import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
-import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 

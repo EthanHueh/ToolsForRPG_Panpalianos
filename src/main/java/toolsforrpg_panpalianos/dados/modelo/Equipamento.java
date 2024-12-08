@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import toolsforrpg_panpalianos.dados.modelo.enums.Arma;
-import toolsforrpg_panpalianos.dados.modelo.enums.Armadura;
-import toolsforrpg_panpalianos.dados.modelo.enums.Escudo;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
+import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
 
 @Getter
 @Setter
