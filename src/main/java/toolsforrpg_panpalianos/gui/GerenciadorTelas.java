@@ -1,5 +1,6 @@
 package toolsforrpg_panpalianos.gui;
 
+import toolsforrpg_panpalianos.gui.telas.launcher.Launcher;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuIniciativas;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuPrincipal;
@@ -15,9 +16,9 @@ public class GerenciadorTelas {
         launcher.setVisible(true);
     }
 
-    static void iniciarMenuPrincipal() {
+    public static void iniciarMenuPrincipal() {
+        launcher.dispose();
         telaMenuPrincipal.iniciar();
     }
-    
     
 }
