@@ -27,4 +27,13 @@ public enum Especializacao {
     private final String nome;
     private final Classe classe;
 
+    public static Especializacao getEspecializacao(String nome){
+        for (Especializacao e : Especializacao.values()){
+            if (nome.equals(e.getNome())){
+                return e;
+            }
+        }
+        return NENHUMA;
+    } 
+
 }

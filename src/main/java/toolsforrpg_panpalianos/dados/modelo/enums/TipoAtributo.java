@@ -7,19 +7,18 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum TipoAtributo {
 
-    QUANT_PVS           (1, "PVs"),
-    FORCA               (2, "Força"),
-    DESTREZA            (3, "Destreza"),
-    CONSTITUICAO        (4, "Constituição"),
-    INTELIGENCIA        (5, "Inteligência"),
-    SABEDORIA           (6, "Sabedoria"),
-    CARISMA             (7, "Carisma"),
-    DADO_VIDA           (8, "Dados de Vida"),
-    CLASSE_DE_ARMADURA  (9, "CA"),
-    JOGADA_DE_PROTECAO  (10, "JP"),
-    BASE_DE_ATAQUE      (11, "BA");
+    QUANT_PVS           ("PVs"),
+    FORCA               ("Força"),
+    DESTREZA            ("Destreza"),
+    CONSTITUICAO        ("Constituição"),
+    INTELIGENCIA        ("Inteligência"),
+    SABEDORIA           ("Sabedoria"),
+    CARISMA             ("Carisma"),
+    DADO_VIDA           ("Dados de Vida"),
+    CLASSE_DE_ARMADURA  ("CA"),
+    JOGADA_DE_PROTECAO  ("JP"),
+    BASE_DE_ATAQUE      ("BA");
 
-    private final int codigo;
     private final String nome;
 
 }

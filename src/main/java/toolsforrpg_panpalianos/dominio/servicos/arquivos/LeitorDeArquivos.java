@@ -11,7 +11,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
+import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
+import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
@@ -33,7 +35,7 @@ public class LeitorDeArquivos {
                 FichaCriatura f = new FichaCriatura.Builder()
                     .nome               (j.get("nome").getAsString())
                     .descricao          (j.get("descricao").getAsString())
-                    .raca               (j.get("raca").getAsString())
+                    .raca               (Raca.valueOf(j.get("raca").getAsString()))
                     .classeArmadura     (j.get("classeArmadura").getAsInt())
                     .jogadaDeProtecao   (j.get("jogadaDeProtecao").getAsInt())
                     .baseDeAtaque       (j.get("baseAtaque").getAsInt())
@@ -85,7 +87,7 @@ public class LeitorDeArquivos {
                 FichaJogador f = new FichaJogador.Builder()
                     .nome               (j.get("nome").getAsString())
                     .descricao          (j.get("descricao").getAsString())
-                    .raca               (j.get("raca").getAsString())
+                    .raca               (Raca.valueOf(j.get("raca").getAsString()))
                     .alinhamento        (j.get("alinhamento").getAsString())
                     .forca              (j.get("forca").getAsInt())
                     .destreza           (j.get("destreza").getAsInt())
@@ -97,7 +99,7 @@ public class LeitorDeArquivos {
                     .quantPVsAtual      (j.get("quantPVsAtual").getAsInt())
                     .lvl                (j.get("lvl").getAsInt())
                     .exp                (j.get("exp").getAsInt())
-                    .classe             (j.get("classe").getAsString())
+                    .classe             (Classe.valueOf(j.get("classe").getAsString()))
                     .especializacao     (Especializacao.valueOf(j.get("especializacao").getAsString()))
                     .idiomas            (
                         j.getAsJsonArray("idiomas")

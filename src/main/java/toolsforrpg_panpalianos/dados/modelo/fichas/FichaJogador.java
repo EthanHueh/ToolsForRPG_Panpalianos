@@ -76,34 +76,7 @@ public class FichaJogador extends Ficha {
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
-
-    public void setClasse(String string) {
         
-        string = string.toLowerCase();
-
-        switch (string){
-            case "clerigo":
-                this.classe = Classe.CLERIGO;
-                break;
-
-            case "ladrao":
-                this.classe = Classe.LADRAO;
-                break;
-
-            case "homem_de_armas":
-                this.classe = Classe.HOMEM_DE_ARMAS;
-                break;
-
-            case "mago":
-                this.classe = Classe.MAGO;
-                break;
-
-            default:
-                this.classe = Classe.NENHUMA;
-        }
-        
-    }
-
     public static class Builder {
 
         private String nome      = "Sem nome";
@@ -150,35 +123,8 @@ public class FichaJogador extends Ficha {
             return this;
         }
 
-        public Builder raca(String raca){
-            
-            raca = raca.toLowerCase();
-
-            switch (raca){
-                case "humano":
-                    this.raca = Raca.HUMANO;
-                    break;
-
-                case "anao":
-                    this.raca = Raca.ANAO;
-                    break;
-
-                case "halfling":
-                    this.raca = Raca.HALFLING;
-                    break;
-
-                case "elfo":
-                    this.raca = Raca.ELFO;
-                    break;
-
-                case "goblin":
-                    this.raca = Raca.GOBLIN;
-                    break;
-
-                default:
-                    this.raca = Raca.INDEFINIDO;
-            }
-
+        public Builder raca(String nome){
+            this.raca = Raca.getRaca(nome);
             return this;
         }
 
@@ -248,31 +194,8 @@ public class FichaJogador extends Ficha {
             return this;
         }
 
-        public Builder classe(String string){
-            string = string.toLowerCase();
-
-            switch (string){
-                case "clerigo":
-                    this.classe = Classe.CLERIGO;
-                    break;
-
-                case "ladrao":
-                    this.classe = Classe.LADRAO;
-                    break;
-
-                case "homem_de_armas":
-                    this.classe = Classe.HOMEM_DE_ARMAS;
-                    break;
-
-                case "mago":
-                    this.classe = Classe.MAGO;
-                    break;
-
-                default:
-                    this.classe = Classe.CLERIGO;
-
-            }
-
+        public Builder classe(String nome){
+            this.classe = Classe.getClasse(nome);
             return this;
         }
 
@@ -280,6 +203,11 @@ public class FichaJogador extends Ficha {
             if (especializacao != null){
                 this.especializacao = especializacao;
             }
+            return this;
+        }
+
+        public Builder especializacao(String nome){
+            this.especializacao = Especializacao.getEspecializacao(nome);
             return this;
         }
 

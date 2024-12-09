@@ -105,34 +105,7 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder raca(String raca){
-            
-            raca = raca.toLowerCase();
-
-            switch (raca){
-                case "humano":
-                    this.raca = Raca.HUMANO;
-                    break;
-
-                case "anao":
-                    this.raca = Raca.ANAO;
-                    break;
-
-                case "halfling":
-                    this.raca = Raca.HALFLING;
-                    break;
-
-                case "elfo":
-                    this.raca = Raca.ELFO;
-                    break;
-
-                case "goblin":
-                    this.raca = Raca.GOBLIN;
-                    break;
-
-                default:
-                    this.raca = Raca.INDEFINIDO;
-            }
-
+            this.raca = Raca.getRaca(raca);
             return this;
         }
 

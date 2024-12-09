@@ -6,28 +6,25 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Arma {
-    DESARMADO   (0,"Desarmado",1, false),
-    ADAGA       (1,"Adaga",4,false),
-    ARCO_LONGO  (2,"Arco longo",8,true),
-    CAJADO      (3,"Cajado",6,false),
-    LANCA_CURTA (4,"Lanca curta",6,false),
-    MACHADO     (5,"Machado",6,false),
-    MANGUAL     (6,"Mangual",8,false);
+    DESARMADO   ("Desarmado",1, false),
+    ADAGA       ("Adaga",4,false),
+    ARCO_LONGO  ("Arco longo",8,true),
+    CAJADO      ("Cajado",6,false),
+    LANCA_CURTA ("Lanca curta",6,false),
+    MACHADO     ("Machado",6,false),
+    MANGUAL     ("Mangual",8,false);
     
-    private final int codigo;
     private final String nome;
     private final int dadoDano;
     private final boolean isDistancia;
 
-    public static Arma getArmaByCodigo(int codigo) {
-		Arma[] armas = values();
-
-        for (Arma arma : armas) {
-            if (arma.getCodigo() == codigo){
-                return arma;
+    public static Arma getArma(String arma) {
+        for (Arma a : Arma.values()){
+            if (arma.equals(a.getNome())){
+                return a;
             }
         }
         return DESARMADO;
-	}
+    }
     
 }
