@@ -1,6 +1,5 @@
 package toolsforrpg_panpalianos.gui.telas;
 
-import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaTabela;
 
@@ -13,7 +12,6 @@ public class TelaEstatisticas {
         
         if (valoresTabela == null){
             TelaAviso.avisar("Nenhuma ficha cadastrada!", "Erro");
-            GerenciadorTelas.telaMenuPrincipal.iniciar();
             return;
         }
         

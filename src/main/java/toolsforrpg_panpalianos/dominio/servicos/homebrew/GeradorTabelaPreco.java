@@ -1,7 +1,7 @@
-package toolsforrpg_panpalianos.dominio.servicos;
-public class RegrasHomebrew {
+package toolsforrpg_panpalianos.dominio.servicos.homebrew;
+public class GeradorTabelaPreco {
 
-    public static String[][] gerarTabelaDePreco(int preco, String nome) {
+    public static String[][] executar(int preco, String nome) {
         
         String[][] tabelaPrecos = new String[5][3];
         

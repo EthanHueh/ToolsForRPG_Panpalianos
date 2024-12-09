@@ -3,8 +3,6 @@ package toolsforrpg_panpalianos.gui.telas.menus;
 import java.util.ArrayList;
 import java.util.List;
 
-import toolsforrpg_panpalianos.gui.GerenciadorTelas;
-
 import toolsforrpg_panpalianos.gui.opcoes.*;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
@@ -31,7 +29,6 @@ public class TelaMenu {
 
             if (getOpcao(opcao) instanceof OpcaoSair){
                 if (TelaInput.desejaSair()){
-                    GerenciadorTelas.telaMenuPrincipal.iniciar();
                     return;
                 }
             }
@@ -40,7 +37,6 @@ public class TelaMenu {
         }
         while(true);
         
-
     }
 
     public void addOpcao(Opcao opcao){

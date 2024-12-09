@@ -5,9 +5,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 
 public class TelaTabela {
 
@@ -25,12 +23,8 @@ public class TelaTabela {
             @Override
             public void windowClosing(WindowEvent e) {
                 
-                if (TelaInput.desejaSair()) {
-                    
+                if (TelaInput.desejaSair()) {        
                     frame.dispose();
-                    SwingUtilities.invokeLater(() -> {
-                        GerenciadorTelas.telaMenuPrincipal.iniciar();
-                    });
                 }
             }
         });

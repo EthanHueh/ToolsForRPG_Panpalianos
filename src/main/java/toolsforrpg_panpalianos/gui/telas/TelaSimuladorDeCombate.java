@@ -7,7 +7,6 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDeCombate;
-import toolsforrpg_panpalianos.gui.GerenciadorTelas;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
@@ -36,7 +35,6 @@ public class TelaSimuladorDeCombate {
 
             if (opcao == fichas.size() + 1){
                 if(TelaInput.desejaSair()){
-                    GerenciadorTelas.telaMenuPrincipal.iniciar();
                     return;
                 }
             }
@@ -58,7 +56,6 @@ public class TelaSimuladorDeCombate {
 
             if (opcao == fichas.size() + 1){
                 if(TelaInput.desejaSair()){
-                    GerenciadorTelas.telaMenuPrincipal.iniciar();
                     return;
                 }
             }
@@ -69,11 +66,9 @@ public class TelaSimuladorDeCombate {
         TelaAviso.avisar(jogador.getFicha().getNome()+" X "+inimigo.getFicha().getNome(),"Combate!");
         
         executar();
-
-        GerenciadorTelas.telaMenuPrincipal.iniciar();
     }
     
-    public static void executar() {
+    private static void executar() {
 
         Personagem jogador = simCom.getJogador();
         Personagem inimigo = simCom.getInimigo();

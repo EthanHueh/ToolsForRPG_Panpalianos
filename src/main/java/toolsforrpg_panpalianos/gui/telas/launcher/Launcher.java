@@ -21,6 +21,8 @@ public class Launcher extends JFrame {
         initComponents();
 
         pack();
+
+        setVisible(true);
     }
     
     private void initComponents() {
