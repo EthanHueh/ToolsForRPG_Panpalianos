@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.dominio.servicos;
+package toolsforrpg_panpalianos.dominio.servicos.arquivos;
 
 import java.io.FileReader;
 import java.io.IOException;

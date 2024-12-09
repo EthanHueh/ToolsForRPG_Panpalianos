@@ -10,8 +10,11 @@ public class TelaTabelaPrecos {
         int preco = TelaInput.obterInteiro("Insira o preco do equipamento:","Preco equipamento");
         String nome = TelaInput.obterString("Insira o nome do equipamento:");
         
-        String[][] valoresTabela = GeradorTabelaPreco.executar(preco, nome);
         String[] colunas = {"","Preco upgrade "+nome, "Preco acumulado dos upgrades"};
-        TelaTabela.iniciar("Tabela de precos", valoresTabela, colunas);  
+        TelaTabela.iniciar(
+            "Tabela de precos",
+            GeradorTabelaPreco.executar(preco, nome),
+            colunas
+        );  
     }
 }

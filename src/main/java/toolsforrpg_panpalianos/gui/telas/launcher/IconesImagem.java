@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 public enum IconesImagem {
-    LOGO(new ImageIcon("src\\main\\resources\\capa_old_dragon.jpg"));
+    LOGO(new ImageIcon("src\\main\\resources\\images\\capa_old_dragon.jpg"));
 
     private ImageIcon imageIcon;
 

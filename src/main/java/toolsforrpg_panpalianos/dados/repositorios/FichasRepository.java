@@ -6,7 +6,7 @@ import java.util.List;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
-import toolsforrpg_panpalianos.dominio.servicos.LeitorDeArquivos;
+import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class FichasRepository {
@@ -15,8 +15,8 @@ public class FichasRepository {
     private final static int LIMITE_FICHAS = 1000;
     
     static {
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasCriatura("src/main/resources/fichasCriaturas.json"));
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasJogador("src/main/resources/fichasJogadores.json"));
+        fichas.addAll(LeitorDeArquivos.lerArquivoFichasCriatura("arquivos/fichas/fichasCriaturas.json"));
+        fichas.addAll(LeitorDeArquivos.lerArquivoFichasJogador("arquivos/fichas/fichasJogadores.json"));
     }
     
     public static void adicionar(Ficha ficha){
