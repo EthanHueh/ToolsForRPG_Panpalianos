@@ -7,8 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
+import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
+import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
@@ -82,8 +84,8 @@ public class FichaJogador extends Ficha {
         private String nome      = "Sem nome";
         private String descricao = "Sem descricao";
         private Raca raca        = Raca.INDEFINIDO;
-        private List<String> idiomas = new ArrayList<>();
-        private String alinhamento = "Neutro";
+        private List<Idioma> idiomas = new ArrayList<>();
+        private Alinhamento alinhamento = Alinhamento.NEUTRO;
 
         private int forca        = 0;
         private int destreza     = 0;
@@ -128,14 +130,19 @@ public class FichaJogador extends Ficha {
             return this;
         }
 
-        public Builder idiomas(List<String> idiomas){
+        public Builder idiomas(List<Idioma> idiomas){
             if (idiomas != null){
                 this.idiomas = idiomas;    
             }
             return this;
         }
 
-        public Builder alinhamento(String alinhamento){
+        public Builder alinhamento(String nome){
+            this.alinhamento = Alinhamento.getAlinhamento(nome);
+            return this;
+        }
+
+        public Builder alinhamento(Alinhamento alinhamento){
             this.alinhamento = alinhamento;
             return this;
         }

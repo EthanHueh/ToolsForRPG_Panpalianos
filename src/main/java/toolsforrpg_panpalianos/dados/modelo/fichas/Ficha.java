@@ -5,6 +5,8 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
+import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
+import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
@@ -16,8 +18,8 @@ public abstract class Ficha {
     private String nome      = "Sem nome";
     private String descricao = "Sem descricao";
     private Raca raca        = Raca.INDEFINIDO;
-    private List<String> idiomas;
-    private String alinhamento;
+    private List<Idioma> idiomas;
+    private Alinhamento alinhamento;
 
     private int forca        = 0;
     private int destreza     = 0;

@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
+import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
+import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
@@ -41,7 +44,7 @@ public class LeitorDeArquivos {
                     .baseDeAtaque       (j.get("baseAtaque").getAsInt())
                     .movimento          (j.get("movimento").getAsInt())
                     .pvsAdicionais      (j.get("pvsAdicionais").getAsInt())
-                    .alinhamento        (j.get("alinhamento").getAsString())
+                    .alinhamento        (Alinhamento.valueOf(j.get("alinhamento").getAsString()))
                     .forca              (j.get("forca").getAsInt())
                     .destreza           (j.get("destreza").getAsInt())
                     .constituicao       (j.get("constituicao").getAsInt())
@@ -51,11 +54,8 @@ public class LeitorDeArquivos {
                     .quantDVs           (j.get("quantDVs").getAsInt())
                     .quantPVsAtual      (j.get("quantPVsAtual").getAsInt())
                     .idiomas            (
-                        j.getAsJsonArray("idiomas")
-                        .asList().stream()
-                        .map(JsonElement::getAsString)
-                        .collect(Collectors.toList())
-                    )
+                        deserializarIdiomas(j.get("idiomas").getAsJsonArray())
+                    )    
                     .equipamento        (
                         deserializarEquipamento(j.get("equipamento").getAsJsonObject())  
                     )  
@@ -88,7 +88,7 @@ public class LeitorDeArquivos {
                     .nome               (j.get("nome").getAsString())
                     .descricao          (j.get("descricao").getAsString())
                     .raca               (Raca.valueOf(j.get("raca").getAsString()))
-                    .alinhamento        (j.get("alinhamento").getAsString())
+                    .alinhamento        (Alinhamento.valueOf(j.get("alinhamento").getAsString()))
                     .forca              (j.get("forca").getAsInt())
                     .destreza           (j.get("destreza").getAsInt())
                     .constituicao       (j.get("constituicao").getAsInt())
@@ -102,10 +102,7 @@ public class LeitorDeArquivos {
                     .classe             (Classe.valueOf(j.get("classe").getAsString()))
                     .especializacao     (Especializacao.valueOf(j.get("especializacao").getAsString()))
                     .idiomas            (
-                        j.getAsJsonArray("idiomas")
-                        .asList().stream()
-                        .map(JsonElement::getAsString)
-                        .collect(Collectors.toList())
+                        deserializarIdiomas(j.get("idiomas").getAsJsonArray())
                     )
                     .equipamento        (
                         deserializarEquipamento(j.get("equipamento").getAsJsonObject())  
@@ -130,5 +127,17 @@ public class LeitorDeArquivos {
             Armadura.valueOf(j.get("armadura").getAsString()),
             Escudo.valueOf(j.get("escudo").getAsString())
         );
+    }
+
+    private static List<Idioma> deserializarIdiomas(JsonArray j){
+        List<String> palavras = j.asList().stream()
+            .map(JsonElement::getAsString)
+            .collect(Collectors.toList());
+
+        List<Idioma> idiomas = new ArrayList<>();
+        for (String palavra : palavras) {
+            idiomas.add(Idioma.valueOf(palavra));
+        }
+        return idiomas;
     }
 }

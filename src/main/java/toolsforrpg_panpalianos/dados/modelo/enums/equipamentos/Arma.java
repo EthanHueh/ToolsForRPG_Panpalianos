@@ -18,9 +18,9 @@ public enum Arma {
     private final int dadoDano;
     private final boolean isDistancia;
 
-    public static Arma getArma(String arma) {
+    public static Arma getArma(String nome) {
         for (Arma a : Arma.values()){
-            if (arma.equals(a.getNome())){
+            if (nome.equals(a.getNome())){
                 return a;
             }
         }

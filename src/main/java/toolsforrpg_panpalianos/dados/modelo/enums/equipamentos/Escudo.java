@@ -7,18 +7,18 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Escudo {
 
-    NENHUM(0,"Nenhum"),
-    BROQUEL(1,"Broquel"),
-    ESCUDO_MADEIRA(1,"Escudo de madeira"),
-    ESCUDO_ACO(2,"Escudo de aco"),
-    ESCUDO_TORRE(0, "Escudo torre");
+    NENHUM("Nenhum",0),
+    BROQUEL("Broquel", 1),
+    ESCUDO_MADEIRA("Escudo de madeira",1),
+    ESCUDO_ACO("Escudo de aco", 2),
+    ESCUDO_TORRE("Escudo torre",0);
     
-    private final int bonusDefesa;
     private final String nome;
+    private final int bonusDefesa;
 
-    public static Escudo getEscudo(String escudo) {
+    public static Escudo getEscudo(String nome) {
         for (Escudo e : Escudo.values()){
-            if (escudo.equals(e.getNome())){
+            if (nome.equals(e.getNome())){
                 return e;
             }
         }

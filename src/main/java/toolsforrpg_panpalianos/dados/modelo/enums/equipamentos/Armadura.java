@@ -20,9 +20,9 @@ public enum Armadura {
     private final int reducaoMov;
     private final int bonMaxDestreza;
 
-    public static Armadura getArmadura(String armadura) {
+    public static Armadura getArmadura(String nome) {
         for (Armadura a : Armadura.values()){
-            if (armadura.equals(a.getNome())){
+            if (nome.equals(a.getNome())){
                 return a;
             }
         }
