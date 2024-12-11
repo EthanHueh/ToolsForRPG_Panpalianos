@@ -28,11 +28,15 @@ public class FichasRepository {
         
     }
     
-    public static List<Ficha> retornarTodasAsFichas(){
+    public static List<Ficha> retornarTodasAsFichas() throws Exception{
+        if (fichas.isEmpty()){
+            throw new Exception("Nenhuma ficha cadastrada");
+        }
+
         return fichas;
     }
 
-    public static List<FichaCriatura> retornarFichasCriatura() {
+    public static List<FichaCriatura> retornarFichasCriatura() throws Exception {
         List<FichaCriatura> fichasCriaturas = new ArrayList<>();
         
         for (Ficha f : fichas){
@@ -40,11 +44,15 @@ public class FichasRepository {
                 fichasCriaturas.add((FichaCriatura) f);
             }
         }
+
+        if (fichasCriaturas.isEmpty()){
+            throw new Exception("Nenhuma ficha de criatura cadastrada");
+        }
         
         return fichasCriaturas;
     }
     
-    public static List<FichaJogador> retornarFichasJogador() {
+    public static List<FichaJogador> retornarFichasJogador() throws Exception {
         
         List<FichaJogador> fichasJogadores = new ArrayList<>();
         
@@ -53,27 +61,84 @@ public class FichasRepository {
                 fichasJogadores.add((FichaJogador) f);
             }
         }
+
+        if (fichasJogadores.isEmpty()){
+            throw new Exception("Nenhuma ficha de jogador cadastrada");
+        }
         
         return fichasJogadores;
     }
     
-    public static Ficha retornarFichaAleatoria(){
-        int resultado = RoladorDeDados.executar(1, fichas.size() - 1);
-        return retornarTodasAsFichas().get(resultado);
+    public static Ficha retornarFichaAleatoria() throws Exception{
+
+        List<Ficha> fichas = retornarTodasAsFichas();
+
+        return fichas.get(
+            RoladorDeDados.executar(1, fichas.size() - 1)
+        );
     }
 
+    public static void atualizar(Ficha ficha) throws Exception {
+
+        for (Ficha f: retornarTodasAsFichas()){
+            if (f.getNome().equals(ficha.getNome())){
+                
+                f.setNome(ficha.getNome());
+                f.setDescricao(ficha.getDescricao());
+                f.setAlinhamento(ficha.getAlinhamento());
+                f.setRaca(ficha.getRaca());
+                f.setIdiomas(ficha.getIdiomas());
+
+                f.setForca(ficha.getForca());
+                f.setDestreza(ficha.getDestreza());
+                f.setConstituicao(ficha.getConstituicao());
+                f.setInteligencia(ficha.getInteligencia());
+                f.setSabedoria(ficha.getSabedoria());
+                f.setCarisma(ficha.getCarisma());
+
+                f.setQuantDVs(ficha.getQuantDVs());
+                f.setQuantPVsAtual(ficha.getQuantPVsAtual());
+
+                f.setEquipamento(ficha.getEquipamento());
+
+                if (ficha instanceof FichaCriatura){
+                    FichaCriatura fAntiga = (FichaCriatura) f;
+                    FichaCriatura fAtualizada = (FichaCriatura) ficha;
+
+                    fAntiga.setClasseArmadura(fAtualizada.getClasseArmadura());
+                    fAntiga.setJogadaDeProtecao(fAtualizada.getJogadaDeProtecao());
+                    fAntiga.setBaseAtaque(fAtualizada.getBaseAtaque());
+                    fAntiga.setMovimento(fAtualizada.getMovimento());
+                    fAntiga.setPvsAdicionais(fAtualizada.getPvsAdicionais());
+                }
+
+                if (ficha instanceof FichaJogador){
+                    FichaJogador fAntiga = (FichaJogador) f;
+                    FichaJogador fAtualizada = (FichaJogador) ficha;
+
+                    fAntiga.setClasse(fAtualizada.getClasse());
+                    fAntiga.setEspecializacao(fAtualizada.getEspecializacao());
+                    fAntiga.setLvl(fAtualizada.getLvl());
+                    fAntiga.setExp(fAtualizada.getExp());
+                }
+
+                return;
+                
+            }
+        }
+
+        throw new Exception("Ficha nao atualizada");
+    }
     
-    public static void excluir(Ficha ficha) {
+    public static void excluir(Ficha ficha) throws Exception {
         for (int i = 0; i < fichas.size(); i++){
             if (fichas.get(i) == ficha){
                 fichas.remove(i);
-                break;
+                return;
             }
         }
-    }
-    
-    public static boolean isVazio() {
-        return fichas.isEmpty();
+
+        throw new Exception("Ficha nao excluida");
     }
     
 }

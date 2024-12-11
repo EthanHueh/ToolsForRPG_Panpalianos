@@ -38,7 +38,7 @@ public class GeradorMensagens {
         return msg;
     }
 
-    public static String gerarMensagemIniciativa() {
+    public static String gerarMensagemIniciativa() throws Exception {
 
         List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
 
@@ -53,7 +53,7 @@ public class GeradorMensagens {
 
     }
 
-    public static String gerarMensagemIniciativaEnumerada() {
+    public static String gerarMensagemIniciativaEnumerada() throws Exception {
 
         List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
 

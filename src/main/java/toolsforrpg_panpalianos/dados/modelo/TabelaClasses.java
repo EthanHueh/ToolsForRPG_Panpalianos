@@ -40,13 +40,12 @@ public class TabelaClasses {
 
     public static int getBaseAtaque(FichaJogador fichaJogador) {
         
-        String valorColuna = retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getBaseAtaque();
-        
         int baseAtaque = 0;
 
         try {
+            String valorColuna = retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getBaseAtaque();
+        
             baseAtaque = Integer.parseInt(valorColuna);
-        } catch (NumberFormatException e1){
 
             String ba = "";
             for (int i = 0; i < valorColuna.length(); i++){
@@ -59,19 +58,21 @@ public class TabelaClasses {
 
             }
 
-            try {
-                baseAtaque = Integer.parseInt(ba);
-            } catch (NumberFormatException e2){
-                baseAtaque = 0;
-            }
-            
+            baseAtaque = Integer.parseInt(ba);
+
+        } catch (IndexOutOfBoundsException | NumberFormatException e){
+            baseAtaque = 0;
         }
 
         return baseAtaque;
     }
 
     public static int getJogadaProtecao(FichaJogador fichaJogador) {
-        return retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getJogadaProtecao();
+        try {
+            return retornarNiveis(fichaJogador)[fichaJogador.getLvl() - 1].getJogadaProtecao();
+        } catch (IndexOutOfBoundsException e){
+            return 0;
+        }
     }
 
     private static final NivelClasse[] NIVEIS_CLERIGO = {

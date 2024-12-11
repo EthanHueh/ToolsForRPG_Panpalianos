@@ -17,55 +17,61 @@ public class TelaSimuladorDeCombate {
 
     public static void iniciar(){
         
-        List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
-        Personagem jogador = simCom.getJogador();
-        Personagem inimigo = simCom.getInimigo();
-        
-        String msg = GeradorMensagens.gerarMensagemFichasMenu(fichas);
+        try {
+            List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
 
-        TelaAviso.avisar("Bem vindo ao simulador de combate!", "SIMULADOR DE COMBATE");
-        
-        do {
-            int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o jogador?","Jogador");
+            Personagem jogador = simCom.getJogador();
+            Personagem inimigo = simCom.getInimigo();
+            
+            String msg = GeradorMensagens.gerarMensagemFichasMenu(fichas);
 
-            if (opcao > 0 && opcao <= fichas.size()){
-                jogador.setFicha(fichas.get(opcao - 1));
-                break;
-            }
+            TelaAviso.avisar("Bem vindo ao simulador de combate!", "SIMULADOR DE COMBATE");
+            
+            do {
+                int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o jogador?","Jogador");
 
-            if (opcao == fichas.size() + 1){
-                if(TelaInput.desejaSair()){
-                    return;
+                if (opcao > 0 && opcao <= fichas.size()){
+                    jogador.setFicha(fichas.get(opcao - 1));
+                    break;
+                }
+
+                if (opcao == fichas.size() + 1){
+                    if(TelaInput.desejaSair()){
+                        return;
+                    }
                 }
             }
+            while (true);
+
+            do {
+                int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o inimigo?","Inimigo");
+
+                if (opcao > 0 && opcao <= fichas.size()){
+                    inimigo.setFicha(fichas.get(opcao - 1));
+                    
+                    if (inimigo.getFicha() == jogador.getFicha()){
+                        TelaErro.mostrar("As fichas precisam ser diferentes!", "Fichas iguais");
+                        continue;
+                    }
+                    break;
+                }
+
+                if (opcao == fichas.size() + 1){
+                    if(TelaInput.desejaSair()){
+                        return;
+                    }
+                }
+        
+            }
+            while (true);
+
+            TelaAviso.avisar(jogador.getFicha().getNome()+" X "+inimigo.getFicha().getNome(),"Combate!");
+            
+            executar();
+        } catch (Exception e) {
+            TelaErro.mostrar(e.getMessage());
         }
-        while (true);
-
-        do {
-            int opcao = TelaInput.obterInteiro(msg+"\nQuem você quer que seja o inimigo?","Inimigo");
-
-            if (opcao > 0 && opcao <= fichas.size()){
-                inimigo.setFicha(fichas.get(opcao - 1));
-                
-                if (inimigo.getFicha() == jogador.getFicha()){
-                    TelaErro.mostrar("As fichas precisam ser diferentes!", "Fichas iguais");
-                    continue;
-                }
-                break;
-            }
-
-            if (opcao == fichas.size() + 1){
-                if(TelaInput.desejaSair()){
-                    return;
-                }
-            }
-       
-        }
-        while (true);
-
-        TelaAviso.avisar(jogador.getFicha().getNome()+" X "+inimigo.getFicha().getNome(),"Combate!");
         
-        executar();
     }
     
     private static void executar() {

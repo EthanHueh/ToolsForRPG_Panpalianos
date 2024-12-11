@@ -18,94 +18,84 @@ public class TelaIniciativas {
 
     public static void inserirIniciativa(){
 
-        List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
+        try {
+            List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
+            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemFichasMenu(fichas)+"\nQuem voce deseja inserir iniciativa?","Escolha uma ficha");
 
-        int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemFichasMenu(fichas)+"\nQuem voce deseja inserir iniciativa?","Escolha uma ficha");
-
-        if (opcao > 0 && opcao <= fichas.size()){
-            Ficha ficha = fichas.get(opcao - 1);
-
-            int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Insira iniciativa");
-            Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
-
-            if (IniciativasRepository.hasIniciativasRepetidas(iniciativa)){
-                TelaErro.mostrar("Ficha repetida!", "Iniciativa");
-                return;
+            if (opcao > 0 && opcao <= fichas.size()){
+                Ficha ficha = fichas.get(opcao - 1);
+                int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Insira iniciativa");
+                
+                IniciativasRepository.adicionar(
+                    new Iniciativa(valorIniciativa, ficha)
+                );
             }
-
-            IniciativasRepository.adicionar(iniciativa);
+        } catch (Exception e) {
+            TelaErro.mostrar(e.getMessage());
         }
+
     }
 
     public static void mostrarListaIniciativas() {
-
-        if (existirIniciativas()){
+        try {
             TelaTexto.iniciar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
+        } catch (Exception e){
+            TelaErro.mostrar(e.getMessage());
         }
         
     }
 
     public static void atualizarIniciativa(){
 
-        if (!existirIniciativas()){
-            return;
-        }
+        try {
+            List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
 
-        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
+            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nQuem voce deseja atualizar a iniciativa?","Atualizar iniciativa");
 
-        int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nQuem voce deseja atualizar a iniciativa?","Atualizar iniciativa");
-
-        if (opcao > 0 && opcao <= iniciativas.size()){
-            Ficha ficha = iniciativas.get(opcao - 1).getFicha();
-            
-            if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de"+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
-                int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Inserir iniciativa");
-                IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
-            }         
-            
+            if (opcao > 0 && opcao <= iniciativas.size()){
+                Ficha ficha = iniciativas.get(opcao - 1).getFicha();
+                
+                if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de"+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
+                    int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Inserir iniciativa");
+                    IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
+                }         
+                
+            }
+        } catch (Exception e){
+            TelaErro.mostrar(e.getMessage());
         }
         
     }
 
     public static void excluirIniciativa(){
 
-        if (!existirIniciativas()){
-            return;
+        try {
+            List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
+
+            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nDe quem voce quer excluir a iniciativa?","Excluir iniciativa");
+    
+            if (opcao > 0 && opcao <= iniciativas.size()){
+                Iniciativa iniciativa = IniciativasRepository.retornarIniciativas().get(opcao - 1);
+                
+                if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de"+iniciativa.getFicha().getNome()+"?", "Confirmacao de delecao de iniciativa")){
+                    IniciativasRepository.excluir(iniciativa);
+                }
+            }
+        } catch (Exception e){
+            TelaErro.mostrar(e.getMessage());
         }
         
-        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-        int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nDe quem voce quer excluir a iniciativa?","Excluir iniciativa");
-
-        if (opcao > 0 && opcao <= iniciativas.size()){
-            Iniciativa iniciativa = IniciativasRepository.retornarIniciativas().get(opcao - 1);
-            
-            if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de"+iniciativa.getFicha().getNome()+"?", "Confirmacao de delecao de iniciativa")){
-                IniciativasRepository.excluir(iniciativa);
-            }
-        }
-
-    }
-
-    private static boolean existirIniciativas(){
-        if(IniciativasRepository.retornarIniciativas().isEmpty()){
-            TelaErro.mostrar("Nenhuma iniciativa inserida!", "Iniciativas");
-            return false;
-        }
-        return true;
     }
 
     public static void salvarArquivo() {
         
-        if (!existirIniciativas()){
-            return;
-        }
-        
         try {
             EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
             TelaAviso.avisar("Arquivo escrito com sucesso!");
-        } catch (IOException ex) {
-            TelaErro.mostrar("Ocorreu um erro!");
+        } catch (IOException e){
+            TelaErro.mostrar(e.getMessage());
+        } catch (Exception e){
+            TelaErro.mostrar(e.getMessage());
         }
     }
 

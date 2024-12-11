@@ -8,50 +8,49 @@ import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 public class IniciativasRepository {
     private final static List<Iniciativa> iniciativas = new ArrayList<>();
     
-    public static List<Iniciativa> retornarIniciativas() {
+    public static List<Iniciativa> retornarIniciativas() throws Exception {
+
+        if (iniciativas.isEmpty()){
+            throw new Exception("Nenhuma iniciativa inserida");
+        }
+
         return iniciativas;
     }
 
-    public static void adicionar(Iniciativa iniciativa){
-
-        if (hasIniciativasRepetidas(iniciativa)){
-            return;
-        }
-
+    public static void adicionar(Iniciativa iniciativa) throws Exception{
+        checarIniciativaRepetida(iniciativa);
         iniciativas.add(iniciativa);
     }
 
-    public static void atualizar(Iniciativa iniciativa){
+    public static void atualizar(Iniciativa iniciativa) throws Exception{
 
         for (Iniciativa i : iniciativas) {
             if (i.getFicha() == iniciativa.getFicha()){
                 i.setIniciativa(iniciativa.getIniciativa());
-                break;
+                return;
             }
         }
-        
+
+        throw new Exception("Iniciativa nao atualizada!");
     }
     
-    public static void excluir(Iniciativa iniciativa) {
+    public static void excluir(Iniciativa iniciativa) throws Exception {
         for (int i = 0; i < iniciativas.size(); i++){
             if (iniciativas.get(i).getFicha() == iniciativa.getFicha()){
                 iniciativas.remove(i);
-                break;
+                return;
             }
         }
+
+        throw new Exception("Iniciativa nao excluida!");
     }
     
-    public static boolean isVazio(){
-        return iniciativas.isEmpty();
-    }
-
-    public static boolean hasIniciativasRepetidas(Iniciativa iniciativa) {
+    public static void checarIniciativaRepetida(Iniciativa iniciativa) throws Exception {
         for (Iniciativa i : iniciativas) {
             if (i.getFicha() == iniciativa.getFicha()){
-                return true;
+                throw new Exception("Iniciativa repetida!");
             }
         }
-        return false;
     }
 
 }

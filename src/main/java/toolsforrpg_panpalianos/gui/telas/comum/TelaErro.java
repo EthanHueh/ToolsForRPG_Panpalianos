@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class TelaErro {
     public static void mostrar(String msg){
-        JOptionPane.showMessageDialog(null, msg, null, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, msg, "Erro", JOptionPane.ERROR_MESSAGE);
     }
     
     public static void mostrar(String msg, String titulo){
