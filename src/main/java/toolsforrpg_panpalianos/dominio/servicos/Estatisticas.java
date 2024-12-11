@@ -7,19 +7,12 @@ import java.util.function.Function;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 
 public class Estatisticas { 
 
-    public static String[][] executar(){
+    public static String[][] executar() throws Exception{
         
-        List<Ficha> fichas = null;
-
-        try {
-            fichas = FichasRepository.retornarTodasAsFichas();
-        } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage(), "Erro");
-        }
+        List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
 
         TipoAtributo[] tipoAtributos = TipoAtributo.values();
         String[][] mensagem = new String[tipoAtributos.length][4];
