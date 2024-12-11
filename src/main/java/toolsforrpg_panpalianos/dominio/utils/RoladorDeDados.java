@@ -16,4 +16,12 @@ public class RoladorDeDados {
         return resultado;
     }
 
+    public static int executarAtributoAleatorio(){
+        int resultado = 0;
+        for(int i = 1; i <= 3; i++){
+            resultado += (random.nextInt(6) + 1);
+        }
+        return resultado;
+    }
+
 }
