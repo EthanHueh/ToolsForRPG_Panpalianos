@@ -15,11 +15,11 @@ import javax.swing.JTextField;
 import lombok.Getter;
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
+import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
@@ -28,7 +28,7 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 @Getter
 public class TelaIniciativas extends JFrame {
 
-    private JComboBox<Object> selecao;
+    private JComboBox<Object> selecao = new JComboBox<>();
     private JTextField campoIniciativa = new JTextField("0");
 
     public TelaIniciativas() {
@@ -40,12 +40,7 @@ public class TelaIniciativas extends JFrame {
         pnlPrincipal.setPreferredSize(new Dimension(300,150));
 
         pnlPrincipal.add(new JLabel("Selecione a ficha"));
-        try {
-            selecao = new JComboBox<>((FichasRepository.retornarTodasAsFichas().toArray()));
-        } catch (Exception e) {
-            TelaErro.mostrar(e);
-            selecao = new JComboBox<>();
-        }
+        SelecaoUtils.mudarParaTodasAsFichas(selecao);
         pnlPrincipal.add(selecao);
 
         pnlPrincipal.add(new JLabel("Insira valor iniciativa"));

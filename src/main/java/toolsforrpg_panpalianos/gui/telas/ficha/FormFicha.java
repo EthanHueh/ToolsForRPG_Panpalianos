@@ -27,6 +27,7 @@ public abstract class FormFicha extends JFrame {
 
     protected JPanel pnlPrincipal = new JPanel();
     protected JPanel pnlNorte = new JPanel();
+    protected JPanel pnlLeste = new JPanel();
 
     protected PainelInfoBasica pnlInfoBasica = new PainelInfoBasica();
     protected PainelInfoJogador pnlInfoJogador = new PainelInfoJogador();
@@ -52,10 +53,14 @@ public abstract class FormFicha extends JFrame {
         pnlPrincipal.add(pnlInfoBasica);
         pnlPrincipal.add(pnlInfoJogador);
         pnlPrincipal.add(pnlInfoCriatura);
-        pnlPrincipal.add(pnlAtributos);
-        pnlPrincipal.add(pnlEquipamento);
+
+        pnlLeste.setLayout(new BoxLayout(pnlLeste, BoxLayout.Y_AXIS));
+        pnlLeste.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        pnlLeste.add(pnlAtributos);
+        pnlLeste.add(pnlEquipamento);
         
         add(pnlPrincipal, BorderLayout.CENTER);
+        add(pnlLeste, BorderLayout.EAST);
 
         btnSubmit.setText("OK");
         btnSubmit.addActionListener(

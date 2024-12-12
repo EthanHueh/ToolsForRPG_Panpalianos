@@ -12,12 +12,13 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
+import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormAtualizar extends FormFicha {
 
-    private JComboBox<Ficha> selecionarFicha;
+    private JComboBox<Object> selecionarFicha;
     
     public FormAtualizar(){
         super();
@@ -32,7 +33,7 @@ public class FormAtualizar extends FormFicha {
         pnlNorte.add(titulo);
         pnlNorte.add(trocarTipoFicha);
         pnlNorte.add(selecionarFicha);
-        pnlNorte.setPreferredSize(new Dimension(150, 80));
+        pnlNorte.setPreferredSize(new Dimension(150, 40));
         add(pnlNorte, BorderLayout.NORTH);
 
         trocarTipoFicha();
@@ -69,35 +70,19 @@ public class FormAtualizar extends FormFicha {
             case "Jogador":
                 tipoFichaAtual = "Criatura";
                 titulo.setText("Atualizar "+tipoFichaAtual);
+                SelecaoUtils.mudarParaFichasCriatura(selecionarFicha);
+
                 pnlInfoCriatura.setVisible(true);
                 pnlInfoJogador.setVisible(false);
-
-                selecionarFicha.removeAllItems();
-                try {
-                    for (Ficha ficha : FichasRepository.retornarFichasCriatura()) {
-                        selecionarFicha.addItem(ficha);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                
                 break;
 
             case "Criatura":
                 tipoFichaAtual = "Jogador";
                 titulo.setText("Atualizar "+tipoFichaAtual);
+                SelecaoUtils.mudarParaFichasJogador(selecionarFicha);
+
                 pnlInfoJogador.setVisible(true);
                 pnlInfoCriatura.setVisible(false);
-
-                selecionarFicha.removeAllItems();
-                
-                try {
-                    for (Ficha ficha : FichasRepository.retornarFichasJogador()) {
-                        selecionarFicha.addItem(ficha);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 break;
 
         }
