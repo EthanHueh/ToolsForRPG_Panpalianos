@@ -1,5 +1,6 @@
 package toolsforrpg_panpalianos.gui.telas;
 
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
@@ -30,31 +31,31 @@ public class TelaFichas extends JFrame {
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new GridLayout(5, 1));
         
-        JButton jButton = new JButton("Exibir fichas jogador");
+        JButton jButton = new BotaoPadrao("Exibir fichas jogador");
         jButton.addActionListener(
             e -> mostrarFichasJogador()
         );
         painelPrincipal.add(jButton);
 
-        jButton = new JButton("Exibir fichas criatura");
+        jButton = new BotaoPadrao("Exibir fichas criatura");
         jButton.addActionListener(
             e -> mostrarFichasCriatura()
         );
         painelPrincipal.add(jButton);
 
-        jButton = new JButton("Cadastrar fichas");
+        jButton = new BotaoPadrao("Cadastrar fichas");
         jButton.addActionListener(
             e -> formCadastrar.setVisible(true)
         );
         painelPrincipal.add(jButton);
 
-        jButton = new JButton("Atualizar fichas");
+        jButton = new BotaoPadrao("Atualizar fichas");
         jButton.addActionListener(
             e -> formAtualizar.setVisible(true)
         );
         painelPrincipal.add(jButton);
 
-        jButton = new JButton("Excluir fichas");
+        jButton = new BotaoPadrao("Excluir fichas");
         jButton.addActionListener(
             e -> excluirFicha()
         );

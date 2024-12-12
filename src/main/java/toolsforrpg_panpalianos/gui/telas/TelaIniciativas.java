@@ -19,6 +19,7 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
@@ -53,25 +54,20 @@ public class TelaIniciativas extends JFrame {
 
         add(pnlPrincipal);
 
-        JButton btnInserir = new JButton();
+        JButton btnInserir = new BotaoPadrao("INSERIR");
         btnInserir.addActionListener(e -> adicionarIniciativa());
-        btnInserir.setText("INSERIR");
 
-        JButton btnAtualizar = new JButton();
+        JButton btnAtualizar = new BotaoPadrao("ATUALIZAR");
         btnAtualizar.addActionListener(e -> atualizarIniciativa());
-        btnAtualizar.setText("ATUALIZAR");
 
-        JButton btnMostrar = new JButton();
+        JButton btnMostrar = new BotaoPadrao("MOSTRAR");
         btnMostrar.addActionListener(e -> mostrarListaIniciativas());
-        btnMostrar.setText("MOSTRAR");
 
-        JButton btnExcluir = new JButton();
+        JButton btnExcluir = new BotaoPadrao("EXCLUIR");
         btnExcluir.addActionListener(e -> excluirIniciativa());
-        btnExcluir.setText("EXCLUIR");
 
-        JButton btnSalvar = new JButton();
+        JButton btnSalvar = new BotaoPadrao("SALVAR");
         btnSalvar.addActionListener(e -> salvarArquivo());
-        btnSalvar.setText("SALVAR");
 
         pnlPrincipal.add(btnInserir);
         pnlPrincipal.add(btnAtualizar);

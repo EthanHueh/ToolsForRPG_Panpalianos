@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import toolsforrpg_panpalianos.dominio.servicos.homebrew.GeradorTabelaPreco;
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 
 public class TelaTabelaPrecos extends JFrame {
@@ -38,7 +39,7 @@ public class TelaTabelaPrecos extends JFrame {
         painelNorte.add(new JLabel("Preco"));
         painelNorte.add(campoPreco);
 
-        JButton btnSubmit = new JButton("Criar tabela");
+        JButton btnSubmit = new BotaoPadrao("Criar tabela");
         btnSubmit.addActionListener(
             e -> atualizarTabela()
         );
