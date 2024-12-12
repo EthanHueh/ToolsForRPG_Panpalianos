@@ -1,94 +1,145 @@
 package toolsforrpg_panpalianos.gui.telas;
 
-import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.io.IOException;
-import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import lombok.Getter;
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 
-public class TelaIniciativas {
+@Getter
+public class TelaIniciativas extends JFrame {
 
-    public static void inserirIniciativa(){
+    private JComboBox<Ficha> selecao = new JComboBox<>();
+    private JTextField campoIniciativa = new JTextField("0");
 
+    public static void main(String[] args) {
+        new TelaIniciativas().setVisible(true);
+    }
+    
+    public TelaIniciativas(){
+        setTitle("Iniciativa");
+        setLayout(new BorderLayout());
+
+        JPanel pnlPrincipal = new JPanel();
+        pnlPrincipal.setLayout(new GridLayout(5,2));
+        pnlPrincipal.setPreferredSize(new Dimension(300,150));
+
+        pnlPrincipal.add(new JLabel("Selecione a ficha"));
         try {
-            List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
-            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemFichasMenu(fichas)+"\nQuem voce deseja inserir iniciativa?","Escolha uma ficha");
-
-            if (opcao > 0 && opcao <= fichas.size()){
-                Ficha ficha = fichas.get(opcao - 1);
-                int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Insira iniciativa");
-                
-                IniciativasRepository.adicionar(
-                    new Iniciativa(valorIniciativa, ficha)
-                );
+            for (Ficha i : FichasRepository.retornarTodasAsFichas()) {
+                selecao.addItem(i);
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        pnlPrincipal.add(selecao);
+
+        pnlPrincipal.add(new JLabel("Insira valor iniciativa"));
+        campoIniciativa.setText("0");
+        pnlPrincipal.add(campoIniciativa);
+
+        add(pnlPrincipal);
+
+        JButton btnInserir = new JButton();
+        btnInserir.addActionListener(e -> adicionarIniciativa());
+        btnInserir.setText("INSERIR");
+
+        JButton btnAtualizar = new JButton();
+        btnAtualizar.addActionListener(e -> atualizarIniciativa());
+        btnAtualizar.setText("ATUALIZAR");
+
+        JButton btnMostrar = new JButton();
+        btnMostrar.addActionListener(e -> mostrarListaIniciativas());
+        btnMostrar.setText("MOSTRAR");
+
+        JButton btnExcluir = new JButton();
+        btnExcluir.addActionListener(e -> excluirIniciativa());
+        btnExcluir.setText("EXCLUIR");
+
+        JButton btnSalvar = new JButton();
+        btnSalvar.addActionListener(e -> salvarArquivo());
+        btnSalvar.setText("SALVAR");
+
+        pnlPrincipal.add(btnInserir);
+        pnlPrincipal.add(btnAtualizar);
+        pnlPrincipal.add(btnMostrar);
+        pnlPrincipal.add(btnExcluir);
+        pnlPrincipal.add(btnSalvar);
+
+        pack();
+
+        setVisible(true);
+    }
+
+    public void adicionarIniciativa(){
+        Ficha ficha = (Ficha) selecao.getSelectedItem();
+        int valorIniciativa = Integer.parseInt(campoIniciativa.getText());
+        
+        Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
+
+        try {
+            IniciativasRepository.adicionar(iniciativa);
+        } catch (Exception e) {
             TelaErro.mostrar(e.getMessage());
+        }
+    }
+
+    private void atualizarIniciativa() {
+
+        Ficha ficha = (Ficha) selecao.getSelectedItem();
+        
+        if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de "+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
+            try {
+                int valorIniciativa = Integer.parseInt(campoIniciativa.getText());
+                IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
+            } catch (Exception e) {
+                TelaErro.mostrar(e.getMessage());
+            }
+        }         
+            
+    }
+
+    public void excluirIniciativa(){
+
+        Ficha ficha = (Ficha) selecao.getSelectedItem();
+
+        if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de "+ficha.getNome()+"?", "Confirmacao")){
+            try {
+                IniciativasRepository.excluir(ficha);
+            } catch (Exception e) {
+                TelaErro.mostrar(e.getMessage());
+            }
         }
 
     }
 
-    public static void mostrarListaIniciativas() {
+    public void mostrarListaIniciativas() {
         try {
             TelaTexto.iniciar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
         } catch (Exception e){
             TelaErro.mostrar(e.getMessage());
         }
-        
     }
 
-    public static void atualizarIniciativa(){
-
-        try {
-            List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nQuem voce deseja atualizar a iniciativa?","Atualizar iniciativa");
-
-            if (opcao > 0 && opcao <= iniciativas.size()){
-                Ficha ficha = iniciativas.get(opcao - 1).getFicha();
-                
-                if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de"+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
-                    int valorIniciativa = TelaInput.obterInteiro("Insira a iniciativa de "+ficha.getNome(),"Inserir iniciativa");
-                    IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
-                }         
-                
-            }
-        } catch (Exception e){
-            TelaErro.mostrar(e.getMessage());
-        }
-        
-    }
-
-    public static void excluirIniciativa(){
-
-        try {
-            List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-            int opcao = TelaInput.obterInteiro(GeradorMensagens.gerarMensagemIniciativaEnumerada()+"\nDe quem voce quer excluir a iniciativa?","Excluir iniciativa");
-    
-            if (opcao > 0 && opcao <= iniciativas.size()){
-                Iniciativa iniciativa = IniciativasRepository.retornarIniciativas().get(opcao - 1);
-                
-                if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de"+iniciativa.getFicha().getNome()+"?", "Confirmacao de delecao de iniciativa")){
-                    IniciativasRepository.excluir(iniciativa);
-                }
-            }
-        } catch (Exception e){
-            TelaErro.mostrar(e.getMessage());
-        }
-        
-    }
-
-    public static void salvarArquivo() {
-        
+    public void salvarArquivo(){
         try {
             EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
             TelaAviso.avisar("Arquivo escrito com sucesso!");

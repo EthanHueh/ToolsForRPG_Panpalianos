@@ -8,12 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
+import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
 
 public class Launcher extends JFrame {
 
     private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
     private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
+    private TelaIniciativas telaIniciativas = new TelaIniciativas();
     
     public Launcher(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,9 +43,15 @@ public class Launcher extends JFrame {
         painelNorte.setPreferredSize(new Dimension(900, 50));
         painelNorte.setBackground(Cores.CINZA.getCor());
         painelNorte.add(BotaoFactory.criarBotao("fichas"));
-        painelNorte.add(BotaoFactory.criarBotao("iniciativas"));
 
         JButton jButton = BotaoFactory.criarBotao("");
+        jButton.setText("Iniciativas");
+        jButton.addActionListener(
+            e -> telaIniciativas.setVisible(true)
+        );
+        painelNorte.add(jButton);
+
+        jButton = BotaoFactory.criarBotao("");
         jButton.setText("Tabela Preço");
         jButton.addActionListener(
             e -> telaTabelaPrecos.setVisible(true)

@@ -6,7 +6,6 @@ import javax.swing.JButton;
 
 import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
-import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuIniciativas;
 
 public class BotaoFactory {
     public static JButton criarBotao(String msg){
@@ -26,11 +25,6 @@ public class BotaoFactory {
             case "fichas":
                 btn.setText("Fichas");
                 btn.addActionListener(e -> new TelaMenuFichas().iniciar());
-                break;
-
-            case "iniciativas":
-                btn.setText("Iniciativas");
-                btn.addActionListener(e -> new TelaMenuIniciativas().iniciar());
                 break;
 
             case "combate":
