@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.launcher;
+package toolsforrpg_panpalianos.gui.componentes.botoes;
 
 import java.awt.Font;
 
@@ -6,7 +6,7 @@ import javax.swing.JButton;
 
 public class BotaoLauncher extends JButton {
 
-    BotaoLauncher(String nome){
+    public BotaoLauncher(String nome){
         setText(nome);
         setVerticalTextPosition(JButton.CENTER);
         setFont(new Font("MV BOLI", Font.PLAIN,20));

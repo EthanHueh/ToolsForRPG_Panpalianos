@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.forms;
+package toolsforrpg_panpalianos.gui.telas.ficha;
 
 import java.awt.GridLayout;
 

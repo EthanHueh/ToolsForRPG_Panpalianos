@@ -1,7 +1,5 @@
 package toolsforrpg_panpalianos.gui.telas;
 
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
-
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -11,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 
 public class TelaEstatisticas extends JFrame {
 

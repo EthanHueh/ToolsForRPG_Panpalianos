@@ -1,10 +1,10 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas;
 
-import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
-import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormAtualizar;
-import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormCadastrar;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
+import toolsforrpg_panpalianos.gui.telas.ficha.FormAtualizar;
+import toolsforrpg_panpalianos.gui.telas.ficha.FormCadastrar;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;

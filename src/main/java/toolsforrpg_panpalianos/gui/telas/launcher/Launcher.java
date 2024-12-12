@@ -8,11 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoLauncher;
 import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
-import toolsforrpg_panpalianos.gui.telas.ficha.TelaFichas;
+import toolsforrpg_panpalianos.gui.telas.TelaFichas;
 
 public class Launcher extends JFrame {
 

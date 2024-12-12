@@ -80,8 +80,6 @@ public class TelaIniciativas extends JFrame {
         pnlPrincipal.add(btnSalvar);
 
         pack();
-
-        setVisible(true);
     }
 
     public void adicionarIniciativa(){

@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.forms;
+package toolsforrpg_panpalianos.gui.telas.ficha;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import toolsforrpg_panpalianos.gui.telas.ficha.botoes.BotaoRolaDadosAtributo;
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoRolaDadosAtributo;
 
 public class PainelAtributos extends JPanel {
     JTextField forca = new JTextField();

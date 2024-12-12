@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.botoes;
+package toolsforrpg_panpalianos.gui.componentes.botoes;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
