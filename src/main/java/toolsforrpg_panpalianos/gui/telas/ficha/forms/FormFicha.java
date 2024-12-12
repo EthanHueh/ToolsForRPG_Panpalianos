@@ -17,7 +17,6 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
-import toolsforrpg_panpalianos.gui.opcoes.ficha.OpcaoMostrarFichasJogador;
 
 public abstract class FormFicha extends JFrame {
 
@@ -61,9 +60,6 @@ public abstract class FormFicha extends JFrame {
         btnSubmit.setText("OK");
         btnSubmit.addActionListener(
             e -> submeterFicha()
-        );
-        btnSubmit.addActionListener(
-            e -> new OpcaoMostrarFichasJogador().executar()
         );
 
         add(btnSubmit, BorderLayout.SOUTH);

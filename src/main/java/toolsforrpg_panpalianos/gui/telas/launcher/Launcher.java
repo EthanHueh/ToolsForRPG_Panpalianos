@@ -12,10 +12,11 @@ import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
 import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
-import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
+import toolsforrpg_panpalianos.gui.telas.ficha.TelaFichas;
 
 public class Launcher extends JFrame {
 
+    private TelaFichas telaFichas = new TelaFichas();
     private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
     private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
     private TelaIniciativas telaIniciativas = new TelaIniciativas();
@@ -46,7 +47,7 @@ public class Launcher extends JFrame {
         painelNorte.setBackground(Cores.CINZA.getCor());
 
         JButton jButton = new BotaoLauncher("Fichas");
-        jButton.addActionListener(e -> new TelaMenuFichas().iniciar());
+        jButton.addActionListener(e -> telaFichas.setVisible(true));
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Iniciativas");
