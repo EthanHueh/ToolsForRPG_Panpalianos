@@ -54,7 +54,7 @@ public class TelaEstatisticas extends JFrame {
             setVisible(true);
 
         } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
 
     }

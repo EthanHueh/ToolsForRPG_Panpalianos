@@ -22,7 +22,7 @@ public class TelaFichas {
             List<Ficha> fichas = new ArrayList<>(FichasRepository.retornarFichasJogador());
             TelaTexto.iniciar(GeradorMensagens.gerarMensagemFichas(fichas), "Fichas");
         } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
     }
     
@@ -31,7 +31,7 @@ public class TelaFichas {
             List<Ficha> fichas = new ArrayList<>(FichasRepository.retornarFichasCriatura());
             TelaTexto.iniciar(GeradorMensagens.gerarMensagemFichas(fichas), "Fichas");
         } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
     }
 
@@ -59,7 +59,7 @@ public class TelaFichas {
             }
 
         } catch (Exception e) {
-           TelaErro.mostrar(e.getMessage());
+           TelaErro.mostrar(e);
         }
 
     }

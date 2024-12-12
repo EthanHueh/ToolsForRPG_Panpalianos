@@ -98,7 +98,7 @@ public class TelaIniciativas extends JFrame {
         try {
             IniciativasRepository.adicionar(iniciativa);
         } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
     }
 
@@ -111,7 +111,7 @@ public class TelaIniciativas extends JFrame {
                 int valorIniciativa = Integer.parseInt(campoIniciativa.getText());
                 IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
             } catch (Exception e) {
-                TelaErro.mostrar(e.getMessage());
+                TelaErro.mostrar(e);
             }
         }         
             
@@ -125,7 +125,7 @@ public class TelaIniciativas extends JFrame {
             try {
                 IniciativasRepository.excluir(ficha);
             } catch (Exception e) {
-                TelaErro.mostrar(e.getMessage());
+                TelaErro.mostrar(e);
             }
         }
 
@@ -135,7 +135,7 @@ public class TelaIniciativas extends JFrame {
         try {
             TelaTexto.iniciar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
         } catch (Exception e){
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
     }
 
@@ -144,9 +144,9 @@ public class TelaIniciativas extends JFrame {
             EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
             TelaAviso.avisar("Arquivo escrito com sucesso!");
         } catch (IOException e){
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         } catch (Exception e){
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
     }
 

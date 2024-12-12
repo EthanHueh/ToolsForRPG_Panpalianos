@@ -17,12 +17,8 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormAtualizar extends FormFicha {
 
-    JComboBox<Ficha> selecionarFicha;
-
-    public static void main(String[] args) {
-        new FormAtualizar().setVisible(true);
-    }
-
+    private JComboBox<Ficha> selecionarFicha;
+    
     public FormAtualizar(){
         super();
 
@@ -56,7 +52,7 @@ public class FormAtualizar extends FormFicha {
             try {
                 FichasRepository.atualizar(ficha);
             } catch (Exception e) {
-                TelaErro.mostrar(e.getMessage());
+                TelaErro.mostrar(e);
             }
         }
     }

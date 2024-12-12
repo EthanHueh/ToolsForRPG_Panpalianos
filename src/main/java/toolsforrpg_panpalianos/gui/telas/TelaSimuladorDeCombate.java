@@ -69,7 +69,7 @@ public class TelaSimuladorDeCombate {
             
             executar();
         } catch (Exception e) {
-            TelaErro.mostrar(e.getMessage());
+            TelaErro.mostrar(e);
         }
         
     }
