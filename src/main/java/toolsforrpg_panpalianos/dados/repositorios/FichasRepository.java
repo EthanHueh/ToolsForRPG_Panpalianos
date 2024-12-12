@@ -6,6 +6,7 @@ import java.util.List;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
@@ -24,7 +25,7 @@ public class FichasRepository {
             return;
         }
         
-        fichas.add(ficha);
+        fichas.add(InicializadorFicha.inicializar(ficha));
         
     }
     
