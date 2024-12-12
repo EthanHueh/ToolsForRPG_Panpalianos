@@ -3,10 +3,17 @@ package toolsforrpg_panpalianos.gui.telas.launcher;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
+import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
+
 public class Launcher extends JFrame {
+
+    private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
+    private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
     
     public Launcher(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,9 +42,22 @@ public class Launcher extends JFrame {
         painelNorte.setBackground(Cores.CINZA.getCor());
         painelNorte.add(BotaoFactory.criarBotao("fichas"));
         painelNorte.add(BotaoFactory.criarBotao("iniciativas"));
-        painelNorte.add(BotaoFactory.criarBotao("tabela_preco"));
+
+        JButton jButton = BotaoFactory.criarBotao("");
+        jButton.setText("Tabela Preço");
+        jButton.addActionListener(
+            e -> telaTabelaPrecos.setVisible(true)
+        );
+        painelNorte.add(jButton);
+
+        jButton = BotaoFactory.criarBotao("");
+        jButton.setText("Estatísticas");
+        jButton.addActionListener(
+            e -> telaEstatisticas.iniciar()
+        );
+        painelNorte.add(jButton);
+
         painelNorte.add(BotaoFactory.criarBotao("combate"));
-        painelNorte.add(BotaoFactory.criarBotao("estatisticas"));
 
         JPanel painelSul = new JPanel();
         painelSul.setPreferredSize(new Dimension(900, 50));

@@ -4,9 +4,7 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 
-import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
-import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
 import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuIniciativas;
 
@@ -34,20 +32,10 @@ public class BotaoFactory {
                 btn.setText("Iniciativas");
                 btn.addActionListener(e -> new TelaMenuIniciativas().iniciar());
                 break;
-            
-            case "tabela_preco":
-                btn.setText("Tabela Preço");
-                btn.addActionListener(e -> TelaTabelaPrecos.iniciar());
-                break;
 
             case "combate":
                 btn.setText("Combate");
                 btn.addActionListener(e -> TelaSimuladorDeCombate.iniciar());
-                break;
-
-            case "estatisticas":
-                btn.setText("Estatísticas");
-                btn.addActionListener(e -> TelaEstatisticas.iniciar());
                 break;
         
             default:
