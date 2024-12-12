@@ -27,14 +27,10 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 @Getter
 public class TelaIniciativas extends JFrame {
 
-    private JComboBox<Ficha> selecao = new JComboBox<>();
+    private JComboBox<Object> selecao;
     private JTextField campoIniciativa = new JTextField("0");
 
-    public static void main(String[] args) {
-        new TelaIniciativas().setVisible(true);
-    }
-    
-    public TelaIniciativas(){
+    public TelaIniciativas() {
         setTitle("Iniciativa");
         setLayout(new BorderLayout());
 
@@ -44,11 +40,10 @@ public class TelaIniciativas extends JFrame {
 
         pnlPrincipal.add(new JLabel("Selecione a ficha"));
         try {
-            for (Ficha i : FichasRepository.retornarTodasAsFichas()) {
-                selecao.addItem(i);
-            }
+            selecao = new JComboBox<>((FichasRepository.retornarTodasAsFichas().toArray()));
         } catch (Exception e) {
-            e.printStackTrace();
+            TelaErro.mostrar(e);
+            selecao = new JComboBox<>();
         }
         pnlPrincipal.add(selecao);
 

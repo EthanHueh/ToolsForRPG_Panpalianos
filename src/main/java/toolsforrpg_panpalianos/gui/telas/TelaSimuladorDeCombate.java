@@ -13,9 +13,9 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaSimuladorDeCombate {
 
-    private static SimuladorDeCombate simCom = new SimuladorDeCombate();
+    private SimuladorDeCombate simCom = new SimuladorDeCombate();
 
-    public static void iniciar(){
+    public void iniciar(){
         
         try {
             List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
@@ -74,7 +74,7 @@ public class TelaSimuladorDeCombate {
         
     }
     
-    private static void executar() {
+    private void executar() {
 
         Personagem jogador = simCom.getJogador();
         Personagem inimigo = simCom.getInimigo();
@@ -112,7 +112,7 @@ public class TelaSimuladorDeCombate {
 
     }
 
-    private static String msgJogador(Personagem jogador) {
+    private String msgJogador(Personagem jogador) {
         return new StringBuilder()
             .append("O que fazes, "+jogador.getFicha().getNome()+" ?")
             .append("1 - Atacar\n")

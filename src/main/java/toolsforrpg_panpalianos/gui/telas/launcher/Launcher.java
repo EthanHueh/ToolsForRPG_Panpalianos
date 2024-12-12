@@ -5,17 +5,21 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;
+import toolsforrpg_panpalianos.gui.telas.TelaSimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.telas.TelaTabelaPrecos;
+import toolsforrpg_panpalianos.gui.telas.menus.TelaMenuFichas;
 
 public class Launcher extends JFrame {
 
     private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
     private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
     private TelaIniciativas telaIniciativas = new TelaIniciativas();
+    private TelaSimuladorDeCombate telaSimuladorDeCombate = new TelaSimuladorDeCombate();
     
     public Launcher(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +29,6 @@ public class Launcher extends JFrame {
 
         setTitle("Tools for RPG - Panpalianos");
         setIconImage(IconesImagem.LOGO.getImageIcon().getImage());
-        getContentPane().setBackground(Cores.VERMELHO.getCor());
 
         initComponents();
 
@@ -36,36 +39,39 @@ public class Launcher extends JFrame {
     
     private void initComponents() {
         JPanel painelPrincipal = new JPanel();
-        painelPrincipal.add(BotaoFactory.criarBotao("menu"));
-        painelPrincipal.add(new PainelDescricao());
+        painelPrincipal.add(new JLabel(IconesImagem.LOGO.getImageIcon()));
 
         JPanel painelNorte = new JPanel();
         painelNorte.setPreferredSize(new Dimension(900, 50));
         painelNorte.setBackground(Cores.CINZA.getCor());
-        painelNorte.add(BotaoFactory.criarBotao("fichas"));
 
-        JButton jButton = BotaoFactory.criarBotao("");
-        jButton.setText("Iniciativas");
+        JButton jButton = new BotaoLauncher("Fichas");
+        jButton.addActionListener(e -> new TelaMenuFichas().iniciar());
+        painelNorte.add(jButton);
+
+        jButton = new BotaoLauncher("Iniciativas");
         jButton.addActionListener(
             e -> telaIniciativas.setVisible(true)
         );
         painelNorte.add(jButton);
 
-        jButton = BotaoFactory.criarBotao("");
-        jButton.setText("Tabela Preço");
+        jButton = new BotaoLauncher("Tabela Preço");
         jButton.addActionListener(
             e -> telaTabelaPrecos.setVisible(true)
         );
         painelNorte.add(jButton);
 
-        jButton = BotaoFactory.criarBotao("");
-        jButton.setText("Estatísticas");
+        jButton = new BotaoLauncher("Estatísticas");
         jButton.addActionListener(
             e -> telaEstatisticas.iniciar()
         );
         painelNorte.add(jButton);
 
-        painelNorte.add(BotaoFactory.criarBotao("combate"));
+        jButton = new BotaoLauncher("Combate");
+        jButton.addActionListener(
+            e -> telaSimuladorDeCombate.iniciar()
+        );
+        painelNorte.add(jButton);
 
         JPanel painelSul = new JPanel();
         painelSul.setPreferredSize(new Dimension(900, 50));
@@ -74,6 +80,7 @@ public class Launcher extends JFrame {
         add(painelPrincipal, BorderLayout.CENTER);
         add(painelNorte, BorderLayout.NORTH);
         add(painelSul, BorderLayout.SOUTH);
+        add(new PainelDescricao(), BorderLayout.EAST);
     }
 
 }

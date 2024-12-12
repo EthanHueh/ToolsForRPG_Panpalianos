@@ -1,6 +1,8 @@
 package toolsforrpg_panpalianos.gui.telas.launcher;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+
 class PainelDescricao extends JLabel {
 
     PainelDescricao(){
@@ -13,5 +15,6 @@ class PainelDescricao extends JLabel {
                 .append("</html>")
             .toString()
         );
+        setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
     }
 }
