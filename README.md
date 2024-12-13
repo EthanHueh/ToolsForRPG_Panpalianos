@@ -15,6 +15,7 @@ Inicialmente foi criado como forma de aprender a Linguagem **Java**, mas caso po
 ### Fichas
 - Operações básicas para gerenciar fichas
 - Possibilidade de aleatorizar atributos da ficha na hora de criação
+- Subatributos são calculados de acordo com as regras de Old Dragon
 
 ### Iniciativas
 - Operações básicas para gerenciar iniciativas
@@ -26,7 +27,7 @@ Inicialmente foi criado como forma de aprender a Linguagem **Java**, mas caso po
 - Tabela de preço de upgrade para armas dos personagens
 
 ### Simulador de Combate
-- Simulação básica de um combate, uma ficha jogadora contra uma inimiga
+- Simulação de um combate, uma ficha jogadora contra uma inimiga
 
 ### Arquivos
 - Por meio de arquivos pode-se persistir os dados das fichas
