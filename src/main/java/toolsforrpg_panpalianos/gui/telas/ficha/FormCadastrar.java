@@ -2,6 +2,7 @@ package toolsforrpg_panpalianos.gui.telas.ficha;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormCadastrar extends FormFicha {
@@ -21,29 +22,28 @@ public class FormCadastrar extends FormFicha {
                 ficha = montarFichaCriatura();
             }
 
-            FichasRepository.adicionar(ficha);
+            try {
+                FichasRepository.adicionar(ficha);
+            } catch (Exception e) {       
+                TelaErro.mostrar(e);
+            }
         }
     }
 
     @Override
-    public void trocarTipoFicha(){
-        switch (tipoFichaAtual) {
-            default:
-            case "Jogador":
-                tipoFichaAtual = "Criatura";
-                titulo.setText("Cadastrar "+tipoFichaAtual);
-                pnlInfoCriatura.setVisible(true);
-                pnlInfoJogador.setVisible(false);
-                break;
+    protected void trocarParaCriatura() {
+        tipoFichaAtual = "Criatura";
+        titulo.setText("Cadastrar "+tipoFichaAtual);
+        pnlInfoCriatura.setVisible(true);
+        pnlInfoJogador.setVisible(false);
+    }
 
-            case "Criatura":
-                tipoFichaAtual = "Jogador";
-                titulo.setText("Cadastrar "+tipoFichaAtual);
-                pnlInfoJogador.setVisible(true);
-                pnlInfoCriatura.setVisible(false);
-                break;
-        }
-        
+    @Override
+    protected void trocarParaJogador() {
+        tipoFichaAtual = "Jogador";
+        titulo.setText("Cadastrar "+tipoFichaAtual);
+        pnlInfoJogador.setVisible(true);
+        pnlInfoCriatura.setVisible(false);
     }
     
 }

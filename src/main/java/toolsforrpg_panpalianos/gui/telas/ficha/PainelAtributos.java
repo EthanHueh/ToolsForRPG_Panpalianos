@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoRolaDadosAtributo;
 
 public class PainelAtributos extends JPanel {
@@ -34,7 +35,7 @@ public class PainelAtributos extends JPanel {
             new BotaoRolaDadosAtributo(carisma)
         };
 
-        JButton btnRolarTudo = new JButton("Rolar tudo");
+        JButton btnRolarTudo = new BotaoPadrao("Rolar tudo");
         for (BotaoRolaDadosAtributo btn : botoesAtributos) {
             for (ActionListener a: btn.getActionListeners()){
                 btnRolarTudo.addActionListener(a);

@@ -18,7 +18,7 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormAtualizar extends FormFicha {
 
-    private JComboBox<Object> selecionarFicha;
+    private JComboBox<Object> selecionarFicha = new JComboBox<>();
     
     public FormAtualizar(){
         super();
@@ -35,12 +35,10 @@ public class FormAtualizar extends FormFicha {
         pnlNorte.add(selecionarFicha);
         pnlNorte.setPreferredSize(new Dimension(150, 40));
         add(pnlNorte, BorderLayout.NORTH);
-
-        trocarTipoFicha();
     }
 
     @Override
-    public void submeterFicha() {
+    protected void submeterFicha() {
         if (TelaInput.desejaRealizarOperacao("Quer mesmo cadastrar essa ficha?", "Confirmacao")){
             Ficha ficha;
 
@@ -59,38 +57,27 @@ public class FormAtualizar extends FormFicha {
     }
 
     @Override
-    public void trocarTipoFicha(){
+    protected void trocarParaJogador(){
+        tipoFichaAtual = "Jogador";
+        titulo.setText("Atualizar "+tipoFichaAtual);
+        SelecaoUtils.mudarParaFichasJogador(selecionarFicha);
 
-        if (selecionarFicha == null){
-            selecionarFicha = new JComboBox<>();
-        }
+        pnlInfoJogador.setVisible(true);
+        pnlInfoCriatura.setVisible(false);
+    }
 
-        switch (tipoFichaAtual) {
-            default:
-            case "Jogador":
-                tipoFichaAtual = "Criatura";
-                titulo.setText("Atualizar "+tipoFichaAtual);
-                SelecaoUtils.mudarParaFichasCriatura(selecionarFicha);
+    protected void trocarParaCriatura(){
+        tipoFichaAtual = "Criatura";
+        titulo.setText("Atualizar "+tipoFichaAtual);
+        SelecaoUtils.mudarParaFichasCriatura(selecionarFicha);
 
-                pnlInfoCriatura.setVisible(true);
-                pnlInfoJogador.setVisible(false);
-                break;
-
-            case "Criatura":
-                tipoFichaAtual = "Jogador";
-                titulo.setText("Atualizar "+tipoFichaAtual);
-                SelecaoUtils.mudarParaFichasJogador(selecionarFicha);
-
-                pnlInfoJogador.setVisible(true);
-                pnlInfoCriatura.setVisible(false);
-                break;
-
-        }
-        
+        pnlInfoCriatura.setVisible(true);
+        pnlInfoJogador.setVisible(false);
     }
 
     private void atualizarCamposFichaAtual() {
         if (selecionarFicha.getSelectedItem() == null){
+            TelaErro.mostrar("Nenhuma ficha selecionada!");
             return;
         }
     

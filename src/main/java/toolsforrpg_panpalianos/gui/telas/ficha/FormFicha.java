@@ -17,17 +17,16 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 
 public abstract class FormFicha extends JFrame {
 
     protected String tipoFichaAtual;
 
     protected JLabel titulo = new JLabel();
-    protected JButton trocarTipoFicha = new JButton();
+    protected JButton trocarTipoFicha = new BotaoPadrao("Trocar");
 
-    protected JPanel pnlPrincipal = new JPanel();
     protected JPanel pnlNorte = new JPanel();
-    protected JPanel pnlLeste = new JPanel();
 
     protected PainelInfoBasica pnlInfoBasica = new PainelInfoBasica();
     protected PainelInfoJogador pnlInfoJogador = new PainelInfoJogador();
@@ -35,18 +34,16 @@ public abstract class FormFicha extends JFrame {
     protected PainelAtributos pnlAtributos = new PainelAtributos();
     protected PainelEquipamento pnlEquipamento = new PainelEquipamento();
 
-    protected JButton btnSubmit = new JButton();
-
     public FormFicha(){
         setLayout(new BorderLayout());
 
         trocarTipoFicha.addActionListener (e -> trocarTipoFicha());
-        trocarTipoFicha.setText("Trocar");
 
         pnlNorte.add(titulo);
         pnlNorte.add(trocarTipoFicha);
         add(pnlNorte, BorderLayout.NORTH);
 
+        JPanel pnlPrincipal = new JPanel();
         pnlPrincipal.setLayout(new BoxLayout(pnlPrincipal, BoxLayout.Y_AXIS));
         pnlPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         
@@ -54,6 +51,7 @@ public abstract class FormFicha extends JFrame {
         pnlPrincipal.add(pnlInfoJogador);
         pnlPrincipal.add(pnlInfoCriatura);
 
+        JPanel pnlLeste = new JPanel();
         pnlLeste.setLayout(new BoxLayout(pnlLeste, BoxLayout.Y_AXIS));
         pnlLeste.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         pnlLeste.add(pnlAtributos);
@@ -62,6 +60,7 @@ public abstract class FormFicha extends JFrame {
         add(pnlPrincipal, BorderLayout.CENTER);
         add(pnlLeste, BorderLayout.EAST);
 
+        JButton btnSubmit = new BotaoPadrao("OK");
         btnSubmit.setText("OK");
         btnSubmit.addActionListener(
             e -> submeterFicha()
@@ -72,14 +71,27 @@ public abstract class FormFicha extends JFrame {
         pack();
 
         tipoFichaAtual = "Jogador";
-        trocarTipoFicha();
     }
 
-    public abstract void submeterFicha();
+    public void iniciar(){
+        trocarParaJogador();
+        setVisible(true);
+    }
 
-    public abstract void trocarTipoFicha();
+    protected abstract void submeterFicha();
 
-    public Ficha montarFichaJogador() {
+    protected void trocarTipoFicha(){
+        if (tipoFichaAtual.equals("Jogador")){
+            trocarParaCriatura();
+        } else {
+            trocarParaJogador();
+        }
+    }
+
+    protected abstract void trocarParaCriatura();
+    protected abstract void trocarParaJogador();
+
+    protected Ficha montarFichaJogador() {
         
         Ficha ficha = FichaJogador.Builder.novoJogador()
             .nome           (pnlInfoBasica.nome.getText())
@@ -111,7 +123,7 @@ public abstract class FormFicha extends JFrame {
         return ficha;
     }
 
-    public Ficha montarFichaCriatura() {
+    protected Ficha montarFichaCriatura() {
         
         Ficha ficha = FichaCriatura.Builder.novaCriatura()
             .nome               (pnlInfoBasica.nome.getText())
@@ -141,7 +153,7 @@ public abstract class FormFicha extends JFrame {
         return ficha;
     }
 
-    public List<Idioma> montarListaIdiomas(){
+    protected List<Idioma> montarListaIdiomas(){
         List<Idioma> idiomas = new ArrayList<>();
         for (JCheckBox jCheckBox : pnlInfoBasica.idiomas) {
             if (jCheckBox.isSelected()){
