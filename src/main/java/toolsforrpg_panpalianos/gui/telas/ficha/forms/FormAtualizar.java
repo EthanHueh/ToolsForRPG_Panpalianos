@@ -39,7 +39,7 @@ public class FormAtualizar extends FormFicha {
 
     @Override
     protected void submeterFicha() {
-        if (TelaInput.desejaRealizarOperacao("Quer mesmo cadastrar essa ficha?", "Confirmacao")){
+        if (TelaInput.desejaRealizarOperacao("Quer mesmo atualizar essa ficha?", "Confirmacao")){
             Ficha ficha;
 
             if (tipoFichaAtual.equals("Jogador")){
@@ -64,6 +64,7 @@ public class FormAtualizar extends FormFicha {
 
         pnlInfoJogador.setVisible(true);
         pnlInfoCriatura.setVisible(false);
+        atualizarCamposFichaAtual();
     }
 
     protected void trocarParaCriatura(){
@@ -73,11 +74,11 @@ public class FormAtualizar extends FormFicha {
 
         pnlInfoCriatura.setVisible(true);
         pnlInfoJogador.setVisible(false);
+        atualizarCamposFichaAtual();
     }
 
     private void atualizarCamposFichaAtual() {
         if (selecionarFicha.getSelectedItem() == null){
-            TelaErro.mostrar("Nenhuma ficha selecionada!");
             return;
         }
     
