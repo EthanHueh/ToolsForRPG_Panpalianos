@@ -29,30 +29,7 @@ public class FichaJogador extends Ficha {
 
     @Override
     public String toString() {
-        return new StringBuilder()
-            .append("------------------------------------------------------------\n")
-            .append("\t"+getNome()+" ("+getRaca().getNome()+")\n")
-            .append("\t"+"Classe: "+classe.getNome()+"\n")
-            .append("\t"+"Especializacao: "+especializacao.getNome()+"\n\n")
-
-            .append("PVs: "+Calculadora.calcularPV(this)+"\n")
-            .append("FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n")
-            .append("INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n")
-            .append("Total atributos: "+getSomaAtributos()+"\n\n")
-        
-            .append("CA: "+getClasseArmadura()+"\n")
-            .append("JP: "+getJogadaProtecao()+"\n")
-            .append("DVs: "+getQuantDVs()+"\n")
-            .append("BA: "+getBaseAtaque()+"\n")
-            .append("Movimento: "+getMovimento()+"\n\n")
-
-            .append("Nível atual: "+lvl+"\n")
-            .append("Exp: "+exp+"\n\n")
-            .append("------------------------------------------------------------\n")
-            .append(getEquipamento().toString())
-            .append("------------------------------------------------------------\n")
-            .toString();
-
+        return super.toString()+" "+classe.getNome();
     }
 
     @Override

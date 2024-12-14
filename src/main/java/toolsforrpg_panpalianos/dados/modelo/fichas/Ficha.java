@@ -97,4 +97,9 @@ public abstract class Ficha {
         this.raca = Raca.getRaca(string);
     }
 
+    @Override
+    public String toString() {
+        return nome+", "+raca.getNome();
+    }
+
 }

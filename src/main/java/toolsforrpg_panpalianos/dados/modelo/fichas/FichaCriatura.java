@@ -9,7 +9,6 @@ import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
-import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
 @Getter
 @Setter
@@ -26,30 +25,6 @@ public class FichaCriatura extends Ficha {
     private int pvsAdicionais;
 
     private FichaCriatura() {
-        
-    }
-    
-    @Override
-    public String toString() {
-
-        return new StringBuilder()
-            .append("------------------------------------------------------------\n")
-            .append("\t"+getNome()+" ("+getRaca().getNome()+")\n\n")
-
-            .append("PVs: "+Calculadora.calcularPV(this)+"/"+Calculadora.calcularPVMaximo(this)+"\n")
-            .append("PVs Adicionais: "+pvsAdicionais+"\n\n")
-            .append("FOR: "+getForca()+"\t"+"DES: "+getDestreza()+"\t"+"CON: "+getConstituicao()+"\n")
-            .append("INT: "+getInteligencia()+"\t"+"SAB: "+getSabedoria()+"\t"+"CAR: "+getCarisma()+"\n")
-            .append("Total atributos: "+getSomaAtributos()+"\n\n")
-            
-            .append("CA: "+getClasseArmadura()+"\n")
-            .append("JP: "+getJogadaProtecao()+"\n")
-            .append("DVs: "+getQuantDVs()+"\n")
-            .append("BA: "+getBaseAtaque()+"\n")
-            .append("Movimento: "+getMovimento()+"\n")
-            .append("------------------------------------------------------------\n")
-            .append(getEquipamento().toString())
-            .toString();
         
     }
 
