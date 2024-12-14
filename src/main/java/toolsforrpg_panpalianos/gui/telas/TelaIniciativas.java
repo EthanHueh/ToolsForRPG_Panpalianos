@@ -23,7 +23,6 @@ import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 
 @Getter
 public class TelaIniciativas extends JFrame {
@@ -73,6 +72,11 @@ public class TelaIniciativas extends JFrame {
         pack();
     }
 
+    public void iniciar(){
+        SelecaoUtils.mudarParaTodasAsFichas(selecao);
+        setVisible(true);
+    }
+
     public void adicionarIniciativa(){
         Ficha ficha = (Ficha) selecao.getSelectedItem();
         int valorIniciativa = Integer.parseInt(campoIniciativa.getText());
@@ -117,7 +121,7 @@ public class TelaIniciativas extends JFrame {
 
     public void mostrarListaIniciativas() {
         try {
-            TelaTexto.iniciar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
+            TelaAviso.avisar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
         } catch (Exception e){
             TelaErro.mostrar(e);
         }

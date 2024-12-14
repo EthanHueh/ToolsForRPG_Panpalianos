@@ -48,18 +48,20 @@ public class Launcher extends JFrame {
         painelNorte.setBackground(Cores.CINZA.getCor());
 
         JButton jButton = new BotaoLauncher("Fichas");
-        jButton.addActionListener(e -> telaFichas.setVisible(true));
+        jButton.addActionListener(
+            e -> telaFichas.iniciar()
+        );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Iniciativas");
         jButton.addActionListener(
-            e -> telaIniciativas.setVisible(true)
+            e -> telaIniciativas.iniciar()
         );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Tabela Preço");
         jButton.addActionListener(
-            e -> telaTabelaPrecos.setVisible(true)
+            e -> telaTabelaPrecos.iniciar()
         );
         painelNorte.add(jButton);
 

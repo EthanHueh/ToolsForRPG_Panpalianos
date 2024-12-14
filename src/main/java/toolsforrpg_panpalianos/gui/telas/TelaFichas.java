@@ -47,13 +47,13 @@ public class TelaFichas extends JFrame {
 
         jButton = new BotaoPadrao("Cadastrar fichas");
         jButton.addActionListener(
-            e -> formCadastrar.setVisible(true)
+            e -> formCadastrar.iniciar()
         );
         painelPrincipal.add(jButton);
 
         jButton = new BotaoPadrao("Atualizar fichas");
         jButton.addActionListener(
-            e -> formAtualizar.setVisible(true)
+            e -> formAtualizar.iniciar()
         );
         painelPrincipal.add(jButton);
 
@@ -67,6 +67,10 @@ public class TelaFichas extends JFrame {
 
         pack();
         
+    }
+
+    public void iniciar(){
+        setVisible(true);
     }
 
     public void mostrarFichasJogador(){ 
