@@ -134,6 +134,7 @@ abstract class FormFicha extends JFrame {
             .jogadaDeProtecao   (Integer.parseInt(pnlInfoCriatura.jogadaDeProtecao.getText()))
             .baseDeAtaque       (Integer.parseInt(pnlInfoCriatura.baseAtaque.getText()))
             .movimento          (Integer.parseInt(pnlInfoCriatura.classeArmadura.getText()))
+            .quantDVs           (Integer.parseInt(pnlInfoCriatura.dadoVida.getText()))
             .pvsAdicionais      (Integer.parseInt(pnlInfoCriatura.pvsAdicionais.getText()))
             .forca              (Integer.parseInt(pnlAtributos.forca.getText()))
             .destreza           (Integer.parseInt(pnlAtributos.destreza.getText()))

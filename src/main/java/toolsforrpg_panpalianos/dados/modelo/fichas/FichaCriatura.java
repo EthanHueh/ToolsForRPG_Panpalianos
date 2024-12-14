@@ -22,6 +22,7 @@ public class FichaCriatura extends Ficha {
     private int baseAtaque;
     private int movimento;
     
+    private int quantDVs;
     private int pvsAdicionais;
 
     private FichaCriatura() {

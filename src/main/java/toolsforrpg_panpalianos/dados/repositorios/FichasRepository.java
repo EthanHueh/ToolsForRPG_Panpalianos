@@ -97,7 +97,6 @@ public class FichasRepository {
                 f.setSabedoria(ficha.getSabedoria());
                 f.setCarisma(ficha.getCarisma());
 
-                f.setQuantDVs(ficha.getQuantDVs());
                 f.setQuantPVsAtual(ficha.getQuantPVsAtual());
 
                 f.setEquipamento(ficha.getEquipamento());
@@ -110,6 +109,7 @@ public class FichasRepository {
                     fAntiga.setJogadaDeProtecao(fAtualizada.getJogadaDeProtecao());
                     fAntiga.setBaseAtaque(fAtualizada.getBaseAtaque());
                     fAntiga.setMovimento(fAtualizada.getMovimento());
+                    fAntiga.setQuantDVs(fAtualizada.getQuantDVs());
                     fAntiga.setPvsAdicionais(fAtualizada.getPvsAdicionais());
                 }
 

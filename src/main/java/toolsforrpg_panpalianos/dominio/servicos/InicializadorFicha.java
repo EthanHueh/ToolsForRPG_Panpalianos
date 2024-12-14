@@ -5,6 +5,7 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
+import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
 public class InicializadorFicha {
@@ -24,12 +25,11 @@ public class InicializadorFicha {
             if (Validador.validarEspecializacao(f) == false){
                 f.setEspecializacao(Especializacao.NENHUMA);
             }
-
-            f.setQuantDVs(Calculadora.calcularDVJogador(f));
         }
         
-        if (Validador.validarDadoDeVida(ficha) == false){
-            ficha.setQuantDVs(5);
+        if (Validador.validarDadoDeVida(ficha) == false && ficha instanceof FichaCriatura){
+            FichaCriatura f = (FichaCriatura) ficha;
+            f.setQuantDVs(5);
         }
        
         if (ficha.getEquipamento() == null){

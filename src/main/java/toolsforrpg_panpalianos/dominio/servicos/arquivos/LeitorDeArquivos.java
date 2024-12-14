@@ -95,7 +95,6 @@ public class LeitorDeArquivos {
                     .inteligencia       (j.get("inteligencia").getAsInt())
                     .sabedoria          (j.get("sabedoria").getAsInt())
                     .carisma            (j.get("carisma").getAsInt())
-                    .quantDVs           (j.get("quantDVs").getAsInt())
                     .quantPVsAtual      (j.get("quantPVsAtual").getAsInt())
                     .lvl                (j.get("lvl").getAsInt())
                     .exp                (j.get("exp").getAsInt())

@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
@@ -73,7 +72,7 @@ public class CalculadoraIT {
     @Test
     public void testCalcularPV() {
         System.out.println("calcularPV");
-        Ficha ficha = FichaCriatura.Builder.novaCriatura().build();
+        FichaCriatura ficha = FichaCriatura.Builder.novaCriatura().build();
         ficha.setConstituicao(10);
         
         ficha.setQuantDVs(1);
@@ -101,7 +100,7 @@ public class CalculadoraIT {
     public void testCalcularPVMaximo() {
         System.out.println("calcularPVMaximo");
         
-        Ficha ficha = FichaCriatura.Builder.novaCriatura().build();
+        FichaCriatura ficha = FichaCriatura.Builder.novaCriatura().build();
 
         ficha.setConstituicao(10);
         ficha.setQuantDVs(1);

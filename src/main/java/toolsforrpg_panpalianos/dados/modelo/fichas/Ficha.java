@@ -28,7 +28,6 @@ public abstract class Ficha {
     private int sabedoria    = 0;
     private int carisma      = 0;
 
-    private int quantDVs     = 0;
     private int quantPVsAtual= 0;
 
     private Equipamento equipamento = new Equipamento();
@@ -45,6 +44,7 @@ public abstract class Ficha {
     public abstract int getJogadaProtecao();
     public abstract int getBaseAtaque();
     public abstract int getMovimento();
+    public abstract int getQuantDVs();
 
     public int getAtributoByTipo(TipoAtributo opcao) {
 

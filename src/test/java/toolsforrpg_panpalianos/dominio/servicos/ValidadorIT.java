@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
-import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
@@ -76,7 +75,7 @@ public class ValidadorIT {
 
     @Test
     public void testValidarDadoVida(){
-        Ficha f = FichaCriatura.Builder.novaCriatura().build();
+        FichaCriatura f = FichaCriatura.Builder.novaCriatura().build();
 
         f.setQuantDVs(2);
         assertTrue(Validador.validarDadoDeVida(f));

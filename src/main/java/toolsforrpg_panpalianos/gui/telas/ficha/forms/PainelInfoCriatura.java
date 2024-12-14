@@ -8,20 +8,15 @@ import javax.swing.JTextField;
 
 class PainelInfoCriatura extends JPanel {
     
-    JTextField classeArmadura = new JTextField();
-    JTextField jogadaDeProtecao = new JTextField();
-    JTextField baseAtaque = new JTextField();
-    JTextField movimento = new JTextField();
-    JTextField pvsAdicionais = new JTextField();
+    JTextField classeArmadura = new JTextField("0");
+    JTextField jogadaDeProtecao = new JTextField("0");
+    JTextField baseAtaque = new JTextField("0");
+    JTextField movimento = new JTextField("0");
+    JTextField dadoVida = new JTextField("0");
+    JTextField pvsAdicionais = new JTextField("0");
     
     PainelInfoCriatura(){
-        setLayout(new GridLayout(5,2));
-
-        classeArmadura.setText("0");
-        jogadaDeProtecao.setText("0");
-        baseAtaque.setText("0");
-        movimento.setText("0");
-        pvsAdicionais.setText("0");
+        setLayout(new GridLayout(6,2));
 
         add(new JLabel("Classe de Armadura"));
         add(classeArmadura);
@@ -34,6 +29,9 @@ class PainelInfoCriatura extends JPanel {
 
         add(new JLabel("Movimento"));
         add(movimento);
+
+        add(new JLabel("Dados de vida"));
+        add(dadoVida);
 
         add(new JLabel("PVs Adicionais"));
         add(pvsAdicionais);

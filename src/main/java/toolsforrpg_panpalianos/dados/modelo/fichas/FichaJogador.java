@@ -52,6 +52,11 @@ public class FichaJogador extends Ficha {
         return Calculadora.calcularMovimento(this);
     }
 
+    @Override
+    public int getQuantDVs() {
+        return Calculadora.calcularDVJogador(this);
+    }
+
     public void setClasse(Classe classe) {
         this.classe = classe;
     }
@@ -71,7 +76,6 @@ public class FichaJogador extends Ficha {
         private int sabedoria    = 0;
         private int carisma      = 0;
 
-        private int quantDVs     = 1;
         private int quantPVsAtual= 0;
 
         private Equipamento equipamento = new Equipamento();
@@ -154,11 +158,6 @@ public class FichaJogador extends Ficha {
             return this;
         }
 
-        public Builder quantDVs(int quantDVs){
-            this.quantDVs = quantDVs;
-            return this;
-        }
-
         public Builder quantPVsAtual(int quantPVsAtual){
             this.quantPVsAtual = quantPVsAtual;
             return this;
@@ -221,7 +220,6 @@ public class FichaJogador extends Ficha {
             ficha.setSabedoria(sabedoria);
             ficha.setCarisma(carisma);
 
-            ficha.setQuantDVs(quantDVs);
             ficha.setQuantPVsAtual(quantPVsAtual);
 
             ficha.setEquipamento(equipamento);
