@@ -13,7 +13,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import toolsforrpg_panpalianos.dominio.servicos.homebrew.GeradorTabelaPreco;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 
@@ -52,6 +51,10 @@ public class TelaTabelaPrecos extends JFrame {
         pack();
     }
 
+    public void iniciar(){
+        setVisible(true);
+    }
+
     private void atualizarTabela(){
 
         try {
@@ -62,7 +65,7 @@ public class TelaTabelaPrecos extends JFrame {
 
             JTable tabela = new JTable(
                 new DefaultTableModel(
-                    GeradorTabelaPreco.executar(preco, nome),
+                    gerarTabelaPreco(preco, nome),
                     new String[]{
                         "Arma",
                         "Upgrade",
@@ -86,6 +89,26 @@ public class TelaTabelaPrecos extends JFrame {
             return;
         }
 
+    }
+
+    public String[][] gerarTabelaPreco(int preco, String nome){
+        String[][] tabelaPrecos = new String[5][3];
+        
+        tabelaPrecos[0][0] = nome;
+        tabelaPrecos[0][1] = String.valueOf(preco);
+        tabelaPrecos[0][2] = String.valueOf(preco);
+        
+        int precoAcumulado = 0;
+        for (int i = 1; i < 5; i++){
+            
+            precoAcumulado += (preco * Math.pow(6, i));
+            
+            tabelaPrecos[i][0] = nome+" +"+i;
+            tabelaPrecos[i][1] = String.valueOf(preco * Math.pow(6, i));
+            tabelaPrecos[i][2] = String.valueOf(precoAcumulado);
+        }
+
+        return tabelaPrecos;
     }
 
 }
