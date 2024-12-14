@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -15,7 +15,7 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 
-public class PainelInfoBasica extends JPanel {
+class PainelInfoBasica extends JPanel {
 
     JTextField nome = new JTextField();
     JTextField descricao = new JTextField();

@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.launcher;
+package toolsforrpg_panpalianos.gui.componentes;
 
 import javax.swing.ImageIcon;
 

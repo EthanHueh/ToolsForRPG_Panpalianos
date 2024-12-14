@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 
-public abstract class FormFicha extends JFrame {
+abstract class FormFicha extends JFrame {
 
     protected String tipoFichaAtual;
 

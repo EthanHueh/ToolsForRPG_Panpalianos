@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;

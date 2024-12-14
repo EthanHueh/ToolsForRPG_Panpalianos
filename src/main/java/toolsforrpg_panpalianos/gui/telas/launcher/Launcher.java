@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import toolsforrpg_panpalianos.gui.componentes.Cores;
+import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoLauncher;
 import toolsforrpg_panpalianos.gui.telas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.TelaIniciativas;

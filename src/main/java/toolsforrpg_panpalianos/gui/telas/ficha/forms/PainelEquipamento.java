@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import java.awt.GridLayout;
 
@@ -10,7 +10,7 @@ import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
 
-public class PainelEquipamento extends JPanel {
+class PainelEquipamento extends JPanel {
     JComboBox<String> arma = new JComboBox<>();
     JComboBox<String> armadura = new JComboBox<>();
     JComboBox<String> escudo = new JComboBox<>();

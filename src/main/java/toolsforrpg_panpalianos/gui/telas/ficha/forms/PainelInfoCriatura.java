@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import java.awt.GridLayout;
 
@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PainelInfoCriatura extends JPanel {
+class PainelInfoCriatura extends JPanel {
     
     JTextField classeArmadura = new JTextField();
     JTextField jogadaDeProtecao = new JTextField();
