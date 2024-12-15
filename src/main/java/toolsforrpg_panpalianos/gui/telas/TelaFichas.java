@@ -1,28 +1,22 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaTexto;
 import toolsforrpg_panpalianos.gui.telas.ficha.TelaExcluirFicha;
+import toolsforrpg_panpalianos.gui.telas.ficha.exibicao.TelaMostrarFichas;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormAtualizar;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormCadastrar;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
-
 public class TelaFichas extends JFrame {
 
     private FormCadastrar formCadastrar = new FormCadastrar();
+    private TelaMostrarFichas telaMostrarFichas = new TelaMostrarFichas();
     private FormAtualizar formAtualizar = new FormAtualizar();
     private TelaExcluirFicha telaExcluirFicha = new TelaExcluirFicha();
 
@@ -32,16 +26,10 @@ public class TelaFichas extends JFrame {
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new GridLayout(5, 1));
         painelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-        
-        JButton jButton = new BotaoPadrao("Exibir fichas jogador");
-        jButton.addActionListener(
-            e -> mostrarFichasJogador()
-        );
-        painelPrincipal.add(jButton);
 
-        jButton = new BotaoPadrao("Exibir fichas criatura");
+        JButton jButton = new BotaoPadrao("Exibir fichas");
         jButton.addActionListener(
-            e -> mostrarFichasCriatura()
+            e -> telaMostrarFichas.iniciar()
         );
         painelPrincipal.add(jButton);
 
@@ -71,24 +59,6 @@ public class TelaFichas extends JFrame {
 
     public void iniciar(){
         setVisible(true);
-    }
-
-    public void mostrarFichasJogador(){ 
-        try {
-            List<Ficha> fichas = new ArrayList<>(FichasRepository.retornarFichasJogador());
-            TelaTexto.iniciar(GeradorMensagens.gerarMensagemFichas(fichas), "Fichas");
-        } catch (Exception e) {
-            TelaErro.mostrar(e);
-        }
-    }
-    
-    public void mostrarFichasCriatura(){
-        try {
-            List<Ficha> fichas = new ArrayList<>(FichasRepository.retornarFichasCriatura());
-            TelaTexto.iniciar(GeradorMensagens.gerarMensagemFichas(fichas), "Fichas");
-        } catch (Exception e) {
-            TelaErro.mostrar(e);
-        }
     }
     
 }
