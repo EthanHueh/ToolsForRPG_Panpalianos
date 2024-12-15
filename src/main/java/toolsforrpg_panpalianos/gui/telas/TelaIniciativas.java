@@ -18,6 +18,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
+import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
@@ -36,7 +37,7 @@ public class TelaIniciativas extends JFrame {
 
         JPanel pnlPrincipal = new JPanel();
         pnlPrincipal.setLayout(new GridLayout(5,2));
-        pnlPrincipal.setPreferredSize(new Dimension(300,150));
+        pnlPrincipal.setPreferredSize(new Dimension(350,150));
 
         pnlPrincipal.add(new JLabel("Selecione a ficha"));
         SelecaoUtils.mudarParaTodasAsFichas(selecao);
@@ -48,26 +49,29 @@ public class TelaIniciativas extends JFrame {
 
         add(pnlPrincipal);
 
-        JButton btnInserir = new BotaoPadrao("INSERIR");
-        btnInserir.addActionListener(e -> adicionarIniciativa());
+        JButton btn = new BotaoPadrao("INSERIR");
+        btn.addActionListener(e -> adicionarIniciativa());
+        pnlPrincipal.add(btn);
 
-        JButton btnAtualizar = new BotaoPadrao("ATUALIZAR");
-        btnAtualizar.addActionListener(e -> atualizarIniciativa());
+        btn = new BotaoPadrao("ATUALIZAR");
+        btn.addActionListener(e -> atualizarIniciativa());
+        pnlPrincipal.add(btn);
 
-        JButton btnMostrar = new BotaoPadrao("MOSTRAR");
-        btnMostrar.addActionListener(e -> mostrarListaIniciativas());
+        btn = new BotaoPadrao("MOSTRAR");
+        btn.addActionListener(e -> mostrarListaIniciativas());
+        pnlPrincipal.add(btn);
 
-        JButton btnExcluir = new BotaoPadrao("EXCLUIR");
-        btnExcluir.addActionListener(e -> excluirIniciativa());
+        btn = new BotaoPadrao("EXCLUIR");
+        btn.addActionListener(e -> excluirIniciativa());
+        pnlPrincipal.add(btn);
 
-        JButton btnSalvar = new BotaoPadrao("SALVAR");
-        btnSalvar.addActionListener(e -> salvarArquivo());
+        btn = new BotaoPadrao("SALVAR");
+        btn.addActionListener(e -> salvarArquivo());
+        pnlPrincipal.add(btn);
 
-        pnlPrincipal.add(btnInserir);
-        pnlPrincipal.add(btnAtualizar);
-        pnlPrincipal.add(btnMostrar);
-        pnlPrincipal.add(btnExcluir);
-        pnlPrincipal.add(btnSalvar);
+        btn = new BotaoPadrao("ROLAR INICIATIVA");
+        btn.addActionListener(e -> rolarIniciativa());
+        pnlPrincipal.add(btn);
 
         pack();
     }
@@ -75,6 +79,11 @@ public class TelaIniciativas extends JFrame {
     public void iniciar(){
         SelecaoUtils.mudarParaTodasAsFichas(selecao);
         setVisible(true);
+    }
+
+    private void rolarIniciativa() {
+        Ficha ficha = (Ficha) selecao.getSelectedItem();
+        campoIniciativa.setText(String.valueOf(RoladorDeDados.executarIniciativa(ficha)));
     }
 
     public void adicionarIniciativa(){
