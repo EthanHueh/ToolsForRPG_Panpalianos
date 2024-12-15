@@ -6,12 +6,12 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
-import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
 import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
+import toolsforrpg_panpalianos.dados.modelo.tabelas.TabelaClasses;
 import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
 @Getter

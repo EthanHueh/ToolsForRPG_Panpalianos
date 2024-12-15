@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.dados.modelo;
+package toolsforrpg_panpalianos.dados.modelo.tabelas;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,65 +9,84 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 
 public class FichasRepository {
     
     private final static List<Ficha> fichas = new ArrayList<>();
+    private final static List<FichaCriatura> fichasCriatura = new ArrayList<>();
+    private final static List<FichaJogador> fichasJogador = new ArrayList<>();
+
     private final static int LIMITE_FICHAS = 1000;
     
     static {
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasCriatura("arquivos/fichas/fichasCriaturas.json"));
-        fichas.addAll(LeitorDeArquivos.lerArquivoFichasJogador("arquivos/fichas/fichasJogadores.json"));
+        for (FichaCriatura f : LeitorDeArquivos.lerArquivoFichasCriatura("arquivos/fichas/fichasCriaturas.json")) {
+            try {
+                adicionar(f);
+            } catch (Exception e) {
+                TelaErro.mostrar("Erro ao adicionar ficha de "+f.getNome());
+            }
+        }
+
+        for (FichaJogador f : LeitorDeArquivos.lerArquivoFichasJogador("arquivos/fichas/fichasJogadores.json")) {
+            try {
+                adicionar(f);
+            } catch (Exception e) {
+                TelaErro.mostrar("Erro ao adicionar ficha de "+f.getNome());
+            }
+        }
+
     }
     
-    public static void adicionar(Ficha ficha){
-        if (fichas.size() == LIMITE_FICHAS){
-            return;
+    public static void adicionar(Ficha ficha) throws Exception{
+        if (ficha == null){
+            throw new Exception("Ficha nula!");
         }
         
+        if (fichas.size() == LIMITE_FICHAS){
+            throw new Exception("Limite de fichas atingido!");
+        }
+
+        for (Ficha f : fichas) {
+            if (ficha.getNome().equals(f.getNome())){
+                throw new Exception("Não podem haver fichas de nome repetido!");
+            }
+        }
+
         fichas.add(InicializadorFicha.inicializar(ficha));
+
+        if (ficha instanceof FichaCriatura){
+            fichasCriatura.add((FichaCriatura) ficha);
+        }
+
+        if (ficha instanceof FichaJogador){
+            fichasJogador.add((FichaJogador) ficha);
+        }
         
     }
     
     public static List<Ficha> retornarTodasAsFichas() throws Exception{
         if (fichas.isEmpty()){
-            throw new Exception("Nenhuma ficha cadastrada");
+            throw new Exception("Nenhuma ficha cadastrada!");
         }
 
         return fichas;
     }
 
     public static List<FichaCriatura> retornarFichasCriatura() throws Exception {
-        List<FichaCriatura> fichasCriaturas = new ArrayList<>();
-        
-        for (Ficha f : fichas){
-            if (f instanceof FichaCriatura){
-                fichasCriaturas.add((FichaCriatura) f);
-            }
-        }
-
-        if (fichasCriaturas.isEmpty()){
-            throw new Exception("Nenhuma ficha de criatura cadastrada");
+        if (fichasCriatura.isEmpty()){
+            throw new Exception("Nenhuma ficha de criatura cadastrada!");
         }
         
-        return fichasCriaturas;
+        return fichasCriatura;
     }
     
     public static List<FichaJogador> retornarFichasJogador() throws Exception {
-        
-        List<FichaJogador> fichasJogadores = new ArrayList<>();
-        
-        for (Ficha f : fichas){
-            if (f instanceof FichaJogador){
-                fichasJogadores.add((FichaJogador) f);
-            }
+        if (fichasJogador.isEmpty()){
+            throw new Exception("Nenhuma ficha de jogador cadastrada!");
         }
 
-        if (fichasJogadores.isEmpty()){
-            throw new Exception("Nenhuma ficha de jogador cadastrada");
-        }
-        
-        return fichasJogadores;
+        return fichasJogador;
     }
     
     public static Ficha retornarFichaAleatoria() throws Exception{

@@ -2,12 +2,12 @@ package toolsforrpg_panpalianos.dominio.servicos;
 
 import java.util.List;
 
-import toolsforrpg_panpalianos.dados.modelo.TabelaClasses;
 import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dados.modelo.tabelas.TabelaClasses;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 
 public class Calculadora {
