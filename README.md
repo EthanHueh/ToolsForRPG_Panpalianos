@@ -33,6 +33,12 @@ Inicialmente foi criado como forma de aprender a Linguagem **Java**, mas caso po
 - Por meio de arquivos pode-se persistir os dados das fichas
 - Leitura de arquivos no formato .json
 
+## Créditos
+
+<a href="https://www.flaticon.com/br/icones-gratis/espada" title="espada ícones">Espada ícones criados por Freepik - Flaticon</a><br/>
+<a href="https://www.flaticon.com/br/icones-gratis/armaduras" title="armaduras ícones">Armaduras ícones criados por Freepik - Flaticon</a><br/>
+<a href="https://www.flaticon.com/br/icones-gratis/escudo" title="escudo ícones">Escudo ícones criados por Freepik - Flaticon</a><br/>
+
 ## Anexos
 
 ### Tabela Tipos de Ficha

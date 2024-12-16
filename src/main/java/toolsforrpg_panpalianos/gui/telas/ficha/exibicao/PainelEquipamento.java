@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
+import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
 
 class PainelEquipamento extends JPanel {
 
@@ -15,15 +16,15 @@ class PainelEquipamento extends JPanel {
     JLabel escudo = new JLabel();
 
     PainelEquipamento(){
-        setLayout(new GridLayout(3,2));
-
-        add(new JLabel("Arma"));
+        setLayout(new GridLayout(3,2, 0, 5));
+        
+        arma.setIcon(IconesImagem.ARMA.getImageIcon());
         add(arma);
-
-        add(new JLabel("Armadura"));
+        
+        armadura.setIcon(IconesImagem.ARMADURA.getImageIcon());
         add(armadura);
 
-        add(new JLabel("Arma"));
+        escudo.setIcon(IconesImagem.ESCUDO.getImageIcon());
         add(escudo);
     }
 
