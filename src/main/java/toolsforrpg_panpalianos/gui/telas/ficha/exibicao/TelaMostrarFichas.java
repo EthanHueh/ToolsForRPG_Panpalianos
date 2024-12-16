@@ -1,7 +1,10 @@
 package toolsforrpg_panpalianos.gui.telas.ficha.exibicao;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,9 +26,10 @@ public class TelaMostrarFichas extends JFrame {
 
     public TelaMostrarFichas(){
         setTitle("Exibir fichas");
-        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(300, 400));
 
         JPanel painelNorte = new JPanel();
+        painelNorte.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         SelecaoUtils.mudarParaTodasAsFichas(selecao);
         selecao.addActionListener(
@@ -36,13 +40,19 @@ public class TelaMostrarFichas extends JFrame {
         add(painelNorte, BorderLayout.NORTH);
 
         JPanel painelPrincipal = new JPanel();
+        painelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        painelPrincipal.setLayout(new BoxLayout(painelPrincipal, BoxLayout.Y_AXIS));
         painelPrincipal.add(painelInfoBasica);
         painelPrincipal.add(painelInfoJogador);
-        painelPrincipal.add(painelAtributos);
         painelPrincipal.add(painelEquipamento);
-        painelPrincipal.add(painelSubatributos);
-
         add(painelPrincipal, BorderLayout.CENTER);
+
+        JPanel painelLeste = new JPanel();
+        painelLeste.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        painelLeste.setLayout(new BoxLayout(painelLeste, BoxLayout.Y_AXIS));
+        painelLeste.add(painelAtributos);
+        painelLeste.add(painelSubatributos);
+        add(painelLeste, BorderLayout.EAST);
 
         pack();
 

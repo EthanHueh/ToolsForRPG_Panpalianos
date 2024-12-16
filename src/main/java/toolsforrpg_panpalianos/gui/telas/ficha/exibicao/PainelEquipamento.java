@@ -32,7 +32,7 @@ class PainelEquipamento extends JPanel {
         Equipamento equipamento = ficha.getEquipamento();
         arma.setText(equipamento.getArma().getNome());
         armadura.setText(equipamento.getArmadura().getNome());
-        escudo.setText(equipamento.getArma().getNome());
+        escudo.setText(equipamento.getEscudo().getNome());
     }
     
 }
