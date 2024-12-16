@@ -104,7 +104,7 @@ public class Calculadora {
     }
 
     public static int calcularMovimento(FichaJogador f) {
-        return f.getRaca().getMovimento() + f.getEquipamento().getArmadura().getReducaoMov();
+        return f.getRaca().getMovimento() - f.getEquipamento().getArmadura().getReducaoMov();
     }
     
     public static int calcularResultadoTeste(Ficha f, TipoAtributo t){

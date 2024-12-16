@@ -7,13 +7,13 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Armadura {
 
-    NENHUM      ("Nenhuma",0,20, 0),
-    ACOLCHOADA  ("Armadura acolchoada",0, 20, 1),
-    COURO       ("Armadura de couro",0,6, 2),
-    COURO_BATIDO("Armadura de couro batido",0,6, 3),
-    PLACAS      ("Armadura de placas",-2,3, 4),
-    COMPLETA    ("Armadura completa",-3,1, 5),
-    COTA_MALHA  ("Cota de Malha",-1,2, 6);
+    NENHUM      ("Nenhuma",                 0,0, 20),
+    ACOLCHOADA  ("Armadura acolchoada",     1,0, 20),
+    COURO       ("Armadura de couro",       2,0, 5),
+    COURO_BATIDO("Armadura de couro batido",3,0, 6),
+    PLACAS      ("Armadura de placas",      6,2, 3),
+    COMPLETA    ("Armadura completa",       8,3, 1),
+    COTA_MALHA  ("Cota de Malha",           4,1, 2);
 
     private final String nome;
     private final int bonusDefesa;
