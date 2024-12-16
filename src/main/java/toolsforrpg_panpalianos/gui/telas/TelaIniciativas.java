@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,7 +19,6 @@ import lombok.Getter;
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
-import toolsforrpg_panpalianos.dominio.servicos.GeradorMensagens;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
@@ -130,7 +132,7 @@ public class TelaIniciativas extends JFrame {
 
     public void mostrarListaIniciativas() {
         try {
-            TelaAviso.avisar(GeradorMensagens.gerarMensagemIniciativa(), "Iniciativas");
+            TelaAviso.avisar(gerarMensagemIniciativa(), "Iniciativas");
         } catch (Exception e){
             TelaErro.mostrar(e);
         }
@@ -138,13 +140,27 @@ public class TelaIniciativas extends JFrame {
 
     public void salvarArquivo(){
         try {
-            EscritorDeArquivos.salvarArquivo(GeradorMensagens.gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
+            EscritorDeArquivos.salvarArquivo(gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
             TelaAviso.avisar("Arquivo escrito com sucesso!");
         } catch (IOException e){
             TelaErro.mostrar(e);
         } catch (Exception e){
             TelaErro.mostrar(e);
         }
+    }
+
+    public static String gerarMensagemIniciativa() throws Exception {
+
+        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
+
+        iniciativas.sort(Comparator.comparing(i -> i.getIniciativa()));
+        Collections.reverse(iniciativas);
+
+        String msg = "";
+        for (Iniciativa i : iniciativas) {
+            msg += i.toString()+"\n";
+        }
+        return msg;
     }
 
 }
