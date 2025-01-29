@@ -18,8 +18,12 @@ public enum Classe {
     private final int dadoVidaMedio;
 
     public static Classe getClasse(String nome){
+        if (nome == null){
+            return NENHUMA;
+        }
+
         for (Classe c : Classe.values()){
-            if (nome.equals(c.getNome())){
+            if (c.getNome().equalsIgnoreCase(nome)){
                 return c;
             }
         }

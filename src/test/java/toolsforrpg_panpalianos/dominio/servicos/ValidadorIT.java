@@ -86,12 +86,10 @@ public class ValidadorIT {
         f.setQuantDVs(-2);
         assertFalse(Validador.validarDadoDeVida(f));
 
-
         FichaJogador fj = FichaJogador.Builder.novoJogador().build();
 
-        fj.setLvl(20);
-
-        fail("Prototype");
+        fj.setLvl(1);
+        assertTrue(Validador.validarDadoDeVida(fj));
 
     }
 

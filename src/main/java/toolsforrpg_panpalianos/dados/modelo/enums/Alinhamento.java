@@ -13,8 +13,12 @@ public enum Alinhamento {
     private final String nome;
 
     public static Alinhamento getAlinhamento(String nome){
+        if (nome == null){
+            return NEUTRO;
+        }
+
         for (Alinhamento a : Alinhamento.values()){
-            if (nome.equals(a.getNome())){
+            if (a.getNome().equalsIgnoreCase(nome)){
                 return a;
             }
         }

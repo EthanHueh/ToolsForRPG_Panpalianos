@@ -38,15 +38,9 @@ public class CalculadoraIT {
     @Test
     public void testCalcularBonus() {
         System.out.println("calcularBonus");
-        int atributo = 10;
-        int expResult = 0;
-        int result = Calculadora.calcularBonus(atributo);
-        assertEquals(expResult, result);
-        
-        atributo = 19;
-        expResult = 4;
-        result = Calculadora.calcularBonus(atributo);
-        assertEquals(expResult, result);
+
+        assertEquals(0, Calculadora.calcularBonus(10));
+        assertEquals(4, Calculadora.calcularBonus(19));
     }
 
     /**
@@ -55,15 +49,14 @@ public class CalculadoraIT {
     @Test
     public void testCalcularDVJogador() {
         System.out.println("calcularDVJogador");
+
         FichaJogador ficha = FichaJogador.Builder.novoJogador().classe("clerigo").build();
         
         ficha.setLvl(9);
-        int result = Calculadora.calcularDVJogador(ficha);
-        assertEquals(9, result);
+        assertEquals(9, Calculadora.calcularDVJogador(ficha));
         
         ficha.setLvl(14);
-        result = Calculadora.calcularDVJogador(ficha);
-        assertEquals(9, result);
+        assertEquals(9, Calculadora.calcularDVJogador(ficha));
     }
 
     /**
@@ -76,20 +69,14 @@ public class CalculadoraIT {
         ficha.setConstituicao(10);
         
         ficha.setQuantDVs(1);
-        int expResult = 5;
-        int result = Calculadora.calcularPV(ficha);
-        assertEquals(expResult, result);
+        assertEquals(5, Calculadora.calcularPV(ficha));
         
         ficha.setConstituicao(15);
-        expResult = 7;
-        result = Calculadora.calcularPV(ficha);
-        assertEquals(expResult, result);
+        assertEquals(7, Calculadora.calcularPV(ficha));
         
         ficha.setConstituicao(10);
         ficha.setQuantDVs(5);
-        expResult = 25;
-        result = Calculadora.calcularPV(ficha);
-        assertEquals(expResult, result);
+        assertEquals(25, Calculadora.calcularPV(ficha));
         
     }
 
@@ -104,17 +91,14 @@ public class CalculadoraIT {
 
         ficha.setConstituicao(10);
         ficha.setQuantDVs(1);
-        int result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(8, result);
+        assertEquals(8, Calculadora.calcularPVMaximo(ficha));
         
         ficha.setConstituicao(15);
-        result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(10, result);
+        assertEquals(10,  Calculadora.calcularPVMaximo(ficha));
         
         ficha.setConstituicao(10);
         ficha.setQuantDVs(5);
-        result = Calculadora.calcularPVMaximo(ficha);
-        assertEquals(40, result);
+        assertEquals(40, Calculadora.calcularPVMaximo(ficha));
     }
 
     /**
@@ -123,10 +107,9 @@ public class CalculadoraIT {
     @Test
     public void testCalcularPVsAdicionais() {
         System.out.println("calcularPVsAdicionais");
+
         FichaJogador ficha = FichaJogador.Builder.novoJogador().build();
-        int expResult = 0;
-        int result = Calculadora.calcularPVsAdicionais(ficha);
-        assertEquals(expResult, result);
+        assertEquals(0, Calculadora.calcularPVsAdicionais(ficha));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -137,10 +120,11 @@ public class CalculadoraIT {
     @Test
     public void testCalcularClasseArmadura() {
         System.out.println("calcularClasseArmadura");
-        FichaJogador f = null;
-        int expResult = 0;
-        int result = Calculadora.calcularClasseArmadura(f);
-        assertEquals(expResult, result);
+        
+        FichaJogador f = FichaJogador.Builder.novoJogador().build();
+        assertEquals(0, Calculadora.calcularClasseArmadura(f));
+
+
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
