@@ -5,11 +5,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import toolsforrpg_panpalianos.gui.telas.ficha.atualizar.FormAtualizar;
+import toolsforrpg_panpalianos.gui.telas.ficha.excluir.TelaExcluirFicha;
 import toolsforrpg_panpalianos.gui.telas.ficha.exibir.TelaMostrarFichas;
 
 public class PainelFicha extends JPanel {
@@ -50,14 +48,7 @@ public class PainelFicha extends JPanel {
     }
 
     private void excluir() {
-        if (TelaInput.desejaRealizarOperacao("Deseja deletar a ficha de "+ficha.getNome()+"?", "Confirmação")){
-            try {
-                FichasRepository.excluir(ficha);
-                TelaFichas.getInstance().atualizar();
-            } catch (Exception ex) {
-                TelaAviso.mostrarErro(ex);
-            }
-        }
+        TelaExcluirFicha.getInstance().iniciar(ficha);
     }
 
 }

@@ -1,67 +1,27 @@
 package toolsforrpg_panpalianos.gui.telas.ficha.excluir;
 
-import java.awt.GridLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
-import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.ficha.principal.TelaFichas;
 
-public class TelaExcluirFicha extends JFrame {
-    private JComboBox<Object> selecao = new JComboBox<>();
+public class TelaExcluirFicha {
+    private static TelaExcluirFicha instance = new TelaExcluirFicha();
     
-    public TelaExcluirFicha(){
-        setTitle("Excluir ficha");
-        
-        JPanel pnlPrincipal = new JPanel();
-        pnlPrincipal.setLayout(new GridLayout(2,1));
-        pnlPrincipal.setBorder(BorderFactory.createEmptyBorder(20,10,20,10));
-
-        SelecaoUtils.mudarParaTodasAsFichas(selecao);
-
-        JButton btnExcluir = new BotaoPadrao("Excluir");
-        btnExcluir.addActionListener(
-            e -> excluirFicha()
-        );
-
-        pnlPrincipal.add(selecao);
-        pnlPrincipal.add(btnExcluir);
-
-        add(pnlPrincipal);
-
-        pack();
+    public static TelaExcluirFicha getInstance(){
+        return instance;
     }
     
-    public void iniciar(){
-        SelecaoUtils.mudarParaTodasAsFichas(selecao);
-        setVisible(true);
-    }
-
-    private void excluirFicha(){
-
-        if (selecao.getSelectedItem() == null){
-            TelaAviso.mostrarErro("Ficha inexistente!");
-            return;
-        }
-
-        Ficha ficha = (Ficha) selecao.getSelectedItem();
-
+    public void iniciar(Ficha ficha){
         if (TelaInput.desejaRealizarOperacao("Deseja deletar a ficha de "+ficha.getNome()+"?", "Confirmação")){
             try {
                 FichasRepository.excluir(ficha);
-                selecao.removeItem(ficha);
-            } catch (Exception ex) {
-                TelaAviso.mostrarErro(ex);
+                TelaFichas.getInstance().atualizar();
+            } catch (Exception e) {
+                TelaAviso.mostrarErro(e);
             }
         }
     }
+    
 }
-

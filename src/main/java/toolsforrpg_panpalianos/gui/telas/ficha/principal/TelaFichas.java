@@ -57,8 +57,6 @@ public class TelaFichas extends JFrame {
         setVisible(true);
     }
 
-    public void atualizar2(){}
-
     public void atualizar(){
         try {
 
