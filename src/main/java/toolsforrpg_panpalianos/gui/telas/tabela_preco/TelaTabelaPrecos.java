@@ -18,6 +18,8 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class TelaTabelaPrecos extends JFrame {
 
+    private static TelaTabelaPrecos instance = new TelaTabelaPrecos();
+
     private JTextField campoNome = new JTextField("Adaga");
     private JTextField campoPreco = new JTextField("2");
     
@@ -49,6 +51,10 @@ public class TelaTabelaPrecos extends JFrame {
         add(painelNorte, BorderLayout.NORTH);
 
         pack();
+    }
+
+    public static TelaTabelaPrecos getInstance() {
+        return instance;
     }
 
     public void iniciar(){

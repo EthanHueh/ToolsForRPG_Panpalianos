@@ -18,12 +18,6 @@ import toolsforrpg_panpalianos.gui.telas.simulador_combate.TelaSimuladorDeCombat
 import toolsforrpg_panpalianos.gui.telas.tabela_preco.TelaTabelaPrecos;
 
 public class Launcher extends JFrame {
-
-    private TelaFichas telaFichas = TelaFichas.getInstance();
-    private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
-    private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
-    private TelaIniciativas telaIniciativas = new TelaIniciativas();
-    private TelaSimuladorDeCombate telaSimuladorDeCombate = new TelaSimuladorDeCombate();
     
     public Launcher(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,31 +45,31 @@ public class Launcher extends JFrame {
 
         JButton jButton = new BotaoLauncher("Fichas");
         jButton.addActionListener(
-            e -> telaFichas.iniciar()
+            e -> TelaFichas.getInstance().iniciar()
         );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Iniciativas");
         jButton.addActionListener(
-            e -> telaIniciativas.iniciar()
+            e -> TelaIniciativas.getInstance().iniciar()
         );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Tabela Preço");
         jButton.addActionListener(
-            e -> telaTabelaPrecos.iniciar()
+            e -> TelaTabelaPrecos.getInstance().iniciar()
         );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Estatísticas");
         jButton.addActionListener(
-            e -> telaEstatisticas.iniciar()
+            e -> TelaEstatisticas.getInstance().iniciar()
         );
         painelNorte.add(jButton);
 
         jButton = new BotaoLauncher("Combate");
         jButton.addActionListener(
-            e -> telaSimuladorDeCombate.iniciar()
+            e -> TelaSimuladorDeCombate.getInstance().iniciar()
         );
         painelNorte.add(jButton);
 

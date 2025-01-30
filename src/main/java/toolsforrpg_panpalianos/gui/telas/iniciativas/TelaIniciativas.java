@@ -29,6 +29,8 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 @Getter
 public class TelaIniciativas extends JFrame {
 
+    private static TelaIniciativas instance = new TelaIniciativas();
+
     private JComboBox<Object> selecao = new JComboBox<>();
     private JTextField campoIniciativa = new JTextField("0");
 
@@ -75,6 +77,10 @@ public class TelaIniciativas extends JFrame {
         pnlPrincipal.add(btn);
 
         pack();
+    }
+
+    public static TelaIniciativas getInstance() {
+        return instance;
     }
 
     public void iniciar(){

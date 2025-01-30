@@ -13,12 +13,18 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class TelaEstatisticas extends JFrame {
 
+    private static TelaEstatisticas instance = new TelaEstatisticas();
+
     private JPanel painelTabela = new JPanel();
 
     public TelaEstatisticas(){
         setTitle("Estatisticas da Party");
 
         add(painelTabela);
+    }
+
+    public static TelaEstatisticas getInstance() {
+        return instance;
     }
 
     public void iniciar(){

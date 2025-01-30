@@ -19,8 +19,9 @@ import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaSimuladorDeCombate extends JFrame {
 
-    private SimuladorDeCombate simCom = new SimuladorDeCombate();
+    private static TelaSimuladorDeCombate instance = new TelaSimuladorDeCombate();
 
+    private SimuladorDeCombate simCom = new SimuladorDeCombate();
     private JComboBox<Object> selecionarFichaJogador = new JComboBox<>();
     private JComboBox<Object> selecionarFichaInimigo = new JComboBox<>();
 
@@ -51,6 +52,10 @@ public class TelaSimuladorDeCombate extends JFrame {
 
         pack();
 
+    }
+
+    public static TelaSimuladorDeCombate getInstance() {
+        return instance;
     }
 
     public void iniciar(){
