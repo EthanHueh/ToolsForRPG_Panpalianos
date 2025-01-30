@@ -40,7 +40,7 @@ public class PainelFicha extends JPanel {
     }
 
     private void mostrar() {
-        TelaMostrarFichas.getInstance().iniciar(ficha);
+        new TelaMostrarFichas(ficha);
     }
 
     private void atualizar() {

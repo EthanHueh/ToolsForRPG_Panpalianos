@@ -14,15 +14,13 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 
 public class TelaMostrarFichas extends JFrame {
 
-    private static TelaMostrarFichas instance = new TelaMostrarFichas();
-
     private PainelInfoBasica painelInfoBasica = new PainelInfoBasica();
     private PainelAtributos painelAtributos = new PainelAtributos();
     private PainelEquipamento painelEquipamento = new PainelEquipamento();
     private PainelInfoJogador painelInfoJogador = new PainelInfoJogador();
     private PainelSubatributos painelSubatributos = new PainelSubatributos();
 
-    public TelaMostrarFichas(){
+    public TelaMostrarFichas(Ficha ficha){
         setTitle("Exibir fichas");
         setPreferredSize(new Dimension(300, 400));
 
@@ -45,13 +43,12 @@ public class TelaMostrarFichas extends JFrame {
         painelLeste.add(painelSubatributos);
         add(painelLeste, BorderLayout.EAST);
 
-        pack();
-        
-    }
-
-    public void iniciar(Ficha ficha){
         atualizar(ficha);
+
+        pack();
+
         setVisible(true);
+        
     }
 
     private void atualizar(Ficha ficha) {
@@ -69,10 +66,6 @@ public class TelaMostrarFichas extends JFrame {
             painelInfoJogador.atualizar((FichaJogador) ficha);
         }
         
-    }
-
-    public static TelaMostrarFichas getInstance() {
-        return instance;
     }
 
 }
