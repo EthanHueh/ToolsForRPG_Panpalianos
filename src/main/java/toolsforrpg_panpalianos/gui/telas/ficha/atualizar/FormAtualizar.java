@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.forms;
+package toolsforrpg_panpalianos.gui.telas.ficha.atualizar;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -15,6 +15,7 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormFicha;
 
 public class FormAtualizar extends FormFicha {
 

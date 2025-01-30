@@ -15,15 +15,15 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Alinhamento;
 import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 
-class PainelInfoBasica extends JPanel {
+public class PainelInfoBasica extends JPanel {
 
-    JTextField nome = new JTextField();
-    JTextField descricao = new JTextField();
-    JComboBox<String> alinhamento = new JComboBox<String>();
-    JComboBox<String> raca = new JComboBox<>();
-    List<JCheckBox> idiomas = new ArrayList<>();
+    public JTextField nome = new JTextField();
+    public JTextField descricao = new JTextField();
+    public JComboBox<String> alinhamento = new JComboBox<String>();
+    public JComboBox<String> raca = new JComboBox<>();
+    public List<JCheckBox> idiomas = new ArrayList<>();
 
-    PainelInfoBasica(){
+    public PainelInfoBasica(){
         setLayout(new GridLayout(5,2));
         add(new JLabel("Nome"));
         add(nome);

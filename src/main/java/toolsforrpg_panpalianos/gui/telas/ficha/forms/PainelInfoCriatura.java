@@ -6,16 +6,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-class PainelInfoCriatura extends JPanel {
+public class PainelInfoCriatura extends JPanel {
     
-    JTextField classeArmadura = new JTextField("0");
-    JTextField jogadaDeProtecao = new JTextField("0");
-    JTextField baseAtaque = new JTextField("0");
-    JTextField movimento = new JTextField("0");
-    JTextField dadoVida = new JTextField("0");
-    JTextField pvsAdicionais = new JTextField("0");
+    public JTextField classeArmadura = new JTextField("0");
+    public JTextField jogadaDeProtecao = new JTextField("0");
+    public JTextField baseAtaque = new JTextField("0");
+    public JTextField movimento = new JTextField("0");
+    public JTextField dadoVida = new JTextField("0");
+    public JTextField pvsAdicionais = new JTextField("0");
     
-    PainelInfoCriatura(){
+    public PainelInfoCriatura(){
         setLayout(new GridLayout(6,2));
 
         add(new JLabel("Classe de Armadura"));

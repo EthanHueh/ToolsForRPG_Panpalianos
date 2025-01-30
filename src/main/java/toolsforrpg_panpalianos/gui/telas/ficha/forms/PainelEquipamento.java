@@ -10,12 +10,12 @@ import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Arma;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
 
-class PainelEquipamento extends JPanel {
-    JComboBox<String> arma = new JComboBox<>();
-    JComboBox<String> armadura = new JComboBox<>();
-    JComboBox<String> escudo = new JComboBox<>();
+public class PainelEquipamento extends JPanel {
+    public JComboBox<String> arma = new JComboBox<>();
+    public JComboBox<String> armadura = new JComboBox<>();
+    public JComboBox<String> escudo = new JComboBox<>();
 
-    PainelEquipamento(){
+    public PainelEquipamento(){
         setLayout(new GridLayout(3,2));
 
         add(new JLabel("Arma"));

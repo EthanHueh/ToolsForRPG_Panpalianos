@@ -12,15 +12,15 @@ import javax.swing.JTextField;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoRolaDadosAtributo;
 
-class PainelAtributos extends JPanel {
-    JTextField forca = new JTextField();
-    JTextField destreza = new JTextField();
-    JTextField constituicao = new JTextField();
-    JTextField inteligencia = new JTextField();
-    JTextField sabedoria = new JTextField();
-    JTextField carisma = new JTextField();
+public class PainelAtributos extends JPanel {
+    public JTextField forca = new JTextField();
+    public JTextField destreza = new JTextField();
+    public JTextField constituicao = new JTextField();
+    public JTextField inteligencia = new JTextField();
+    public JTextField sabedoria = new JTextField();
+    public JTextField carisma = new JTextField();
 
-    PainelAtributos(){
+    public PainelAtributos(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JPanel painel = new JPanel();

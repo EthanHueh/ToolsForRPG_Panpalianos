@@ -10,13 +10,13 @@ import javax.swing.JTextField;
 import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 
-class PainelInfoJogador extends JPanel {
-    JTextField lvl = new JTextField();
-    JTextField exp = new JTextField();
-    JComboBox<String> classe = new JComboBox<>();
-    JComboBox<String> especializacao = new JComboBox<>();
+public class PainelInfoJogador extends JPanel {
+    public JTextField lvl = new JTextField();
+    public JTextField exp = new JTextField();
+    public JComboBox<String> classe = new JComboBox<>();
+    public JComboBox<String> especializacao = new JComboBox<>();
 
-    PainelInfoJogador(){
+    public PainelInfoJogador(){
         setLayout(new GridLayout(4,2));
         add(new JLabel("Classe"));
         for (Classe c: Classe.values()){

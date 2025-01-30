@@ -19,7 +19,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 
-abstract class FormFicha extends JFrame {
+public abstract class FormFicha extends JFrame {
 
     protected String tipoFichaAtual;
 
