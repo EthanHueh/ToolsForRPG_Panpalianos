@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas;
+package toolsforrpg_panpalianos.gui.telas.ficha;
 
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.ficha.atualizar.FormAtualizar;

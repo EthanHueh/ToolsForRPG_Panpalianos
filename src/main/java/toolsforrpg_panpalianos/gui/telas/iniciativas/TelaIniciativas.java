@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas;
+package toolsforrpg_panpalianos.gui.telas.iniciativas;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

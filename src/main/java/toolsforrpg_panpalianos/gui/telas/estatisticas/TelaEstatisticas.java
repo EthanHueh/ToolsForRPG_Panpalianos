@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas;
+package toolsforrpg_panpalianos.gui.telas.estatisticas;
 
 import java.awt.Dimension;
 

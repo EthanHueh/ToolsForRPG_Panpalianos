@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas;
+package toolsforrpg_panpalianos.gui.telas.tabela_preco;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
