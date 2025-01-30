@@ -24,7 +24,6 @@ import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 @Getter
@@ -97,7 +96,7 @@ public class TelaIniciativas extends JFrame {
         try {
             IniciativasRepository.adicionar(iniciativa);
         } catch (Exception e) {
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 
@@ -110,7 +109,7 @@ public class TelaIniciativas extends JFrame {
                 int valorIniciativa = Integer.parseInt(campoIniciativa.getText());
                 IniciativasRepository.atualizar(new Iniciativa(valorIniciativa, ficha));
             } catch (Exception e) {
-                TelaErro.mostrar(e);
+                TelaAviso.mostrarErro(e);
             }
         }         
             
@@ -124,7 +123,7 @@ public class TelaIniciativas extends JFrame {
             try {
                 IniciativasRepository.excluir(ficha);
             } catch (Exception e) {
-                TelaErro.mostrar(e);
+                TelaAviso.mostrarErro(e);
             }
         }
 
@@ -134,7 +133,7 @@ public class TelaIniciativas extends JFrame {
         try {
             TelaAviso.avisar(gerarMensagemIniciativa(), "Iniciativas");
         } catch (Exception e){
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 
@@ -143,9 +142,9 @@ public class TelaIniciativas extends JFrame {
             EscritorDeArquivos.salvarArquivo(gerarMensagemIniciativa(), "arquivos/iniciativas/iniciativas.txt");
             TelaAviso.avisar("Arquivo escrito com sucesso!");
         } catch (IOException e){
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         } catch (Exception e){
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 

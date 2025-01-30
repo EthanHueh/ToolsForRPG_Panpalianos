@@ -2,7 +2,7 @@ package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormCadastrar extends FormFicha {
@@ -25,7 +25,7 @@ public class FormCadastrar extends FormFicha {
             try {
                 FichasRepository.adicionar(ficha);
             } catch (Exception e) {       
-                TelaErro.mostrar(e);
+                TelaAviso.mostrarErro(e);
             }
         }
     }

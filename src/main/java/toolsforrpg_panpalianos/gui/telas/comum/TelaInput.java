@@ -17,7 +17,7 @@ public class TelaInput {
                 numero = Integer.parseInt(JOptionPane.showInputDialog(msg));
                 return numero;
             } catch (NumberFormatException e) {
-                TelaErro.mostrar("Insira novamente!", "Input errado");
+                TelaAviso.mostrarErro("Insira novamente!", "Input errado");
             }
         }
         while(true);
@@ -33,7 +33,7 @@ public class TelaInput {
                 numero = Integer.parseInt(JOptionPane.showInputDialog(null, msg, titulo,1));
                 return numero;
             } catch (NumberFormatException e) {
-                TelaErro.mostrar("Insira novamente!", "Input errado");
+                TelaAviso.mostrarErro("Insira novamente!", "Input errado");
             }
         }
         while(true);

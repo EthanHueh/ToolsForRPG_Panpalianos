@@ -13,7 +13,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class FormAtualizar extends FormFicha {
@@ -51,7 +51,7 @@ public class FormAtualizar extends FormFicha {
             try {
                 FichasRepository.atualizar(ficha);
             } catch (Exception e) {
-                TelaErro.mostrar(e);
+                TelaAviso.mostrarErro(e);
             }
         }
     }

@@ -15,7 +15,6 @@ import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDe
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaSimuladorDeCombate extends JFrame {
@@ -69,7 +68,7 @@ public class TelaSimuladorDeCombate extends JFrame {
 
         if (TelaInput.desejaRealizarOperacao("Deseja iniciar combate?\n\n"+msg, "Combate")){
             if (fJogador == fInimigo){
-                TelaErro.mostrar("As fichas precisam ser diferentes!");
+                TelaAviso.mostrarErro("As fichas precisam ser diferentes!");
                 return;
             }
 

@@ -9,7 +9,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class FichasRepository {
     
@@ -19,12 +19,12 @@ public class FichasRepository {
 
     private final static int LIMITE_FICHAS = 1000;
     
-    static {
+    static  {
         for (FichaCriatura f : LeitorDeArquivos.lerArquivoFichasCriatura("arquivos/fichas/fichasCriaturas.json")) {
             try {
                 adicionar(f);
             } catch (Exception e) {
-                TelaErro.mostrar("Erro ao adicionar ficha de "+f.getNome());
+                TelaAviso.mostrarErro("Erro ao adicionar ficha de "+f.getNome());
             }
         }
 
@@ -32,7 +32,7 @@ public class FichasRepository {
             try {
                 adicionar(f);
             } catch (Exception e) {
-                TelaErro.mostrar("Erro ao adicionar ficha de "+f.getNome());
+                TelaAviso.mostrarErro("Erro ao adicionar ficha de "+f.getNome());
             }
         }
 

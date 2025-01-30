@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class TelaEstatisticas extends JFrame {
 
@@ -53,7 +53,7 @@ public class TelaEstatisticas extends JFrame {
             setVisible(true);
 
         } catch (Exception e) {
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
 
     }

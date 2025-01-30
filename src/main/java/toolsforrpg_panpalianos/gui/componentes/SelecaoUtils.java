@@ -4,7 +4,7 @@ import javax.swing.JComboBox;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class SelecaoUtils extends JComboBox<Object> {
 
@@ -15,7 +15,7 @@ public class SelecaoUtils extends JComboBox<Object> {
                 selecao.addItem(f);
             }
         } catch (Exception e) {
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 
@@ -26,7 +26,7 @@ public class SelecaoUtils extends JComboBox<Object> {
                 selecao.addItem(f);
             }
         } catch (Exception e) {
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 
@@ -37,7 +37,7 @@ public class SelecaoUtils extends JComboBox<Object> {
                 selecao.addItem(f);
             }
         } catch (Exception e) {
-            TelaErro.mostrar(e);
+            TelaAviso.mostrarErro(e);
         }
     }
 

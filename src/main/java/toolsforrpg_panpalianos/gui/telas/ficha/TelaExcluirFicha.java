@@ -12,7 +12,7 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 public class TelaExcluirFicha extends JFrame {
@@ -48,7 +48,7 @@ public class TelaExcluirFicha extends JFrame {
     private void excluirFicha(){
 
         if (selecao.getSelectedItem() == null){
-            TelaErro.mostrar("Ficha inexistente!");
+            TelaAviso.mostrarErro("Ficha inexistente!");
             return;
         }
 
@@ -59,7 +59,7 @@ public class TelaExcluirFicha extends JFrame {
                 FichasRepository.excluir(ficha);
                 selecao.removeItem(ficha);
             } catch (Exception ex) {
-                TelaErro.mostrar(ex);
+                TelaAviso.mostrarErro(ex);
             }
         }
     }

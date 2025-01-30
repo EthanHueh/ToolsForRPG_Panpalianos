@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
-import toolsforrpg_panpalianos.gui.telas.comum.TelaErro;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
 public class TelaTabelaPrecos extends JFrame {
 
@@ -85,7 +85,7 @@ public class TelaTabelaPrecos extends JFrame {
             setVisible(true);
 
         } catch (NumberFormatException e){
-            TelaErro.mostrar("Preço precisa ser um numero inteiro");
+            TelaAviso.mostrarErro("Preço precisa ser um numero inteiro");
             return;
         }
 
