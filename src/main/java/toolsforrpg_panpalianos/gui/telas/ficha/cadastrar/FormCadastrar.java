@@ -1,9 +1,10 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.forms;
+package toolsforrpg_panpalianos.gui.telas.ficha.cadastrar;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormFicha;
 
 public class FormCadastrar extends FormFicha {
 

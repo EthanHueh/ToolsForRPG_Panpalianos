@@ -17,11 +17,11 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Raca;
 
 public class PainelInfoBasica extends JPanel {
 
-    public JTextField nome = new JTextField();
-    public JTextField descricao = new JTextField();
-    public JComboBox<String> alinhamento = new JComboBox<String>();
-    public JComboBox<String> raca = new JComboBox<>();
-    public List<JCheckBox> idiomas = new ArrayList<>();
+    private JTextField nome = new JTextField();
+    private JTextField descricao = new JTextField();
+    private JComboBox<String> alinhamento = new JComboBox<String>();
+    private JComboBox<String> raca = new JComboBox<>();
+    private List<JCheckBox> idiomas = new ArrayList<>();
 
     public PainelInfoBasica(){
         setLayout(new GridLayout(5,2));
@@ -53,4 +53,61 @@ public class PainelInfoBasica extends JPanel {
 
         setPreferredSize(new Dimension(450, 150));
     }
+
+    public String getNome(){
+        return nome.getText();
+    }
+
+    public void setNome(String s){
+        nome.setText(s);
+    }
+
+    public String getDescricao(){
+        return descricao.getText();
+    }
+
+    public void setDescricao(String s) {
+        descricao.setText(s);
+    }
+
+    public String getAlinhamento(){
+        return alinhamento.getSelectedItem().toString();
+    }
+
+    public void setAlinhamento(String s) {
+        alinhamento.setSelectedItem(s);
+    }
+
+    public String getRaca(){
+        return raca.getSelectedItem().toString();
+    }
+
+    public void setRaca(String s) {
+        raca.setSelectedItem(s);
+    }
+
+    public List<Idioma> getIdiomas(){
+        List<Idioma> ids = new ArrayList<>();
+
+        for (JCheckBox jCheckBox : idiomas) {
+            if (jCheckBox.isSelected()){
+                ids.add(Idioma.getIdioma(jCheckBox.getText()));
+            }
+        }
+
+        return ids;
+    }
+
+    public void setIdiomas(List<Idioma> lista){
+        idiomas.stream().forEach(c -> c.setSelected(false));
+
+        for (Idioma i : lista) {
+            for (JCheckBox c : idiomas) {
+                if (c.getText().equals(i.getNome())){
+                    c.setSelected(true);
+                }
+            }
+        }
+    }
+
 }

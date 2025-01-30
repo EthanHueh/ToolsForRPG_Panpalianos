@@ -1,19 +1,15 @@
 package toolsforrpg_panpalianos.gui.telas.ficha.forms;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
-import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
@@ -94,28 +90,28 @@ public abstract class FormFicha extends JFrame {
     protected Ficha montarFichaJogador() {
         
         Ficha ficha = FichaJogador.Builder.novoJogador()
-            .nome           (pnlInfoBasica.nome.getText())
-            .descricao      (pnlInfoBasica.descricao.getText())
-            .alinhamento    (pnlInfoBasica.alinhamento.toString())
-            .raca           (pnlInfoBasica.raca.getSelectedItem().toString())
-            .classe         (pnlInfoJogador.classe.getSelectedItem().toString())
-            .especializacao (pnlInfoJogador.especializacao.getSelectedItem().toString())
-            .lvl            (Integer.parseInt(pnlInfoJogador.lvl.getText()))
-            .exp            (Integer.parseInt(pnlInfoJogador.exp.getText()))
-            .forca          (Integer.parseInt(pnlAtributos.forca.getText()))
-            .destreza       (Integer.parseInt(pnlAtributos.destreza.getText()))
-            .constituicao   (Integer.parseInt(pnlAtributos.constituicao.getText()))
-            .inteligencia   (Integer.parseInt(pnlAtributos.inteligencia.getText()))
-            .sabedoria      (Integer.parseInt(pnlAtributos.sabedoria.getText()))
-            .carisma        (Integer.parseInt(pnlAtributos.carisma.getText()))
+            .nome           (pnlInfoBasica.getNome())
+            .descricao      (pnlInfoBasica.getDescricao())
+            .alinhamento    (pnlInfoBasica.getAlinhamento())
+            .raca           (pnlInfoBasica.getRaca())
+            .classe         (pnlInfoJogador.getClasse())
+            .especializacao (pnlInfoJogador.getEspecializacao())
+            .lvl            (pnlInfoJogador.getLvl())
+            .exp            (pnlInfoJogador.getExp())
+            .forca          (pnlAtributos.getForca())
+            .destreza       (pnlAtributos.getDestreza())
+            .constituicao   (pnlAtributos.getConstituicao())
+            .inteligencia   (pnlAtributos.getInteligencia())
+            .sabedoria      (pnlAtributos.getSabedoria())
+            .carisma        (pnlAtributos.getCarisma())
             .idiomas (
-                montarListaIdiomas()
+                pnlInfoBasica.getIdiomas()
             )
             .equipamento(
                 new Equipamento(
-                    pnlEquipamento.arma.getSelectedItem().toString(),
-                    pnlEquipamento.armadura.getSelectedItem().toString(),
-                    pnlEquipamento.escudo.getSelectedItem().toString()
+                    pnlEquipamento.getArma(),
+                    pnlEquipamento.getArmadura(),
+                    pnlEquipamento.getEscudo()
                 )                
             )
         .build();
@@ -126,42 +122,32 @@ public abstract class FormFicha extends JFrame {
     protected Ficha montarFichaCriatura() {
         
         Ficha ficha = FichaCriatura.Builder.novaCriatura()
-            .nome               (pnlInfoBasica.nome.getText())
-            .descricao          (pnlInfoBasica.descricao.getText())
-            .alinhamento        (pnlInfoBasica.alinhamento.toString())
-            .raca               (pnlInfoBasica.raca.getSelectedItem().toString())
-            .classeArmadura     (Integer.parseInt(pnlInfoCriatura.classeArmadura.getText()))
-            .jogadaDeProtecao   (Integer.parseInt(pnlInfoCriatura.jogadaDeProtecao.getText()))
-            .baseDeAtaque       (Integer.parseInt(pnlInfoCriatura.baseAtaque.getText()))
-            .movimento          (Integer.parseInt(pnlInfoCriatura.classeArmadura.getText()))
-            .quantDVs           (Integer.parseInt(pnlInfoCriatura.dadoVida.getText()))
-            .pvsAdicionais      (Integer.parseInt(pnlInfoCriatura.pvsAdicionais.getText()))
-            .forca              (Integer.parseInt(pnlAtributos.forca.getText()))
-            .destreza           (Integer.parseInt(pnlAtributos.destreza.getText()))
-            .constituicao       (Integer.parseInt(pnlAtributos.constituicao.getText()))
-            .inteligencia       (Integer.parseInt(pnlAtributos.inteligencia.getText()))
-            .sabedoria          (Integer.parseInt(pnlAtributos.sabedoria.getText()))
-            .carisma            (Integer.parseInt(pnlAtributos.carisma.getText()))
+            .nome               (pnlInfoBasica.getNome())
+            .descricao          (pnlInfoBasica.getDescricao())
+            .alinhamento        (pnlInfoBasica.getAlinhamento())
+            .raca               (pnlInfoBasica.getRaca())
+            .classeArmadura     (pnlInfoCriatura.getClasseArmadura())
+            .jogadaDeProtecao   (pnlInfoCriatura.getJogadaDeProtecao())
+            .baseDeAtaque       (pnlInfoCriatura.getBaseAtaque())
+            .movimento          (pnlInfoCriatura.getMovimento())
+            .quantDVs           (pnlInfoCriatura.getDadoVida())
+            .pvsAdicionais      (pnlInfoCriatura.getPvsAdicionais())
+            .forca              (pnlAtributos.getForca())
+            .destreza           (pnlAtributos.getDestreza())
+            .constituicao       (pnlAtributos.getConstituicao())
+            .inteligencia       (pnlAtributos.getInteligencia())
+            .sabedoria          (pnlAtributos.getSabedoria())
+            .carisma            (pnlAtributos.getCarisma())
             .equipamento        (
                 new Equipamento(
-                    pnlEquipamento.arma.getSelectedItem().toString(),
-                    pnlEquipamento.armadura.getSelectedItem().toString(),
-                    pnlEquipamento.escudo.getSelectedItem().toString()
+                    pnlEquipamento.getArma(),
+                    pnlEquipamento.getArmadura(),
+                    pnlEquipamento.getEscudo()
                 )                
             )
         .build();
 
         return ficha;
-    }
-
-    protected List<Idioma> montarListaIdiomas(){
-        List<Idioma> idiomas = new ArrayList<>();
-        for (JCheckBox jCheckBox : pnlInfoBasica.idiomas) {
-            if (jCheckBox.isSelected()){
-                idiomas.add(Idioma.getIdioma(jCheckBox.getText()));
-            }
-        }
-        return idiomas;
     }
 
 }

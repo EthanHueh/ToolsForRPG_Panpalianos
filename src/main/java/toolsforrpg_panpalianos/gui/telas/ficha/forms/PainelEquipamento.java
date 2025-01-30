@@ -11,9 +11,9 @@ import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Armadura;
 import toolsforrpg_panpalianos.dados.modelo.enums.equipamentos.Escudo;
 
 public class PainelEquipamento extends JPanel {
-    public JComboBox<String> arma = new JComboBox<>();
-    public JComboBox<String> armadura = new JComboBox<>();
-    public JComboBox<String> escudo = new JComboBox<>();
+    private JComboBox<String> arma = new JComboBox<>();
+    private JComboBox<String> armadura = new JComboBox<>();
+    private JComboBox<String> escudo = new JComboBox<>();
 
     public PainelEquipamento(){
         setLayout(new GridLayout(3,2));
@@ -35,5 +35,29 @@ public class PainelEquipamento extends JPanel {
             escudo.addItem(e.getNome());
         }
         add(escudo);
+    }
+
+    public String getArma() {
+        return arma.getSelectedItem().toString();
+    }
+
+    public void setArma(String s) {
+        arma.setSelectedItem(s);
+    }
+
+    public String getArmadura() {
+        return armadura.getSelectedItem().toString();
+    }
+
+    public void setArmadura(String s) {
+        armadura.setSelectedItem(s);
+    }
+
+    public String getEscudo() {
+        return escudo.getSelectedItem().toString();
+    }
+
+    public void setEscudo(String s) {
+        escudo.setSelectedItem(s);
     }
 }

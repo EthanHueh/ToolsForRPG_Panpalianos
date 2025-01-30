@@ -3,11 +3,9 @@ package toolsforrpg_panpalianos.gui.telas.ficha.atualizar;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
-import toolsforrpg_panpalianos.dados.modelo.enums.Idioma;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
@@ -85,51 +83,42 @@ public class FormAtualizar extends FormFicha {
     
         Ficha fichaAtual = (Ficha) selecionarFicha.getSelectedItem();
     
-        pnlInfoBasica.nome.setText(fichaAtual.getNome());
-        pnlInfoBasica.descricao.setText(fichaAtual.getDescricao());
-        pnlInfoBasica.alinhamento.setSelectedItem(fichaAtual.getAlinhamento().getNome());
-        pnlInfoBasica.raca.setSelectedItem(fichaAtual.getRaca().getNome());
-    
-        pnlInfoBasica.idiomas.stream().forEach(c -> c.setSelected(false));
-    
-        for (Idioma i : fichaAtual.getIdiomas()) {
-            for (JCheckBox c : pnlInfoBasica.idiomas) {
-                if (c.getText().equals(i.getNome())){
-                    c.setSelected(true);
-                }
-            }
-        }
+        pnlInfoBasica.setNome(fichaAtual.getNome());
+        pnlInfoBasica.setDescricao(fichaAtual.getDescricao());
+        pnlInfoBasica.setAlinhamento(fichaAtual.getAlinhamento().getNome());
+        pnlInfoBasica.setRaca(fichaAtual.getRaca().getNome());
+        pnlInfoBasica.setIdiomas(fichaAtual.getIdiomas());
 
         if (fichaAtual instanceof FichaJogador){
             FichaJogador ficha = (FichaJogador) fichaAtual;
 
-            pnlInfoJogador.classe.setSelectedItem(ficha.getClasse().getNome());
-            pnlInfoJogador.especializacao.setSelectedItem(ficha.getEspecializacao().getNome());
-            pnlInfoJogador.lvl.setText(String.valueOf(ficha.getLvl()));
-            pnlInfoJogador.exp.setText(String.valueOf(ficha.getExp()));
+            pnlInfoJogador.setClasse(ficha.getClasse().getNome());
+            pnlInfoJogador.setEspecializacao(ficha.getEspecializacao().getNome());
+            pnlInfoJogador.setLvl(ficha.getLvl());
+            pnlInfoJogador.setExp(ficha.getExp());
         }
 
         if (fichaAtual instanceof FichaCriatura){
-            pnlInfoCriatura.baseAtaque.setText(String.valueOf(fichaAtual.getBaseAtaque()));
-            pnlInfoCriatura.classeArmadura.setText(String.valueOf(fichaAtual.getClasseArmadura()));
-            pnlInfoCriatura.jogadaDeProtecao.setText(String.valueOf(fichaAtual.getJogadaProtecao()));
-            pnlInfoCriatura.movimento.setText(String.valueOf(fichaAtual.getMovimento()));
+            pnlInfoCriatura.setBaseAtaque(fichaAtual.getBaseAtaque());
+            pnlInfoCriatura.setClasseArmadura(fichaAtual.getClasseArmadura());
+            pnlInfoCriatura.setJogadaDeProtecao(fichaAtual.getJogadaProtecao());
+            pnlInfoCriatura.setMovimento(fichaAtual.getMovimento());
 
             FichaCriatura ficha = (FichaCriatura) fichaAtual;
-            pnlInfoCriatura.pvsAdicionais.setText(String.valueOf(ficha.getPvsAdicionais()));
+            pnlInfoCriatura.setPvsAdicionais(ficha.getPvsAdicionais());
         }
 
-        pnlAtributos.forca.setText(String.valueOf(fichaAtual.getForca()));
-        pnlAtributos.destreza.setText(String.valueOf(fichaAtual.getDestreza()));
-        pnlAtributos.constituicao.setText(String.valueOf(fichaAtual.getConstituicao()));
-        pnlAtributos.inteligencia.setText(String.valueOf(fichaAtual.getInteligencia()));
-        pnlAtributos.sabedoria.setText(String.valueOf(fichaAtual.getSabedoria()));
-        pnlAtributos.carisma.setText(String.valueOf(fichaAtual.getCarisma()));
+        pnlAtributos.setForca(fichaAtual.getForca());
+        pnlAtributos.setDestreza(fichaAtual.getDestreza());
+        pnlAtributos.setConstituicao(fichaAtual.getConstituicao());
+        pnlAtributos.setInteligencia(fichaAtual.getInteligencia());
+        pnlAtributos.setSabedoria(fichaAtual.getSabedoria());
+        pnlAtributos.setCarisma(fichaAtual.getCarisma());
 
         Equipamento eq = fichaAtual.getEquipamento();
-        pnlEquipamento.arma.setSelectedItem(eq.getArma().getNome());
-        pnlEquipamento.armadura.setSelectedItem(eq.getArmadura().getNome());
-        pnlEquipamento.escudo.setSelectedItem(eq.getEscudo().getNome());
+        pnlEquipamento.setArma(eq.getArma().getNome());
+        pnlEquipamento.setArmadura(eq.getArmadura().getNome());
+        pnlEquipamento.setEscudo(eq.getEscudo().getNome());
     
     }
     

@@ -1,10 +1,10 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
+import toolsforrpg_panpalianos.gui.telas.ficha.atualizar.FormAtualizar;
+import toolsforrpg_panpalianos.gui.telas.ficha.cadastrar.FormCadastrar;
 import toolsforrpg_panpalianos.gui.telas.ficha.excluir.TelaExcluirFicha;
 import toolsforrpg_panpalianos.gui.telas.ficha.exibir.TelaMostrarFichas;
-import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormAtualizar;
-import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormCadastrar;
 
 import java.awt.GridLayout;
 

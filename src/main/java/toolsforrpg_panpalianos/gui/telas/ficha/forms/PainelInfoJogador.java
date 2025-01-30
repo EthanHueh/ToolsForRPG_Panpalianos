@@ -11,10 +11,10 @@ import toolsforrpg_panpalianos.dados.modelo.enums.Classe;
 import toolsforrpg_panpalianos.dados.modelo.enums.Especializacao;
 
 public class PainelInfoJogador extends JPanel {
-    public JTextField lvl = new JTextField();
-    public JTextField exp = new JTextField();
-    public JComboBox<String> classe = new JComboBox<>();
-    public JComboBox<String> especializacao = new JComboBox<>();
+    private JTextField lvl = new JTextField();
+    private JTextField exp = new JTextField();
+    private JComboBox<String> classe = new JComboBox<>();
+    private JComboBox<String> especializacao = new JComboBox<>();
 
     public PainelInfoJogador(){
         setLayout(new GridLayout(4,2));
@@ -37,5 +37,37 @@ public class PainelInfoJogador extends JPanel {
         add(new JLabel("Experiência"));
         exp.setText("0");
         add(exp);
+    }
+
+    public int getLvl() {
+        return Integer.parseInt(lvl.getText());
+    }
+
+    public void setLvl(int n) {
+        lvl.setText(String.valueOf(n));
+    }
+
+    public int getExp() {
+        return Integer.parseInt(exp.getText());
+    }
+
+    public void setExp(int n) {
+        exp.setText(String.valueOf(n));
+    }
+
+    public String getClasse() {
+        return classe.getSelectedItem().toString();
+    }
+
+    public void setClasse(String s) {
+        classe.setSelectedItem(s);
+    }
+
+    public String getEspecializacao() {
+        return especializacao.getSelectedItem().toString();
+    }
+
+    public void setEspecializacao(String s) {
+        especializacao.setSelectedItem(s);
     }
 }

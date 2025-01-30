@@ -13,12 +13,12 @@ import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoRolaDadosAtributo;
 
 public class PainelAtributos extends JPanel {
-    public JTextField forca = new JTextField();
-    public JTextField destreza = new JTextField();
-    public JTextField constituicao = new JTextField();
-    public JTextField inteligencia = new JTextField();
-    public JTextField sabedoria = new JTextField();
-    public JTextField carisma = new JTextField();
+    private JTextField forca = new JTextField();
+    private JTextField destreza = new JTextField();
+    private JTextField constituicao = new JTextField();
+    private JTextField inteligencia = new JTextField();
+    private JTextField sabedoria = new JTextField();
+    private JTextField carisma = new JTextField();
 
     public PainelAtributos(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -75,6 +75,54 @@ public class PainelAtributos extends JPanel {
         painel.add(botoesAtributos[5]);
 
         add(painel);
+    }
+
+    public int getForca(){
+        return Integer.parseInt(forca.getText());
+    }
+
+    public void setForca(int n) {
+        forca.setText(String.valueOf(n));
+    }
+
+    public int getDestreza() {
+        return Integer.parseInt(destreza.getText());
+    }
+
+    public void setDestreza(int n) {
+        destreza.setText(String.valueOf(n));
+    }
+
+    public int getConstituicao() {
+        return Integer.parseInt(constituicao.getText());
+    }
+
+    public void setConstituicao(int n) {
+        constituicao.setText(String.valueOf(n));
+    }
+
+    public int getInteligencia() {
+        return Integer.parseInt(inteligencia.getText());
+    }
+
+    public void setInteligencia(int n) {
+        inteligencia.setText(String.valueOf(n));
+    }
+
+    public int getSabedoria() {
+        return Integer.parseInt(sabedoria.getText());
+    }
+
+    public void setSabedoria(int n) {
+        sabedoria.setText(String.valueOf(n));
+    }
+
+    public int getCarisma() {
+        return Integer.parseInt(carisma.getText());
+    }
+
+    public void setCarisma(int n) {
+        carisma.setText(String.valueOf(n));
     }
 
 }
