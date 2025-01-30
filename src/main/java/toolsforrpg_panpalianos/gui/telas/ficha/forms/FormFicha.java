@@ -6,7 +6,6 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
@@ -19,11 +18,6 @@ public abstract class FormFicha extends JFrame {
 
     protected String tipoFichaAtual;
 
-    protected JLabel titulo = new JLabel();
-    protected JButton trocarTipoFicha = new BotaoPadrao("Trocar");
-
-    protected JPanel pnlNorte = new JPanel();
-
     protected PainelInfoBasica pnlInfoBasica = new PainelInfoBasica();
     protected PainelInfoJogador pnlInfoJogador = new PainelInfoJogador();
     protected PainelInfoCriatura pnlInfoCriatura = new PainelInfoCriatura();
@@ -32,12 +26,6 @@ public abstract class FormFicha extends JFrame {
 
     public FormFicha(){
         setLayout(new BorderLayout());
-
-        trocarTipoFicha.addActionListener (e -> trocarTipoFicha());
-
-        pnlNorte.add(titulo);
-        pnlNorte.add(trocarTipoFicha);
-        add(pnlNorte, BorderLayout.NORTH);
 
         JPanel pnlPrincipal = new JPanel();
         pnlPrincipal.setLayout(new BoxLayout(pnlPrincipal, BoxLayout.Y_AXIS));
@@ -70,22 +58,22 @@ public abstract class FormFicha extends JFrame {
     }
 
     public void iniciar(){
-        trocarParaJogador();
         setVisible(true);
     }
 
     protected abstract void submeterFicha();
 
-    protected void trocarTipoFicha(){
-        if (tipoFichaAtual.equals("Jogador")){
-            trocarParaCriatura();
-        } else {
-            trocarParaJogador();
-        }
+    protected void trocarParaCriatura(){
+        tipoFichaAtual = "Criatura";
+        pnlInfoCriatura.setVisible(true);
+        pnlInfoJogador.setVisible(false);
     }
 
-    protected abstract void trocarParaCriatura();
-    protected abstract void trocarParaJogador();
+    protected void trocarParaJogador(){
+        tipoFichaAtual = "Jogador";
+        pnlInfoJogador.setVisible(true);
+        pnlInfoCriatura.setVisible(false);
+    }
 
     protected Ficha montarFichaJogador() {
         

@@ -1,8 +1,5 @@
 package toolsforrpg_panpalianos.gui.telas.ficha.atualizar;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
@@ -18,14 +15,6 @@ public class FormAtualizar extends FormFicha {
     
     public FormAtualizar(){
         super();
-
-        remove(pnlNorte);
-        pnlNorte.removeAll();
-
-        pnlNorte.add(titulo);
-        pnlNorte.add(trocarTipoFicha);
-        pnlNorte.setPreferredSize(new Dimension(150, 40));
-        add(pnlNorte, BorderLayout.NORTH);
     }
 
     public void iniciar(Ficha ficha){
@@ -56,23 +45,6 @@ public class FormAtualizar extends FormFicha {
                 TelaAviso.mostrarErro(e);
             }
         }
-    }
-
-    @Override
-    protected void trocarParaJogador(){
-        tipoFichaAtual = "Jogador";
-        titulo.setText("Atualizar "+tipoFichaAtual);
-
-        pnlInfoJogador.setVisible(true);
-        pnlInfoCriatura.setVisible(false);
-    }
-
-    protected void trocarParaCriatura(){
-        tipoFichaAtual = "Criatura";
-        titulo.setText("Atualizar "+tipoFichaAtual);
-
-        pnlInfoCriatura.setVisible(true);
-        pnlInfoJogador.setVisible(false);
     }
 
     private void atualizarCampos(Ficha ficha) {
