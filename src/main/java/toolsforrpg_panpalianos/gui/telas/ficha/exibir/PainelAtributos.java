@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha.exibicao;
+package toolsforrpg_panpalianos.gui.telas.ficha.exibir;
 
 import java.awt.Color;
 import java.awt.GridLayout;

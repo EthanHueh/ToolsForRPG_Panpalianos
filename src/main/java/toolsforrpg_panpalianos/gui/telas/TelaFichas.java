@@ -1,8 +1,8 @@
 package toolsforrpg_panpalianos.gui.telas;
 
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
-import toolsforrpg_panpalianos.gui.telas.ficha.TelaExcluirFicha;
-import toolsforrpg_panpalianos.gui.telas.ficha.exibicao.TelaMostrarFichas;
+import toolsforrpg_panpalianos.gui.telas.ficha.excluir.TelaExcluirFicha;
+import toolsforrpg_panpalianos.gui.telas.ficha.exibir.TelaMostrarFichas;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormAtualizar;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormCadastrar;
 

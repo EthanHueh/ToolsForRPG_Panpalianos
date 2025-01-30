@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.telas.ficha;
+package toolsforrpg_panpalianos.gui.telas.ficha.excluir;
 
 import java.awt.GridLayout;
 
