@@ -12,14 +12,14 @@ import toolsforrpg_panpalianos.gui.componentes.Cores;
 import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoLauncher;
 import toolsforrpg_panpalianos.gui.telas.estatisticas.TelaEstatisticas;
-import toolsforrpg_panpalianos.gui.telas.ficha.TelaFichas;
+import toolsforrpg_panpalianos.gui.telas.ficha.principal.TelaFichas;
 import toolsforrpg_panpalianos.gui.telas.iniciativas.TelaIniciativas;
 import toolsforrpg_panpalianos.gui.telas.simulador_combate.TelaSimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.telas.tabela_preco.TelaTabelaPrecos;
 
 public class Launcher extends JFrame {
 
-    private TelaFichas telaFichas = new TelaFichas();
+    private TelaFichas telaFichas = TelaFichas.getInstance();
     private TelaTabelaPrecos telaTabelaPrecos = new TelaTabelaPrecos();
     private TelaEstatisticas telaEstatisticas = new TelaEstatisticas();
     private TelaIniciativas telaIniciativas = new TelaIniciativas();

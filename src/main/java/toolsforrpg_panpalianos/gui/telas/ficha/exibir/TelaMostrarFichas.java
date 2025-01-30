@@ -5,18 +5,16 @@ import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
-import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 
 public class TelaMostrarFichas extends JFrame {
 
-    private JComboBox<Object> selecao = new JComboBox<>();
+    private static TelaMostrarFichas instance = new TelaMostrarFichas();
 
     private PainelInfoBasica painelInfoBasica = new PainelInfoBasica();
     private PainelAtributos painelAtributos = new PainelAtributos();
@@ -30,13 +28,6 @@ public class TelaMostrarFichas extends JFrame {
 
         JPanel painelNorte = new JPanel();
         painelNorte.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        
-        SelecaoUtils.mudarParaTodasAsFichas(selecao);
-        selecao.addActionListener(
-            e -> atualizar()
-        );
-
-        painelNorte.add(selecao);
         add(painelNorte, BorderLayout.NORTH);
 
         JPanel painelPrincipal = new JPanel();
@@ -55,32 +46,33 @@ public class TelaMostrarFichas extends JFrame {
         add(painelLeste, BorderLayout.EAST);
 
         pack();
-
-        atualizar();
         
     }
 
-    public void iniciar(){
-        atualizar();
+    public void iniciar(Ficha ficha){
+        atualizar(ficha);
         setVisible(true);
     }
 
-    private void atualizar() {
-        Ficha fichaAtual = (Ficha) selecao.getSelectedItem();
+    private void atualizar(Ficha ficha) {
+        painelInfoBasica.atualizar(ficha);
+        painelAtributos.atualizar(ficha);
+        painelEquipamento.atualizar(ficha);
+        painelSubatributos.atualizar(ficha);
 
-        painelInfoBasica.atualizar(fichaAtual);
-        painelAtributos.atualizar(fichaAtual);
-        painelEquipamento.atualizar(fichaAtual);
-        painelSubatributos.atualizar(fichaAtual);
-
-        if (fichaAtual instanceof FichaCriatura){
+        if (ficha instanceof FichaCriatura){
             painelInfoJogador.setVisible(false);
         }
 
-        if (fichaAtual instanceof FichaJogador){
+        if (ficha instanceof FichaJogador){
             painelInfoJogador.setVisible(true);
-            painelInfoJogador.atualizar((FichaJogador) fichaAtual);
+            painelInfoJogador.atualizar((FichaJogador) ficha);
         }
         
     }
+
+    public static TelaMostrarFichas getInstance() {
+        return instance;
+    }
+
 }

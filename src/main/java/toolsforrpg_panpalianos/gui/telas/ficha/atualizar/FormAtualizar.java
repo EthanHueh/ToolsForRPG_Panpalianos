@@ -3,37 +3,40 @@ package toolsforrpg_panpalianos.gui.telas.ficha.atualizar;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.JComboBox;
-
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
-import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormFicha;
 
 public class FormAtualizar extends FormFicha {
 
-    private JComboBox<Object> selecionarFicha = new JComboBox<>();
+    private static FormAtualizar instance = new FormAtualizar(); 
     
     public FormAtualizar(){
         super();
-
-        selecionarFicha.addActionListener (
-            e -> atualizarCamposFichaAtual()
-        );
 
         remove(pnlNorte);
         pnlNorte.removeAll();
 
         pnlNorte.add(titulo);
         pnlNorte.add(trocarTipoFicha);
-        pnlNorte.add(selecionarFicha);
         pnlNorte.setPreferredSize(new Dimension(150, 40));
         add(pnlNorte, BorderLayout.NORTH);
+    }
+
+    public void iniciar(Ficha ficha){
+        if (ficha instanceof FichaJogador){
+            trocarParaJogador();
+        } else {
+            trocarParaCriatura();
+        }
+
+        atualizarCampos(ficha);
+        setVisible(true);
     }
 
     @Override
@@ -59,67 +62,61 @@ public class FormAtualizar extends FormFicha {
     protected void trocarParaJogador(){
         tipoFichaAtual = "Jogador";
         titulo.setText("Atualizar "+tipoFichaAtual);
-        SelecaoUtils.mudarParaFichasJogador(selecionarFicha);
 
         pnlInfoJogador.setVisible(true);
         pnlInfoCriatura.setVisible(false);
-        atualizarCamposFichaAtual();
     }
 
     protected void trocarParaCriatura(){
         tipoFichaAtual = "Criatura";
         titulo.setText("Atualizar "+tipoFichaAtual);
-        SelecaoUtils.mudarParaFichasCriatura(selecionarFicha);
 
         pnlInfoCriatura.setVisible(true);
         pnlInfoJogador.setVisible(false);
-        atualizarCamposFichaAtual();
     }
 
-    private void atualizarCamposFichaAtual() {
-        if (selecionarFicha.getSelectedItem() == null){
-            return;
-        }
-    
-        Ficha fichaAtual = (Ficha) selecionarFicha.getSelectedItem();
-    
-        pnlInfoBasica.setNome(fichaAtual.getNome());
-        pnlInfoBasica.setDescricao(fichaAtual.getDescricao());
-        pnlInfoBasica.setAlinhamento(fichaAtual.getAlinhamento().getNome());
-        pnlInfoBasica.setRaca(fichaAtual.getRaca().getNome());
-        pnlInfoBasica.setIdiomas(fichaAtual.getIdiomas());
+    private void atualizarCampos(Ficha ficha) {
+        pnlInfoBasica.setNome(ficha.getNome());
+        pnlInfoBasica.setDescricao(ficha.getDescricao());
+        pnlInfoBasica.setAlinhamento(ficha.getAlinhamento().getNome());
+        pnlInfoBasica.setRaca(ficha.getRaca().getNome());
+        pnlInfoBasica.setIdiomas(ficha.getIdiomas());
 
-        if (fichaAtual instanceof FichaJogador){
-            FichaJogador ficha = (FichaJogador) fichaAtual;
+        if (ficha instanceof FichaJogador){
+            FichaJogador f = (FichaJogador) ficha;
 
-            pnlInfoJogador.setClasse(ficha.getClasse().getNome());
-            pnlInfoJogador.setEspecializacao(ficha.getEspecializacao().getNome());
-            pnlInfoJogador.setLvl(ficha.getLvl());
-            pnlInfoJogador.setExp(ficha.getExp());
+            pnlInfoJogador.setClasse(f.getClasse().getNome());
+            pnlInfoJogador.setEspecializacao(f.getEspecializacao().getNome());
+            pnlInfoJogador.setLvl(f.getLvl());
+            pnlInfoJogador.setExp(f.getExp());
         }
 
-        if (fichaAtual instanceof FichaCriatura){
-            pnlInfoCriatura.setBaseAtaque(fichaAtual.getBaseAtaque());
-            pnlInfoCriatura.setClasseArmadura(fichaAtual.getClasseArmadura());
-            pnlInfoCriatura.setJogadaDeProtecao(fichaAtual.getJogadaProtecao());
-            pnlInfoCriatura.setMovimento(fichaAtual.getMovimento());
+        if (ficha instanceof FichaCriatura){
+            pnlInfoCriatura.setBaseAtaque(ficha.getBaseAtaque());
+            pnlInfoCriatura.setClasseArmadura(ficha.getClasseArmadura());
+            pnlInfoCriatura.setJogadaDeProtecao(ficha.getJogadaProtecao());
+            pnlInfoCriatura.setMovimento(ficha.getMovimento());
 
-            FichaCriatura ficha = (FichaCriatura) fichaAtual;
-            pnlInfoCriatura.setPvsAdicionais(ficha.getPvsAdicionais());
+            FichaCriatura f = (FichaCriatura) ficha;
+            pnlInfoCriatura.setPvsAdicionais(f.getPvsAdicionais());
         }
 
-        pnlAtributos.setForca(fichaAtual.getForca());
-        pnlAtributos.setDestreza(fichaAtual.getDestreza());
-        pnlAtributos.setConstituicao(fichaAtual.getConstituicao());
-        pnlAtributos.setInteligencia(fichaAtual.getInteligencia());
-        pnlAtributos.setSabedoria(fichaAtual.getSabedoria());
-        pnlAtributos.setCarisma(fichaAtual.getCarisma());
+        pnlAtributos.setForca(ficha.getForca());
+        pnlAtributos.setDestreza(ficha.getDestreza());
+        pnlAtributos.setConstituicao(ficha.getConstituicao());
+        pnlAtributos.setInteligencia(ficha.getInteligencia());
+        pnlAtributos.setSabedoria(ficha.getSabedoria());
+        pnlAtributos.setCarisma(ficha.getCarisma());
 
-        Equipamento eq = fichaAtual.getEquipamento();
+        Equipamento eq = ficha.getEquipamento();
         pnlEquipamento.setArma(eq.getArma().getNome());
         pnlEquipamento.setArmadura(eq.getArmadura().getNome());
         pnlEquipamento.setEscudo(eq.getEscudo().getNome());
     
+    }
+
+    public static FormAtualizar getInstance() {
+        return instance;
     }
     
 }
