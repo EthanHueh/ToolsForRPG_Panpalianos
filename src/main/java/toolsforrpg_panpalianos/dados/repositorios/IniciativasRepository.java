@@ -1,6 +1,8 @@
 package toolsforrpg_panpalianos.dados.repositorios;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
@@ -14,6 +16,9 @@ public class IniciativasRepository {
         if (iniciativas.isEmpty()){
             throw new Exception("Nenhuma iniciativa inserida");
         }
+
+        iniciativas.sort(Comparator.comparing(i -> i.getIniciativa()));
+        Collections.reverse(iniciativas);
 
         return iniciativas;
     }

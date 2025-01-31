@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -33,49 +31,43 @@ public class TelaIniciativas extends JFrame {
 
     private JComboBox<Object> selecao = new JComboBox<>();
     private JTextField campoIniciativa = new JTextField("0");
+    private JPanel painelPrincipal = new JPanel();
 
     public TelaIniciativas() {
         setTitle("Iniciativa");
         setLayout(new BorderLayout());
 
-        JPanel pnlPrincipal = new JPanel();
-        pnlPrincipal.setLayout(new GridLayout(5,2));
-        pnlPrincipal.setPreferredSize(new Dimension(350,150));
+        JPanel painelNorte = new JPanel();
+        painelNorte = new JPanel();
+        painelNorte.setLayout(new GridLayout(5,2));
+        painelNorte.setPreferredSize(new Dimension(350,150));
 
-        pnlPrincipal.add(new JLabel("Selecione a ficha"));
+        painelNorte.add(new JLabel("Selecione a ficha"));
         SelecaoUtils.mudarParaTodasAsFichas(selecao);
-        pnlPrincipal.add(selecao);
+        painelNorte.add(selecao);
 
-        pnlPrincipal.add(new JLabel("Insira valor iniciativa"));
+        painelNorte.add(new JLabel("Insira valor iniciativa"));
         campoIniciativa.setText("0");
-        pnlPrincipal.add(campoIniciativa);
+        painelNorte.add(campoIniciativa);
 
-        add(pnlPrincipal);
-
-        JButton btn = new BotaoPadrao("INSERIR");
+        JButton btn = new BotaoPadrao("+ Adicionar iniciativa");
         btn.addActionListener(e -> adicionarIniciativa());
-        pnlPrincipal.add(btn);
+        painelNorte.add(btn);
 
-        btn = new BotaoPadrao("ATUALIZAR");
-        btn.addActionListener(e -> atualizarIniciativa());
-        pnlPrincipal.add(btn);
-
-        btn = new BotaoPadrao("MOSTRAR");
-        btn.addActionListener(e -> mostrarListaIniciativas());
-        pnlPrincipal.add(btn);
-
-        btn = new BotaoPadrao("EXCLUIR");
-        btn.addActionListener(e -> excluirIniciativa());
-        pnlPrincipal.add(btn);
-
-        btn = new BotaoPadrao("SALVAR");
+        btn = new BotaoPadrao("SALVAR ARQUIVO");
         btn.addActionListener(e -> salvarArquivo());
-        pnlPrincipal.add(btn);
+        painelNorte.add(btn);
 
         btn = new BotaoPadrao("ROLAR INICIATIVA");
         btn.addActionListener(e -> rolarIniciativa());
-        pnlPrincipal.add(btn);
+        painelNorte.add(btn);
 
+        painelPrincipal.setLayout(new BoxLayout(painelPrincipal, BoxLayout.Y_AXIS));
+
+        add(painelPrincipal, BorderLayout.CENTER);
+        add(painelNorte, BorderLayout.NORTH);
+
+        atualizar();
         pack();
     }
 
@@ -104,11 +96,11 @@ public class TelaIniciativas extends JFrame {
         } catch (Exception e) {
             TelaAviso.mostrarErro(e);
         }
+
+        atualizar();
     }
 
-    private void atualizarIniciativa() {
-
-        Ficha ficha = (Ficha) selecao.getSelectedItem();
+    void atualizarIniciativa(Ficha ficha) {
         
         if (TelaInput.desejaRealizarOperacao("Deseja mesmo atualizar a iniciativa de "+ficha.getNome()+"?", "Confirmacao de atualizacao de iniciativa")){
             try {
@@ -117,13 +109,13 @@ public class TelaIniciativas extends JFrame {
             } catch (Exception e) {
                 TelaAviso.mostrarErro(e);
             }
-        }         
+        }
+
+        atualizar();
             
     }
 
-    public void excluirIniciativa(){
-
-        Ficha ficha = (Ficha) selecao.getSelectedItem();
+    void excluirIniciativa(Ficha ficha){
 
         if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de "+ficha.getNome()+"?", "Confirmacao")){
             try {
@@ -133,14 +125,8 @@ public class TelaIniciativas extends JFrame {
             }
         }
 
-    }
+        atualizar();
 
-    public void mostrarListaIniciativas() {
-        try {
-            TelaAviso.avisar(gerarMensagemIniciativa(), "Iniciativas");
-        } catch (Exception e){
-            TelaAviso.mostrarErro(e);
-        }
     }
 
     public void salvarArquivo(){
@@ -154,18 +140,28 @@ public class TelaIniciativas extends JFrame {
         }
     }
 
-    public static String gerarMensagemIniciativa() throws Exception {
-
-        List<Iniciativa> iniciativas = IniciativasRepository.retornarIniciativas();
-
-        iniciativas.sort(Comparator.comparing(i -> i.getIniciativa()));
-        Collections.reverse(iniciativas);
-
+    private static String gerarMensagemIniciativa() throws Exception {
         String msg = "";
-        for (Iniciativa i : iniciativas) {
+        for (Iniciativa i : IniciativasRepository.retornarIniciativas()) {
             msg += i.toString()+"\n";
         }
         return msg;
+    }
+
+    public void atualizar(){
+
+        try {
+            painelPrincipal.removeAll();
+            for (Iniciativa i : IniciativasRepository.retornarIniciativas()){
+                painelPrincipal.add(new PainelIniciativa(i));
+            }
+            
+        } catch (Exception e) {
+            TelaAviso.mostrarErro(e);
+        }
+
+        revalidate();
+        repaint();
     }
 
 }
