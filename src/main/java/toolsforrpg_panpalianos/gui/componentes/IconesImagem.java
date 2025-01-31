@@ -16,7 +16,9 @@ public enum IconesImagem {
     
     OLHO("src/main/resources/images/icones/olho-aberto.png",20,20),
     EDITAR("src/main/resources/images/icones/botao-editar.png",20,20),
-    EXCLUIR("src/main/resources/images/icones/lixo.png",20,20);
+    EXCLUIR("src/main/resources/images/icones/lixo.png",20,20),
+
+    DADO("src/main/resources/images/icones/dado.png",20,20);
 
     private ImageIcon imageIcon;
 

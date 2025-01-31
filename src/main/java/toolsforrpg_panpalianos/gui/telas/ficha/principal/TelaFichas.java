@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
+import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.ficha.cadastrar.FormCadastrar;
 
 public class TelaFichas extends JFrame {
@@ -30,15 +31,18 @@ public class TelaFichas extends JFrame {
         
         JPanel norte = new JPanel();
         norte.setLayout(new BoxLayout(norte, BoxLayout.Y_AXIS));
-        norte.setAlignmentY(CENTER_ALIGNMENT);
+        norte.setAlignmentX(JPanel.CENTER_ALIGNMENT);
         
         JButton jButton = new JButton("+ Nova Ficha");
+        jButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
         jButton.addActionListener(
             e -> formCadastrar.iniciar()
         );
         norte.add(jButton);
 
-        norte.add(new JButton("+ Adicionar fichas por arquivo"));
+        jButton = new JButton("+ Adicionar fichas por arquivo");
+        jButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        norte.add(jButton);
 
         add(painelPrincipal, BorderLayout.CENTER);
         add(norte, BorderLayout.NORTH);
@@ -68,7 +72,7 @@ public class TelaFichas extends JFrame {
 
             
         } catch (Exception e) {
-            e.printStackTrace();
+            TelaAviso.mostrarErro(e);
         }
 
         revalidate();

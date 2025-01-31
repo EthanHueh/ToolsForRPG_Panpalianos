@@ -1,5 +1,7 @@
 package toolsforrpg_panpalianos.gui.telas.ficha.principal;
 
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,8 +18,10 @@ public class PainelFicha extends JPanel {
 
     public PainelFicha(Ficha ficha){
         this.ficha = ficha;
-        
-        add(new JLabel(ficha.toString()));
+
+        JLabel jLabel = new JLabel(ficha.toString());
+        jLabel.setPreferredSize(new Dimension(300, 30));
+        add(jLabel);
 
         JButton jButton = new JButton(IconesImagem.OLHO.getImageIcon());
         jButton.addActionListener(

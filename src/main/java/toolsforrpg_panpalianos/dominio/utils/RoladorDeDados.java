@@ -3,6 +3,7 @@ package toolsforrpg_panpalianos.dominio.utils;
 import java.util.Random;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
+import toolsforrpg_panpalianos.dominio.servicos.Calculadora;
 
 public class RoladorDeDados {
 
@@ -22,7 +23,7 @@ public class RoladorDeDados {
     }
 
     public static int executarIniciativa(Ficha ficha){
-        return executar(1, 20) + ficha.getDestreza();
+        return executar(1, 20) + Calculadora.calcularBonus(ficha.getDestreza());
     }
 
 }
