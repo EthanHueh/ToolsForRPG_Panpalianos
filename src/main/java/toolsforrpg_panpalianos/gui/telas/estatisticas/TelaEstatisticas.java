@@ -8,30 +8,26 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.servicos.Estatisticas;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
-public class TelaEstatisticas extends JFrame {
-
-    private static TelaEstatisticas instance = new TelaEstatisticas();
+public class TelaEstatisticas extends JFrame implements Observador {
 
     private JPanel painelTabela = new JPanel();
 
     public TelaEstatisticas(){
         setTitle("Estatisticas da Party");
-
         add(painelTabela);
     }
 
-    public static TelaEstatisticas getInstance() {
-        return instance;
-    }
-
     public void iniciar(){
-        atualizarTabela();
+        atualizar();
+        setVisible(true);
     }
 
-    private void atualizarTabela(){
+    @Override
+    public void atualizar() {
         try {
             
             JTable tabela = new JTable(
@@ -54,13 +50,10 @@ public class TelaEstatisticas extends JFrame {
             painelTabela.add(jScrollPane);
             add(painelTabela);
 
-            setVisible(false);
             pack();
-            setVisible(true);
 
         } catch (Exception e) {
             TelaAviso.mostrarErro(e);
         }
-
     }
 }

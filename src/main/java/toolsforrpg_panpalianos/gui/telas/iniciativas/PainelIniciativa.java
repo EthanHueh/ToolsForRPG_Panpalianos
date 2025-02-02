@@ -12,9 +12,11 @@ import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
 public class PainelIniciativa extends JPanel {
 
     private Iniciativa iniciativa;
+    private TelaIniciativas telaIniciativas;
 
-    public PainelIniciativa(Iniciativa iniciativa){
+    public PainelIniciativa(Iniciativa iniciativa, TelaIniciativas telaIniciativas){
         this.iniciativa = iniciativa;
+        this.telaIniciativas = telaIniciativas;
         
         JLabel jLabel = new JLabel(iniciativa.toString()); 
         jLabel.setPreferredSize(new Dimension(150, 30));
@@ -35,11 +37,11 @@ public class PainelIniciativa extends JPanel {
     }
 
     private void atualizar() {
-        TelaIniciativas.getInstance().atualizarIniciativa(iniciativa);         
+        telaIniciativas.atualizarIniciativa(iniciativa);         
     }
 
     private void excluir() {
-        TelaIniciativas.getInstance().excluirIniciativa(iniciativa);
+        telaIniciativas.excluirIniciativa(iniciativa);
     }
 
 }

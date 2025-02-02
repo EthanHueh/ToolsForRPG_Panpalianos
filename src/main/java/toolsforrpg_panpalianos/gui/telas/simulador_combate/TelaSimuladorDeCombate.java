@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
+import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
+import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDeCombate;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
@@ -17,17 +19,13 @@ import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
-public class TelaSimuladorDeCombate extends JFrame {
-
-    private static TelaSimuladorDeCombate instance = new TelaSimuladorDeCombate();
+public class TelaSimuladorDeCombate extends JFrame implements Observador {
 
     private SimuladorDeCombate simCom = new SimuladorDeCombate();
     private JComboBox<Object> selecionarFichaJogador = new JComboBox<>();
     private JComboBox<Object> selecionarFichaInimigo = new JComboBox<>();
 
     public TelaSimuladorDeCombate(){
-        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaJogador);
-        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaInimigo);
 
         setTitle("Simulador de Combate");
         setLayout(new BorderLayout());
@@ -49,19 +47,15 @@ public class TelaSimuladorDeCombate extends JFrame {
         add(btn, BorderLayout.SOUTH);
 
         add(painelPrincipal);
+        atualizar();
 
         pack();
 
-    }
+        FichasRepository.getInstance().adicionarObservador(this);
 
-    public static TelaSimuladorDeCombate getInstance() {
-        return instance;
     }
 
     public void iniciar(){
-        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaJogador);
-        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaInimigo);
-        
         setVisible(true);
     }
 
@@ -133,6 +127,12 @@ public class TelaSimuladorDeCombate extends JFrame {
             .append("5 - Habilidade Classe ("+jogador.getHabilidadeClasse()+")\n")
             .append("6 - Sair")
         .toString();
+    }
+
+    @Override
+    public void atualizar() {
+        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaJogador);
+        SelecaoUtils.mudarParaTodasAsFichas(selecionarFichaInimigo);
     }
 
 }

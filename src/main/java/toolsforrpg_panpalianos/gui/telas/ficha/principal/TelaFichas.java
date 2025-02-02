@@ -10,12 +10,11 @@ import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
+import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.ficha.cadastrar.FormCadastrar;
 
-public class TelaFichas extends JFrame {
-
-    private static TelaFichas instance = new TelaFichas();
+public class TelaFichas extends JFrame implements Observador {
 
     private FormCadastrar formCadastrar = new FormCadastrar();
 
@@ -48,28 +47,25 @@ public class TelaFichas extends JFrame {
         add(norte, BorderLayout.NORTH);
 
         atualizar();
-
         pack();
-        
-    }
 
-    public static TelaFichas getInstance() {
-        return instance;
+        FichasRepository.getInstance().adicionarObservador(this);
+        
     }
 
     public void iniciar(){
         setVisible(true);
     }
 
+    @Override
     public void atualizar(){
         try {
 
             painelPrincipal.removeAll();
 
-            for (Ficha f : FichasRepository.retornarTodasAsFichas()) {
+            for (Ficha f : FichasRepository.getInstance().retornarTodasAsFichas()) {
                 painelPrincipal.add(new PainelFicha(f));
             }
-
             
         } catch (Exception e) {
             TelaAviso.mostrarErro(e);

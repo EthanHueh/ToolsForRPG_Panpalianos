@@ -20,7 +20,7 @@ public class TelaMostrarFichas extends JFrame {
     private PainelInfoJogador painelInfoJogador = new PainelInfoJogador();
     private PainelSubatributos painelSubatributos = new PainelSubatributos();
 
-    public TelaMostrarFichas(Ficha ficha){
+    public TelaMostrarFichas(){
         setTitle("Exibir fichas");
         setPreferredSize(new Dimension(300, 400));
 
@@ -43,15 +43,12 @@ public class TelaMostrarFichas extends JFrame {
         painelLeste.add(painelSubatributos);
         add(painelLeste, BorderLayout.EAST);
 
-        atualizar(ficha);
-
         pack();
-
-        setVisible(true);
         
     }
 
-    private void atualizar(Ficha ficha) {
+    public void mostrar(Ficha ficha) {
+        setVisible(true);
         painelInfoBasica.atualizar(ficha);
         painelAtributos.atualizar(ficha);
         painelEquipamento.atualizar(ficha);

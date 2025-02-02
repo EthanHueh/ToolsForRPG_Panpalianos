@@ -8,12 +8,9 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormFicha;
-import toolsforrpg_panpalianos.gui.telas.ficha.principal.TelaFichas;
 
 public class FormAtualizar extends FormFicha {
 
-    private static FormAtualizar instance = new FormAtualizar(); 
-    
     public FormAtualizar(){
         super();
     }
@@ -41,8 +38,7 @@ public class FormAtualizar extends FormFicha {
             }
 
             try {
-                FichasRepository.atualizar(ficha);
-                TelaFichas.getInstance().atualizar();
+                FichasRepository.getInstance().atualizar(ficha);
             } catch (Exception e) {
                 TelaAviso.mostrarErro(e);
             }
@@ -89,8 +85,4 @@ public class FormAtualizar extends FormFicha {
     
     }
 
-    public static FormAtualizar getInstance() {
-        return instance;
-    }
-    
 }

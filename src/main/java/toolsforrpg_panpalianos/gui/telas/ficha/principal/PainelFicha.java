@@ -16,8 +16,12 @@ public class PainelFicha extends JPanel {
 
     private Ficha ficha;
 
+    private FormAtualizar formAtualizar = new FormAtualizar();
+    private TelaMostrarFichas telaMostrarFichas = new TelaMostrarFichas();
+
     public PainelFicha(Ficha ficha){
         this.ficha = ficha;
+        this.telaMostrarFichas = new TelaMostrarFichas();
 
         JLabel jLabel = new JLabel(ficha.toString());
         jLabel.setPreferredSize(new Dimension(300, 30));
@@ -44,15 +48,15 @@ public class PainelFicha extends JPanel {
     }
 
     private void mostrar() {
-        new TelaMostrarFichas(ficha);
+        telaMostrarFichas.mostrar(ficha);
     }
 
     private void atualizar() {
-        FormAtualizar.getInstance().iniciar(ficha);
+        formAtualizar.iniciar(ficha);
     }
 
     private void excluir() {
-        TelaExcluirFicha.getInstance().iniciar(ficha);
+        TelaExcluirFicha.iniciar(ficha);
     }
 
 }

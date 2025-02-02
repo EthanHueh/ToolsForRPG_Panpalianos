@@ -13,15 +13,14 @@ import javax.swing.JPanel;
 import lombok.Getter;
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
+import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.EscritorDeArquivos;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 
 @Getter
-public class TelaIniciativas extends JFrame {
-
-    private static TelaIniciativas instance = new TelaIniciativas();
+public class TelaIniciativas extends JFrame implements Observador {
 
     private TelaAdicionarIniciativa telaAdicionarIniciativa = new TelaAdicionarIniciativa();
 
@@ -51,10 +50,8 @@ public class TelaIniciativas extends JFrame {
         add(painelNorte, BorderLayout.NORTH);
 
         atualizar();
-    }
 
-    public static TelaIniciativas getInstance() {
-        return instance;
+        IniciativasRepository.getInstance().adicionarObservador(this);
     }
 
     public void iniciar(){
@@ -67,7 +64,7 @@ public class TelaIniciativas extends JFrame {
             
             try {
                 int novoValor = TelaInput.obterInteiro("Insira nova iniciativa (iniciativa atual = "+iniciativa.getIniciativa()+")");
-                IniciativasRepository.atualizar(new Iniciativa(novoValor, iniciativa.getFicha()));
+                IniciativasRepository.getInstance().atualizar(new Iniciativa(novoValor, iniciativa.getFicha()));
             } catch (Exception e) {
                 TelaAviso.mostrarErro(e);
             }
@@ -81,7 +78,7 @@ public class TelaIniciativas extends JFrame {
 
         if (TelaInput.desejaRealizarOperacao("Deseja mesmo excluir a iniciativa de "+iniciativa.getFicha().getNome()+"?", "Confirmacao")){
             try {
-                IniciativasRepository.excluir(iniciativa.getFicha());
+                IniciativasRepository.getInstance().excluir(iniciativa.getFicha());
             } catch (Exception e) {
                 TelaAviso.mostrarErro(e);
             }
@@ -104,22 +101,23 @@ public class TelaIniciativas extends JFrame {
 
     private static String gerarMensagemIniciativa() throws Exception {
         String msg = "";
-        for (Iniciativa i : IniciativasRepository.retornarIniciativas()) {
+        for (Iniciativa i : IniciativasRepository.getInstance().retornarIniciativas()) {
             msg += i.toString()+"\n";
         }
         return msg;
     }
 
+    @Override
     public void atualizar(){
 
         try {
             painelPrincipal.removeAll();
-            for (Iniciativa i : IniciativasRepository.retornarIniciativas()){
-                painelPrincipal.add(new PainelIniciativa(i));
+            for (Iniciativa i : IniciativasRepository.getInstance().retornarIniciativas()){
+                painelPrincipal.add(new PainelIniciativa(i, this));
             }
             
         } catch (Exception e) {
-            TelaAviso.mostrarErro(e);
+            
         }
 
         revalidate();

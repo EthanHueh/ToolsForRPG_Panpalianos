@@ -9,19 +9,21 @@ import javax.swing.JTextField;
 
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
+import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
+import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
 import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
-public class TelaAdicionarIniciativa extends JFrame {
+public class TelaAdicionarIniciativa extends JFrame implements Observador {
 
     private JComboBox<Object> selecao = new JComboBox<>();
     private JTextField campoIniciativa = new JTextField("0");
     
-    TelaAdicionarIniciativa(){
+    public TelaAdicionarIniciativa(){
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
@@ -41,11 +43,12 @@ public class TelaAdicionarIniciativa extends JFrame {
         btn.addActionListener(e -> adicionarIniciativa());
         add(btn);
 
+        FichasRepository.getInstance().adicionarObservador(this);
+
         pack();
     }
 
     public void iniciar(){
-        SelecaoUtils.mudarParaTodasAsFichas(selecao);
         setVisible(true);
     }
 
@@ -61,12 +64,15 @@ public class TelaAdicionarIniciativa extends JFrame {
         Iniciativa iniciativa = new Iniciativa(valorIniciativa, ficha);
 
         try {
-            IniciativasRepository.adicionar(iniciativa);
+            IniciativasRepository.getInstance().adicionar(iniciativa);
         } catch (Exception e) {
             TelaAviso.mostrarErro(e);
         }
+    }
 
-        TelaIniciativas.getInstance().atualizar();
+    @Override
+    public void atualizar() {
+        SelecaoUtils.mudarParaTodasAsFichas(selecao);
     }
     
 }

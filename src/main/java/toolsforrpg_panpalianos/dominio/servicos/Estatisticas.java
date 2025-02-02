@@ -12,7 +12,7 @@ public class Estatisticas {
 
     public static String[][] executar() throws Exception{
         
-        List<Ficha> fichas = FichasRepository.retornarTodasAsFichas();
+        List<Ficha> fichas = FichasRepository.getInstance().retornarTodasAsFichas();
 
         TipoAtributo[] tipoAtributos = TipoAtributo.values();
         String[][] mensagem = new String[tipoAtributos.length][4];
