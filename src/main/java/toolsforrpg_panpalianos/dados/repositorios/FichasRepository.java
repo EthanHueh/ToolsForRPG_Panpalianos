@@ -6,23 +6,27 @@ import java.util.List;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
+import toolsforrpg_panpalianos.dominio.Observador;
+import toolsforrpg_panpalianos.dominio.Sujeito;
 import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
 import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 
-public class FichasRepository {
-    
-    private final static List<Ficha> fichas = new ArrayList<>();
-    private final static List<FichaCriatura> fichasCriatura = new ArrayList<>();
-    private final static List<FichaJogador> fichasJogador = new ArrayList<>();
+public class FichasRepository implements Sujeito {
 
-    private final static int LIMITE_FICHAS = 1000;
+    private static FichasRepository instance = new FichasRepository();
+   
+    private List<Ficha> fichas = new ArrayList<>();
+    private List<FichaCriatura> fichasCriatura = new ArrayList<>();
+    private List<FichaJogador> fichasJogador = new ArrayList<>();
+
+    private List<Observador> observadores = new ArrayList<>();
     
     static  {
         for (FichaCriatura f : LeitorDeArquivos.lerArquivoFichasCriatura("arquivos/fichas/fichasCriaturas.json")) {
             try {
-                adicionar(f);
+                instance.adicionar(f);
             } catch (Exception e) {
                 TelaAviso.mostrarErro("Erro ao adicionar ficha de "+f.getNome());
             }
@@ -30,20 +34,22 @@ public class FichasRepository {
 
         for (FichaJogador f : LeitorDeArquivos.lerArquivoFichasJogador("arquivos/fichas/fichasJogadores.json")) {
             try {
-                adicionar(f);
+                instance.adicionar(f);
             } catch (Exception e) {
                 TelaAviso.mostrarErro("Erro ao adicionar ficha de "+f.getNome());
             }
         }
 
+        instance.notificarObservadores();
+
     }
     
-    public static void adicionar(Ficha ficha) throws Exception{
+    public void adicionar(Ficha ficha) throws Exception{
         if (ficha == null){
             throw new Exception("Ficha nula!");
         }
         
-        if (fichas.size() == LIMITE_FICHAS){
+        if (fichas.size() == 50){
             throw new Exception("Limite de fichas atingido!");
         }
 
@@ -62,10 +68,12 @@ public class FichasRepository {
         if (ficha instanceof FichaJogador){
             fichasJogador.add((FichaJogador) ficha);
         }
+
+        notificarObservadores();
         
     }
     
-    public static List<Ficha> retornarTodasAsFichas() throws Exception{
+    public List<Ficha> retornarTodasAsFichas() throws Exception{
         if (fichas.isEmpty()){
             throw new Exception("Nenhuma ficha cadastrada!");
         }
@@ -73,7 +81,7 @@ public class FichasRepository {
         return fichas;
     }
 
-    public static List<FichaCriatura> retornarFichasCriatura() throws Exception {
+    public List<FichaCriatura> retornarFichasCriatura() throws Exception {
         if (fichasCriatura.isEmpty()){
             throw new Exception("Nenhuma ficha de criatura cadastrada!");
         }
@@ -81,15 +89,14 @@ public class FichasRepository {
         return fichasCriatura;
     }
     
-    public static List<FichaJogador> retornarFichasJogador() throws Exception {
+    public List<FichaJogador> retornarFichasJogador() throws Exception {
         if (fichasJogador.isEmpty()){
             throw new Exception("Nenhuma ficha de jogador cadastrada!");
         }
-
         return fichasJogador;
     }
     
-    public static Ficha retornarFichaAleatoria() throws Exception{
+    public Ficha retornarFichaAleatoria() throws Exception{
 
         List<Ficha> fichas = retornarTodasAsFichas();
 
@@ -98,7 +105,7 @@ public class FichasRepository {
         );
     }
 
-    public static void atualizar(Ficha ficha) throws Exception {
+    public void atualizar(Ficha ficha) throws Exception {
 
         for (Ficha f: retornarTodasAsFichas()){
             if (f.getNome().equals(ficha.getNome())){
@@ -142,6 +149,7 @@ public class FichasRepository {
                     fAntiga.setExp(fAtualizada.getExp());
                 }
 
+                notificarObservadores();
                 return;
                 
             }
@@ -150,15 +158,37 @@ public class FichasRepository {
         throw new Exception("Ficha nao atualizada");
     }
     
-    public static void excluir(Ficha ficha) throws Exception {
+    public void excluir(Ficha ficha) throws Exception {
         for (int i = 0; i < fichas.size(); i++){
             if (fichas.get(i) == ficha){
                 fichas.remove(i);
+                notificarObservadores();
                 return;
             }
         }
 
         throw new Exception("Ficha nao excluida");
+    }
+
+    @Override
+    public void adicionarObservador(Observador observador) {
+        observadores.add(observador);
+    }
+
+    @Override
+    public void removerObserver(Observador observador) {
+        observadores.remove(observador);
+    }
+
+    @Override
+    public void notificarObservadores() {
+        for (Observador o : observadores) {
+            o.atualizar();
+        }
+    }
+
+    public static FichasRepository getInstance() {
+        return instance;
     }
     
 }
