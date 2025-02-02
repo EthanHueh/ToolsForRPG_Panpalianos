@@ -12,6 +12,7 @@ import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
 import toolsforrpg_panpalianos.gui.telas.ficha.forms.FormFicha;
+import toolsforrpg_panpalianos.gui.telas.ficha.principal.TelaFichas;
 
 public class FormCadastrar extends FormFicha {
 
@@ -58,6 +59,7 @@ public class FormCadastrar extends FormFicha {
 
             try {
                 FichasRepository.adicionar(ficha);
+                TelaFichas.getInstance().atualizar();
             } catch (Exception e) {       
                 TelaAviso.mostrarErro(e);
             }

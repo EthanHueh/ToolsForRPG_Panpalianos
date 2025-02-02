@@ -35,11 +35,11 @@ public class PainelIniciativa extends JPanel {
     }
 
     private void atualizar() {
-        TelaIniciativas.getInstance().atualizarIniciativa(iniciativa.getFicha());         
+        TelaIniciativas.getInstance().atualizarIniciativa(iniciativa);         
     }
 
     private void excluir() {
-        TelaIniciativas.getInstance().excluirIniciativa(iniciativa.getFicha());
+        TelaIniciativas.getInstance().excluirIniciativa(iniciativa);
     }
 
 }

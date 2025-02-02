@@ -18,7 +18,10 @@ public enum IconesImagem {
     EDITAR("src/main/resources/images/icones/botao-editar.png",20,20),
     EXCLUIR("src/main/resources/images/icones/lixo.png",20,20),
 
-    DADO("src/main/resources/images/icones/dado.png",20,20);
+    DADO("src/main/resources/images/icones/dado.png",20,20),
+
+    SALVAR("src/main/resources/images/icones/salvar.png",20,20),
+    ARQUIVO("src/main/resources/images/icones/arquivo.png", 20, 20);
 
     private ImageIcon imageIcon;
 
