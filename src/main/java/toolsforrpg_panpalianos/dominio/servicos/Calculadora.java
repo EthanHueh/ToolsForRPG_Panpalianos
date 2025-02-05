@@ -8,7 +8,12 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dados.modelo.tabelas.TabelaClasses;
-import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
+import toolsforrpg_panpalianos.utils.RoladorDeDados;
+
+/**
+ * Criada para reunir cálculos das regras de Old Dragon, principalmente
+ * para calcular os subatributos das criaturas dentro do jogo.
+ */
 
 public class Calculadora {
 

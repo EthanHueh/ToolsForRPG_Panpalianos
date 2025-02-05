@@ -12,7 +12,7 @@ import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoH
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoLadrao;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoMago;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes.AcaoNula;
-import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
+import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 @Getter
 public class Personagem {

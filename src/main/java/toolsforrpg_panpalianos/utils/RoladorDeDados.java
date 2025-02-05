@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.dominio.utils;
+package toolsforrpg_panpalianos.utils;
 
 import java.util.Random;
 
@@ -14,7 +14,6 @@ public class RoladorDeDados {
         for(int i = 1; i <= quantDados; i++){
             resultado += (random.nextInt(tamanhoDado) + 1);
         }
-
         return resultado;
     }
 
