@@ -66,13 +66,17 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder nome(String nome){
-            this.nome = nome;
+            if (nome != null){
+                this.nome = nome;
+            }
             return this;
         }
 
         public Builder descricao(String descricao){
-          this.descricao = descricao;
-         return this;
+            if (descricao != null){
+                this.descricao = descricao;
+            }
+            return this;
         }
 
         public Builder raca(Raca raca){
@@ -100,7 +104,9 @@ public class FichaCriatura extends Ficha {
         }
 
         public Builder alinhamento(Alinhamento alinhamento){
-            this.alinhamento = alinhamento;
+            if (alinhamento != null){
+                this.alinhamento = alinhamento;
+            }
             return this;
         }
 

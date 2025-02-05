@@ -2,7 +2,7 @@ package toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.acoes;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
-import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
+import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 public class AcaoClerigo implements AcaoClasse {
 
