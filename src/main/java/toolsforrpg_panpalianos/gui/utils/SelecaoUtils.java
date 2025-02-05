@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.componentes;
+package toolsforrpg_panpalianos.gui.utils;
 
 import javax.swing.JComboBox;
 

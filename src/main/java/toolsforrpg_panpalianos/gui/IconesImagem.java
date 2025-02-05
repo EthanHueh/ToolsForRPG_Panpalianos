@@ -1,4 +1,4 @@
-package toolsforrpg_panpalianos.gui.componentes;
+package toolsforrpg_panpalianos.gui;
 
 import java.awt.Image;
 
