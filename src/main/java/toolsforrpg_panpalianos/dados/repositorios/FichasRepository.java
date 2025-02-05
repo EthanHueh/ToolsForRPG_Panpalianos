@@ -64,6 +64,7 @@ public class FichasRepository implements Sujeito {
         ValidadorFicha.validar(ficha);
         FichaUtils.encherMaximoVida(ficha);
 
+        fichas.add(ficha);
         if (ficha instanceof FichaCriatura){
             fichasCriatura.add((FichaCriatura) ficha);
         }
@@ -164,15 +165,21 @@ public class FichasRepository implements Sujeito {
     }
     
     public void excluir(Ficha ficha) throws Exception {
-        for (int i = 0; i < fichas.size(); i++){
-            if (fichas.get(i) == ficha){
-                fichas.remove(i);
-                notificarObservadores();
-                return;
-            }
+        boolean removido = fichas.remove(ficha);
+
+        if (ficha instanceof FichaJogador){
+            removido = fichasJogador.remove(ficha);
         }
 
-        throw new Exception("Ficha nao excluida");
+        if (ficha instanceof FichaCriatura){
+            removido = fichasCriatura.remove(ficha);
+        }
+
+        if (!removido){
+            throw new Exception("Ficha nao excluida");
+        }
+
+        notificarObservadores();
     }
 
     @Override
