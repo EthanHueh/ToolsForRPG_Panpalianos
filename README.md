@@ -39,7 +39,7 @@ Hoje em dia, serve como prática de programação, criação de telas, documenta
 ### Ícones
 Os ícones utilizados para o programa foram retirador de [FLATICON](https://www.flaticon.com/br).
 Créditos vão para:
-- Dave Gandy - Flaticon
+- Dave Gandy
 - Good Ware
 - Abdul-Aziz
 - berkahicon
