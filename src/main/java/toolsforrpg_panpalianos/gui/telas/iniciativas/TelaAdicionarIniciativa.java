@@ -12,10 +12,10 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dados.repositorios.IniciativasRepository;
 import toolsforrpg_panpalianos.dominio.Observador;
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
-import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.gui.utils.SelecaoUtils;
 import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 public class TelaAdicionarIniciativa extends JFrame implements Observador {

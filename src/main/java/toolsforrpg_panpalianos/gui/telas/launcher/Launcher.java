@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import toolsforrpg_panpalianos.gui.componentes.Cores;
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
+import toolsforrpg_panpalianos.gui.Cores;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoLauncher;
 import toolsforrpg_panpalianos.gui.telas.estatisticas.TelaEstatisticas;
 import toolsforrpg_panpalianos.gui.telas.ficha.principal.TelaFichas;
@@ -47,7 +47,7 @@ public class Launcher extends JFrame {
 
         JPanel painelNorte = new JPanel();
         painelNorte.setPreferredSize(new Dimension(900, 50));
-        painelNorte.setBackground(Cores.CINZA.getCor());
+        painelNorte.setBackground(Cores.MARROM.getCor());
 
         JButton jButton = new BotaoLauncher("Fichas");
         jButton.addActionListener(
@@ -81,7 +81,7 @@ public class Launcher extends JFrame {
 
         JPanel painelSul = new JPanel();
         painelSul.setPreferredSize(new Dimension(900, 50));
-        painelSul.setBackground(Cores.CINZA.getCor());
+        painelSul.setBackground(Cores.MARROM.getCor());
         
         add(painelPrincipal, BorderLayout.CENTER);
         add(painelNorte, BorderLayout.NORTH);

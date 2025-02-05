@@ -8,6 +8,10 @@ import toolsforrpg_panpalianos.dados.modelo.enums.TipoAtributo;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
 import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 
+/***
+ * Criada para realizar estatísticas a partir das fichas dos jogadores.
+ */
+
 public class Estatisticas { 
 
     public static String[][] executar() throws Exception{

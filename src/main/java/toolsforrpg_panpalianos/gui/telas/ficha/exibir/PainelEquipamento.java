@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.Equipamento;
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 
 class PainelEquipamento extends JPanel {
 

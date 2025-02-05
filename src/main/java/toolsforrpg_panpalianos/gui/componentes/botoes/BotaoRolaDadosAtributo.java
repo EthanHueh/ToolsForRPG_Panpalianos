@@ -2,7 +2,7 @@ package toolsforrpg_panpalianos.gui.componentes.botoes;
 
 import javax.swing.JTextField;
 
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 public class BotaoRolaDadosAtributo extends BotaoPadrao {

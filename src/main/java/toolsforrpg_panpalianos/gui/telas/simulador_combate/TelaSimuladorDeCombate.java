@@ -14,10 +14,10 @@ import toolsforrpg_panpalianos.dados.repositorios.FichasRepository;
 import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.Personagem;
 import toolsforrpg_panpalianos.dominio.servicos.simulador_de_combate.SimuladorDeCombate;
-import toolsforrpg_panpalianos.gui.componentes.SelecaoUtils;
 import toolsforrpg_panpalianos.gui.componentes.botoes.BotaoPadrao;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaInput;
+import toolsforrpg_panpalianos.gui.utils.SelecaoUtils;
 
 public class TelaSimuladorDeCombate extends JFrame implements Observador {
 

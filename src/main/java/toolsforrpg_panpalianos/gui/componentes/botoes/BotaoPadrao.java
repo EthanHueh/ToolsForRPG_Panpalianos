@@ -5,19 +5,28 @@ import java.awt.Font;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
+import toolsforrpg_panpalianos.gui.Fontes;
+
 public class BotaoPadrao extends JButton {
+
+    private static int posicaoVertical = JButton.CENTER;
+    private static Font font = Fontes.MV_BOLI_14.getFont();
+    private static boolean focusable = false;
+
     public BotaoPadrao(String nome){
         super(nome);
-        setVerticalTextPosition(JButton.CENTER);
-        setFont(new Font("MV BOLI", Font.PLAIN,14));
-        setFocusable(false);
+        inicializar();
     }
 
     public BotaoPadrao(Icon icon){
         super(icon);
-        setVerticalTextPosition(JButton.CENTER);
-        setFont(new Font("MV BOLI", Font.PLAIN,14));
-        setFocusable(false);
+        inicializar();
+    }
+
+    private void inicializar() {
+        setVerticalTextPosition(posicaoVertical);
+        setFont(font);
+        setFocusable(focusable);
     }
     
 }

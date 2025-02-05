@@ -1,12 +1,12 @@
 package toolsforrpg_panpalianos.gui.componentes.botoes;
 
-import java.awt.Font;
+import toolsforrpg_panpalianos.gui.Fontes;
 
 public class BotaoLauncher extends BotaoPadrao {
 
     public BotaoLauncher(String nome){
         super(nome);
-        setFont(new Font("MV BOLI", Font.PLAIN,20));
+        setFont(Fontes.MV_BOLI_20.getFont());
     }
     
 }

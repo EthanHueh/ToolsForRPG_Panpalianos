@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.Iniciativa;
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 
 public class PainelIniciativa extends JPanel {
 

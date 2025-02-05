@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import toolsforrpg_panpalianos.dados.modelo.fichas.Ficha;
-import toolsforrpg_panpalianos.gui.componentes.IconesImagem;
+import toolsforrpg_panpalianos.gui.IconesImagem;
 import toolsforrpg_panpalianos.gui.telas.ficha.atualizar.FormAtualizar;
 import toolsforrpg_panpalianos.gui.telas.ficha.excluir.TelaExcluirFicha;
 import toolsforrpg_panpalianos.gui.telas.ficha.exibir.TelaMostrarFichas;
