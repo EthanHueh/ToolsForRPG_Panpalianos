@@ -8,10 +8,11 @@ import toolsforrpg_panpalianos.dados.modelo.fichas.FichaCriatura;
 import toolsforrpg_panpalianos.dados.modelo.fichas.FichaJogador;
 import toolsforrpg_panpalianos.dominio.Observador;
 import toolsforrpg_panpalianos.dominio.Sujeito;
-import toolsforrpg_panpalianos.dominio.servicos.InicializadorFicha;
+import toolsforrpg_panpalianos.dominio.servicos.ValidadorFicha;
 import toolsforrpg_panpalianos.dominio.servicos.arquivos.LeitorDeArquivos;
-import toolsforrpg_panpalianos.dominio.utils.RoladorDeDados;
 import toolsforrpg_panpalianos.gui.telas.comum.TelaAviso;
+import toolsforrpg_panpalianos.utils.FichaUtils;
+import toolsforrpg_panpalianos.utils.RoladorDeDados;
 
 public class FichasRepository implements Sujeito {
 
@@ -44,11 +45,12 @@ public class FichasRepository implements Sujeito {
 
     }
     
-    public void adicionar(Ficha ficha) throws Exception{
+    public void adicionar(Ficha ficha) throws Exception {
+
         if (ficha == null){
             throw new Exception("Ficha nula!");
         }
-        
+
         if (fichas.size() == 50){
             throw new Exception("Limite de fichas atingido!");
         }
@@ -58,8 +60,9 @@ public class FichasRepository implements Sujeito {
                 throw new Exception("Não podem haver fichas de nome repetido!");
             }
         }
-
-        fichas.add(InicializadorFicha.inicializar(ficha));
+        
+        ValidadorFicha.validar(ficha);
+        FichaUtils.encherMaximoVida(ficha);
 
         if (ficha instanceof FichaCriatura){
             fichasCriatura.add((FichaCriatura) ficha);
@@ -107,6 +110,8 @@ public class FichasRepository implements Sujeito {
 
     public void atualizar(Ficha ficha) throws Exception {
 
+        ValidadorFicha.validar(ficha);
+
         for (Ficha f: retornarTodasAsFichas()){
             if (f.getNome().equals(ficha.getNome())){
                 
@@ -122,8 +127,6 @@ public class FichasRepository implements Sujeito {
                 f.setInteligencia(ficha.getInteligencia());
                 f.setSabedoria(ficha.getSabedoria());
                 f.setCarisma(ficha.getCarisma());
-
-                f.setQuantPVsAtual(ficha.getQuantPVsAtual());
 
                 f.setEquipamento(ficha.getEquipamento());
 
@@ -148,6 +151,8 @@ public class FichasRepository implements Sujeito {
                     fAntiga.setLvl(fAtualizada.getLvl());
                     fAntiga.setExp(fAtualizada.getExp());
                 }
+
+                FichaUtils.encherMaximoVida(ficha);
 
                 notificarObservadores();
                 return;
