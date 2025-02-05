@@ -35,7 +35,7 @@ public class ValidadorFicha {
             throw new Exception("Especialização inválida!");
         }
 
-        if (especializacao.getClasse() != ficha.getClasse()){
+        if (especializacao != Especializacao.NENHUMA && especializacao.getClasse() != ficha.getClasse()){
             throw new Exception("Especialização não condiz com a classe do jogador!");
         }
     
@@ -54,11 +54,11 @@ public class ValidadorFicha {
         
         int atributo = ficha.getAtributoByTipo(tipoAtributo);
 
-        if (atributo < 0 && atributo > 20 && ficha instanceof FichaJogador){
+        if (atributo < 0 || atributo > 20 && ficha instanceof FichaJogador){
             throw new Exception("Atributo de jogador deve estar entre 1 e 20!");
         }
         
-        if (atributo < 0 && atributo > 50 && ficha instanceof FichaCriatura){
+        if (atributo < 0 || atributo > 50 && ficha instanceof FichaCriatura){
             throw new Exception("Atributo de criatura deve estar entre 0 e 50!");
         }
 
@@ -68,11 +68,11 @@ public class ValidadorFicha {
         
         int quantDVs = ficha.getQuantDVs();
 
-        if (quantDVs < 1 && quantDVs > 9 && ficha instanceof FichaJogador){
+        if (quantDVs < 1 || quantDVs > 9 && ficha instanceof FichaJogador){
             throw new Exception("Jogador deve ter entre 1 e 9 dados de vida!");
         }
 
-        if (quantDVs >= 0 && quantDVs <= 50 && ficha instanceof FichaCriatura){
+        if (quantDVs < 1 || quantDVs > 50 && ficha instanceof FichaCriatura){
             throw new Exception("Criatura deve ter entre 1 e 50 dados de vida!");
         }
         
